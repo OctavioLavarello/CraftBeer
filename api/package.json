@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.1",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.5",
+    "ts-node-dev": "^2.0.0"
+  },
+  "scripts": {
+    "start": "nodemon /dist/insdex.js",
+    "tsdev": "ts-node-dev index.ts"
+  }
+}
