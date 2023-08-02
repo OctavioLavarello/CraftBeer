@@ -2,17 +2,17 @@
 import { Routes, Route, useLocation } from 'react-router-dom';  
 // VIEWS
 import Landing from './views/Landing';
-import Home from './views/Home'
+import Home from './views/home/Home'
 import Shop from './views/Shop';
-import Detail from './views/Detail';
+import Detail from './views/detail/Detail';
 import User from './views/User';
-import ChooseSingUp from './views/ChooseSingUp';
-import BuyerSingUp from './views/BuyerSingUp';
+import ChooseSingUp from './views/chooseSingUp/ChooseSingUp';
+import BuyerSingUp from './views/buyerSingUp/BuyerSingUp';
 import SellerSingUp from './views/SellerSingUp';
-import Cart from './views/Cart';
-import AboutUs from './views/AboutUs';
-import Contact from './views/Contact';
-import Creation from './views/Creation';
+import Cart from './views/cart/Cart';
+import AboutUs from './views/aboutUs/AboutUs';
+import Contact from './views/contact/Contact';
+import Creation from './views/creation/Creation';
 // COMPONENTS
 import NavBar from "./components/NavBar"
 import Footer from "./components/Footer"
