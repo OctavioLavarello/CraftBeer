@@ -1,5 +1,5 @@
 /// IMPORTS
-import React, {useState} from "react";
+import React, {useState, } from "react";
 import {  useNavigate  } from "react-router-dom";
 import styles from './Landing.module.css';
 // STYLES
@@ -45,7 +45,7 @@ const Landing = () => {
       <input className={styles.birdthday} type="date" value={dateOfBirth} onChange={handleDateChange}/>
       <h1></h1>
       <button className={styles.comproved} disabled={!dateOfBirth} onClick={handleCheckAge}>Comprobar</button>
-      <p  className={styles.whiteText}>El coonsumo de alcohol en exceso puede ser perjudicial para la salud</p>
+      <p  className={styles.whiteText}>El consumo de alcohol en exceso puede ser perjudicial para la salud</p>
       <p  className={styles.whiteText}>si vas a conducir no tomes!</p>
     </div>
   );
