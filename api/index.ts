@@ -1,6 +1,6 @@
-import { sequelize } from './db'; // Ajusta la ruta si es necesario
-import  server  from './src/app'; // Ajusta la ruta si es necesario
-import dotenv from 'dotenv';
+import { sequelize } from "./db"; // Ajusta la ruta si es necesario
+import server from "./src/app"; // Ajusta la ruta si es necesario
+import dotenv from "dotenv";
 
 dotenv.config();
 
