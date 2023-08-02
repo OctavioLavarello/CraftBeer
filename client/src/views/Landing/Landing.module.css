@@ -1,6 +1,4 @@
 .whiteText{
-    width: 1260px;
-height: 195px;
 flex-shrink: 0;
 color: #FFF;
 text-align: center;
@@ -9,4 +7,16 @@ font-size: 40px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
+margin-left: 10%;
+margin-right: 10%;
+margin-top: 1px;
+}
+.cuestion{
+    text-align: center;
+    color: #FFF;
+    font-size: 50px;
+}
+.birdthday{
+position: center;
+
 }
