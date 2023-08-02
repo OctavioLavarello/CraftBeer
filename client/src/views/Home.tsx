@@ -16,7 +16,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <h1>HOME</h1>
-      <h3>(NO CRITICAR, ESTO ESTA HARDCODEADO AL MANGO, ES SOLO PARA VER LA ESTRUCTURA DE COMO VA A QUEDAR)</h3>
+      <h3>(NO CRITICAR, ESTO ESTA HARDCODEADO AL MANGO)</h3>
       <div>
           <img src={img[0]} alt="IMAGEN 1" style={{ width: '50px', height: '50px' }} />
           <button>◀■■</button>
