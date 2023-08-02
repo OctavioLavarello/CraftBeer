@@ -61,5 +61,5 @@ const defineUserModel = (): ModelCtor<UserModel> => {
   }) as ModelCtor<UserModel>;
 };
 
-export = defineUserModel;
+export default defineUserModel;
 
