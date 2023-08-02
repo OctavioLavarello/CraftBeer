@@ -1,9 +1,10 @@
 /// IMPORTS
 import React, {useState} from "react";
 import {  useNavigate  } from "react-router-dom";
-import  InstagramIcon  from '../assets/icons/Instagram_icon.png.webp';
-import twitterIcon from '../assets/icons/Logo_of_Twitter.svg.png'
-import facebookIcon from '../assets/icons/2021_Facebook_icon.svg.png'
+import styles from './Landing.module.css';
+import  InstagramIcon  from '../../assets/icons/Instagram_icon.png.webp';
+import twitterIcon from '../../assets/icons/Logo_of_Twitter.svg.png'
+import facebookIcon from '../../assets/icons/2021_Facebook_icon.svg.png'
 // STYLES
 //.....
 
@@ -41,8 +42,9 @@ const Landing = () => {
 
   return (
     <div>
-      <p>¿Te gustaria disfrutar de una excelente cerveza artesanal?</p>
-      <p>Primero debemos preguntarte:</p>
+      <p className={styles.whiteText}>¿Te gustaria disfrutar de una excelente cerveza artesanal?
+      
+      Primero debemos preguntarte:</p>
       <h1>¿Eres mayor de edad?</h1>
       <h4>¿Cual es tu fecha de nacimiento?</h4>
       <label>Fecha de nacimiento:</label>
