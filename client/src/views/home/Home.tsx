@@ -1,7 +1,7 @@
 /// IMPORTS
 import React, { useState } from 'react';
 // COMPONENTS
-import MiniCard from "../../components/MiniCard";
+import MiniCard from "../../components/miniCard/MiniCard";
 // STYLES
 //.....
 
