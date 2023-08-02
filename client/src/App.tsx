@@ -16,7 +16,7 @@ import Creation from './views/Creation/Creation';
 
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar"
-import Footer from "./components/footer/Footer"
+import Footer from "./components/Footer/Footer"
 // STYLES
 import './App.css';
 

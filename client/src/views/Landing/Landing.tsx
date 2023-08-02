@@ -36,16 +36,17 @@ const Landing = () => {
   
 
   return (
-    <div>
+    <div className={styles.wallpaper}>
       <p className={styles.whiteText}>¿Te gustaria disfrutar de una excelente cerveza artesanal?
 
       Primero debemos preguntarte:</p>
       <h1 className={styles.cuestion}>¿Eres mayor de edad?</h1>
       <h4 className={styles.whiteText}>¿Cual es tu fecha de nacimiento?</h4>
       <input className={styles.birdthday} type="date" value={dateOfBirth} onChange={handleDateChange}/>
-      <button disabled={!dateOfBirth} onClick={handleCheckAge}>Comprobar</button>
-      <p>El coonsumo de alcohol en exceso puede ser perjudicial para la salud</p>
-      <p>si vas a conducir no tomes!</p>
+      <h1></h1>
+      <button className={styles.comproved} disabled={!dateOfBirth} onClick={handleCheckAge}>Comprobar</button>
+      <p  className={styles.whiteText}>El coonsumo de alcohol en exceso puede ser perjudicial para la salud</p>
+      <p  className={styles.whiteText}>si vas a conducir no tomes!</p>
     </div>
   );
 };

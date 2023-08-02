@@ -1,3 +1,12 @@
+.wallpaper{
+    background-image: url('../../assets/img/thumbbig-779302.webp');
+    background-size: cover;
+    display: flex;
+    flex-direction: column; /* Cambia la dirección de los elementos a columna */
+    align-items: center; /* Centra horizontalmente los elementos en el contenedor */
+    justify-content: center; /* Centra verticalmente los elementos en el contenedor */
+    height: 100vh; /* Asegura que el contenedor ocupe todo el alto de la ventana visible */
+}
 .whiteText{
 flex-shrink: 0;
 color: #FFF;
@@ -18,5 +27,51 @@ margin-top: 1px;
 }
 .birdthday{
 position: center;
-
+font-size: 30px;
+border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
 }
+
+.comproved {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    background-color: #4e9c7e;
+    border-bottom: px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s;
+  }
+  
+  .comproved:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  
+  .comproved:hover {
+    background-color:#4e9c7e;
+  }
+  
+  .comproved:hover:before {
+    transform: scaleX(1);
+  }
+  
+  .comproved:active {
+    background-color: #1d3a7a;
+  }
+  
