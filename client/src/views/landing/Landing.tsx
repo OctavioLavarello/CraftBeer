@@ -1,9 +1,8 @@
 /// IMPORTS
 import React, {useState} from "react";
 import {  useNavigate  } from "react-router-dom";
-import InstagramIcon from "../../assets/icons/Instagram_icon.png.webp"
-/* import  InstagramIcon  from '../assets/icons/Instagram_icon.png.webp';
- */import twitterIcon from '../../assets/icons/Logo_of_Twitter.svg.png'
+import  InstagramIcon  from '../../assets/icons/Instagram_icon.png.webp';
+import twitterIcon from '../../assets/icons/Logo_of_Twitter.svg.png'
 import facebookIcon from '../../assets/icons/2021_Facebook_icon.svg.png'
 // STYLES
 //.....

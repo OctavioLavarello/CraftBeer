@@ -6,11 +6,11 @@ import Home from './views/Home/Home'
 import Shop from './views/Shop/Shop';
 import Detail from './views/Detail/Detail';
 import User from './views/User/User';
-import ChooseSingUp from './views/chooseSingUp/ChooseSingUp';
-import BuyerSingUp from './views/buyerSingUp/BuyerSingUp';
-import SellerSingUp from './views/sellerSingUp/SellerSingUp';
+import ChooseSingUp from './views/ChooseSingUp/ChooseSingUp';
+import BuyerSingUp from './views/BuyerSingUp/BuyerSingUp';
+import SellerSingUp from './views/SellerSingUp/SellerSingUp';
 import Cart from './views/Cart/Cart';
-import AboutUs from './views/aboutUs/AboutUs';
+import AboutUs from './views/AboutUs/AboutUs';
 import Contact from './views/Contact/Contact';
 import Creation from './views/Creation/Creation';
 
