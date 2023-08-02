@@ -1,5 +1,5 @@
-import { DataTypes, Model } from "sequelize";
-import { sequelize } from "./sequelize"; // Archivo para configurar Sequelize y la conexión a la base de datos
+import { DataTypes, Model, ModelCtor } from "sequelize";
+import { sequelize } from "../../db";
 
 interface UserAttributes {
   id: string;
@@ -13,7 +13,11 @@ interface UserAttributes {
   image?: Text;
 }
 
-const defineUserModel = (): Model<UserAttributes> => {
+type UserModel = Model<UserAttributes> & {
+  new (): UserAttributes;
+};
+
+const defineUserModel = (): ModelCtor<UserModel> => {
   return sequelize.define("userPerson", {
     id: {
       type: DataTypes.UUID,
@@ -54,7 +58,8 @@ const defineUserModel = (): Model<UserAttributes> => {
       type: DataTypes.TEXT,
       allowNull: true,
     },
-  });
+  }) as ModelCtor<UserModel>;
 };
 
 export = defineUserModel;
+

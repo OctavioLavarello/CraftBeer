@@ -11,20 +11,6 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
   native: false,
 });
 
-
-// Este código se usa cuando se va a deployar.
-
-// const sequelize = new Sequelize(DB_DEPLOY, {
-//   logging: false,
-//   native: false,
-//   dialect: 'postgres' as Dialect,
-//   dialectOptions: {
-//     ssl: {
-//       require: true,
-//     },
-//   },
-// });
-
 const basename = path.basename(__filename);
 
 const modelDefiners: Array<(sequelize: Sequelize) => void> = [];
@@ -36,41 +22,25 @@ fs.readdirSync(path.join(__dirname, '/models'))
   )
   .forEach((file) => {
     const modelDefiner = require(path.join(__dirname, '/models', file));
-    modelDefiners.push(modelDefiner.default); // Assuming you are exporting the models as default
+    modelDefiners.push(modelDefiner.default);
   });
 
 modelDefiners.forEach((modelDefiner) => modelDefiner(sequelize));
 
-let entries: [string, any][] = Object.entries(sequelize.models);
-let capsEntries: [string, any][] = entries.map(
-  (entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]
-);
-sequelize.models = Object.fromEntries(capsEntries);
+const upperCaseModels: Record<string, any> = {};
+Object.entries(sequelize.models).forEach(([name, model]) => {
+  const upperCaseName = name[0].toUpperCase() + name.slice(1);
+  upperCaseModels[upperCaseName] = model;
+});
 
-const { User, Beer, Store } = sequelize.models;
-
-
-//Uno a muchos
-
-// Style.hasMany(Band);
-// Band.belongsTo(Style);
-
-
-
-// Muchos a muchos
-
-// Musician.belongsToMany(Instrument, {
-//   through: 'musician_instrument',
-//   timestamps: false
-// });
-// Instrument.belongsToMany(Musician, {
-//   through: 'musician_instrument',
-//   timestamps: false
-// });
+const { UserPerson, Beer, Store } = upperCaseModels;
 
 export {
   sequelize,
-  User,
+  UserPerson,
   Beer,
-  Store
+  Store,
+  upperCaseModels
 };
+
+
