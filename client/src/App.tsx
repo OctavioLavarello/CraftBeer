@@ -1,15 +1,15 @@
 /// IMPORTS
 import { Routes, Route } from 'react-router-dom';  
 // VIEWS
-import Home from './views/Home'
-import Landing from './views/Landing';
-import Cart from './views/Carrito/Cart';
-import User from './views/User';
-import Shop from './views/Shop';
-import Form from './views/Form';
-import Detail from './views/Detail';
-import Creation from './views/Creation';
-import Contact from './views/Contact';
+import Home from './views/Home/Home'
+import Landing from './views/Landing/Landing';
+import Cart from './views/Cart/Cart';
+import User from './views/User/User';
+import Shop from './views/Shop/Shop';
+import Form from './views/Form/Form';
+import Detail from './views/Detail/Detail';
+import Creation from './views/Creation/Creation';
+import Contact from './views/Contact/Contact';
 // COMPONENTS
 
 // STYLES
