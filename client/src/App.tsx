@@ -1,18 +1,18 @@
 /// IMPORTS
 import { Routes, Route, useLocation } from 'react-router-dom';  
 // VIEWS
-import Landing from './views/landing/Landing';
-import Home from './views/home/Home'
-import Shop from './views/shop/Shop';
-import Detail from './views/detail/Detail';
-import User from './views/user/User';
+import Landing from './views/Landing/Landing';
+import Home from './views/Home/Home'
+import Shop from './views/Shop/Shop';
+import Detail from './views/Detail/Detail';
+import User from './views/User/User';
 import ChooseSingUp from './views/chooseSingUp/ChooseSingUp';
 import BuyerSingUp from './views/buyerSingUp/BuyerSingUp';
 import SellerSingUp from './views/sellerSingUp/SellerSingUp';
-import Cart from './views/cart/Cart';
+import Cart from './views/Cart/Cart';
 import AboutUs from './views/aboutUs/AboutUs';
-import Contact from './views/contact/Contact';
-import Creation from './views/creation/Creation';
+import Contact from './views/Contact/Contact';
+import Creation from './views/Creation/Creation';
 
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar"
