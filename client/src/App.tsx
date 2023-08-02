@@ -13,6 +13,7 @@ import Cart from './views/cart/Cart';
 import AboutUs from './views/aboutUs/AboutUs';
 import Contact from './views/contact/Contact';
 import Creation from './views/creation/Creation';
+
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar"
 import Footer from "./components/footer/Footer"
