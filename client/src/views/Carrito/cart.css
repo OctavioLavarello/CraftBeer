@@ -1,0 +1,64 @@
+.card {
+    display: flex;
+    flex-direction: row;
+    box-shadow: 5px 5px 10px grey;
+    text-align: left;
+}
+
+.card:hover{
+    background-color: rgb(147, 135, 0);
+    color: white
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.articulos{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    height: 551px;
+    width: 285px;
+
+}
+
+.boton {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    width: 100px;
+    height: auto;
+    background-color: yellow;
+}
+
+.botonProduc {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    width: 100px;
+    height: 50px;
+
+}
+
+.botonPlus{
+    justify-content: center;
+    width: 10px;
+    height:10px;
+}
+
+.botonRest{
+    justify-content: center;
+    width: 10px;
+    height:20px;
+}
+
+.produc {
+    display: flex;
+    flex-direction: row;
+    text-align: right;
+    width: 100px;
+    height: 50px;
+
+}
