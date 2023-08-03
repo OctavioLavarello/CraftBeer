@@ -37,8 +37,8 @@ const Landing = () => {
 
   return (
     <div className={styles.wallpaper}>
-      <p className={styles.whiteText}>¿Te gustaria disfrutar de una excelente cerveza artesanal?
 
+      <p className={styles.whiteText}>¿Te gustaria disfrutar de una excelente cerveza artesanal?
       Primero debemos preguntarte:</p>
       <h1 className={styles.cuestion}>¿Eres mayor de edad?</h1>
       <h4 className={styles.whiteText}>¿Cual es tu fecha de nacimiento?</h4>

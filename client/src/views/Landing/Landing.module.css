@@ -7,7 +7,9 @@
     justify-content: center; /* Centra verticalmente los elementos en el contenedor */
     height: 100%; /* Asegura que el contenedor ocupe todo el alto de la ventana visible */
     width: 100%;
+    
 }
+
 .whiteText{
 flex-shrink: 0;
 color: #FFF;
