@@ -15,7 +15,6 @@ interface UserCompanyAttributes {
   company: string;
   status: boolean;
   address: string;
-  brand:string;
   image?: Text;
 }
 
@@ -45,9 +44,6 @@ const defineUserModel = (): ModelCtor<UserCompanyModel> => {
     company: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    brand:{
-      type:DataTypes.STRING,
     },
     country: {
       type: DataTypes.STRING,

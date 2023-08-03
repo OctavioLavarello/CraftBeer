@@ -39,7 +39,7 @@ const defineModel = (): ModelCtor<ProductModel> => {
       allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     degreeOfAlcohol: {

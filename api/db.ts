@@ -1,15 +1,18 @@
 import dotenv from "dotenv";
 dotenv.config();
-import { Sequelize, Dialect } from "sequelize";
+import { Sequelize } from "sequelize";
 import fs from "fs";
 import path from "path";
 
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY, ENVIRONMENT } = process.env;
 
-const sequelize = new Sequelize(`${DB_DEPLOY}`, {
-  logging: false,
-  native: false,
-});
+const sequelize = new Sequelize( ENVIRONMENT==="dev"?
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/craftbeer`:`${DB_DEPLOY}`,
+  {
+    logging: false,
+    native: false,
+  }
+);
 
 const basename = path.basename(__filename);
 
@@ -32,7 +35,7 @@ sequelize
   .then(() => {
     console.log("Database synchronized");
   })
-  .catch((error) => {
+  .catch((error: Error) => {
     console.error("Error synchronizing database:", error);
   });
 
@@ -42,6 +45,23 @@ Object.entries(sequelize.models).forEach(([name, model]) => {
   upperCaseModels[upperCaseName] = model;
 });
 
-const { UserPerson, Product, UserCompany } = upperCaseModels;
 
-export { sequelize, UserPerson, Product, UserCompany, upperCaseModels };
+// relacionamos
+const { UserPerson,UserCompany,ShoppingHistory,Qualification,Product,Item} = upperCaseModels; 
+
+UserPerson.hasMany(ShoppingHistory)
+UserPerson.hasMany(Qualification)
+
+UserCompany.hasMany(Product)
+
+Product.hasMany(Qualification)
+Product.hasMany(Item)
+Product.belongsToMany(UserPerson,{through:"Favorite"})
+UserPerson.belongsToMany(Product,{through:"Favorite"})
+
+ShoppingHistory.hasMany(Item)
+
+
+
+
+export { UserPerson,UserCompany,ShoppingHistory,Qualification,Product,Item,sequelize}
