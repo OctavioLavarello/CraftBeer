@@ -22,9 +22,9 @@ export const allBeers = () => {
 }
 
 //Actions para recibir filtros por orden 
-export const orderFilters = (filter: string): ActionWithPayload<"ORDER_FILTERS", string> => {
+export const orderFilters = (filters: object): ActionWithPayload<"ORDER_FILTERS", object> => {
     return {
         type: "ORDER_FILTERS",
-        payload: filter,
+        payload: filters,
     }
 }
