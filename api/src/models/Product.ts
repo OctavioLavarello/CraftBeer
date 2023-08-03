@@ -3,7 +3,7 @@ import { sequelize } from "../../db";
 
 interface Attributes {
     id:string;
-    image: Text;
+    image:string;
     name:string;
     type:string;
     description:string;
