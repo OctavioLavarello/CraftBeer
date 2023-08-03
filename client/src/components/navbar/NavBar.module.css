@@ -1,0 +1,51 @@
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    height: 70px;
+    border: 2px solid rgba(163, 125, 52, 1);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.RouterConteiner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
+}
+.link:hover {
+    background-color: rgba(178, 152, 57, 0.47);
+}
+.link:hover:before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background-color: rgba(178, 152, 57, 0.47);
+}
+
+/* Pseudo-elemento para el margen derecho */
+.link:hover:after {
+    content: "";
+    position: absolute;
+    right: -20px;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background-color: rgba(178, 152, 57, 0.47);
+}
