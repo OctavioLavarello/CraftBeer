@@ -1,5 +1,21 @@
 .container.container{
-    background-color: rgb(245, 244, 248);
-    margin-top: 12px;
+    background-color: #F1F0ED;
+    margin-top: 15px;
     justify-content: start;
+    align-items: flex-start;
+
+}
+.title-select {
+    margin-top: 50px;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+.select{
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 6px;
+    color: rgb(151, 143, 143);
+    margin-top: 7px;
+    width: 170px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1)
 }
