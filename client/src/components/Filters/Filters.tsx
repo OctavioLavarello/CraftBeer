@@ -1,41 +1,31 @@
-import "./Filters.css"
 
-
-
-
-
-
-
-
-
-
+import style from "./Filters.module.css"
 
 const Filters = () => {
     return (
 
-        <div className="container">
-            <div className="filters">
+        <div className={style.container}>
+            <div className={style.filters}>
 
-            <p className="title-select">Filtrar por precio</p>
+            <p className={style.title_select}>Filtrar por precio</p>
             <select className="select">
                 <option value="Precio">PRECIOS</option>
                 <option value="OrderAsc">MENOR A MAYOR</option>
                 <option value="OrderDes">MAYOR A MENOR</option>
-
             </select>
-            <p className="title-select">Filtrar por IBU</p>
+            <p className={style.title_select}>Filtrar por IBU</p>
             <select className="select">
                 <option value="Precio" >IBU</option>
                 <option value="OrderAsc">MENOR A MAYOR</option>
                 <option value="OrderDes">MAYOR A MENOR</option>
             </select>
-            <p className="title-select">Filtrar por puntuación</p>
+            <p className={style.title_select}>Filtrar por puntuación</p>
             <select className="select">
                 <option value="Precio" >☆☆☆☆☆</option>
                 <option value="OrderAsc">MENOR A MAYOR</option>
                 <option value="OrderDes">MAYOR A MENOR</option>
             </select>
-            <p className="title-select">Filtrar por tipo</p>
+            <p className={style.title_select}>Filtrar por tipo</p>
             <select className="select">
                 <option value="Precio" >Tipo</option>
                 <option value="OrderAsc">Lager</option>
@@ -45,7 +35,7 @@ const Filters = () => {
                 <option value="OrderDes">Pilsner</option>
                 <option value="OrderDes">Belgian Ale</option>
             </select>
-            <p className="title-select">Filtrar por % Alcohol</p>
+            <p className={style.title_select}>Filtrar por % Alcohol</p>
             <select className="select">
                 <option value="Precio" > ABV:</option>
                 <option value="OrderAsc">MENOR A MAYOR</option>
