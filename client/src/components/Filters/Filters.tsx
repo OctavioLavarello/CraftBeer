@@ -1,14 +1,21 @@
-/// IMPORTS
-//.....
-// STYLES
-//.....
 import "./Filters.css"
 
-// CART
+
+
+
+
+
+
+
+
+
+
 const Filters = () => {
     return (
 
         <div className="container">
+            <div className="filters">
+
             <p className="title-select">Filtrar por precio</p>
             <select className="select">
                 <option value="Precio">PRECIOS</option>
@@ -44,6 +51,7 @@ const Filters = () => {
                 <option value="OrderAsc">MENOR A MAYOR</option>
                 <option value="OrderDes">MAYOR A MENOR</option>
             </select>
+            </div>
 
         </div>
 

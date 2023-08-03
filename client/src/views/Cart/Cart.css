@@ -1,64 +1,89 @@
 .card {
-    display: flex;
-    flex-direction: row;
-    box-shadow: 5px 5px 10px grey;
-    text-align: left;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 5px 5px 10px grey;
+  text-align: left;
 }
 
-.card:hover{
-    background-color: rgb(147, 135, 0);
-    color: white
+.container {
+  display: flex;
+  flex-direction: row;
 }
 
-.container{
-    display: flex;
-    flex-direction: row;
-}
-
-.articulos{
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-    height: 551px;
-    width: 285px;
-
+.articulos {
+  justify-content: center;
+  text-align: center;
+  margin: 20px;
+  height: 551px;
+  width: 285px;
 }
 
 .boton {
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-    width: 100px;
-    height: auto;
-    background-color: yellow;
+  justify-content: center;
+  text-align: center;
+  width: auto;
+  height: 60px;
+  align-items: flex-end;
+  background-color: rgb(32, 32, 32);
+  border: none;
 }
 
-.botonProduc {
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-    width: 100px;
-    height: 50px;
-
-}
-
-.botonPlus{
-    justify-content: center;
-    width: 10px;
-    height:10px;
-}
-
-.botonRest{
-    justify-content: center;
-    width: 10px;
-    height:20px;
+.boton:hover{
+    background-color: grey;
+    color: black;
+;
 }
 
 .produc {
+  display: flex;
+  flex-direction: row;
+  text-align: right;
+  width: 100px;
+  height: 50px;
+}
+
+.imagen {
+  height: 100px;
+  width: 130px;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.bodyAnteriores {
+  background-color: rgba(214, 183, 27, 0.9);
+  border-radius: 25px;
+  flex-wrap: wrap;
+}
+
+.titleAnteriores {
+  text-align: left;
+}
+
+.test {
+  border: solid red;
+  color: red;
+}
+
+.dispocision {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+.dispocision:hover {
+  background-color: white;
+  color: black;
+  border: solid black 1px;
+}
+
+.bodyCart {
     display: flex;
     flex-direction: row;
-    text-align: right;
-    width: 100px;
-    height: 50px;
-
 }
+

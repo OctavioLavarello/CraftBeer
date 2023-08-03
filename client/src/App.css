@@ -1,7 +1,13 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column; /* Cambia la dirección de los elementos a columna */
+  justify-content: center; /* Centra verticalmente los elementos en el contenedor */
+  height: 100vh; /* Asegura que el contenedor ocupe todo el alto de la ventana visible */
+  width: 100%;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  margin: 0;
 }
 
