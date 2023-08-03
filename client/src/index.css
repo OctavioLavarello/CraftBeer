@@ -5,35 +5,3 @@ body {
  
 }
 
-/* Estilos para las vistas específicas */
-
-/* Por ejemplo, para la vista Detail */
-.view-detail {
-  width: 100%;
-  height: 100vh; /* La vista ocupará toda la altura de la pantalla */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Otro ejemplo, para la vista Home */
-.view-home {
-  width: 100%;
-  height: 100vh; /* La vista ocupará toda la altura de la pantalla */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Estilos para otros componentes y elementos en las vistas */
-
-/* Por ejemplo, estilos para el título en la vista Detail */
-.view-detail h1 {
-  font-size: 32px;
-  font-weight: bold;
-}
-
-/* Por ejemplo, estilos para el contenido en la vista Home */
-.view-home p {
-  font-size: 18px;
-}
