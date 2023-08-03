@@ -35,6 +35,7 @@ const defineUserModel = (): ModelCtor<UserModel> => {
     document: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      unique:true,
     },
     email: {
       type: DataTypes.STRING,
@@ -62,4 +63,3 @@ const defineUserModel = (): ModelCtor<UserModel> => {
 };
 
 export default defineUserModel;
-
