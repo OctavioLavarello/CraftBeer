@@ -9,6 +9,7 @@ import User from './views/User/User';
 import ChooseSingUp from './views/chooseSingUp/ChooseSingUp';
 import BuyerSingUp from './views/buyerSingUp/BuyerSingUp';
 import SellerSingUp from './views/sellerSingUp/SellerSingUp';
+import Login from "./views/Login/Login";
 import Cart from './views/Cart/Cart';
 import AboutUs from './views/aboutUs/AboutUs';
 import Contact from './views/Contact/Contact';
@@ -47,6 +48,7 @@ function App() {
           <Route path='/chooseSingUp' element={ <ChooseSingUp />} />
           <Route path='/buyerSingUp' element={ <BuyerSingUp />} />
           <Route path='/sellerSingUp' element={ <SellerSingUp />} />
+          <Route path='/login' element={ <Login />} />
           <Route path='/aboutUs' element={ <AboutUs />} />
           <Route path='/contact' element={ <Contact />} />
           <Route path='/post' element={ <Creation />} />
