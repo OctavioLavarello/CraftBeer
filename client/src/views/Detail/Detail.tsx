@@ -21,7 +21,7 @@ import styles from './Detail.module.css';
 // };
 // DETAIL
 interface Beer {
-  id: number;
+id: string;
   name: string;
   image: string;
   type: string;
