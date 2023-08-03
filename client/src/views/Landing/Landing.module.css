@@ -5,12 +5,14 @@
     flex-direction: column; /* Cambia la dirección de los elementos a columna */
     align-items: center; /* Centra horizontalmente los elementos en el contenedor */
     justify-content: center; /* Centra verticalmente los elementos en el contenedor */
-    height: 100vh; /* Asegura que el contenedor ocupe todo el alto de la ventana visible */
+    height: 100%; /* Asegura que el contenedor ocupe todo el alto de la ventana visible */
+    width: 100%;
 }
 .whiteText{
 flex-shrink: 0;
 color: #FFF;
 text-align: center;
+padding: 3%;
 font-family: Inter;
 font-size: 40px;
 font-style: normal;
@@ -18,9 +20,10 @@ font-weight: 700;
 line-height: normal;
 margin-left: 10%;
 margin-right: 10%;
-margin-top: 1px;
+
 }
 .cuestion{
+ 
     text-align: center;
     color: #FFF;
     font-size: 50px;
