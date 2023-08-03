@@ -42,7 +42,7 @@ interface Attributes {
           allowNull: false,
       },
       degreeOfAlcohol: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.FLOAT,
         allowNull: false,
         unique: true,
       },
@@ -51,7 +51,7 @@ interface Attributes {
         allowNull: false,
       },
       price: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: true,
       },
       stock: {
@@ -59,7 +59,7 @@ interface Attributes {
           allowNull :false,
         },
         qualification: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.FLOAT,
         allowNull :true,
         },
          status: {
