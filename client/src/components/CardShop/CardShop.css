@@ -9,6 +9,10 @@
     margin: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3)
 }
+.custom-card.card:hover{
+    transition: 0.3s;
+    scale: 1.02;
+}
 
 .custom-button {
     width: 30px;
