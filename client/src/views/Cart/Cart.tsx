@@ -1,71 +1,101 @@
 /// IMPORTS
-//.....
+
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Card, Button } from "react-bootstrap";
-import "../Cart/cart.css";
+import { Card, Button, Carousel, CarouselItem } from "react-bootstrap";
+import CardCart from "../../components/CardCart/CardCart";
 // STYLES
-//.....
+import "../Cart/cart.css";
 
 // CART
 const Cart = () => {
-  const handlerCompra = () => {};
-  const handlerAdd = () => {};
-  const handlerPlus = () => {};
-  const handlerRest = () => {};
+  const handlerCompra = (event: React.BaseSyntheticEvent<MouseEvent, EventTarget & HTMLButtonElement, EventTarget>) => {
+    event.preventDefault();
+    alert("Estamos intentando comprar");
+  };
 
   let name = "CraftBeer";
-  let imagen = "";
-  let descripcion = " ";
+  let imagen =
+    "https://www.ngenespanol.com/wp-content/uploads/2018/08/7-buenas-razones-para-tomar-cerveza-1280x720.png";
 
   return (
     <div>
-      <h1>Cart</h1>
       <h1>Carrito de compras</h1>
-      <strong>Selec</strong>
-      <a> </a>
-      <strong>Artículos pendientes por su compra</strong>
-      <div className="">
-        <Card className="card">
-          <Link to={"/detail/:id"}>
-            <img src={imagen} alt={name} />
-          </Link>
-          <h2>Nombre del producto</h2>
-          <a>
-            Descripción del producto:
-            {descripcion}
-          </a>
-          <h3>Precio USDXXX</h3>
-          <Button className="botonProduc" onClick={handlerCompra}>
-            Comprar
-          </Button>
-          <Button className="botonProduc" onClick={handlerAdd}>
-            Añadir Carrito
-          </Button>
-          <div className="produc">
-            <Button className="botonPlus" onClick={handlerPlus}>
-              +
-            </Button>
-            0
-            <Button className="botonRest" onClick={handlerRest}>
-              -
-            </Button>
+      <div>
+        <strong>Selec</strong>
+        <strong>Artículos pendientes por su compra</strong>
+        <div className="bodyCart">
+          <div>
+            <CardCart />
+            <CardCart />
           </div>
-        </Card>
-        <Card className="articulos">
-          Tus compras
-          <h5>Artículos</h5>
-          <a>4</a>
-          <button className="boton">Procesar Compra</button>
-        </Card>
-        <div>Compras realizadas anteriormente</div>
-        <div>
-          Cuerpo de las cartas para la compra
-          <Link to={"/detail/:id"}>
-            <img src={imagen} alt={name} />
-          </Link>
-          <h3>Nombre</h3>
+          <Card
+            style={{
+              width: "300px",
+              height: "auto",
+              display: "flex",
+              flexDirection: "column",
+              backgroundColor: "D9D9D9;"
+            }}
+          >
+            Tus compras
+            <h5>Artículos</h5>
+            <a>4</a>
+     
+              <Button onClick={handlerCompra} className="boton">
+                Procesar Compra
+              </Button>
+            
+          </Card>
         </div>
+
+        <h5 className="titleAnteriores">Compras realizadas anteriormente</h5>
+        <Carousel className="bodyAnteriores" data-bs-theme="dark">
+          <CarouselItem>
+            <Card.Body className="cardBody">
+              <Card className="dispocision">
+                <Link to={"/detail/:id"}>
+                  <img className="imagen" src={imagen} alt={name} />
+                </Link>
+                <h5>Nombre</h5>
+              </Card>
+              <Card className="dispocision">
+                <Link to={"/detail/:id"}>
+                  <img className="imagen" src={imagen} alt={name} />
+                </Link>
+                <h5>Nombre</h5>
+              </Card>
+              <Card className="dispocision">
+                <Link to={"/detail/:id"}>
+                  <img className="imagen" src={imagen} alt={name} />
+                </Link>
+                <h5>Nombre</h5>
+              </Card>
+            </Card.Body>
+          </CarouselItem>
+          <CarouselItem>
+            <Card.Body className="cardBody">
+              <Card className="dispocision">
+                <Link to={"/detail/:id"}>
+                  <img className="imagen" src={imagen} alt={name} />
+                </Link>
+                <h5>Nombre</h5>
+              </Card>
+              <Card className="dispocision">
+                <Link to={"/detail/:id"}>
+                  <img className="imagen" src={imagen} alt={name} />
+                </Link>
+                <h5>Nombre</h5>
+              </Card>
+              <Card className="dispocision">
+                <Link to={"/detail/:id"}>
+                  <img className="imagen" src={imagen} alt={name} />
+                </Link>
+                <h5>Nombre</h5>
+              </Card>
+            </Card.Body>
+          </CarouselItem>
+        </Carousel>
       </div>
     </div>
   );
