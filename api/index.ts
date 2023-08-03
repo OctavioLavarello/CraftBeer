@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // Sincronizar la base de datos y levantar el servidor
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   server.listen(process.env.PORT, () => {
     console.log(`Server listening on port ${process.env.PORT}`);
   });
