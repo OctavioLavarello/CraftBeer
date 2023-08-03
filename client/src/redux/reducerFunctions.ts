@@ -11,7 +11,7 @@ export const getAllBeer = (state = initialState, action: ActionWithPayload<strin
 }
 
 
-export const orderFilters = (state = initialState, action: ActionWithPayload<string, any>) => {
+export const orderFiltersReducer = (state = initialState, action: ActionWithPayload<string, any>) => {
     return ({
         ...state,
         beerFilters: [...state.beerFilters, action.payload]
