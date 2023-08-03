@@ -36,6 +36,7 @@ const defineUserModel = (): ModelCtor<UserCompanyModel> => {
     },
     phone: {
       type: DataTypes.INTEGER,
+      allowNull:false
     },
     lastName: {
       type: DataTypes.STRING,
