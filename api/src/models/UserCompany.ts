@@ -8,8 +8,14 @@ interface UserCompanyAttributes {
   document: number;
   email: string;
   password: string;
+  phone: number;
+  country: string;
+  city: string;
+  state: string;
+  company: string;
   status: boolean;
   address: string;
+  brand:string;
   image?: Text;
 }
 
@@ -28,7 +34,30 @@ const defineUserModel = (): ModelCtor<UserCompanyModel> => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    phone: {
+      type: DataTypes.INTEGER,
+      allowNull:false
+    },
     lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    company: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    brand:{
+      type:DataTypes.STRING,
+    },
+    country: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    city: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -63,4 +92,3 @@ const defineUserModel = (): ModelCtor<UserCompanyModel> => {
 };
 
 export default defineUserModel;
-
