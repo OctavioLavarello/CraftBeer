@@ -1,26 +1,2 @@
-.custom-card.card {
-    background-color: #D9D9D9;
-    border-radius: 4px;
-    padding: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    max-height: 200px;
-}
 
-.custom-card.card:hover{
-    background-color: rgba(214, 183, 27, 0.9);
-    color: white
-}
-
-.custom-button {
-  justify-content: center;
-  text-align: center;
-  width: 40px;
-  height: 40px;
-  margin: 5px;
-  background-color: rgb(32, 32, 32);
-}
 

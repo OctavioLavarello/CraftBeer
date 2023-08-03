@@ -1,16 +1,16 @@
-.card {
+.cardCart {
   display: flex;
   flex-direction: row;
   box-shadow: 5px 5px 10px grey;
   text-align: left;
 }
 
-.container {
+.containerCart {
   display: flex;
   flex-direction: row;
 }
 
-.articulos {
+.articulosCart {
   justify-content: center;
   text-align: center;
   margin: 20px;
@@ -18,7 +18,7 @@
   width: 285px;
 }
 
-.boton {
+.botonCart {
   justify-content: center;
   text-align: center;
   width: auto;
@@ -28,13 +28,12 @@
   border: none;
 }
 
-.boton:hover{
+.botonCart:hover{
     background-color: grey;
     color: black;
-;
 }
 
-.produc {
+.producCart {
   display: flex;
   flex-direction: row;
   text-align: right;
@@ -42,12 +41,12 @@
   height: 50px;
 }
 
-.imagen {
+.imagenCart {
   height: 100px;
   width: 130px;
 }
 
-.cardBody {
+.cardBodyCart {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -55,13 +54,13 @@
   justify-content: center;
 }
 
-.bodyAnteriores {
+.bodyAnterioresCart {
   background-color: rgba(214, 183, 27, 0.9);
   border-radius: 25px;
   flex-wrap: wrap;
 }
 
-.titleAnteriores {
+.titleAnterioresCart {
   text-align: left;
 }
 
@@ -70,13 +69,13 @@
   color: red;
 }
 
-.dispocision {
+.dispocisionCart {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 10px;
 }
-.dispocision:hover {
+.dispocisionCart:hover {
   background-color: white;
   color: black;
   border: solid black 1px;
