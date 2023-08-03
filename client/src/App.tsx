@@ -21,6 +21,9 @@ import Footer from "./components/footer/Footer"
 import './App.css';
 
 // APP
+
+
+
 function App() {
 
   const location = useLocation();
