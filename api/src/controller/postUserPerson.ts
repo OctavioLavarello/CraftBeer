@@ -20,10 +20,10 @@ const postUserPerson = async (req: Request, res: Response) => {
       password,
       address,
       image,
-      status: true
+      status: true,
     });
 
-    res.status(200).json(userPerson)
+    res.status(200).json(userPerson);
   } catch (error) {
     if (error instanceof Error) {
       res.status(500).send(error.message);
