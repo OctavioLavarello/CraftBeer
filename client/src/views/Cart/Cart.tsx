@@ -1,5 +1,4 @@
 /// IMPORTS
-
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Button, Carousel, CarouselItem } from "react-bootstrap";
@@ -41,11 +40,9 @@ const Cart = () => {
             Tus compras
             <h5>Artículos</h5>
             <a>4</a>
-     
               <Button onClick={handlerCompra} className="botonCart">
                 Procesar Compra
               </Button>
-            
           </Card>
         </div>
 
