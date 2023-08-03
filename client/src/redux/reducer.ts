@@ -1,5 +1,5 @@
 import { ActionWithPayload } from "./actions/actions";
-import { getAllBeer, orderFilters } from "./reducerFunctions";
+import { getAllBeer, orderFiltersReducer } from "./reducerFunctions";
 
 /* import { Action } from 'redux';
  */
@@ -8,19 +8,18 @@ export interface AppState {
   beerFilters: string[];
 };
 export const initialState: AppState = {
-  beerFilters: [],
-  allBeer: []
+  allBeer: [],
+  beerFilters: []
 };
 
 
 const rootReducer = (state = initialState, action: ActionWithPayload<string, any>) => {
   switch (action.type) {
-
     case "ADD_ALL_BEER": {
       return getAllBeer(state, action)
     }
     case "ORDER_FILTERS": {
-      return orderFilters(state, action)
+      return orderFiltersReducer(state, action)
     }
     
     default:

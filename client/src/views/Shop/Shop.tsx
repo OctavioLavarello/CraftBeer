@@ -9,7 +9,7 @@ const Shop = () => {
   return (
     <Container >
       <div className={style.search}>
-        <input type="text"className={style.input_search} placeholder="     Buscar....." />
+        <input type="text"className={style.input_Search} placeholder="     Buscar....." />
       </div>
       <Row>
         <Col xs={12} md={3}>
@@ -20,10 +20,6 @@ const Shop = () => {
         </Col>
         <Col xs={12} md={9}>
           <div className="d-flex flex-column">
-            <CardShop />
-            <CardShop />
-            <CardShop />
-            <CardShop />
             <CardShop />
           </div>
         </Col>
