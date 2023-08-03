@@ -1,10 +1,13 @@
-import { createStore, applyMiddleware, compose}  from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunkMiddleware from 'redux-thunk';
 import rootReducer from './reducer';
-import thunkMiddleware from 'redux-thunk'
 
+// Combina los middleware que necesites, como redux-thunk
+const middleware = [thunkMiddleware];
 
-const composeEnhacer = compose; // esta linea es para conectar don la extensnion del navegador => REDUX D
-
- export const store = createStore(
-    rootReducer,
-    composeEnhacer(applyMiddleware(thunkMiddleware))); // Esta linea nos permite hacer peticiones a un servidor
+// Crea el store con la función createStore y los enhancers combinados
+export const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(...middleware))
+);

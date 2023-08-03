@@ -1,0 +1,12 @@
+.bodyFormP {
+    display: flex;
+    flex-direction: row;
+}
+
+.bodyMisArt {
+    max-width: 650px;
+}
+
+.spamMisArt {
+    margin: 15px;   
+}
