@@ -1,14 +1,15 @@
-import "./CardShop.css"
+
 import { Container } from "react-bootstrap"
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Col, Row } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
+import style from "./CardShop.module.css"
 
 const CardShop = () => {
     return (
         <Container>
-            <Card className='custom-card' >
+            <Card className={style.custom_card} >
                 <Card.Body>
                     <Row>
                         <Col>
@@ -25,14 +26,14 @@ const CardShop = () => {
                             <Button className='p-2 m-2' variant="dark">AÑADIR</Button>
                         </Col>
                         <Col >
-                            <h2 className="title">$ 399</h2>
+                            <h2 className={style.title}>$ 399</h2>
                             <p>☆☆☆☆☆  <br />Disponible</p>
                          
-                            <InputGroup className="input " >
-                                <InputGroup.Text id="basic-addon1" className="input">0.00</InputGroup.Text>
+                            <InputGroup className={style.input} >
+                                <InputGroup.Text id="basic-addon1" className={style.input}>0.00</InputGroup.Text>
                             </InputGroup>
-                            <button className='custom-button'>-</button>
-                            <button className='custom-button'>+</button>
+                            <button className={style.custom_button}>-</button>
+                            <button className={style.custom_button}>+</button>
                         </Col>
 
                     </Row>

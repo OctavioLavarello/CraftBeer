@@ -42,54 +42,54 @@ const Cart = () => {
             <h5>Artículos</h5>
             <a>4</a>
      
-              <Button onClick={handlerCompra} className="boton">
+              <Button onClick={handlerCompra} className="botonCart">
                 Procesar Compra
               </Button>
             
           </Card>
         </div>
 
-        <h5 className="titleAnteriores">Compras realizadas anteriormente</h5>
-        <Carousel className="bodyAnteriores" data-bs-theme="dark">
+        <h5 className="titleAnterioresCart">Compras realizadas anteriormente</h5>
+        <Carousel className="bodyAnterioresCart" data-bs-theme="dark">
           <CarouselItem>
-            <Card.Body className="cardBody">
-              <Card className="dispocision">
+            <Card.Body className="cardBodyCart">
+              <Card className="dispocisionCart">
                 <Link to={"/detail/:id"}>
-                  <img className="imagen" src={imagen} alt={name} />
+                  <img className="imagenCart" src={imagen} alt={name} />
                 </Link>
                 <h5>Nombre</h5>
               </Card>
-              <Card className="dispocision">
+              <Card className="dispocisionCart">
                 <Link to={"/detail/:id"}>
-                  <img className="imagen" src={imagen} alt={name} />
+                  <img className="imagenCart" src={imagen} alt={name} />
                 </Link>
                 <h5>Nombre</h5>
               </Card>
-              <Card className="dispocision">
+              <Card className="dispocisionCart">
                 <Link to={"/detail/:id"}>
-                  <img className="imagen" src={imagen} alt={name} />
+                  <img className="imagenCart" src={imagen} alt={name} />
                 </Link>
                 <h5>Nombre</h5>
               </Card>
             </Card.Body>
           </CarouselItem>
           <CarouselItem>
-            <Card.Body className="cardBody">
-              <Card className="dispocision">
+            <Card.Body className="cardBodyCart">
+              <Card className="dispocisionCart">
                 <Link to={"/detail/:id"}>
-                  <img className="imagen" src={imagen} alt={name} />
+                  <img className="imagenCart" src={imagen} alt={name} />
                 </Link>
                 <h5>Nombre</h5>
               </Card>
-              <Card className="dispocision">
+              <Card className="dispocisionCart">
                 <Link to={"/detail/:id"}>
-                  <img className="imagen" src={imagen} alt={name} />
+                  <img className="imagenCart" src={imagen} alt={name} />
                 </Link>
                 <h5>Nombre</h5>
               </Card>
-              <Card className="dispocision">
+              <Card className="dispocisionCart">
                 <Link to={"/detail/:id"}>
-                  <img className="imagen" src={imagen} alt={name} />
+                  <img className="imagenCart" src={imagen} alt={name} />
                 </Link>
                 <h5>Nombre</h5>
               </Card>
