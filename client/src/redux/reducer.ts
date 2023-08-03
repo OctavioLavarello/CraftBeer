@@ -5,12 +5,13 @@ import { getAllBeer, orderFiltersReducer } from "./reducerFunctions";
  */
 export interface AppState {
   allBeer: object[];
-  beerFilters: string[];
+  beerFilters: object;
 };
 export const initialState: AppState = {
   allBeer: [],
-  beerFilters: []
+  beerFilters: {}
 };
+
 
 
 const rootReducer = (state = initialState, action: ActionWithPayload<string, any>) => {
@@ -21,7 +22,6 @@ const rootReducer = (state = initialState, action: ActionWithPayload<string, any
     case "ORDER_FILTERS": {
       return orderFiltersReducer(state, action)
     }
-    
     default:
       return state;
   }

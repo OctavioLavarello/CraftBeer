@@ -20,7 +20,7 @@ const Shop = () => {
         </Col>
         <Col xs={12} md={9}>
           <div className="d-flex flex-column">
-            <CardShop />
+            <CardShop/>
           </div>
         </Col>
       </Row>
