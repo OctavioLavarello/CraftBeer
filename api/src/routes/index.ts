@@ -3,6 +3,7 @@ import postUserPerson from "../controller/postUserPerson"
 import postCompany from "../controller/postCompany";
 import getAllCompanies from '../controller/getAllCompanies';
 import postProduct from '../controller/postProduct';
+import getProductById from '../controller/getProductById';
 
 const router = Router();
 
@@ -13,12 +14,7 @@ router.post("/product", postProduct);
 
 // ------- get routes ------- //
 router.get("/companies", getAllCompanies);
-
-
-// ------- get routes ------- //
-
-
-
+router.get("/product/:idProduct", getProductById)
 
 // ------- update routes-------//
 
