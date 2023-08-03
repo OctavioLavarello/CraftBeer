@@ -44,7 +44,6 @@ interface Attributes {
       degreeOfAlcohol: {
         type: DataTypes.FLOAT,
         allowNull: false,
-        unique: true,
       },
       presentation: {
         type: DataTypes.STRING,
