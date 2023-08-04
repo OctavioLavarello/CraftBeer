@@ -72,4 +72,5 @@ const defineModel = (): ModelCtor<ProductModel> => {
     },
   }) as ModelCtor<ProductModel>;
 };
+
 export default defineModel;

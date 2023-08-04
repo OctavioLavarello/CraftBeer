@@ -35,7 +35,7 @@ const getAllProducts = async (req: Request, res: Response) => {
     }
 
     // Ordenar según el valor de order (asc o desc)
-    if (order && (order === 'OrderAscPrice' || order === 'OrderDesPrice')) {
+    if (order && ( order === 'OrderAscPrice' || order === 'OrderDesPrice' )) {
       const columnToOrderBy = order === 'OrderAscPrice' ? 'price' : [['price', 'DESC']];
       options.order = [columnToOrderBy];
     }
