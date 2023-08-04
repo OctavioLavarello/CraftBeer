@@ -3,53 +3,57 @@ import { Container } from "react-bootstrap"
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Col, Row } from 'react-bootstrap';
-import InputGroup from 'react-bootstrap/InputGroup';
 import style from "./CardModel.module.css"
 import { Link } from "react-router-dom";
 
 interface CardModelProps {
-    id:string
+    id: string
     name: string;
     summary: string,
     image: string,
     price: number,
-    status: string
+    stock: number,
+    degreeOfAlcohol: number,
+    type: string,
+    IBU:number
 }
 
-
-
-
-
-const CardModel = ({ name, summary, image, price, status,id }: CardModelProps) => {
+const CardModel = ({ name, summary, image, price, stock, id, type ,IBU}: CardModelProps) => {
     return (
         <Container>
             <Card className={style.card} >
                 <Card.Body >
                     <Row>
                         <Col className="col">
-
-                            <Link className={style.link} to={`/detail/${id}`} >
-                                <Card.Img src={image}
-                                    style={{ width: '180px', height: '200px' }} />
-                            </Link>
-
+                            <div className={style.image}>
+                                <Link className={style.link} to={`/detail/${id}`} >
+                                    <img src={image} alt="" className={style.imgSize} />
+                                </Link>
+                            </div>
                         </Col>
                         <Col sm={5} className={style.colPrice} >
+
                             <h3 >{name}</h3>
-                            <Card.Text style={{ fontSize: "13px" }}>
-                                {summary}
-                            </Card.Text>
+                            <div style={{ height: "70px" }}>
+                                <Card.Text style={{ fontSize: "13px",color:"white"}}>
+                                    {summary}
+                                </Card.Text>
+                            </div>
+                            <div style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
+                                <h5>Tipo: {type}</h5>
+                                <h5>IBU: {IBU}</h5>
+                            </div>
                             <Button className='p-2 ms-auto' variant="dark">COMPRAR</Button>
                             <Button className='p-2 m-2' variant="dark">AÑADIR</Button>
                         </Col>
                         <Col className={style.colPrice}>
+                            <div className={style.containerInfo}>
                             <h2 className={style.title}>${price}</h2>
-                            <p>☆☆☆☆☆  <br />{status}</p>
-                            <InputGroup className={style.input} >
-                                <InputGroup.Text id="basic-addon1" className={style.input}>0.00</InputGroup.Text>
-                            </InputGroup>
+                            <p>☆☆☆☆☆  <br /> Stock Disponible : {stock} un.</p>
+                            <div className={style.input}>100 Un</div>
                             <button className={style.custom_button}>-</button>
                             <button className={style.custom_button}>+</button>
+                            </div>
                         </Col>
                     </Row>
                 </Card.Body>
