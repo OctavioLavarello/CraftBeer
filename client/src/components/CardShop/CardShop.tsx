@@ -3,7 +3,7 @@ import axios from "axios";
 import CardModel from "../CardModel/CardModel";
 
 interface BeerData {
-  id: number;
+  id: string;
   image: string;
   name: string;
   type: string;
@@ -38,6 +38,7 @@ const CardShop = () => {
       {allBeersData.map((product) => (
         <CardModel
           key={product.id}
+          id={product.id}
           name={product.name}
           summary={product.description}
           image={product.image}
