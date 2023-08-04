@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+.img {
+    width: 100%;
+    border: solid 2px white;
+    border-radius: 15px;
+    border: 2px solid rgb(56, 56, 56);
+}
+.h2_Container {
+    color: white;
+    width: 80%;
+    height: 40px;
+    max-width: 400px; 
+    margin: 0 auto;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-decoration: none;
+    background-color: black;
+    border: 2px solid rgb(56, 56, 56);
+    border-radius: 10px;
+  }
+.nav {
+    text-decoration: none;
+}
+
