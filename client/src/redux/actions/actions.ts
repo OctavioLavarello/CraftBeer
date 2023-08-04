@@ -14,12 +14,12 @@ export interface ActionWithPayload<T, P> {
 export interface ProductData {
   name: string;
   type: string;
-  degreeOfAlcohol: number;
+  ABV: number;
   description: string;
   price: number;
   stock: number;
   IBU: number;
-  presentation: number;
+  presentation: string;
   image: string;
 }
 
@@ -51,7 +51,7 @@ export const orderFilters = (
 export const createdProduct = ({
   name,
   type,
-  degreeOfAlcohol,
+  ABV,
   description,
   price,
   image,
@@ -61,11 +61,11 @@ export const createdProduct = ({
 }: ProductData) => {
   try {
     return async function (dispatch: any) {
-      let createdBeer = await axios.post(`${localhost}/post`, {
+      let createdBeer = await axios.post(`${localhost}/product`, {
         name,
         image,
         type,
-        degreeOfAlcohol,
+        ABV,
         description,
         price,
         stock,
