@@ -9,24 +9,24 @@ const NavBar: React.FC = () => {
     <div className={styles.navContainer}>
       <div className={styles.RouterConteiner}>
         <NavLink to="/home" className={styles.link}>
-          <h3>Home</h3>
+          <h5>Home</h5>
         </NavLink>
         <NavLink to="/shop" className={styles.link}>
-          <h3>Shop</h3>
+          <h5>Shop</h5>
         </NavLink>
         <NavLink to="/aboutUs" className={styles.link}>
-          <h3>About us</h3>
+          <h5>About us</h5>
         </NavLink>
         <NavLink to="/contact" className={styles.link}>
-          <h3>Contact</h3>
+          <h5>Contact</h5>
         </NavLink>
       </div>
       <div className={styles.RouterConteiner}>
         <NavLink to="/cart" className={styles.link}>
-          <h3>Cart</h3>
+          <h5>Cart</h5>
         </NavLink>
         <NavLink to="/login" className={styles.link}>
-          <h3>Login</h3>
+          <h5>Login</h5>
         </NavLink>
       </div>
     </div>
