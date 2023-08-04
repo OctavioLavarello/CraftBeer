@@ -5,11 +5,13 @@ const putUserCompany = async (req: Request, res: Response) => {
     try {
          //llega el objeto empresa por body
     const company = req.body;
+    console.log(company)
     // busca la persona por id , compara todos los datos y los actualiza
     const updateUserCompany = await UserCompany.update(company, {
       where: { id: company.id },
     });
     if(updateUserCompany[0] === 0){
+        console.log(updateUserCompany)
         return res.status(400).send('No se pudo realizar la actualización');
   }
   else{
