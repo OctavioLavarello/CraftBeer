@@ -7,7 +7,7 @@ interface Attributes {
   name: string;
   type: string;
   description: string;
-  degreeOfAlcohol: number;
+  ABV: number;
   presentation: string;
   price: number;
   stock: number;
@@ -42,7 +42,7 @@ const defineModel = (): ModelCtor<ProductModel> => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    degreeOfAlcohol: {
+    ABV: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
@@ -72,4 +72,5 @@ const defineModel = (): ModelCtor<ProductModel> => {
     },
   }) as ModelCtor<ProductModel>;
 };
+
 export default defineModel;

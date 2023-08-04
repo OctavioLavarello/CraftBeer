@@ -1,13 +1,23 @@
 import { Request, Response } from 'express';
-import { Product } from '../../db';
+import { UserPerson} from '../../db';
 import { Op } from 'sequelize';
 
-const getAllProducts = async (req: Request, res: Response) => {
+const putUserPerson = async (req: Request, res: Response) => {
   try {
+//definir los atributos para las actulizaciones.
+    id,
+    name,
+    lastName
+    document
+    email
+    password
+    status: boolean
+    country
+    city
+    state
+    address
+    image
     const { type, price, IBU, ABV, qualification, order, page } = req.query;
-
-    // Definir las opciones de consulta
-    const options: any = {};
 
     // Si se proporciona un query param 'type', filtrar por tipo
     if (type) {

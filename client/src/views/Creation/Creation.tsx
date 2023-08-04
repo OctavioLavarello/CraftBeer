@@ -1,35 +1,42 @@
 /// IMPORTS
 import { useState } from "react";
+//import { Dispatch, AnyAction } from "redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
 import "../Creation/Creation.css";
 import CardCart from "../../components/CardCart/CardCart";
+import { useDispatch } from "react-redux";
+import { createdProduct, ProductData } from "../../redux/actions/actions";
 // STYLES
 //.....
 
 // CREATION
 const Creation = () => {
-  const [input, setInput] = useState({
+  
+  const [input, setInput] = useState<ProductData>({
     name: "",
     image: "",
     type: "",
-    degreeOfAlcohol: "",
+    ABV: 0,
     description: "",
-    qualification: "",
     price: 0,
     stock: 0,
-    presentation: 0,
+    presentation: "",
     IBU: 0,
   });
 
-  const handlerSubmit = (
-    event: React.FormEvent<HTMLFormElement>
-  ) => {
+  const dispatch = useDispatch<any>()
+  
+  const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log(input);
+    dispatch(createdProduct(input))
+    setInput({
+      ...input
+    })
+
   };
-  const handlerChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handlerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput({
       ...input,
       [event.target.name]: event.target.value,
@@ -96,7 +103,7 @@ const Creation = () => {
           <Col>
             <Form.Control
               placeholder="Graduación alcohólica"
-              name="degreeOfAlcohol"
+              name="ABV"
               onChange={handlerChange}
             />
           </Col>
@@ -139,7 +146,9 @@ const Creation = () => {
             justifyContent: "center",
             backgroundColor: "#A37D34",
             border: "none",
+            boxShadow: "5px 5px 10px black",
           }}
+          className="botonFormProd"
         >
           Cargar Producto
         </Button>

@@ -1,5 +1,6 @@
 /// IMPORTS
 import React, { useState } from "react"
+import { NavLink } from "react-router-dom"
 import loginValidation from "./LoginValidation"
 // STYLES
 import styles from "./Login.module.css"
@@ -57,6 +58,12 @@ const Login: React.FC = () => {
                     onChange={handlerOnChange}/>
                 </div>
             </form>
+            <br />
+            <NavLink to="/post" className={styles.link}>
+                <button>
+                    <h5>Post beer</h5>
+                </button>
+            </NavLink>
         </div>
     )
 }

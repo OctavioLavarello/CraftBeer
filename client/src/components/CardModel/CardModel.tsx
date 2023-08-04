@@ -29,7 +29,7 @@ const CardModel = ({ name, summary, image, price, status }: CardModelProps) => {
 
                             <Link className={style.link} to={`/detailPage/${""}`} >
                                 <Card.Img src={image}
-                                    style={{ width: '300px', height: '100%', marginLeft: "-70px" }} />
+                                    style={{ width: '180px', height: '200px' }} />
                             </Link>
 
                         </Col>

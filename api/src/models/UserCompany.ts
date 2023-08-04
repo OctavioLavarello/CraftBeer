@@ -34,7 +34,7 @@ const defineUserModel = (): ModelCtor<UserCompanyModel> => {
       allowNull: false,
     },
     phone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull:false
     },
     lastName: {
@@ -58,7 +58,7 @@ const defineUserModel = (): ModelCtor<UserCompanyModel> => {
       allowNull: false,
     },
     document: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: false,
       unique: true,
     },
