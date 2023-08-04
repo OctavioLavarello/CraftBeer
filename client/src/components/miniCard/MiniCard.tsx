@@ -8,12 +8,13 @@ import styles from "./MiniCard.module.css"
 interface MiniCardProps {
     name: string;
     image: string;
+    id: string;
 }
 
-const MiniCard: React.FC<MiniCardProps> = ({name, image}) => {
+const MiniCard: React.FC<MiniCardProps> = ({name, image, id}) => {
     return (
         <div className={styles.container}>
-            <NavLink to="/detail/:id" className={styles.nav}>
+            <NavLink to={`/detail/${id}`} className={styles.nav}>
                 <div className={styles.img_Container}>
                     <img src={image} alt="card img" className={styles.img} />
                 </div>

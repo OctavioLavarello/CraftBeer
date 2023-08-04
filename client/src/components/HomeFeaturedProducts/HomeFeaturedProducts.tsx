@@ -8,7 +8,7 @@ import styles from "./HomeFeaturedProducts.module.css"
 // HOME FEATURED PRODUCTS
 const HomeFeaturedProducts: React.FC = () => {
     let imagen =
-    "https://www.gustoargentino.com/cdn/shop/products/Cerveza-Rubia-Lager-Botella-Quilmes-34cl.png?v=1680723591";
+    "https://gobar.vtexassets.com/arquivos/ids/159729-800-auto?v=638107906155530000&width=800&height=auto&aspect=true";
     const cards = [
         { name: "beer1", image: imagen },
         { name: "beer2", image: imagen },
