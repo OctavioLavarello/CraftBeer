@@ -27,7 +27,7 @@ const localhost = "http://localhost:3001";
 
 //Actions para recibir todas las cervezas
 export const allBeers = () => {
-  const endpoint = "http://localhost:3001";
+  const endpoint = "http://localhost:3001/product";
   return async function (dispatch: any) {
     const response = await axios.get(endpoint);
     return dispatch({
