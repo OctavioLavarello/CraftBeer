@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { UserCompany } from "../../db";
+import UserRole from "../emuns";
 
 const postCompany = async (req: Request, res: Response) => {
   try {
@@ -17,6 +18,7 @@ const postCompany = async (req: Request, res: Response) => {
       address,
       brand,
       image,
+      role,
     } = req.body;
 
     if (!name) res.status(400).json({ message: "name is require" });
@@ -30,6 +32,9 @@ const postCompany = async (req: Request, res: Response) => {
     if (!email) res.status(400).json({ message: "email is required" });
     if (!phone) res.status(400).json({ message: "phone number is required" });
     if (!password) res.status(400).json({ message: "password is required" });
+    if (!Object.values(UserRole).includes(req.body.role)) {
+      return res.status(400).json({ message: "Invalid role" });
+    }
 
     const userCompany = await UserCompany.create({
       name,
@@ -46,6 +51,7 @@ const postCompany = async (req: Request, res: Response) => {
       image,
       brand,
       status: true,
+      role,
     });
 
     res.status(200).json(userCompany);
