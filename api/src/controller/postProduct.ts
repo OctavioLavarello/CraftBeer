@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Product } from "../../db";
+import { Product, UserCompany } from "../../db";
 
 const postProduct = async (req: Request, res: Response) => {
   try {
@@ -13,6 +13,7 @@ const postProduct = async (req: Request, res: Response) => {
       stock,
       IBU,
       presentation,
+      UserCompanyId,
     } = req.body;
 
     if (!name) return res.status(400).json({ message: "name is required" });
@@ -23,6 +24,11 @@ const postProduct = async (req: Request, res: Response) => {
     if (!price) return res.status(400).json({ message: "price is required" });
     if (!stock) return res.status(400).json({ message: "stock is required" });
     if (!presentation) return res.status(400).json({ message: "presentation is required" });
+
+    const company = await UserCompany.findByPk(UserCompanyId);
+    if (!company) {
+      return res.status(404).json({ message: "Company not found" });
+    }
 
     const product = await Product.create({
       name,
@@ -35,6 +41,7 @@ const postProduct = async (req: Request, res: Response) => {
       presentation,
       IBU,
       status: true,
+      UserCompanyId
     });
 
     res.status(200).json(product);
