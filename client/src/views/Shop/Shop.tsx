@@ -5,6 +5,11 @@ import CardShop from "../../components/CardShop/CardShop";
 import Filters from "../../components/Filters/Filters";
 import style from "./Shop.module.css"
 // SHOP
+
+
+
+
+
 const Shop = () => {
   return (
     <Container >
