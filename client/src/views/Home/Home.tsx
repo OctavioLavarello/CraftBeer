@@ -1,5 +1,4 @@
 /// IMPORTS
-import React, { useState } from "react";
 // COMPONENTS
 import HomeFeaturedProducts from "../../components/HomeFeaturedProducts/HomeFeaturedProducts";
 import HomeBestSellers from "../../components/HomeBestSellers/HomeBestSellers";
