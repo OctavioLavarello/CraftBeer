@@ -14,12 +14,14 @@
     "typescript": "^5.1.6"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.3",
     "@types/express": "^4.17.17",
+    "@types/morgan": "^1.9.4",
     "@types/node": "^20.4.5",
     "ts-node-dev": "^2.0.0"
   },
   "scripts": {
-    "start": "nodemon /dist/insdex.js",
+    "start": "node /dist/insdex.js",
     "tsdev": "ts-node-dev index.ts"
   }
 }
