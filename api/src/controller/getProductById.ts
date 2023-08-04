@@ -12,10 +12,10 @@ const getProductById = async (req: Request, res:Response) => {
 
             if (!beer) throw new Error("this beer is not exist")
         
-            res.status(200).json(beer)            
+            return res.status(200).json(beer)            
 
     } catch (error) {
-        
+        return res.status(500).send( {error});
     }
 }
 

@@ -53,10 +53,9 @@ const getAllProducts = async (req: Request, res: Response) => {
       limit: itemsPerPage,
       offset: offset,
     });
-
-    res.status(200).json(products);
+    return res.status(200).json(products);
   } catch (error) {
-    res.status(500).send({ error });
+    return res.status(500).send({ error });
   }
 };
 
