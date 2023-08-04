@@ -17,11 +17,11 @@ const Creation = () => {
     name: "",
     image: "",
     type: "",
-    degreeOfAlcohol: 0,
+    ABV: 0,
     description: "",
     price: 0,
     stock: 0,
-    presentation: 0,
+    presentation: "",
     IBU: 0,
   });
 
@@ -103,7 +103,7 @@ const Creation = () => {
           <Col>
             <Form.Control
               placeholder="Graduación alcohólica"
-              name="degreeOfAlcohol"
+              name="ABV"
               onChange={handlerChange}
             />
           </Col>
