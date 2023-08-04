@@ -13,13 +13,14 @@ interface CardModelProps {
     image: string,
     price: number,
     status: string
+    id:string
 }
 
 
 
 
 
-const CardModel = ({ name, summary, image, price, status }: CardModelProps) => {
+const CardModel = ({ name, summary, image, price, status,id }: CardModelProps) => {
     return (
         <Container>
             <Card className={style.card} >
@@ -27,7 +28,7 @@ const CardModel = ({ name, summary, image, price, status }: CardModelProps) => {
                     <Row>
                         <Col className="col">
 
-                            <Link className={style.link} to={`/detailPage/${""}`} >
+                            <Link className={style.link} to={`/detail/${id}`} >
                                 <Card.Img src={image}
                                     style={{ width: '180px', height: '200px' }} />
                             </Link>
