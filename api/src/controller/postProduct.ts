@@ -7,7 +7,7 @@ const postProduct = async (req: Request, res: Response) => {
       name,
       image,
       type,
-      degreeOfAlcohol,
+      ABV,
       description,
       price,
       stock,
@@ -18,7 +18,7 @@ const postProduct = async (req: Request, res: Response) => {
     if (!name) return res.status(400).json({ message: "name is required" });
     if (!image) return res.status(400).json({ message: "image is required" });
     if (!type) return res.status(400).json({ message: "type is required" });
-    if (!degreeOfAlcohol) return res.status(400).json({ message: "degrees of alcohol is required" });
+    if (!ABV) return res.status(400).json({ message: "ABV is required" });
     if (!description) return res.status(400).json({ message: "description is required" });
     if (!price) return res.status(400).json({ message: "price is required" });
     if (!stock) return res.status(400).json({ message: "stock is required" });
@@ -28,7 +28,7 @@ const postProduct = async (req: Request, res: Response) => {
       name,
       image,
       type,
-      degreeOfAlcohol,
+      ABV,
       description,
       price,
       stock,

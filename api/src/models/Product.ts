@@ -7,7 +7,7 @@ interface Attributes {
   name: string;
   type: string;
   description: string;
-  degreeOfAlcohol: number;
+  ABV: number;
   presentation: string;
   price: number;
   stock: number;
