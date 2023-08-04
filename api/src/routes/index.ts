@@ -5,6 +5,7 @@ import getAllCompanies from '../controller/getAllCompanies';
 import postProduct from '../controller/postProduct';
 import getProductById from '../controller/getProductById';
 import getAllProducts from '../controller/getAllProducts';
+import putUserPerson from "../controller/putUserPerson"
 import logIn from '../controller/logIn';
 
 const router = Router();
@@ -21,5 +22,6 @@ router.get("/product", getAllProducts);
 router.get("/login", logIn)
 
 // ------- update routes-------//
+router.put("/user", putUserPerson)
 
 module.exports = router
