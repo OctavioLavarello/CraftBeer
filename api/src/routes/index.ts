@@ -5,6 +5,7 @@ import getAllCompanies from '../controller/getAllCompanies';
 import postProduct from '../controller/postProduct';
 import getProductById from '../controller/getProductById';
 import getAllProducts from '../controller/getAllProducts';
+import logIn from '../controller/logIn';
 
 const router = Router();
 
@@ -17,6 +18,7 @@ router.post("/product", postProduct);
 router.get("/companies", getAllCompanies);
 router.get("/product/:idProduct", getProductById);
 router.get("/product", getAllProducts);
+router.get("/login", logIn)
 
 // ------- update routes-------//
 
