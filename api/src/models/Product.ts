@@ -42,7 +42,7 @@ const defineModel = (): ModelCtor<ProductModel> => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    degreeOfAlcohol: {
+    ABV: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
