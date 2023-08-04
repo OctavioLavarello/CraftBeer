@@ -9,6 +9,9 @@ interface UserAttributes {
   email: string;
   password: string;
   status: boolean;
+  country: string;
+  city: string;
+  state: string;
   address: string;
   image?: Text;
 }
@@ -33,7 +36,7 @@ const defineUserModel = (): ModelCtor<UserModel> => {
       allowNull: false,
     },
     document: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: false,
       unique:true,
     },
@@ -50,6 +53,18 @@ const defineUserModel = (): ModelCtor<UserModel> => {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true,
+    },
+    country: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     address: {
       type: DataTypes.STRING,
