@@ -8,6 +8,7 @@ import style from "./CardModel.module.css"
 import { Link } from "react-router-dom";
 
 interface CardModelProps {
+    id:string
     name: string;
     summary: string,
     image: string,
@@ -19,7 +20,7 @@ interface CardModelProps {
 
 
 
-const CardModel = ({ name, summary, image, price, status }: CardModelProps) => {
+const CardModel = ({ name, summary, image, price, status,id }: CardModelProps) => {
     return (
         <Container>
             <Card className={style.card} >
@@ -27,9 +28,9 @@ const CardModel = ({ name, summary, image, price, status }: CardModelProps) => {
                     <Row>
                         <Col className="col">
 
-                            <Link className={style.link} to={`/detailPage/${""}`} >
+                            <Link className={style.link} to={`/detail/${id}`} >
                                 <Card.Img src={image}
-                                    style={{ width: '300px', height: '100%', marginLeft: "-70px" }} />
+                                    style={{ width: '180px', height: '200px' }} />
                             </Link>
 
                         </Col>

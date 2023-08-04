@@ -1,5 +1,6 @@
 //import { Dispatch, Action } from "redux";
 import axios from "axios";
+import { Dispatch } from "redux";
 import {
   CREATED_PRODUCT,
   ADD_ALL_BEER,
@@ -27,8 +28,8 @@ const localhost = "http://localhost:3001";
 
 //Actions para recibir todas las cervezas
 export const allBeers = () => {
-  const endpoint = "http://localhost:3001";
-  return async function (dispatch: any) {
+  const endpoint = "http://localhost:3001/product";
+  return async function (dispatch: Dispatch<any>) {
     const response = await axios.get(endpoint);
     return dispatch({
       type: ADD_ALL_BEER,
