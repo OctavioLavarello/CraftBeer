@@ -15,10 +15,14 @@ interface CardModelProps {
     stock: number,
     degreeOfAlcohol: number,
     type: string,
-    IBU:number
+    IBU: number
 }
 
-const CardModel = ({ name, summary, image, price, stock, id, type ,IBU}: CardModelProps) => {
+const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardModelProps) => {
+
+
+
+
     return (
         <Container>
             <Card className={style.card} >
@@ -35,7 +39,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type ,IBU}: CardMod
 
                             <h3 >{name}</h3>
                             <div style={{ height: "70px" }}>
-                                <Card.Text style={{ fontSize: "13px",color:"white"}}>
+                                <Card.Text style={{ fontSize: "13px", color: "white" }}>
                                     {summary}
                                 </Card.Text>
                             </div>
@@ -43,16 +47,17 @@ const CardModel = ({ name, summary, image, price, stock, id, type ,IBU}: CardMod
                                 <h5>Tipo: {type}</h5>
                                 <h5>IBU: {IBU}</h5>
                             </div>
-                            <Button className='p-2 ms-auto' variant="dark">COMPRAR</Button>
+
+                            <Button className='p-2 ms-auto' variant="dark" >COMPRAR</Button>
                             <Button className='p-2 m-2' variant="dark">AÑADIR</Button>
                         </Col>
                         <Col className={style.colPrice}>
                             <div className={style.containerInfo}>
-                            <h2 className={style.title}>${price}</h2>
-                            <p>☆☆☆☆☆  <br /> Stock Disponible : {stock} un.</p>
-                            <div className={style.input}>100 Un</div>
-                            <button className={style.custom_button}>-</button>
-                            <button className={style.custom_button}>+</button>
+                                <h2 className={style.title}>${price}</h2>
+                                <p>☆☆☆☆☆  <br /> Stock Disponible : {stock} un.</p>
+                                <div className={style.input}>100 Un</div>
+                                <button className={style.custom_button}>-</button>
+                                <button className={style.custom_button}>+</button>
                             </div>
                         </Col>
                     </Row>
