@@ -1,73 +1,25 @@
-import { Request, Response } from 'express';
-import { UserPerson} from '../../db';
-import { Op } from 'sequelize';
+import { Request, Response } from "express";
+import { UserPerson } from "../../db";
 
 const putUserPerson = async (req: Request, res: Response) => {
   try {
-//definir los atributos para las actulizaciones.
-    id,
-    name,
-    lastName
-    document
-    email
-    password
-    status: boolean
-    country
-    city
-    state
-    address
-    image
-    const { type, price, IBU, ABV, qualification, order, page } = req.query;
-
-    // Si se proporciona un query param 'type', filtrar por tipo
-    if (type) {
-      options.where = { type: { [Op.eq]: type } };
-    }
-
-    // Si se proporciona un query param 'price', filtrar por precio menor o igual
-    if (price) {
-      options.where = { ...options.where, price: { [Op.lte]: price } };
-    }
-
-    // Si se proporciona un query param 'IBU', filtrar por IBU menor o igual
-    if (IBU) {
-      options.where = { ...options.where, IBU: { [Op.lte]: IBU } };
-    }
-
-    // Si se proporciona un query param 'ABV', filtrar por ABV menor o igual
-    if (ABV) {
-      options.where = { ...options.where, ABV: { [Op.lte]: ABV } };
-    }
-
-    // Si se proporciona un query param 'qualification', filtrar por qualification mayor o igual
-    if (qualification) {
-      options.where = { ...options.where, qualification: { [Op.gte]: qualification } };
-    }
-
-    // Ordenar según el valor de order (asc o desc)
-    if (order && ( order === 'OrderAscPrice' || order === 'OrderDesPrice' )) {
-      const columnToOrderBy = order === 'OrderAscPrice' ? 'price' : [['price', 'DESC']];
-      options.order = [columnToOrderBy];
-    }
-
-    // Cantidad de productos a mostrar por página
-    const itemsPerPage = 15;
-
-    // Calcular el offset para la página actual
-    const currentPage = parseInt(page as string) || 1;
-    const offset = (currentPage - 1) * itemsPerPage;
-
-    // Obtener productos paginados
-    const products = await Product.findAll({
-      ...options,
-      limit: itemsPerPage,
-      offset: offset,
+    //llega el objeto persona por body
+    const person = req.body;
+    // busca la persona por id , compara todos los datos y los actualiza
+    const updateUserPerson = await UserPerson.update(person, {
+      where: { id: person.id },
     });
-
-    res.status(200).json(products);
-  } catch (error) {
-    res.status(500).send({ error });
+    if(updateUserPerson[0] === 0){
+        return res.status(400).send('No se pudo realizar la actualización');
+  }
+  else{
+    console.log(updateUserPerson)
+    return res.status(200).json("se actualizó satisfactoriamente");
+  }
+ } catch (error ) {
+    console.log(error)
+    return res.status(500).send( {error});
   }
 };
 
-export default getAllProducts;
+export default putUserPerson;

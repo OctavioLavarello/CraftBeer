@@ -1,5 +1,7 @@
 //import { Dispatch, Action } from "redux";
 import axios from "axios";
+import toast from 'react-hot-toast'
+import { Dispatch } from "redux";
 import {
   CREATED_PRODUCT,
   ADD_ALL_BEER,
@@ -28,7 +30,7 @@ const localhost = "http://localhost:3001";
 //Actions para recibir todas las cervezas
 export const allBeers = () => {
   const endpoint = "http://localhost:3001/product";
-  return async function (dispatch: any) {
+  return async function (dispatch: Dispatch<any>) {
     const response = await axios.get(endpoint);
     return dispatch({
       type: ADD_ALL_BEER,
@@ -76,9 +78,9 @@ export const createdProduct = ({
         type: CREATED_PRODUCT,
         payload: createdBeer,
       });
-      alert("Producto creado satirfactoriamente");
+      toast.success("Se creo correctamente su producto")
     };
   } catch (error) {
-    alert("No ha sido posible crear su producto");
+   toast.error("No ha sido posible cargar su producto");
   }
 };

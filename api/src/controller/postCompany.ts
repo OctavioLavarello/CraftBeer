@@ -58,6 +58,7 @@ const postCompany = async (req: Request, res: Response) => {
   } catch (error) {
     if (error instanceof Error) {
      return res.status(500).send(error.message);
+
     } else {
       return res.status(500).send("Unexpected error");
     }

@@ -37,23 +37,36 @@ const Filters = () => {
     return (
         <div className={style.container}>
             <div className={style.filters}>
+                <p className={style.title_select}>Ordenar por precio</p>
+                <select onChange={handlerOptions} className={style.select} name="order">
+                    <option value="">TODOS LOS PRECIOS</option>
+                    <option value="OrderAscPrice">MENOR A MAYOR</option>
+                    <option value="OrderDesPrice">MAYOR A MENOR</option>
+                </select>
                 <p className={style.title_select}>Filtrar por precio</p>
                 <select onChange={handlerOptions} className={style.select} name="price">
-                    <option value="">TODOS LOS PRECIOS</option>
-                    <option value="OrderAscPrice">MAYOR A MENOR</option>
-                    <option value="OrderDesPrice">MENOR A MAYOR</option>
+                    <option value="" >TODOS LOS PRECIOS</option>
+                    <option value="100">MENOR A 100</option>
+                    <option value="500">MENOR A 500</option>
+                    <option value="1000">MENOR A 1000</option>
                 </select>
                 <p className={style.title_select}>Filtrar por IBU</p>
-                <select onChange={handlerOptions} className={style.select}>
-                    <option value="IBU" >IBU</option>
-                    <option value="OrderAscIBU">MENOR A MAYOR</option>
-                    <option value="OrderDesIBU">MAYOR A MENOR</option>
+                <select onChange={handlerOptions} className={style.select} name="IBU">
+                    <option value="">TODOS LOS IBUS</option>
+                    <option value="20">MENOR A 20</option>
+                    <option value="30">MENOR A 30</option>
+                    <option value="20">MENOR A 40</option>
+                    <option value="50">MENOR A 50</option>
+                    <option value="60">MENOR A 60</option>
                 </select>
                 <p className={style.title_select}>Filtrar por puntuación</p>
-                <select onChange={handlerOptions} className={style.select}>
-                    <option value="Puntuacion" >☆☆☆☆☆</option>
-                    <option value="OrderAscPuntuacion">MENOR A MAYOR</option>
-                    <option value="OrderDesPuntuacion">MAYOR A MENOR</option>
+                <select onChange={handlerOptions} className={style.select} name="qualification">
+                    <option value="" >☆☆☆☆☆</option>
+                    <option value="1">☆</option>
+                    <option value="2">☆☆</option>
+                    <option value="3">☆☆☆</option>
+                    <option value="4">☆☆☆☆</option>
+                    <option value="5">☆☆☆☆☆</option>
                 </select>
                 <p className={style.title_select}>Filtrar por tipo</p>
                 <select className={style.select} onChange={handlerOptions} name="type">

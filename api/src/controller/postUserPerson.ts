@@ -16,6 +16,7 @@ const postUserPerson = async (req: Request, res: Response) => {
       return res.status(400).json({ message: "Invalid role" });
     }
     
+
     const userPerson = await UserPerson.create({
       name,
       lastName,
@@ -28,12 +29,12 @@ const postUserPerson = async (req: Request, res: Response) => {
       role,
     });
 
-    res.status(200).json(userPerson);
+    return res.status(200).json(userPerson);
   } catch (error) {
     if (error instanceof Error) {
-      res.status(500).send(error.message);
+      return res.status(500).send(error.message);
     } else {
-      res.status(500).send("Unexpected error.");
+      return res.status(500).send("Unexpected error.");
     }
   }
 };
