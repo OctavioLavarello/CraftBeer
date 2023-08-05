@@ -40,9 +40,9 @@ const postProduct = async (req: Request, res: Response) => {
     res.status(200).json(product);
   } catch (error) {
     if (error instanceof Error) {
-      res.status(500).send(error.message);
+      return res.status(500).send(error.message);
     } else {
-      res.status(500).send("Unexpected error");
+      return res.status(500).send("Unexpected error");
     }
   }
 };
