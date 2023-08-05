@@ -153,6 +153,8 @@ const Creation = () => {
               placeholder="IBU"
               name="IBU"
               onChange={handlerChange}
+              max={90}
+              min={0}
             />
             <h6 className="mensajes">{errors.IBU}</h6>
           </Col>
