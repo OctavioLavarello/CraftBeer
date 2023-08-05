@@ -1,5 +1,6 @@
 //import { Dispatch, Action } from "redux";
 import axios from "axios";
+import toast from 'react-hot-toast'
 import { Dispatch } from "redux";
 import {
   CREATED_PRODUCT,
@@ -77,9 +78,9 @@ export const createdProduct = ({
         type: CREATED_PRODUCT,
         payload: createdBeer,
       });
-      alert("Producto creado satirfactoriamente");
+      toast.success("Se creo correctamente su producto")
     };
   } catch (error) {
-    alert("No ha sido posible crear su producto");
+   toast.error("No ha sido posible cargar su producto");
   }
 };
