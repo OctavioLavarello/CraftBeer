@@ -11,14 +11,12 @@ const putUserCompany = async (req: Request, res: Response) => {
       where: { id: company.id },
     });
     if(updateUserCompany[0] === 0){
-        console.log(updateUserCompany)
         return res.status(400).send('No se pudo realizar la actualización');
   }
   else{
     return res.status(200).json("se actualizó satisfactoriamente");
   }
  } catch (error ) {
-    console.log(error)
     return res.status(500).send( {error});
   }
 };
