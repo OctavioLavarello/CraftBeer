@@ -18,7 +18,12 @@ interface BeerData {
     qualification?: number;
 }
 
-const CardShop = () => {
+interface CardShopProps {
+    numberPage: number
+}
+
+const CardShop = ({ numberPage }: CardShopProps) => {
+
     let [allBeersData, setAllBeersData] = useState<BeerData[][]>([]);
     // traemos el estado de filtros 
     const filters = useSelector((state: AppState) => state.beerFilters)
@@ -29,8 +34,8 @@ const CardShop = () => {
             const response = await axios.get<BeerData[]>(endpoint, { params: filters });
             const allBeersDataPage: BeerData[][] = [];
             // Fracionamos en 3 articulos por pagina 
-            for (let i = 0; i < response.data.length; i += 3) {
-                const array = response.data.slice(i, i + 3);
+            for (let i = 0; i < response.data.length; i += 5) {
+                const array = response.data.slice(i, i + 5);
                 allBeersDataPage.push(array);
             }
             setAllBeersData(allBeersDataPage);
@@ -45,27 +50,24 @@ const CardShop = () => {
     }, [filters]);
 
     return (
-        <>
-            {allBeersData.map((pageData, pageIndex) => (
-                <div key={pageIndex}>
-                    {pageData.map((product) => (
-                        <CardModel
-                            key={product.id}
-                            id={product.id}
-                            type={product.type}
-                            IBU={product.IBU}
-                            name={product.name}
-                            degreeOfAlcohol={product.degreeOfAlcohol}
-                            summary={product.description}
-                            image={product.image}
-                            price={product.price}
-                            stock={product.stock}
-                        />
-                    ))}
-                </div>
-            ))}
+        <>{allBeersData[numberPage]?.map((product) => (
+            <CardModel
+                key={product.id}
+                id={product.id}
+                type={product.type}
+                IBU={product.IBU}
+                name={product.name}
+                degreeOfAlcohol={product.degreeOfAlcohol}
+                summary={product.description}
+                image={product.image}
+                price={product.price}
+                stock={product.stock}
+            />
+        ))}
         </>
     );
 };
 
 export default CardShop;
+
+
