@@ -93,6 +93,7 @@ const dataBase = async () => {
     }
   ]
   const personSaved= await UserPerson.bulkCreate(person);
+
 };
 
 export default dataBase;

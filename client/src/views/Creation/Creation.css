@@ -5,6 +5,8 @@
 
 .bodyMisArt {
     max-width: 650px;
+    border-left: inset #A37D34 2px ;
+
 }
 
 .spamMisArt {
@@ -15,4 +17,10 @@
     background-color: grey;
     color: black;
  
+}
+
+.mensajes {
+    font-size: 10px;
+    color: red;
+    margin: 3px;
 }

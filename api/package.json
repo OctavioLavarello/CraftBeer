@@ -1,4 +1,8 @@
 {
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Server BeerCraft",
+  "main": "index.ts",
   "dependencies": {
     "@types/sequelize": "^4.28.15",
     "body-parser": "^1.20.2",
@@ -21,7 +25,8 @@
     "ts-node-dev": "^2.0.0"
   },
   "scripts": {
-    "start": "node /dist/insdex.js",
+
+    "start": "nodemon /dist/index.js",
     "tsdev": "ts-node-dev index.ts"
   }
 }

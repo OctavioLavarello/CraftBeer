@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { Op } from 'sequelize';
 import { UserCompany } from '../../db';
 
-const getAllCompanies = async (req: Request, res: Response): Promise<void> => {
+const getAllCompanies = async (req: Request, res: Response) => {
   try {
     const { name } = req.query;
     let companies;
@@ -18,9 +18,9 @@ const getAllCompanies = async (req: Request, res: Response): Promise<void> => {
       companies = await UserCompany.findAll();
     }
 
-    res.status(200).json(companies);
+    return res.status(200).json(companies);
   } catch (error) {
-    res.status(400).json({ error });
+    return res.status(400).json({ error });
   }
 };
 
