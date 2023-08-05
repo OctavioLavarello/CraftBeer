@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { Op } from 'sequelize';
-import { UserCompany } from '../../db';
+import { UserCompany, Product } from '../../db';
 
 const getAllCompanies = async (req: Request, res: Response) => {
   try {
@@ -13,14 +13,17 @@ const getAllCompanies = async (req: Request, res: Response) => {
             [Op.iLike]: `%${name}%`
           }
         },
+        include: [{ model: Product, as: 'products' }] // Cargar productos relacionados
       });
     } else {
-      companies = await UserCompany.findAll();
+      companies = await UserCompany.findAll({
+        include: [{ model: Product, as: 'products' }] // Cargar productos relacionados
+      });
     }
 
-    return res.status(200).json(companies);
+    return res.status(200).send(companies);
   } catch (error) {
-    return res.status(400).json({ error });
+    return res.status(400).send({ error });
   }
 };
 
