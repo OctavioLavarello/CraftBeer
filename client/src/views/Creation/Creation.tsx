@@ -8,6 +8,7 @@ import CardCart from "../../components/CardCart/CardCart";
 import { useDispatch } from "react-redux";
 import { createdProduct, ProductData } from "../../redux/actions/actions";
 
+
 // STYLES
 //.....
 
@@ -39,7 +40,7 @@ const Creation = () => {
     IBU: "Indicar el grado alcohólico",
   });
 
-  const validation = (input, name) => {
+  const validation = (input:any, name:any) => {
     if (name === "name") {
       if (input.name !== "") setErrors({ ...errors, name: "" });
       else setErrors({ ...errors, name: "Información requerida" });
@@ -91,19 +92,25 @@ const Creation = () => {
       ...input,
       [event.target.name]: event.target.value,
     });
+    validation({
+      ...input,
+      [event.target.name]: event.target.value,
+    },
+    event.target.name
+    )
   };
 
-  const disable = () => {
-    let disabled = true;
-    for (let error in errors) {
-      if (errors[error] === "") disabled = false;
-      else {
-        disabled = true;
-        break;
-      }
-    }
-    return disabled;
-  };
+  // const disable = () => {
+  //   let disabled = true;
+  //   for (let error in errors) {
+  //     if (errors[error] === "") disabled = false;
+  //     else {
+  //       disabled = true;
+  //       break;
+  //     }
+  //   }
+  //   return disabled;
+  // };
 
   return (
     <div className="bodyFormP">
@@ -209,20 +216,21 @@ const Creation = () => {
             <h6 className="mensajes">{errors.description}</h6>
           </Col>
         </Row>
-        <Button
-          type="submit"
-          style={{
-            margin: "20px",
-            width: "auto",
-            justifyContent: "center",
-            backgroundColor: "#A37D34",
-            border: "none",
-            boxShadow: "5px 5px 10px black",
-          }}
-          className="botonFormProd"
-        >
-          Cargar Producto
-        </Button>
+          <Button
+            type="submit"
+            style={{
+              margin: "20px",
+              width: "auto",
+              justifyContent: "center",
+              backgroundColor: "#A37D34",
+              border: "none",
+              boxShadow: "5px 5px 10px black",
+            }}
+            className="botonFormProd"
+            // disabled={disable()}
+          >
+            Cargar Producto
+          </Button>
       </Form>
       <div className="bodyMisArt">
         <span className="spamMisArt">
