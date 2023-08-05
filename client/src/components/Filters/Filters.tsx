@@ -55,7 +55,7 @@ const Filters = () => {
                     <option value="">TODOS LOS IBUS</option>
                     <option value="20">MENOR A 20</option>
                     <option value="30">MENOR A 30</option>
-                    <option value="20">MENOR A 40</option>
+                    <option value="40">MENOR A 40</option>
                     <option value="50">MENOR A 50</option>
                     <option value="60">MENOR A 60</option>
                 </select>
