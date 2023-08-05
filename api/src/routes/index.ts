@@ -8,6 +8,8 @@ import getAllProducts from '../controller/getAllProducts';
 import putUserPerson from "../controller/putUserPerson"
 import logIn from '../controller/logIn';
 
+import putUserCompany from '../controller/putUserCompany';
+
 const router = Router();
 
 //-------- post routes -----//
@@ -23,5 +25,8 @@ router.get("/login", logIn)
 
 // ------- update routes-------//
 router.put("/user", putUserPerson)
+
+
+router.put("/company", putUserCompany)
 
 module.exports = router
