@@ -18,7 +18,7 @@ interface CardModelProps {
     IBU: number
 }
 
-const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardModelProps) => {
+const CardModel = ({ name, summary, image, price, stock, id, type, IBU, }: CardModelProps) => {
 
 
 
