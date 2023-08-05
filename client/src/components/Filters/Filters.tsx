@@ -53,7 +53,7 @@ const Filters = () => {
                 <p className={style.title_select}>Filtrar por IBU</p>
                 <select onChange={handlerOptions} className={style.select} name="IBU">
                     <option value="">TODOS LOS IBUS</option>
-                    <option value="10">MENOR A 20</option>
+                    <option value="20">MENOR A 20</option>
                     <option value="30">MENOR A 30</option>
                     <option value="20">MENOR A 40</option>
                     <option value="50">MENOR A 50</option>
