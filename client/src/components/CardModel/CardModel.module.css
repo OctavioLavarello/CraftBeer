@@ -12,26 +12,28 @@
     box-shadow: 0 4px 8px rgba(255, 253, 253, 0.3)
 }
 
-.image {
-    position: absolute;
-    border-radius: 6px;
-    margin-right: 400px;
-    width: 240px;
-    height: 180px;
-    overflow:hidden;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    background-color: rgb(53, 53, 53);
-    display: flex;
-}
-.image:hover{
-    opacity: 0.2;
-    
+.link {
+    text-decoration: none;
 }
 
+.image {
+    border-radius: 6px;
+    width: 240px;
+    height: 180px;
+    background-color: rgb(45, 44, 44);
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.image:hover{
+    opacity: 0.3;
+}
+
+
+
 .imgSize {
-    max-width: 100%;
+    max-width: auto;
     /* Limita el ancho máximo de la imagen al ancho del div */
     max-height: 100%;
     /* Limita el alto máximo de la imagen al alto del div */
@@ -39,12 +41,13 @@
 }
 
 
+
 .card:hover {
     transition: 0.3s;
     scale: 1.02;
 }
 
-.colPrice  {
+.colPrice {
     text-align: center;
 }
 
