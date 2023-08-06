@@ -26,9 +26,26 @@
     border-right: none;
     border-bottom: none;
 }
-.accounts {
+.accountsContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+}
+.accounts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid rgba(163, 125, 52, 1);
+    width: 20%;
+}
+.perfileImg {
+    width: 50px;
 }
