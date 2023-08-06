@@ -36,75 +36,77 @@ const AboutUs: React.FC = () => {
             <NavLink to="/home">
               <button>Lets Go...</button>
             </NavLink>
-            <div className={styles.accountsContainer}>
+            <div className={styles.linkedAccounts}>
               <h2>Our personal networks</h2>
-              <div className={styles.accounts}>
-                <NavLink 
-                className={styles.nav}
-                to ="https://www.linkedin.com/in/ely-samuel-guaimacuto-090753137/">
-                  <img 
-                  className={styles.perfileImg}
-                  src="https://media.licdn.com/dms/image/D4E35AQHNYFL1XcTC4w/profile-framedphoto-shrink_200_200/0/1690052993254?e=1691942400&v=beta&t=JJPaczWeJLbm5XSV1z6VEnisfkcD3sOc1K8jBkCW-GU" alt="ELY" />
-                  <h4>nombre</h4>
-                </NavLink>
-                <NavLink 
-                className={styles.nav}
-                to ="https://www.linkedin.com/in/german-conil-2220b195/">
-                  <img 
-                  className={styles.perfileImg}
-                  src="https://media.licdn.com/dms/image/D4D35AQHb26ld13h-Lw/profile-framedphoto-shrink_200_200/0/1686610668319?e=1691942400&v=beta&t=9sf9hDcMwMnplllKHpRLE_7y77kuDIK0Eqb9FlTx3j0" alt="GERMAN" />
-                  <h4>nombre</h4>
-                </NavLink>
-                <NavLink 
-                className={styles.nav}
-                to ="https://www.linkedin.com/in/agustin-rosa-37ab2a26a/">
-                  <img 
-                  className={styles.perfileImg}
-                  src="https://media.licdn.com/dms/image/D5635AQGXW0U7XhrOLA/profile-framedphoto-shrink_200_200/0/1660002666757?e=1691942400&v=beta&t=cxjF53TQhjhmmtIIOyY1fzbFjNj7IDeZDJwPAY4kzHI" alt="AGUS" />
-                  <h4>nombre</h4>
-                </NavLink>
-                <NavLink 
-                className={styles.nav}
-                to ="https://www.linkedin.com/in/octavio-lavarello-175342271/">
-                  <img 
-                  className={styles.perfileImg}
-                  src="https://media.licdn.com/dms/image/D5635AQGXW0U7XhrOLA/profile-framedphoto-shrink_200_200/0/1660002666757?e=1691942400&v=beta&t=cxjF53TQhjhmmtIIOyY1fzbFjNj7IDeZDJwPAY4kzHI" alt="OCTA" />
-                  <h4>nombre</h4>
-                </NavLink>
-              </div>
-              <div className={styles.accounts}>
-                <NavLink 
-                className={styles.nav}
-                to ="https://www.linkedin.com/in/alexis-david-weber/">
-                  <img 
-                  className={styles.perfileImg}
-                  src="https://media.licdn.com/dms/image/D4D35AQHZPXtzeqUulg/profile-framedphoto-shrink_200_200/0/1678726219256?e=1691942400&v=beta&t=5zGIJaIhJEBY4UCFUSuJAvOL5HnQ_lPLeRlWJVwTZII" alt="ALEX" />
-                  <h4>nombre</h4>
-                </NavLink>
-                <NavLink 
-                className={styles.nav}
-                to ="">
-                  <img 
-                  className={styles.perfileImg}
-                  src="" alt="JORGE" />
-                  <h4>nombre</h4>
-                </NavLink>
-                <NavLink 
-                className={styles.nav}
-                to ="https://www.linkedin.com/in/lixicastrillon/">
-                  <img 
-                  className={styles.perfileImg}
-                  src="https://media.licdn.com/dms/image/D4E35AQHYtWQklkjZZQ/profile-framedphoto-shrink_200_200/0/1687964177576?e=1691942400&v=beta&t=tZwlxjdPbDeNylz7mDXU5THrTLIvz0Av1gA-VhU8Zzo" alt="LICED" />
-                  <h4>nombre</h4>
-                </NavLink>
-                <NavLink 
-                className={styles.nav}
-                to ="">
-                  <img 
-                  className={styles.perfileImg}
-                  src="" alt="GAL" />
-                  <h4>nombre</h4>
-                </NavLink>
+              <div className={styles.accountsContainer}>
+                <div className={styles.accounts}>
+                  <NavLink 
+                  className={styles.nav}
+                  to ="https://www.linkedin.com/in/ely-samuel-guaimacuto-090753137/">
+                    <img 
+                    className={styles.perfileImg}
+                    src="https://media.licdn.com/dms/image/D4E35AQHNYFL1XcTC4w/profile-framedphoto-shrink_200_200/0/1690052993254?e=1691942400&v=beta&t=JJPaczWeJLbm5XSV1z6VEnisfkcD3sOc1K8jBkCW-GU" alt="ELY" />
+                    <h4>nombre</h4>
+                  </NavLink>
+                  <NavLink 
+                  className={styles.nav}
+                  to ="https://www.linkedin.com/in/german-conil-2220b195/">
+                    <img 
+                    className={styles.perfileImg}
+                    src="https://media.licdn.com/dms/image/D4D35AQHb26ld13h-Lw/profile-framedphoto-shrink_200_200/0/1686610668319?e=1691942400&v=beta&t=9sf9hDcMwMnplllKHpRLE_7y77kuDIK0Eqb9FlTx3j0" alt="GERMAN" />
+                    <h4>nombre</h4>
+                  </NavLink>
+                  <NavLink 
+                  className={styles.nav}
+                  to ="https://www.linkedin.com/in/agustin-rosa-37ab2a26a/">
+                    <img 
+                    className={styles.perfileImg}
+                    src="https://media.licdn.com/dms/image/D5635AQGXW0U7XhrOLA/profile-framedphoto-shrink_200_200/0/1660002666757?e=1691942400&v=beta&t=cxjF53TQhjhmmtIIOyY1fzbFjNj7IDeZDJwPAY4kzHI" alt="AGUS" />
+                    <h4>nombre</h4>
+                  </NavLink>
+                  <NavLink 
+                  className={styles.nav}
+                  to ="https://www.linkedin.com/in/octavio-lavarello-175342271/">
+                    <img 
+                    className={styles.perfileImg}
+                    src="https://media.licdn.com/dms/image/D5635AQGXW0U7XhrOLA/profile-framedphoto-shrink_200_200/0/1660002666757?e=1691942400&v=beta&t=cxjF53TQhjhmmtIIOyY1fzbFjNj7IDeZDJwPAY4kzHI" alt="OCTA" />
+                    <h4>nombre</h4>
+                  </NavLink>
+                </div>
+                <div className={styles.accounts}>
+                  <NavLink 
+                  className={styles.nav}
+                  to ="https://www.linkedin.com/in/alexis-david-weber/">
+                    <img 
+                    className={styles.perfileImg}
+                    src="https://media.licdn.com/dms/image/D4D35AQHZPXtzeqUulg/profile-framedphoto-shrink_200_200/0/1678726219256?e=1691942400&v=beta&t=5zGIJaIhJEBY4UCFUSuJAvOL5HnQ_lPLeRlWJVwTZII" alt="ALEX" />
+                    <h4>nombre</h4>
+                  </NavLink>
+                  <NavLink 
+                  className={styles.nav}
+                  to ="">
+                    <img 
+                    className={styles.perfileImg}
+                    src="" alt="JORGE" />
+                    <h4>nombre</h4>
+                  </NavLink>
+                  <NavLink 
+                  className={styles.nav}
+                  to ="https://www.linkedin.com/in/lixicastrillon/">
+                    <img 
+                    className={styles.perfileImg}
+                    src="https://media.licdn.com/dms/image/D4E35AQHYtWQklkjZZQ/profile-framedphoto-shrink_200_200/0/1687964177576?e=1691942400&v=beta&t=tZwlxjdPbDeNylz7mDXU5THrTLIvz0Av1gA-VhU8Zzo" alt="LICED" />
+                    <h4>nombre</h4>
+                  </NavLink>
+                  <NavLink 
+                  className={styles.nav}
+                  to ="">
+                    <img 
+                    className={styles.perfileImg}
+                    src="" alt="GAL" />
+                    <h4>nombre</h4>
+                  </NavLink>
+                </div>
               </div>
             </div>
           </div>
