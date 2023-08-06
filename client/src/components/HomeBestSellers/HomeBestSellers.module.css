@@ -1,3 +1,18 @@
+.title {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+    background-image: url('https://media.istockphoto.com/id/1129687007/es/foto/blanco-y-negro-grunge-textura-las-l%C3%ADneas-rasc%C3%B3-la-superficie-blanca-con-manchas-negras.jpg?s=1024x1024&w=is&k=20&c=l80ScHfmduImwxiayiPqYv-1Zp_fhVGKgjINmKI03IM=');
+    background-repeat: repeat;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-decoration: underline solid;
+    text-decoration-color: rgba(163, 125, 52, 1);
+    text-underline-offset: 10px; 
+}
 .div{
     justify-content: center;
     align-items: center;

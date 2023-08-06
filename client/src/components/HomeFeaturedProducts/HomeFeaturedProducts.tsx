@@ -16,7 +16,7 @@ const HomeFeaturedProducts: React.FC = () => {
 
     return (
         <div className={styles.div}>
-            <h2>Featured Products</h2>
+            <h2 className={styles.title}>Featured Products</h2>
             <div className={styles.bigContainer}>
                 <div className={styles.container}>
                     {firstFourCards.map((card: any) => (

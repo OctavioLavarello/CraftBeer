@@ -16,7 +16,7 @@ const HomeBestSellers: React.FC = () => {
 
     return (
         <div className={styles.div}>
-            <h2>Best Sellers</h2>
+            <h2 className={styles.title}>Best Sellers</h2>
             <div className={styles.bigContainer}>
                 <div className={styles.container}>
                 {threeCards.map((card: any) => (
