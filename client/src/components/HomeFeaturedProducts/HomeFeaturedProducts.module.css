@@ -12,8 +12,9 @@
     align-items: center;
     background-color: rgba(163, 125, 52, 1);
     height: 450px;
-    margin-bottom: 10%;
-    margin-top: 7%;
+    margin-bottom: 17%;
+    margin-top: 12%;
+    width: 100%;
 }
 .container {
     display: flex;

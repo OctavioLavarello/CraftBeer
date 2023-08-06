@@ -70,13 +70,15 @@
 }
 
 .carousel a:first-of-type span {
-    margin-top: -45px;
+    height: 200px;
+    margin-top: -65px;
     margin-right: 130px;
     background-color: rgba(163, 125, 52, 1);
     border-radius: 0 10px 10px 0;
 }
 .carousel a:last-of-type span {
-    margin-top: -45px;
+    height: 200px;
+    margin-top: -65px;
     margin-left: 130px;
     background-color: rgba(163, 125, 52, 1);
     border-radius: 10px 0 0 10px;
