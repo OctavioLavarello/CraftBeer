@@ -1,5 +1,6 @@
 import { DataTypes, Model, ModelCtor } from "sequelize";
 import { sequelize } from "../../db";
+import UserRole from "../emuns";
 
 interface UserCompanyAttributes {
   id: string;
@@ -16,6 +17,7 @@ interface UserCompanyAttributes {
   status: boolean;
   address: string;
   image?: Text;
+  role: UserRole;
 }
 
 type UserCompanyModel = Model<UserCompanyAttributes> & {
@@ -83,6 +85,14 @@ const defineUserModel = (): ModelCtor<UserCompanyModel> => {
     image: {
       type: DataTypes.TEXT,
       allowNull: true,
+    },
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: UserRole.Company, 
+      validate: {
+        isIn: [Object.values(UserRole)], // Asegura que el valor del enum sea válido
+      },
     },
   }) as ModelCtor<UserCompanyModel>;
 };

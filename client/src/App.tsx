@@ -14,7 +14,7 @@ import Cart from './views/Cart/Cart';
 import AboutUs from './views/aboutUs/AboutUs';
 import Contact from './views/Contact/Contact';
 import Creation from './views/Creation/Creation';
-
+import { Toaster } from 'react-hot-toast'
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar"
 import Footer from "./components/footer/Footer"
@@ -31,6 +31,7 @@ function App() {
 
   return (
     <div>
+      <div><Toaster/></div>
       <div>
         {
         location.pathname !== "/" && 
