@@ -9,13 +9,13 @@ import styles from "./HomeCarousel.module.css";
 const HomeCarousel: React.FC = () => {
     // LOCAL STATES
     const images = [
-        { src: "https://i.pinimg.com/originals/45/fc/d6/45fcd69308435f8762f546912e770159.jpg",
+        { src: "https://www.mundocerveza.com/wp-content/uploads/2018/09/3-9.jpg",
         id: 1},
         { src:"https://w.forfun.com/fetch/6b/6b53ccdda60e6d052d9c9782baffa35b.jpeg",
         id: 2},
         { src:"https://i.pinimg.com/originals/d1/8c/22/d18c2215872567419c93405fb963387c.jpg",
         id: 3},
-        { src:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC8Ilunn0UEp8Vy0hTNZsylnTYyQJGO5PFL7GgFn6-W-4yuaj6bxU0_B8TtgvT-pcvEcc&usqp=CAU",
+        { src:"https://img.lagaceta.com.ar/fotos/notas/2022/08/05/dia-internacional-cerveza-5-marcas-mas-buscadas-argentina-955522-095508.jpg",
         id: 4},
         { src:"https://img2.s3wfg.com/web/img/images_uploaded/9/5/inbev.jpg",
         id: 5}
