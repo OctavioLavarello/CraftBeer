@@ -39,7 +39,7 @@ const getAllProducts = async (req: Request, res: Response) => {
         options.where = {
           ...options.where,
           name: {
-            [Op.like]: `%${name}%`
+            [Op.iLike]: `%${name}%`
           }
         };
       }
