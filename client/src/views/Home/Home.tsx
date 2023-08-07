@@ -1,55 +1,28 @@
 /// IMPORTS
+import React, { useEffect } from "react"
+import { useDispatch } from "react-redux";
 // COMPONENTS
+import HomeCarousel from "../../components/HomeCarousel/HomeCarousel";
 import HomeFeaturedProducts from "../../components/HomeFeaturedProducts/HomeFeaturedProducts";
 import HomeBestSellers from "../../components/HomeBestSellers/HomeBestSellers";
+// ACTIONS
+import { allBeers } from "../../redux/actions/actions";
 // STYLES
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Carousel, CarouselItem } from "react-bootstrap";
 import styles from "./Home.module.css";
 
 // HOME
 const Home: React.FC = () => {
-  // LOCAL STATES
-  const img = [
-    "https://i.pinimg.com/originals/45/fc/d6/45fcd69308435f8762f546912e770159.jpg",
-    "https://w.forfun.com/fetch/6b/6b53ccdda60e6d052d9c9782baffa35b.jpeg",
-    "https://i.pinimg.com/originals/d1/8c/22/d18c2215872567419c93405fb963387c.jpg",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5frij-0iqQuXlwj3k2UpgFkXT6Z7QIMqBTQ&usqp=CAU",
-  ];
+  const dispatch = useDispatch(); 
+  
+  useEffect(() => {
+      dispatch(allBeers())
+  }, []);
 
   return (
-    <div>
-      <div className={styles.div}>
-        <Carousel fade={true} indicators={true} className={styles.carousel}>
-          {img.map((image, index) => (
-            <CarouselItem key={index} >
-              <div className={styles.carouselContainer}>
-                <img
-                  src={img[(index - 1 + img.length) % img.length]}
-                  alt={`img${index - 1}`}
-                  className={styles.img}
-                />
-                <img
-                  src={image}
-                  alt={`img${index}`}
-                  className={styles.imgMajor}
-                />
-                <img
-                  src={img[(index + 1) % img.length]}
-                  alt={`img${index + 1}`}
-                  className={styles.img}
-                />
-              </div>
-            </CarouselItem>
-          ))}
-        </Carousel> 
-      </div>
-      <div>
-        <HomeFeaturedProducts/>
-      </div>
-      <div>
-        <HomeBestSellers/>
-      </div>
+    <div className={styles.grandContainer}>
+      <HomeCarousel/>
+      <HomeFeaturedProducts/>
+      <HomeBestSellers/>
     </div>
   );
 };

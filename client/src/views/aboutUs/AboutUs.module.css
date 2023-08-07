@@ -3,6 +3,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
 }
 .containerP{
     align-items: center;
@@ -26,9 +27,40 @@
     border-right: none;
     border-bottom: none;
 }
-.accounts {
+.linkedAccounts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 170px;
+    margin-bottom: 20px;
+}
+.accountsContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.accounts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid rgba(163, 125, 52, 1);
+    width: 23%;
+}
+.perfileImg {
+    width: 50px;
+    border: 2px solid rgba(163, 125, 52, 1);
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
 }
