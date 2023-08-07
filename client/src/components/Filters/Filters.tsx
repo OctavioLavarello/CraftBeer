@@ -46,9 +46,11 @@ const Filters = () => {
                 <p className={style.title_select}>Filtrar por precio</p>
                 <select onChange={handlerOptions} className={style.select} name="price">
                     <option value="" >TODOS LOS PRECIOS</option>
-                    <option value="100">MENOR A 100</option>
-                    <option value="500">MENOR A 500</option>
-                    <option value="1000">MENOR A 1000</option>
+                    <option value="5">MENOR A 5</option>
+                    <option value="10">MENOR A 10</option>
+                    <option value="20">MENOR A 20</option>
+                    <option value="30">MENOR A 30</option>
+                    <option value="50">MENOR A 50</option>
                 </select>
                 <p className={style.title_select}>Filtrar por IBU</p>
                 <select onChange={handlerOptions} className={style.select} name="IBU">
@@ -72,17 +74,30 @@ const Filters = () => {
                 <select className={style.select} onChange={handlerOptions} name="type">
                     <option value="" >TODOS LOS TIPOS</option>
                     <option value="Lager">Lager</option>
+                    <option value="Ale">Ale</option>
                     <option value="IPA">IPA</option>
                     <option value="Stout">Stout</option>
                     <option value="Porter">Porter</option>
+                    <option value="Wheat Beer">Wheat Beer</option>
+                    <option value="Sour Beer">Sour Beer</option>
+                    <option value="Belgian Strong Ale">Belgian Strong Ale</option>
                     <option value="Pilsner">Pilsner</option>
-                    <option value="Belgian Ale">Belgian Ale</option>
+                    <option value="Amber Ale">Amber Ale</option>
+                    <option value="Barleywine">Barleywine</option>
+                    <option value="Saison">Saison</option>
+                    <option value="Rauchbier">Rauchbier</option>
+                    <option value="Bock">Bock</option>
+                    <option value="Scotch Ale">Scotch Ale</option>
+
                 </select>
                 <p className={style.title_select}>Filtrar por % Alcohol</p>
-                <select onChange={handlerOptions} className={style.select}>
-                    <option value="ABV" > ABV:</option>
-                    <option value="OrderAscABV">MENOR A MAYOR</option>
-                    <option value="OrderDesABV">MAYOR A MENOR</option>
+                <select onChange={handlerOptions} className={style.select} name="ABV">
+                    <option value="" > TODOS LOS AVB</option>
+                    <option value="1">ABV menor a 1 %</option>
+                    <option value="3">ABV menor a 3 %</option>
+                    <option value="4">ABV menor a 4 %</option>
+                    <option value="8">ABV menor a 8 %</option>
+                    <option value="10">ABV menor a 10 %</option>
                 </select>
             </div>
 
