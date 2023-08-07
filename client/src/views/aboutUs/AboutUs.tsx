@@ -96,12 +96,12 @@ const AboutUs: React.FC = () => {
             </NavLink>
             <NavLink 
             className={styles.nav}
-            to =""
+            to ="https://www.linkedin.com/in/jorge-enrique-acosta-de-le%C3%B3n-8934a4122/"
             target="_blank">
               <img 
               className={styles.perfileImg}
-              src="" alt="JORGE" />
-              <h4>nombre</h4>
+              src="https://media.licdn.com/dms/image/D4E35AQGM6RDJlxEpJw/profile-framedphoto-shrink_200_200/0/1690572184866?e=1692025200&v=beta&t=f-0dinc2TE-2zN_1EAzoRbIxRf8uYrlJ9MbHk0Orc0Q" alt="JORGE" />
+              <h4>Jorge Enrique Acosta de León</h4>
             </NavLink>
             <NavLink 
             className={styles.nav}
