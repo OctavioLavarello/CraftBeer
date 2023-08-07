@@ -33,6 +33,7 @@ const CardShop = ({ numberPage }: CardShopProps) => {
         try {
             const response = await axios.get<BeerData[]>(endpoint, { params: filters });
             const allBeersDataPage: BeerData[][] = [];
+
             // Fracionamos en 3 articulos por pagina 
             for (let i = 0; i < response.data.length; i += 5) {
                 const array = response.data.slice(i, i + 5);
@@ -43,7 +44,6 @@ const CardShop = ({ numberPage }: CardShopProps) => {
             console.error(error);
         }
     };
-    console.log(allBeersData);
 
     useEffect(() => {
         getAllBeers();
