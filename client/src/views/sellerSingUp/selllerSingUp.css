@@ -1,0 +1,12 @@
+.bodyFormSeller {
+    border: solid red;
+    text-align: center;    
+}
+
+.alinearForm {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    
+}
