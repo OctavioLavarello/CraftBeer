@@ -43,8 +43,6 @@ const Shop = () => {
 
 
 
-
-
   // cargar el estado filter con el nombre que ingresa en el input 
   const handlerClick = () => {
     setInput("")
