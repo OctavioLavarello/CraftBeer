@@ -79,7 +79,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                                     <Link to={"/cart"}>
                                         <button className={style.buttonBuy} disabled={item < 1} onClick={addProductoCart}>COMPRAR</button>
                                     </Link>
-                                    {item  ? <p>Tienes {item } En tu carrito !!</p> : <></>}
+                                    {item  ? <p>Tienes {item} En tu carrito !!</p> : <></>}
                                 </div>
                             </div>
                         </Col>
