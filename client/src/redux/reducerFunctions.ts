@@ -45,3 +45,14 @@ return{
   localStorageCart: action.payload
 }
 }
+//ALMACENAR numero de paginas para el shop 
+
+export const totalPagesShop = (
+  state = initialState,
+  action: ActionWithPayload<string, number>
+)=>{
+return{
+  ...state,
+  totalPages: action.payload
+}
+}

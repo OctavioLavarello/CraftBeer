@@ -24,6 +24,9 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
 
     const dispatch = useDispatch();
 
+
+
+    //estado para controlar los input de cantidades 
     const [item, setItem] = useState(0);
 
     // Cargar la cantidad del localStorage cuando el componente se monta
@@ -33,7 +36,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
             setItem(parseInt(savedQuantity));
         }
     }, [id]);
-
+    // setea los cambios de cantidades y ejecuta para cargar en localStorage
     const handlerItemCart = (event: React.MouseEvent<HTMLButtonElement>) => {
         const target = event.currentTarget;
         const updatedQuantity = target.name === '+' ? item + 1 : item - 1;
@@ -48,7 +51,6 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
     }
 
     const addProductoCart = () => {
-        localStorage.clear();
     }
 
     return (
@@ -67,7 +69,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                         <Col sm={4} className={style.colPrice} >
                             <div style={{ display: "flex", flexDirection: "column" }}>
 
-                                <h3 >{name}</h3>
+                                <h3 >{name.toUpperCase()}</h3>
                                 <div className={style.IBU}>
                                     <h5>Tipo: {type}</h5>
                                     <h5>IBU: {IBU}</h5>
@@ -79,15 +81,15 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                                     <Link to={"/cart"}>
                                         <button className={style.buttonBuy} disabled={item < 1} onClick={addProductoCart}>COMPRAR</button>
                                     </Link>
-                                    {item  ? <p>Tienes {item} En tu carrito !!</p> : <></>}
+                                    {item ? <p>Tienes {item} 🍺 En tu carrito !!</p> : <></>}
                                 </div>
                             </div>
                         </Col>
                         <Col className={style.colPrice}>
                             <div className={style.containerInfo}>
                                 <h2 className={style.title}>${price}</h2>
-                                <p>☆☆☆☆☆ </p> <br /> <p className={item === stock ? style.alertOutStock : style.alertStock}>Stock Disponible : {stock} un.</p>
-                                <div className={style.input}>{item } Un</div>
+                                <p>☆☆☆☆☆ </p> <br /> <p className={item === stock || stock === 0 ? style.alertOutStock : style.alertStock}>Stock Disponible : {stock} un.</p>
+                                <div className={style.input}>{item} Un.</div>
                                 <button className={style.custom_button} name={"-"} onClick={handlerItemCart} disabled={item < 1}>-</button>
                                 <button className={style.custom_button} name={"+"} onClick={handlerItemCart} disabled={item >= stock}>+</button>
                             </div>

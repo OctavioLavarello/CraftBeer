@@ -7,7 +7,8 @@ import {
   ADD_ALL_BEER,
   ORDER_FILTERS,
   CREATED_USER,
-  LOCAL_STORAGE
+  LOCAL_STORAGE,
+  TOTAL_PAGES
 } from "../actions/actionsTypes";
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
@@ -55,6 +56,15 @@ export const orderFilters = (filters: object): ActionWithPayload<"ORDER_FILTERS"
 export const localStorageCart = (data:object)=>{
   return {
     type: LOCAL_STORAGE,
+    payload:data
+  }
+}
+
+//actions para guardar el localStorage 
+
+export const totalPages = (data:number)=>{
+  return {
+    type: TOTAL_PAGES,
     payload:data
   }
 }

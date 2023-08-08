@@ -17,6 +17,10 @@ const Shop = () => {
 
   const filters = useSelector((state: AppState) => state.beerFilters)
 
+  //numero de paginas recibidas desde el back 
+let pages = useSelector((state: AppState) => state.totalPages)
+
+
   // estado para controlar el input search
   const [input, setInput] = useState("")
   const handlerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +58,10 @@ const Shop = () => {
     search: true,
   };
   if (numberPage < 2) disableBoton.back = true
+  if (numberPage === pages) disableBoton.adv = true
   if (input.length > 2) disableBoton.search = false
+
+
 
   // cargar el estado filter con el nombre que ingresa en el input 
   const handlerClick = () => {
@@ -72,17 +79,17 @@ const Shop = () => {
           value={input}
         />
         <button className={style.button} disabled={disableBoton.search} onClick={handlerClick}>🔍</button>
-        <button className={style.button} onClick={handlerClick}>All</button>
+        <button className={style.buttonAll} onClick={handlerClick}>All</button>
       </div>
-   
+
       <Row>
         <Col xs={12} md={3}>
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <button className={style.button_Pagechange} onClick={handlerPage} name="<" disabled={disableBoton.back}>{"<"} </button>
-            <button className={style.button_Pagelateral}>{numberPage - 1} </button>
+            <button className={style.button_Pagelateral}>{numberPage === 1 ? <></> :numberPage - 1} </button>
             <button className={style.button_Page}> {numberPage} </button>
-            <button className={style.button_Pagelateral}>{numberPage + 1} </button>
-            <button className={style.button_Pagechange} onClick={handlerPage} name=">">{">"} </button>
+            <button className={style.button_Pagelateral}>{numberPage < pages ? numberPage + 1 :<></>} </button>
+            <button className={style.button_Pagechange} onClick={handlerPage} name=">" disabled={disableBoton.adv}>{">"} </button>
           </div>
           <Filters />
         </Col>

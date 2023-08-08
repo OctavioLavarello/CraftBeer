@@ -21,16 +21,17 @@
 }
 .button_Page{
     border: none;
-    width: 30px;
-    height:30px;
+    width: 40px;
+    height:40px;
     border-radius: 5px;
     background-color: rgb(171, 163, 147);
     margin: 3px;
+    font-size: 20px;
 }
 .button_Pagelateral{
     border: none;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     opacity: 0.4;
     border-radius: 5px;
     background-color: rgb(171, 163, 147);
@@ -38,8 +39,8 @@
 }
 .button_Pagechange{
     border: none;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 5px;
     background-color: rgb(204, 146, 40);
     margin: 3px;
@@ -70,5 +71,21 @@
     transition: .3s;
 }
 .button:disabled{
+    opacity: 0.3;
+}
+.buttonAll{
+    border: none;
+    border-radius: 100px;
+    width: 80px;
+    height: 40px;
+    margin-left: 10px;
+    background-color: black;
+    box-shadow: 0 0 2px 2px rgba(187, 182, 182, 0.3);
+}
+.buttonAll:hover{
+    scale: 1.1;
+    transition: .3s;
+}
+.buttonAll:disabled{
     opacity: 0.3;
 }
