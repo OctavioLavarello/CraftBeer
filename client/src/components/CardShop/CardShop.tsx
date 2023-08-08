@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CardModel from "../CardModel/CardModel";
-import { useSelector } from "react-redux";
-import { AppState, BeerFilters } from "../../redux/reducer";
+import {  useSelector } from "react-redux";
+import { AppState } from "../../redux/reducer";
+import { Toaster, toast } from "react-hot-toast";
+import style from "./CardShop.module.css"
 
 interface BeerData {
     id: string;
@@ -18,45 +20,80 @@ interface BeerData {
     qualification?: number;
 }
 
-
-
 const CardShop = () => {
+    //estados 
 
+    const [dataLoaded, setDataLoaded] = useState(false); 
+    // Variable para controlar la carga de datos
     let [allBeersData, setAllBeersData] = useState<BeerData[]>([]);
-    // traemos el estado de filtros 
-    const filters: BeerFilters = useSelector((state: AppState) => state.beerFilters)
 
+
+
+    // traemos el estado de filtros 
+    const filters: AppState = useSelector((state: AppState) => state)
 
     // solicitud a back concatenando el los filtros en la url 
     const getAllBeers = async () => {
         const endpoint = "http://localhost:3001/product";
         try {
-            const response = await axios.get<BeerData[]>(endpoint, { params: filters });
+            const response = await axios.get<BeerData[]>(endpoint, { params: filters.beerFilters });
             setAllBeersData(response.data);
         } catch (error) {
             console.error(error);
         }
     };
 
+    //allama al backend cada vez que se modifica filters
     useEffect(() => {
         getAllBeers();
-    }, [filters]);
+    }, [filters.beerFilters]);
+
+    // Marcar que los datos se han cargado cuando allBeersData tiene elementos
+    useEffect(() => {
+        if (allBeersData.length > 0) {
+            setDataLoaded(true);
+        }
+    }, [allBeersData]);
+
+    // Mostrar el toast solo si los datos se han cargado
+    useEffect(() => {
+        if (dataLoaded && allBeersData.length === 0) {
+            toast.error("Upps parece que no hay cervezas. Intenta buscar otra...");
+        }
+    }, [allBeersData, dataLoaded]);
+
+
+     let messageAlert = (
+          <div className={style.message}>
+              <h2>❌ ❌ ❌</h2>
+              <h1> Upps!!! no hay cervezas disponibles. </h1>
+              <h5>Prueba con filtros distintos</h5>
+          </div>)
+  
+
 
     return (
-        <>{allBeersData?.map((product) => (
-            <CardModel
-                key={product.id}
-                id={product.id}
-                type={product.type}
-                IBU={product.IBU}
-                name={product.name}
-                degreeOfAlcohol={product.degreeOfAlcohol}
-                summary={product.description}
-                image={product.image}
-                price={product.price}
-                stock={product.stock}
-            />
-        ))}
+        <>
+
+            <div>
+                <Toaster toastOptions={{ className: style["customToast"], duration: 2000 }} />
+            </div>
+                        {dataLoaded && allBeersData.length === 0 && messageAlert}
+ 
+            {allBeersData?.map((product) => (
+                <CardModel
+                    key={product.id}
+                    id={product.id}
+                    type={product.type}
+                    IBU={product.IBU}
+                    name={product.name}
+                    degreeOfAlcohol={product.degreeOfAlcohol}
+                    summary={product.description}
+                    image={product.image}
+                    price={product.price}
+                    stock={product.stock}
+                />
+            ))}
         </>
     );
 };

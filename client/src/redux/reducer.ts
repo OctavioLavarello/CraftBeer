@@ -19,11 +19,12 @@ export interface AppState {
 export interface BeerFilters {
   IBU?: number,  // El signo de interrogación indica que la propiedad es opcional
   AVB?: number,
+  name?:String,
   pag?:Number,
   price?: number;
   qualification?:String,
   type?:String,
-  order?:String
+  order?:String,
 }
 export const initialState: AppState = {
   allBeer: [],

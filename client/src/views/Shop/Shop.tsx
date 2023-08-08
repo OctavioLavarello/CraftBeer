@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { orderFilters } from "../../redux/actions/actions";
 import { AppState } from "../../redux/reducer";
+
 // SHOP
 
 const Shop = () => {
@@ -52,7 +53,7 @@ const Shop = () => {
     back: false,
     search: true,
   };
-  if (numberPage < 1) disableBoton.back = true
+  if (numberPage < 2) disableBoton.back = true
   if (input.length > 2) disableBoton.search = false
 
   // cargar el estado filter con el nombre que ingresa en el input 
@@ -66,21 +67,21 @@ const Shop = () => {
       <div className={style.search}>
         <input type="text"
           className={style.input_Search}
-          placeholder="      Buscar....."
+          placeholder="Buscar....."
           onChange={handlerChange}
           value={input}
         />
         <button className={style.button} disabled={disableBoton.search} onClick={handlerClick}>🔍</button>
-        { }
-
+        <button className={style.button} onClick={handlerClick}>All</button>
       </div>
+   
       <Row>
         <Col xs={12} md={3}>
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <button className={style.button_Pagechange} onClick={handlerPage} name="<" disabled={disableBoton.back}>{"<"} </button>
-            <button className={style.button_Pagelateral}>{numberPage -1} </button>
-            <button className={style.button_Page}>{numberPage } </button>
-            <button className={style.button_Pagelateral}>{numberPage +1} </button>
+            <button className={style.button_Pagelateral}>{numberPage - 1} </button>
+            <button className={style.button_Page}> {numberPage} </button>
+            <button className={style.button_Pagelateral}>{numberPage + 1} </button>
             <button className={style.button_Pagechange} onClick={handlerPage} name=">">{">"} </button>
           </div>
           <Filters />
