@@ -25,3 +25,9 @@ export const productCreated = (state = initialState) => {
     ...state,
   };
 };
+
+export const userCreated = (state = initialState) => {
+  return {
+    ...state,
+  };
+};

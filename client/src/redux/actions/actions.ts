@@ -6,6 +6,7 @@ import {
   CREATED_PRODUCT,
   ADD_ALL_BEER,
   ORDER_FILTERS,
+  CREATED_USER,
 } from "../actions/actionsTypes";
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
@@ -82,5 +83,32 @@ export const createdProduct = ({
     };
   } catch (error) {
    toast.error("No ha sido posible cargar su producto");
+  }
+};
+
+
+export interface UserData {
+  id: string;
+  name: string;
+  lastName: string;
+  document: string;
+  email: string;
+  password: string;
+  address: string;
+  image: string;
+}
+//action crear user comprador
+export const createdUser = (userData: UserData) => {
+  try {
+    return async function (dispatch: Dispatch<any>) {
+      let createdUser = await axios.post(`${localhost}/user`, userData);
+      dispatch({
+        type: CREATED_USER,
+        payload: createdUser,
+      });
+      toast.success("Usuario creado exitosamente");
+    };
+  } catch (error) {
+    toast.error("Error al crear usuario");
   }
 };
