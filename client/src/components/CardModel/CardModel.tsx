@@ -51,6 +51,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
     }
 
     const addProductoCart = () => {
+        localStorage.clear()
     }
 
     return (

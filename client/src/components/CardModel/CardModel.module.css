@@ -144,10 +144,18 @@
 }
 
 .navButton p {
-    color: #49b00e;
+    color: #dfe4db;
     font-weight: 700;
-    
+    background-color: #2d4b1d;
+    border-radius: 4px;
+    margin-top: 10px;
+    box-shadow: 0 2px 1px #4dff004d
 }
+
+
+
+
+
 
 .buttonBuy {
 
