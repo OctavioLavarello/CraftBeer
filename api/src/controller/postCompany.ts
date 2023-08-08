@@ -27,11 +27,23 @@ const postCompany = async (req: Request, res: Response) => {
     if (!name) return res.status(400).json({message:"Name is required."});
     if (/\d/.test(name)) return res.status(400).json({message:"Name cannot include a number."});
     if (name.length > 30) return res.status(400).json({message:"Name cannot exceed 30 characters."});
+
+    if (!lastName) return res.status(400).json({message:"Name is required."});
+    if (/\d/.test(lastName)) return res.status(400).json({message:"Name cannot include a number."});
+    if (lastName.length > 30) return res.status(400).json({message:"Last Name cannot exceed 30 characters."});
     
   
     if (!company) return res.status(400).json({message:"Last name is required."});
-    if (/\d/.test(company)) return res.status(400).json({message:"Last name cannot include a number."});
-    if (company.length > 30) return res.status(400).json({message:"Last name cannot exceed 30 characters."});
+    if (/\d/.test(company)) return res.status(400).json({message:"Company cannot include a number."});
+    if (company.length > 30) return res.status(400).json({message:"Company cannot exceed 30 characters."});
+
+    if(!address) return res.status(400).json({message:"Address is required"})
+
+    if (!country) return res.status(400).json({message:"Country is required"})
+
+    if(!state) return res.status(400).json({message:"State is required"})
+
+    if (!city) return res.status(400).json({message:"City is required"})
     
   
     if (!document) return res.status(400).json({message:"Document is required."});
