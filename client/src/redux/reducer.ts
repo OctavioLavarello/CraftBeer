@@ -14,7 +14,17 @@ import {
  */
 export interface AppState {
   allBeer: object[];
-  beerFilters: object;
+  beerFilters: BeerFilters;
+}
+export interface BeerFilters {
+  IBU?: number,  // El signo de interrogación indica que la propiedad es opcional
+  AVB?: number,
+  name?:String,
+  pag?:Number,
+  price?: number;
+  qualification?:String,
+  type?:String,
+  order?:String,
 }
 export const initialState: AppState = {
   allBeer: [],
