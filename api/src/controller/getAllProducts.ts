@@ -63,7 +63,20 @@ const getAllProducts = async (req: Request, res: Response) => {
       limit: itemsPerPage,
       offset: offset,
     });
-    return res.status(200).json(products);
+
+    // Obtener la cantidad total de productos que cumplen con los criterios de búsqueda
+    const totalCount = await Product.count(options);
+
+    // Calcular el total de páginas disponibles
+    const totalPages = Math.ceil(totalCount / itemsPerPage);
+
+    // Crear un objeto de respuesta que incluya los productos y el número total de páginas
+    const response = {
+      products,
+      totalPages,      
+    };
+
+    return res.status(200).send(response);
   } catch (error) {
     return res.status(500).send({ error });
   }
