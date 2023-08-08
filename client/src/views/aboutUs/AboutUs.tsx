@@ -118,7 +118,7 @@ const AboutUs: React.FC = () => {
             target="_blank">
               <img 
               className={styles.perfileImg}
-              src="https://media.licdn.com/dms/image/D4E03AQFbC8C9IKJ8hQ/profile-displayphoto-shrink_200_200/0/1689267155013?e=1697068800&v=beta&t=GUnEGfDRbqhme_mTffpQTFc5yBcufVDbxdAvCsCGe_Q" alt="GAL" />
+              src="https://media.licdn.com/dms/image/D4E03AQGu9ju6UXUZwg/profile-displayphoto-shrink_200_200/0/1691464249848?e=1697068800&v=beta&t=Q9mk0hsIWGBwqMxOcyGT2BJFgKdGJsuu_ozzE-6g6U8" alt="GAL" />
               <h4>Jose Rodrigo Galvis Galvis</h4>
             </NavLink>
           </div>

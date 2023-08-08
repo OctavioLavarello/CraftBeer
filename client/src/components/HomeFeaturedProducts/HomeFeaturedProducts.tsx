@@ -12,7 +12,7 @@ const HomeFeaturedProducts: React.FC = () => {
     const { allBeer } = useSelector((state: RootState) => state)
 
     const firstFourCards = allBeer.slice(0, 4);
-    const lastFourCards = allBeer.slice(4);
+    const lastFourCards = allBeer.slice(4, 8);
 
     return (
         <div className={styles.div}>
