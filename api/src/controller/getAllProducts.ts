@@ -4,7 +4,7 @@ import { Op } from 'sequelize';
 
 const getAllProducts = async (req: Request, res: Response) => {
   try {
-    const { type, price, IBU, ABV, qualification, order, page, name } = req.query;
+    const { type, price, IBU, ABV, qualification, order, pag, name } = req.query;
 
     // Definir las opciones de consulta
     const options: any = {};
@@ -39,7 +39,7 @@ const getAllProducts = async (req: Request, res: Response) => {
         options.where = {
           ...options.where,
           name: {
-            [Op.like]: `%${name}%`
+            [Op.iLike]: `%${name}%`
           }
         };
       }
@@ -51,10 +51,10 @@ const getAllProducts = async (req: Request, res: Response) => {
     }
 
     // Cantidad de productos a mostrar por página
-    const itemsPerPage = 15;
+    const itemsPerPage = 8;
 
     // Calcular el offset para la página actual
-    const currentPage = parseInt(page as string) || 1;
+    const currentPage = parseInt(pag as string) || 1;
     const offset = (currentPage - 1) * itemsPerPage;
 
     // Obtener productos paginados

@@ -10,7 +10,6 @@ export const getAllBeer = (
     allBeer: action.payload,
   };
 };
-
 export const orderFiltersReducer = (
   state = initialState,
   action: ActionWithPayload<string, any>

@@ -4,6 +4,8 @@
     align-items: center;
     flex-direction: row;
     height: 500px;
+    margin-top: 50px;
+    margin-bottom: 30px;
 }
 .carouselContainer {
     display: flex;
@@ -20,29 +22,27 @@
 }
 .linkLeft {
     border: 2px solid rgba(163, 125, 52, 1);
-    border-radius: 15px;
-    margin-right: -20px;
+    margin-right: -98px;
     z-index: 1;
 }
 .linkMain {
     border: 2px solid rgba(163, 125, 52, 1);
     border-radius: 15px;
+    width: 650px;
     z-index: 2;
 }
 .linkRight {
     border: 2px solid rgba(163, 125, 52, 1);
-    border-radius: 15px;
-    margin-left: -20px;
+    margin-left: -98px;
     z-index: 1;
 }
 .linkLeft img{
-    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    width: 300px;
-    height: 250px;
+    width: 400px;
+    height: 300px;
     opacity: 0.5;
 }
 .linkMain img{
@@ -51,35 +51,33 @@
     justify-content: center;
     align-items: center;
     color: white;
-    width: 500px;
-    height: 400px;
+    width: 100%;
+    height: 500px;
 }
 .linkRight img{
-    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    width: 300px;
-    height: 250px;
+    width: 400px;
+    height: 300px;
     opacity: 0.5;
 }
 
 .linkLeft, .linkMain, .linkRight {
     position: relative;
 }
-
 .carousel a:first-of-type span {
     height: 200px;
     margin-top: -65px;
-    margin-right: 130px;
+    margin-right: 155px;
     background-color: rgba(163, 125, 52, 1);
     border-radius: 0 10px 10px 0;
 }
 .carousel a:last-of-type span {
     height: 200px;
     margin-top: -65px;
-    margin-left: 130px;
+    margin-left: 155px;
     background-color: rgba(163, 125, 52, 1);
     border-radius: 10px 0 0 10px;
 }

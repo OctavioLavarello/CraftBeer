@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import styles from './Detail.module.css';
 
 interface Beer {
@@ -12,7 +13,7 @@ interface Beer {
   description: string;
   qualification: number | null;
   price: number;
-  ABV: number,
+  ABV: number;
   stock: number;
   presentation: string;
   status: boolean;
@@ -38,26 +39,40 @@ const Detail = () => {
   if (!beer) {
     return <div>Loading...</div>;
   }
-console.log(beer);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.datacontainer}>
-        <h1>Detail</h1>
-        <h2>Nombre: {beer?.name}</h2>
-        <h2>Tipo: {beer?.type}</h2>
-        <h2>Graduacion alcohólica(ABV): {beer?.ABV}%</h2>
-        <h2>Precio: ${beer?.price}</h2>
-        <h2>Informacion: {beer?.description}</h2>
-        <h2>Calificacion: {beer?.qualification}</h2>
-        <h2>Presentacion: {beer?.presentation}</h2>
-        <h2>Estatus: {beer?.status ? 'Disponible' : 'No disponible'}</h2>
-        <Link className={styles.link} to="/home">Go Back</Link>
-      </div>
-      <div className={styles.imagecontainer}>
-        <img src={beer?.image} alt="" />
-      </div>
-    </div>
+    <Container className={styles.container}>
+      <Row>
+        <Col md={6}>
+          <Card className={`${styles.card} h-100 d-flex`}>
+            <Card.Body className="flex-column">
+              <Card.Title className={styles.title}>{beer?.name}</Card.Title>
+              <Card.Text className="flex-grow-1">Description:{beer?.description}</Card.Text>
+              <Card.Text className="flex-grow-1">Tipo:{beer?.type}</Card.Text>
+              <Card.Text className="flex-grow-1">Presentacion:{beer?.presentation}</Card.Text>
+              <Card.Text className="flex-grow-1">ABV: {beer?.ABV}%</Card.Text>
+              <Card.Text className="flex-grow-1">Precio: ${beer?.price}</Card.Text>
+              <Card.Text className="flex-grow-1">
+                Calificacion: {beer?.qualification ?? 'No calificado'}
+              </Card.Text>
+              <Card.Text className="flex-grow-1">Stock:{beer?.stock} unidades</Card.Text>
+              <Card.Text className="flex-grow-1">
+                Estatus: {beer?.status ? 'Disponible' : 'No disponible'}
+              </Card.Text>
+            </Card.Body>
+            <Link className={styles.link} to="/shop" aria-disabled>
+                <Button className={styles.buttonback}>Volver</Button>
+             </Link>
+          </Card>
+        </Col>
+        <Col md={6} className={styles.imageContainer}>
+          <img src={beer?.image} alt="" className={styles.image} />
+          <Button className={styles.addButton}>
+            Añadir al carrito
+          </Button>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

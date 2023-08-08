@@ -30,6 +30,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU, }: CardM
                     <Row>
                         <Col className="col">
                             <div className={style.image}>
+                                <p>DETALLE</p>
                                 <Link className={style.link} to={`/detail/${id}`} >
                                     <img src={image} alt="" className={style.imgSize} />
                                 </Link>
@@ -47,8 +48,9 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU, }: CardM
                                 <h5>Tipo: {type}</h5>
                                 <h5>IBU: {IBU}</h5>
                             </div>
-
-                            <Button className='p-2 ms-auto' variant="dark" >COMPRAR</Button>
+                            <Link to={"/login"}>
+                                <Button className='p-2 ms-auto' variant="dark" >COMPRAR</Button>
+                            </Link>
                             <Button className='p-2 m-2' variant="dark">AÑADIR</Button>
                         </Col>
                         <Col className={style.colPrice}>

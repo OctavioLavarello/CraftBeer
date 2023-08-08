@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Button, Carousel, CarouselItem } from "react-bootstrap";
 import CardCart from "../../components/CardCart/CardCart";
 // STYLES
-import "../Cart/cart.css";
+import "./Cart.css";
 
 // CART
 const Cart = () => {
