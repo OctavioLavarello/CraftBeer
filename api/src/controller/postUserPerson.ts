@@ -7,11 +7,11 @@ const postUserPerson = async (req: Request, res: Response) => {
     const { name, lastName, document, email, password, address, image, role, country, city, state } =
       req.body;
 
-    if (!name) res.status(400).json({ message: "name is required" });
-    if (!lastName) res.status(400).json({ message: "lastName is require" });
-    if (!document) res.status(400).json({ message: "document is required" });
-    if (!email) res.status(400).json({ message: "email is equired" });
-    if (!password) res.status(400).json({ message: "password is required" });
+    if (!name) return res.status(400).json({ message: "name is required" });
+    if (!lastName) return res.status(400).json({ message: "lastName is require" });
+    if (!document) return res.status(400).json({ message: "document is required" });
+    if (!email) return res.status(400).json({ message: "email is equired" });
+    if (!password) return res.status(400).json({ message: "password is required" });
   
 
     const userPerson = await UserPerson.create({
