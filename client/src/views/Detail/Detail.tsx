@@ -61,9 +61,7 @@ const Detail = () => {
               </Card.Text>
             </Card.Body>
             <Link className={styles.link} to="/shop" aria-disabled>
-            <Button className={styles.buttonback}> 
                 <Button className={styles.buttonback}>Volver</Button>
-             </Button>
              </Link>
           </Card>
         </Col>
