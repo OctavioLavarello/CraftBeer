@@ -4,7 +4,7 @@ import UserRole from "../emuns";
 
 const postUserPerson = async (req: Request, res: Response) => {
   try {
-    const { name, lastName, document, email, password, address, image, role } =
+    const { name, lastName, document, email, password, address, image, role, country, city, state } =
       req.body;
 
     if (!name) res.status(400).json({ message: "name is required" });
@@ -23,6 +23,9 @@ const postUserPerson = async (req: Request, res: Response) => {
       document,
       email,
       password,
+      country,
+      city,
+      state, 
       address,
       image,
       status: true,
