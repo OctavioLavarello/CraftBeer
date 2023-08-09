@@ -11,8 +11,8 @@ import { AppState } from "../../redux/reducer";
 const HomeFeaturedProducts: React.FC = () => {
     const  allBeer  = useSelector((state: AppState) => state.allBeer)
 
-    const firstFourCards = allBeer.slice(0,4);
-    const lastFourCards = allBeer.slice(4);
+    const firstFourCards = allBeer.slice(0, 4);
+    const lastFourCards = allBeer.slice(4, 8);
 
     return (
         <div className={styles.div}>

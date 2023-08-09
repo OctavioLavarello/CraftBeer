@@ -1,6 +1,6 @@
 .title {
     font-family: 'Arial Black', sans-serif;
-    font-size: 50px;
+    font-size: 9vh;
     font-weight: bold;
     color: white;
     display: inline-block;
@@ -11,7 +11,7 @@
     color: transparent;
     text-decoration: underline solid;
     text-decoration-color: rgba(163, 125, 52, 1);
-    text-underline-offset: 10px; 
+    text-underline-offset: 1.8vh; 
 }
 .div{
     justify-content: center;
@@ -26,7 +26,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: rgba(163, 125, 52, 1);
-    height: 450px;
+    height: 81vh;
     margin-bottom: 17%;
     margin-top: 15%;
     width: 100%;

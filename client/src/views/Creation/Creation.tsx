@@ -2,12 +2,17 @@
 import { useState } from "react";
 //import { Dispatch, AnyAction } from "redux";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
+import {
+  Form,
+  Row,
+  Col,
+  Button,
+  InputGroup,
+} from "react-bootstrap";
 import "../Creation/Creation.css";
-import CardCart from "../../components/CardCart/CardCart";
+import CardUserProduct from "../../components/CardUsersProduct/CardUserProduct";
 import { useDispatch } from "react-redux";
 import { createdProduct, ProductData } from "../../redux/actions/actions";
-
 
 // STYLES
 //.....
@@ -26,6 +31,7 @@ const Creation = () => {
     stock: 0,
     presentation: "",
     IBU: 0,
+    UserCompanyId: ""
   });
 
   const [errors, setErrors] = useState({
@@ -40,7 +46,7 @@ const Creation = () => {
     IBU: "Indicar el grado alcohólico",
   });
 
-  const validation = (input:any, name:any) => {
+  const validation = (input: any, name: any) => {
     if (name === "name") {
       if (input.name !== "") setErrors({ ...errors, name: "" });
       else setErrors({ ...errors, name: "Información requerida" });
@@ -50,7 +56,7 @@ const Creation = () => {
       else setErrors({ ...errors, image: "Información requerida" });
     }
     if (name === "type") {
-      if (input.name !== "") setErrors({ ...errors, type: "" });
+      if (input.type !== "") setErrors({ ...errors, type: "" });
       else setErrors({ ...errors, type: "Información requerida" });
     }
     if (name === "ABV") {
@@ -87,45 +93,49 @@ const Creation = () => {
       ...input,
     });
   };
-  const handlerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+  const handlerChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> | any
+  ) => {
     setInput({
       ...input,
       [event.target.name]: event.target.value,
     });
-    validation({
-      ...input,
-      [event.target.name]: event.target.value,
-    },
-    event.target.name
-    )
+    validation(
+      {
+        ...input,
+        [event.target.name]: event.target.value,
+      },
+      event.target.name
+    );
   };
 
-  // const disable = () => {
-  //   let disabled = true;
-  //   for (let error in errors) {
-  //     if (errors[error] === "") disabled = false;
-  //     else {
-  //       disabled = true;
-  //       break;
-  //     }
-  //   }
-  //   return disabled;
-  // };
+  const disable = (errors:{ [key: string]: string }): boolean => {
+    let disabled = true;
+    for (let error in errors) {
+      if (errors[error] === "") disabled = false;
+      else {
+        disabled = true;
+        break;
+      }
+    }
+    return disabled;
+  };
+  console.log(input);
+  
 
   return (
     <div className="bodyFormP">
       <Form
         style={{
-          width: "650px",
+          width: "50%",
           height: "auto",
-          justifyItems: "center",
-          alignContent: "center",
-          alignItems: "center",
-          justifyContent: "center",
         }}
         onSubmit={handlerSubmit}
       >
-        Crear Producto a ser publicado
+        <div className="tituloFormCreacion">
+        A continuación podrás indicar la información para la publicación de tu producto:
+        </div>
         <Row style={{ margin: "15px" }}>
           <Col>
             <Form.Control
@@ -144,7 +154,7 @@ const Creation = () => {
               />
               <InputGroup.Text>USD</InputGroup.Text>
             </InputGroup>
-              <h6 className="mensajes">{errors.price}</h6>
+            <h6 className="mensajes">{errors.price}</h6>
           </Col>
         </Row>
         <Row style={{ margin: "15px" }}>
@@ -169,11 +179,24 @@ const Creation = () => {
         </Row>
         <Row style={{ margin: "15px", justifyContent: "center" }}>
           <Col>
-            <Form.Control
-              placeholder="Tipo de cerveza"
-              name="type"
-              onChange={handlerChange}
-            />
+            <select name="type" className="selector" onChange={handlerChange}>
+              <option value="">Todos los tipos</option>
+              <option value="Lager">Lager</option>
+              <option value="Ale">Ale</option>
+              <option value="IPA">IPA</option>
+              <option value="Stout">Stout</option>
+              <option value="Porter">Porter</option>
+              <option value="Wheat Beer">Wheat Beer</option>
+              <option value="Sour Beer">Sour Beer</option>
+              <option value="Belgian Strong Ale">Belgian Strong Ale</option>
+              <option value="Pilsner">Pilsner</option>
+              <option value="Amber Ale">Amber Ale</option>
+              <option value="Barleywine">Barleywine</option>
+              <option value="Saison">Saison</option>
+              <option value="Rauchbier">Rauchbier</option>
+              <option value="Bock">Bock</option>
+              <option value="Scotch Ale">Scotch Ale</option>
+            </select>
             <h6 className="mensajes">{errors.type}</h6>
           </Col>
           <Col>
@@ -184,10 +207,6 @@ const Creation = () => {
             />
             <h6 className="mensajes">{errors.ABV}</h6>
           </Col>
-          {/* <Form.Group controlId="" className="mb-3">
-          <Form.Label>Seleccionar su imagen</Form.Label>
-          <Form.Control type="file" />
-        </Form.Group> */}
         </Row>
         <Row style={{ margin: "15px" }}>
           <Col>
@@ -196,7 +215,10 @@ const Creation = () => {
               name="image"
               onChange={handlerChange}
             />
-            <h6 className="mensajes">{errors.image}</h6>
+            {/* <Form.Group controlId="formFile" className="mb-1">
+              <Form.Control type="file" name="image" onChange={handlerChange}/>
+              <h6 className="mensajes">{errors.image}</h6>
+            </Form.Group> */}
           </Col>
           <Col>
             <Form.Control
@@ -218,6 +240,7 @@ const Creation = () => {
             <h6 className="mensajes">{errors.description}</h6>
           </Col>
         </Row>
+        <div className="botonCentro">
           <Button
             type="submit"
             style={{
@@ -229,16 +252,17 @@ const Creation = () => {
               boxShadow: "5px 5px 10px black",
             }}
             className="botonFormProd"
-            // disabled={disable()}
+            disabled={disable(errors)}
           >
             Cargar Producto
           </Button>
+        </div>
       </Form>
       <div className="bodyMisArt">
         <span className="spamMisArt">
           <strong>MIS ARTÍCULOS PUBLICADOS</strong>
         </span>
-        <CardCart />
+        <CardUserProduct />
       </div>
     </div>
   );

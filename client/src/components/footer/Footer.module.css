@@ -2,10 +2,10 @@
     display: flex;
     background-color: black;
     color:rgba(163, 125, 52, 1);
-    height: 170px;
+    height: 30.5vh;
     align-items: center;
     justify-content: space-around;
-    border: 2px solid rgba(163, 125, 52, 1);
+    border: 0.03vh solid rgba(163, 125, 52, 1);
     border-left: none;
     border-right: none;
     border-bottom: none;
@@ -32,9 +32,8 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(163, 125, 52, 1);
-    border: 1px solid rgb(226, 179, 93);
-    border-radius: 10px;
+    border: 0.015vh solid rgb(226, 179, 93);
+    border-radius: 1%;
     width: 30%;
-    height: 59.79px
-
+    height: 11vh;
 }
