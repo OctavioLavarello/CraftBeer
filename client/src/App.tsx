@@ -46,9 +46,9 @@ function App() {
           <Route path='/detail/:id' element={ <Detail />} />
           <Route path='/user/:id' element={ <User />} />
           <Route path='/cart' element={ <Cart />} />
-          <Route path='/chooseSingUp' element={ <ChooseSingUp />} />
-          <Route path='/buyerSingUp' element={ <BuyerSingUp />} />
-          <Route path='/sellerSingUp' element={ <SellerSingUp />} />
+          <Route path='/chooseSignUp' element={ <ChooseSingUp />} />
+          <Route path='/buyerSignUp' element={ <BuyerSingUp />} />
+          <Route path='/sellerSignUp' element={ <SellerSingUp />} />
           <Route path='/login' element={ <Login />} />
           <Route path='/aboutUs' element={ <AboutUs />} />
           <Route path='/contact' element={ <Contact />} />

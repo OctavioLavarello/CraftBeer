@@ -1,32 +1,68 @@
-
-import { Container } from "react-bootstrap"
-import Button from 'react-bootstrap/Button';
+import { Container } from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
 import { Col, Row } from 'react-bootstrap';
-import style from "./CardModel.module.css"
+import style from "./CardModel.module.css";
 import { Link } from "react-router-dom";
+import { SaveDataLS, saveDataCart } from "../LocalStorage/LocalStorage";
+import { useState, useEffect } from "react"; // Agrega 'useEffect'
+import { useDispatch } from "react-redux";
+import { localStorageCart } from "../../redux/actions/actions";
 
 interface CardModelProps {
-    id: string
+    id: string;
     name: string;
-    summary: string,
-    image: string,
-    price: number,
-    stock: number,
-    degreeOfAlcohol: number,
-    type: string,
-    IBU: number
+    summary: string;
+    image: string;
+    price: number;
+    stock: number;
+    degreeOfAlcohol: number;
+    type: string;
+    IBU: number;
 }
 
-const CardModel = ({ name, summary, image, price, stock, id, type, IBU, }: CardModelProps) => {
+const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardModelProps) => {
+
+    const dispatch = useDispatch();
 
 
 
+    //estado para controlar los input de cantidades 
+    const [item, setItem] = useState(0);
+
+    // Cargar la cantidad del localStorage cuando el componente se monta
+    useEffect(() => {
+        const savedQuantity = localStorage.getItem(id);
+        if (savedQuantity) {
+            setItem(parseInt(savedQuantity));
+        }
+    }, [id]);
+
+
+    // setea los cambios de cantidades y ejecuta para cargar en localStorage
+    const handlerItemCart = (event: React.MouseEvent<HTMLButtonElement>) => {
+        const target = event.currentTarget;
+        const updatedQuantity = target.name === '+' ? item + 1 : item - 1;
+        setItem(updatedQuantity);
+
+        const itemData: SaveDataLS = {
+            id: id,
+            quantity: updatedQuantity,
+        };
+        saveDataCart(itemData);
+        dispatch(localStorageCart(localStorage));
+    }
+
+        
+  
+    //borrar el localstorage por ahora
+    const addProductoCart = () => {
+        localStorage.clear()
+    }
 
     return (
         <Container>
-            <Card className={style.card} >
-                <Card.Body >
+            <Card className={style.card}>
+                <Card.Body>
                     <Row>
                         <Col className="col">
                             <div className={style.image}>
@@ -36,30 +72,32 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU, }: CardM
                                 </Link>
                             </div>
                         </Col>
-                        <Col sm={5} className={style.colPrice} >
+                        <Col sm={4} className={style.colPrice} >
+                            <div style={{ display: "flex", flexDirection: "column" }}>
 
-                            <h3 >{name}</h3>
-                            <div style={{ height: "70px" }}>
-                                <Card.Text style={{ fontSize: "13px", color: "white" }}>
-                                    {summary}
-                                </Card.Text>
+                                <h3 >{name.toUpperCase()}</h3>
+                                <div className={style.IBU}>
+                                    <h5>Tipo: {type}</h5>
+                                    <h5>IBU: {IBU}</h5>
+                                </div>
+                                <div className={style.textContainer}>
+                                    <p>{summary}</p>
+                                </div>
+                                <div className={style.navButton}>
+                                    <Link to={"/cart"}>
+                                        <button className={style.buttonBuy} disabled={item < 1} onClick={addProductoCart}>COMPRAR</button>
+                                    </Link>
+                                    {item ? <p>Tienes {item} 🍺 En tu carrito !!</p> : <></>}
+                                </div>
                             </div>
-                            <div style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
-                                <h5>Tipo: {type}</h5>
-                                <h5>IBU: {IBU}</h5>
-                            </div>
-                            <Link to={"/login"}>
-                                <Button className='p-2 ms-auto' variant="dark" >COMPRAR</Button>
-                            </Link>
-                            <Button className='p-2 m-2' variant="dark">AÑADIR</Button>
                         </Col>
                         <Col className={style.colPrice}>
                             <div className={style.containerInfo}>
                                 <h2 className={style.title}>${price}</h2>
-                                <p>☆☆☆☆☆  <br /> Stock Disponible : {stock} un.</p>
-                                <div className={style.input}>100 Un</div>
-                                <button className={style.custom_button}>-</button>
-                                <button className={style.custom_button}>+</button>
+                                <p>☆☆☆☆☆ </p> <br /> <p className={item === stock || stock === 0 ? style.alertOutStock : style.alertStock}>Stock Disponible : {stock} un.</p>
+                                <div className={style.input}>{item} Un.</div>
+                                <button className={style.custom_button} name={"-"} onClick={handlerItemCart} disabled={item < 1}>-</button>
+                                <button className={style.custom_button} name={"+"} onClick={handlerItemCart} disabled={item >= stock}>+</button>
                             </div>
                         </Col>
                     </Row>
@@ -68,4 +106,5 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU, }: CardM
         </Container>
     )
 }
-export default CardModel
+
+export default CardModel;

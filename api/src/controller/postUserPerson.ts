@@ -6,7 +6,6 @@ const postUserPerson = async (req: Request, res: Response) => {
   try {
     const { name, lastName, document, email, password, address, image, country, city } =
       req.body;
-
      const errors = postUserValidation(
       name, 
       lastName, 
@@ -21,6 +20,7 @@ const postUserPerson = async (req: Request, res: Response) => {
 
      if (errors) return res.status(400).json({message: errors})
 
+
     const userPerson = await UserPerson.create({
       name,
       lastName,
@@ -32,6 +32,7 @@ const postUserPerson = async (req: Request, res: Response) => {
       status: true,
       country,
       city,
+      role: "Person"
     });
 
     res.status(200).json(userPerson);

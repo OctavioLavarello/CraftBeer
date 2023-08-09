@@ -41,3 +41,26 @@ height: 140%;
   border: rgba(163, 125, 52, 1);
   background-color:rgba(163, 125, 52, 1);
 }
+.containLoading{
+  justify-content: center;
+  display:flex;
+  align-items: center;
+}
+.beerLoading{
+ 
+  width: 50%;
+  height: 50%;
+}
+.notFound {
+  font-size: 50px;
+  color: brown;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttonback {
+  
+  
+}

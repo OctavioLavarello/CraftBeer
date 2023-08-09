@@ -1,30 +1,29 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { ThunkDispatch } from 'redux-thunk';
+import { Form, Row, Col, Button } from "react-bootstrap";
+import { AnyAction } from 'redux';
 import axios from "axios";
-import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
-// STYLES
-//....
-interface FormData {
-  id: string;
-  name: string;
-  lastName: string;
-  document: string;
-  email: string;
-  password: string;
-  address: string;
-  image: string;
-}
-// BUYER SING UP
+import { createdUser } from "../../redux/actions/actions"; // Importa la acción creadora de usuarios
+
 const BuyerSingUp: React.FC = () => {
   const [formData, setFormData] = useState<Record<string, string>>({
-    id: "",
     name: "",
     lastName: "",
     document: "",
     email: "",
     password: "",
+    country:"",
+    city:"",
+    state:"",
     address: "",
     image: "",
+    status:"",
+    role:""
   });
+
+  const dispatch = useDispatch(); // Obtiene la función dispatcher
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({
@@ -33,20 +32,23 @@ const BuyerSingUp: React.FC = () => {
     }));
   };
 
-   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // Realizar la solicitud POST al backend para guardar los datos en la base de datos
     axios
-      .post("URL_DEL_BACKEND", formData)
+      .post("https://craftbeer.up.railway.app//user", formData)
       .then((response) => {
         // Manejar la respuesta del backend si es necesario
         console.log("Usuario creado exitosamente:", response.data);
+        // Llamar a la acción creadora de usuarios y enviar los datos del usuario creado
+        const dispatch = useDispatch<ThunkDispatch<any, any, AnyAction>>();
       })
       .catch((error) => {
         // Manejar el error si ocurre alguno durante la solicitud
         console.error("Error al crear usuario:", error);
       });
   };
+
   const areAllFieldsFilled = () => {
     for (const field in formData) {
       if (formData[field] === "") {
@@ -59,59 +61,147 @@ const BuyerSingUp: React.FC = () => {
   return (
     <div>
       <h2>BUYER SING UP</h2>
-      <Form style={{width:'700px', height:'auto', padding:'10px'}}>
-      <Row style={{margin:'15px'}}>
-          <Col>
-          Nombre:
-          <Form.Control placeholder="Nombre" type="text"  onChange={handleInputChange}/>
-
-          </Col>
-          <Col>
-          Apellido:
-          <Form.Control placeholder="Apellido" type="text"  onChange={handleInputChange}/>
-          
-          </Col>
-        </Row>
-        <Row style={{margin:'15px'}}>
-          <Col>
-          Documento:
-          <Form.Control placeholder="Documento" type="number" onChange={handleInputChange}/>
-
-          </Col>
-          <Col>
-          Contraseña:
-          <Form.Control placeholder="Contraseña" type="password" onChange={handleInputChange}/>
-          
-          </Col>
-        </Row>
-        
-        
-        <Row style={{margin:'15px'}}>
-          <Col>
-          Direccion:
-          <Form.Control placeholder="Direccion" onChange={handleInputChange}/>
-          </Col>
-          <Col>
-          Imagen:
-          <Form.Control placeholder="URL" type='url' onChange={handleInputChange} />
-          </Col>
-          
-        </Row>
-        <Row style={{margin:'15px'}}>
-          <Col>
-          Email:
-          <Form.Control placeholder="Email" type="email" onChange={handleInputChange}/>
-
-          </Col>
-         
-        </Row>
-        
-      </Form>
+      <Form style={{ width: "700px", height: "auto", padding: "10px" }}>
+  <Row style={{ margin: '15px' }}>
+    <Col>
+      Nombre:
+      <Form.Control
+        placeholder="Nombre"
+        type="text"
+        name="name"
+        onChange={handleInputChange}
+        value={formData.name}
+      />
+    </Col>
+    <Col>
+      Apellido:
+      <Form.Control
+        placeholder="Apellido"
+        type="text"
+        name="lastName"
+        onChange={handleInputChange}
+        value={formData.lastName}
+      />
+    </Col>
+  </Row>
+  <Row style={{ margin: '15px' }}>
+    <Col>
+      Documento:
+      <Form.Control
+        placeholder="Documento"
+        type="number"
+        name="document"
+        onChange={handleInputChange}
+        value={formData.document}
+      />
+    </Col>
+    <Col>
+      Contraseña:
+      <Form.Control
+        placeholder="Contraseña"
+        type="password"
+        name="password"
+        onChange={handleInputChange}
+        value={formData.password}
+      />
+    </Col>
+  </Row>
+  <Row style={{ margin: '15px' }}>
+    <Col>
+      Dirección:
+      <Form.Control
+        placeholder="Dirección"
+        name="address"
+        onChange={handleInputChange}
+        value={formData.address}
+      />
+    </Col>
+    <Col>
+      Imagen:
+      <Form.Control
+        placeholder="URL"
+        type="url"
+        name="image"
+        onChange={handleInputChange}
+        value={formData.image}
+      />
+    </Col>
+  </Row>
+  <Row style={{ margin: '15px' }}>
+    <Col>
+      Email:
+      <Form.Control
+        placeholder="Email"
+        type="email"
+        name="email"
+        onChange={handleInputChange}
+        value={formData.email}
+      />
+    </Col>
+  </Row>
+  <Row style={{ margin: '15px' }}>
+    <Col>
+      País:
+      <Form.Control
+        placeholder="País"
+        type="text"
+        name="country"
+        onChange={handleInputChange}
+        value={formData.country}
+      />
+    </Col>
+    <Col>
+      Ciudad:
+      <Form.Control
+        placeholder="Ciudad"
+        type="text"
+        name="city"
+        onChange={handleInputChange}
+        value={formData.city}
+      />
+    </Col>
+  </Row>
+  <Row style={{ margin: '15px' }}>
+    <Col>
+      Estado:
+      <Form.Control
+        placeholder="Estado"
+        type="text"
+        name="state"
+        onChange={handleInputChange}
+        value={formData.state}
+      />
+    </Col>
+    <Col>
+      Estatus:
+      <Form.Control
+        as="select"
+        name="status"
+        onChange={handleInputChange}
+        value={formData.status.toString()} // Convertir boolean a string
+      >
+        <option value="true">Disponible</option>
+        <option value="false">No disponible</option>
+      </Form.Control>
+    </Col>
+  </Row>
+  <Row style={{ margin: '15px' }}>
+    <Col>
+      Rol:
+      <Form.Control
+        placeholder="Rol"
+        type="text"
+        name="role"
+        onChange={handleInputChange}
+        value={formData.role}
+      />
+    </Col>
+  </Row>
+</Form>
       <form onSubmit={handleSubmit}>
-        <button type="submit">
+        <Button type="submit">
           Crear Usuario
-        </button>
-
+        </Button>
       </form>
     </div>
   );
