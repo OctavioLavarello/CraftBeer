@@ -7,7 +7,8 @@ import {
   ADD_ALL_BEER,
   ORDER_FILTERS,
   CREATED_USER,
-  LOCAL_STORAGE
+  LOCAL_STORAGE,
+  LOGIN
 } from "../actions/actionsTypes";
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
@@ -122,3 +123,56 @@ export const createdUser = (userData: UserData) => {
     toast.error("Error al crear usuario");
   }
 };
+ 
+/// LOGIN ____________________________________________________________________________________________
+
+export interface loginAction {
+  type: string;
+  payload: loginPayload;
+}
+export interface loginUserData {
+  email: string,
+  password: string,
+}
+export interface loginPayload {
+  access: boolean,
+  user: loginUser
+}
+export interface loginUser {
+  id: string;
+  name: string;
+  lastName: string;
+  document: number;
+  email: string;
+  password: string;
+  phone?: number;
+  status: boolean;
+  country: string;
+  city: string;
+  state: string;
+  address: string;
+  image?: Text;
+  company?: string
+  role: UserRole;
+}
+enum UserRole {
+  Company = "Company",
+  Person = "Person",
+  Administrator = "Administrator",
+}
+// LOGIN ACTION
+export const login = (loginUserData: loginUserData) => {
+  try {
+    const endpoint = "http://localhost:3001/login";
+    return async function (dispatch: Dispatch<loginAction>) {
+      const url = `${endpoint}?email=${loginUserData.email}&password=${loginUserData.password}`
+      const { data } = await axios.get(url);
+      return dispatch ({
+        type: LOGIN,
+        payload: data,
+      });
+    }
+  } catch (error) {
+    toast.error("Login Error")
+  }
+}

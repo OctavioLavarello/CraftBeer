@@ -4,7 +4,8 @@ import {
   orderFiltersReducer,
   productCreated,
   userCreated,
-  saveLocalStorageCart
+  saveLocalStorageCart,
+  login
 } from "./reducerFunctions";
 import {
   CREATED_PRODUCT,
@@ -12,6 +13,7 @@ import {
   ORDER_FILTERS,
   CREATED_USER,
   LOCAL_STORAGE,
+  LOGIN
 } from "../redux/actions/actionsTypes";
 
 /* import { Action } from 'redux';
@@ -58,7 +60,9 @@ const rootReducer = (
     case LOCAL_STORAGE: {
       return saveLocalStorageCart(state,action);
     }
-
+    case LOGIN: {
+      return login(state, action);
+    }
     default:
       return state;
   }
