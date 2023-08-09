@@ -31,6 +31,7 @@ const Creation = () => {
     stock: 0,
     presentation: "",
     IBU: 0,
+    UserCompanyId: ""
   });
 
   const [errors, setErrors] = useState({
@@ -55,7 +56,7 @@ const Creation = () => {
       else setErrors({ ...errors, image: "Información requerida" });
     }
     if (name === "type") {
-      if (input.name !== "") setErrors({ ...errors, type: "" });
+      if (input.type !== "") setErrors({ ...errors, type: "" });
       else setErrors({ ...errors, type: "Información requerida" });
     }
     if (name === "ABV") {
@@ -209,15 +210,15 @@ const Creation = () => {
         </Row>
         <Row style={{ margin: "15px" }}>
           <Col>
-            {/* <Form.Control
+            <Form.Control
               placeholder="URL Imagen del producto"
               name="image"
               onChange={handlerChange}
-            /> */}
-            <Form.Group controlId="formFile" className="mb-1">
+            />
+            {/* <Form.Group controlId="formFile" className="mb-1">
               <Form.Control type="file" name="image" onChange={handlerChange}/>
               <h6 className="mensajes">{errors.image}</h6>
-            </Form.Group>
+            </Form.Group> */}
           </Col>
           <Col>
             <Form.Control

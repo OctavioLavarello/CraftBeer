@@ -1,7 +1,7 @@
 //import { Dispatch, Action } from "redux";
 import axios from "axios";
 import toast from 'react-hot-toast'
-import { Dispatch } from "redux";
+import { AnyAction, Dispatch } from "redux";
 import {
   CREATED_PRODUCT,
   ADD_ALL_BEER,
@@ -24,6 +24,7 @@ export interface ProductData {
   IBU: number;
   presentation: string;
   image: string;
+  UserCompanyId: string
 }
 
 export interface CompanyData {
@@ -75,7 +76,8 @@ export const createdProduct = ({
   image,
   stock,
   IBU,
-  presentation
+  presentation,
+  UserCompanyId
 }: ProductData) => {
   try {
     return async function (dispatch: any) {
@@ -89,6 +91,7 @@ export const createdProduct = ({
         stock,
         IBU,
         presentation,
+        UserCompanyId
       });
       dispatch({
         type: CREATED_PRODUCT,
@@ -122,8 +125,8 @@ export const createdCompany = ({
   image,
 }: CompanyData) => {
   try {
-    return async function (dispatch: any) {
-      let companyCreated = await axios.post(`${localhost}/product`, {
+    return async function (dispatch: AnyAction | any) {
+      let companyCreated = await axios.post(`${localhost}/company`, {
         name,
         lastName,
         document,

@@ -1,6 +1,6 @@
 .bodyFormSeller {
-    border: solid red;
-    text-align: center;    
+   justify-content: center;
+      
 }
 
 .alinearForm {
@@ -9,4 +9,15 @@
     align-content: center;
     justify-items: center;
     
+}
+
+.errorCompany {
+    font-size: 10px;
+    color: red;
+    margin: 3px;
+}
+
+.centrado {
+    text-align: center; 
+    color: black;
 }
