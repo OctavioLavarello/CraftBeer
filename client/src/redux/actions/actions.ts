@@ -44,11 +44,11 @@ export interface CompanyData {
   image: string
 }
 
-const localhost = "http://localhost:3001";
+
 
 //Actions para recibir todas las cervezas
 export const allBeers = () => {
-  const endpoint = "http://localhost:3001/product";
+  const endpoint = "/product";
   return async function (dispatch: Dispatch<any>) {
     const response = await axios.get(endpoint);
     return dispatch({
@@ -101,7 +101,7 @@ export const createdProduct = ({
 }: ProductData) => {
   try {
     return async function (dispatch: any) {
-      let createdBeer = await axios.post(`${localhost}/product`, {
+      let createdBeer = await axios.post(`/product`, {
         name,
         image,
         type,
@@ -146,7 +146,7 @@ export const createdCompany = ({
 }: CompanyData) => {
   try {
     return async function (dispatch: AnyAction | any) {
-      let companyCreated = await axios.post(`${localhost}/company`, {
+      let companyCreated = await axios.post(`/company`, {
         name,
         lastName,
         document,
@@ -188,7 +188,7 @@ export interface UserData {
 export const createdUser = (userData: UserData) => {
   try {
     return async function (dispatch: Dispatch<any>) {
-      let createdUser = await axios.post(`${localhost}/user`, userData);
+      let createdUser = await axios.post(`/user`, userData);
       dispatch({
         type: CREATED_USER,
         payload: createdUser,
