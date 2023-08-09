@@ -7,7 +7,7 @@ export const getAllBeer = (
 ) => {
   return {
     ...state,
-    allBeer: action.payload,
+    allBeer: action.payload.products,
   };
 };
 
