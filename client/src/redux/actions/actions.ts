@@ -26,7 +26,7 @@ export interface ProductData {
   IBU: number;
   presentation: string;
   image: string;
-  UserCompanyId: string
+  userCompanyId: string;
 }
 
 export interface CompanyData {
@@ -43,8 +43,6 @@ export interface CompanyData {
   address: string,
   image: string
 }
-
-
 
 //Actions para recibir todas las cervezas
 export const allBeers = () => {
@@ -66,9 +64,7 @@ export const orderFilters = (filters: object): ActionWithPayload<"ORDER_FILTERS"
   };
 };
 
-
 //actions para guardar el localStorage 
-
 export const localStorageCart = (data:object)=>{
   return {
     type: LOCAL_STORAGE,
@@ -77,14 +73,12 @@ export const localStorageCart = (data:object)=>{
 }
 
 //actions para guardar el localStorage 
-
 export const totalPages = (data:number)=>{
   return {
     type: TOTAL_PAGES,
     payload:data
   }
 }
-
 
 //Actions para crear un producto (cerveza)
 export const createdProduct = ({
@@ -97,7 +91,7 @@ export const createdProduct = ({
   stock,
   IBU,
   presentation,
-  UserCompanyId
+  userCompanyId,  
 }: ProductData) => {
   try {
     return async function (dispatch: any) {
@@ -111,7 +105,7 @@ export const createdProduct = ({
         stock,
         IBU,
         presentation,
-        UserCompanyId
+        userCompanyId,
       });
       dispatch({
         type: CREATED_PRODUCT,
@@ -172,7 +166,6 @@ export const createdCompany = ({
    toast.error("No ha sido posible cargar su compañía");
   }  
 };
-
 
 export interface UserData {
   id: string;

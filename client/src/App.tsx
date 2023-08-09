@@ -1,5 +1,6 @@
 /// IMPORTS
 import { Routes, Route, useLocation } from 'react-router-dom';  
+import { Toaster } from 'react-hot-toast'
 // VIEWS
 import Landing from './views/Landing/Landing';
 import Home from './views/Home/Home'
@@ -14,7 +15,6 @@ import Cart from './views/Cart/Cart';
 import AboutUs from './views/aboutUs/AboutUs';
 import Contact from './views/Contact/Contact';
 import Creation from './views/Creation/Creation';
-import { Toaster } from 'react-hot-toast'
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar"
 import Footer from "./components/footer/Footer"
