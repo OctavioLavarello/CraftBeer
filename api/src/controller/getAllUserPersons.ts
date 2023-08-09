@@ -10,7 +10,7 @@ const getAllUserPersons = async (req: Request, res: Response)=>{
             return res.status(404).send({ message: 'Users not found.' })
         };
 
-        return res.status(200).send(users);
+        return res.status(200).json(users);
 
     } catch (error) {
 
