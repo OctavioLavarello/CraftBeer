@@ -107,6 +107,7 @@
     border: 0.02vh solid black;
 }
 .signUp {
+    margin-top: -4vh;
     border: 0.02vh solid black;
     border-radius: 1px;
     background-color: rgb(63, 63, 63);
