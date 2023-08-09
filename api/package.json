@@ -25,7 +25,6 @@
     "ts-node-dev": "^2.0.0"
   },
   "scripts": {
-
     "start": "nodemon /dist/index.js",
     "tsdev": "ts-node-dev index.ts"
   }
