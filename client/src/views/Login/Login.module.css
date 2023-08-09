@@ -1,0 +1,125 @@
+.all {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+}
+.avatarCont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+    width: 20vh;
+    border: 0.02vh solid rgba(163, 125, 52, 1);
+    position: relative;
+    z-index: 2;
+    background-color: rgb(63, 63, 63);
+    border-radius: 50%;
+    margin-bottom: -10vh;
+}
+.avatar {
+    height: 15vh;
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+    background-color: rgb(63, 63, 63);
+}
+.form {
+    height: 80vh;
+    width: 30%;
+    border: 0.03vh solid rgba(163, 125, 52, 1);
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(63, 63, 63);
+    position: relative;
+    z-index: 1;
+}
+.input1{
+    margin-top: 10vh;
+}
+.input, .input1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+.input div, .input1 div {
+    height: 7vh;
+    width: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(119, 89, 33);
+    border: 0.03vh solid rgb(0, 0, 0);
+}
+.input div img, .input1 div img{
+    height: 5vh;
+}
+
+.input input, .input1 input {
+    height: 7vh;
+    background-color: rgba(163, 125, 52, 1);
+    border: 0.03vh solid rgb(0, 0, 0);
+    border-radius: 1px;
+    color: white;
+}
+.input input::placeholder, .input1 input::placeholder {
+    color: white;
+}
+.input input:focus, .input1 input:focus {
+    height: 7vh;
+    background-color: rgba(163, 125, 52, 1);
+    border: 0.03vh solid rgb(0, 0, 0);
+    border-radius: 1px;
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+    outline: none;
+    color: white
+}
+.label {
+    width: 80%;
+    font-size: 1vw;
+    margin-top: -3vh;
+    color: gray;
+}
+.checks {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
+.submit {
+    background-color: rgba(163, 125, 52, 1);
+    width: 50%;
+    border: 0.02vh solid black;
+}
+.submit :disabled {
+    background-color: rgb(87, 87, 87);
+    border: rgb(87, 87, 87);
+}
+.submit:hover {
+    background-color: rgba(163, 125, 52, 1);
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+    border: 0.02vh solid black;
+}
+.signUp {
+    border: 0.02vh solid black;
+    border-radius: 1px;
+    background-color: rgb(63, 63, 63);
+}
+.signUp:hover{
+    background-color: rgb(63, 63, 63);
+    border-radius: 1px;
+    border: 0.02vh solid black;
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+}
+.forgot {
+    color: rgb(22, 22, 22);
+}
+.forgot:hover {
+    color: black
+}
