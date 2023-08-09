@@ -53,7 +53,7 @@ const Login: React.FC = () => {
             className={styles.form}
             onSubmit={handlerOnSubmit}
             >
-                <Form.Group className={`${errors.password ? styles.inputError1 : styles.input1}`}>
+                <Form.Group className={`${errors.email ? styles.inputError1 : styles.input1}`}>
                     <div>
                         <img src={email} alt="email" />
                     </div>
