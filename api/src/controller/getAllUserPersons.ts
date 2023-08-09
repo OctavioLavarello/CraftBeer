@@ -4,13 +4,13 @@ import { UserPerson } from "../../db";
 const getAllUserPersons = async (req: Request, res: Response)=>{
     try {
 
-        const users = UserPerson.findAll();
+        const users = await UserPerson.findAll();
 
         if(!users){
             return res.status(404).send({ message: 'Users not found.' })
         };
 
-        return res.status(200).send(users);
+        return res.status(200).json(users);
 
     } catch (error) {
 
