@@ -1,14 +1,9 @@
 import { DataTypes, Model, ModelCtor } from "sequelize";
 import { sequelize } from "../../db";
+import { ShoppingHistoryModelInterface } from "../interfaces/interfaces";
 
-interface Attributes {
-    id:string;
-    date:Date;
-    totalPrice:number;
-
-  }
-  type ShoppingHistoryModel = Model<Attributes> & {
-    new (): Attributes;
+  type ShoppingHistoryModel = Model<ShoppingHistoryModelInterface> & {
+    new ():ShoppingHistoryModelInterface;
   };
 
   const defineModel = (): ModelCtor<ShoppingHistoryModel> => {
