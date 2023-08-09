@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CardModel from "../CardModel/CardModel";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../../redux/reducer";
 import { Toaster, toast } from "react-hot-toast";
 import style from "./CardShop.module.css"
+import { totalPages } from "../../redux/actions/actions";
 
 interface BeerData {
     id: string;
@@ -21,13 +22,14 @@ interface BeerData {
 }
 interface responseBack {
     products: BeerData[],
-    totalpages: number
+    totalPages: number
 }
 
 const CardShop = () => {
     //estados 
-
+    const dispatch = useDispatch()
     const [dataLoaded, setDataLoaded] = useState(false);
+    
     // Variable para controlar la carga de datos
     let [allBeersData, setAllBeersData] = useState<BeerData[]>([]);
 
@@ -42,6 +44,9 @@ const CardShop = () => {
         try {
             const response = await axios.get<responseBack>(endpoint, { params: filters.beerFilters });
             setAllBeersData(response.data.products);
+            console.log(response.data.totalPages);
+            
+            dispatch(totalPages(response.data.totalPages))
         } catch (error) {
             console.error(error);
         }
@@ -66,7 +71,6 @@ const CardShop = () => {
         }
     }, [allBeersData, dataLoaded]);
 
-    console.log(allBeersData);
 
     let messageAlert = (
         <div className={style.message}>
