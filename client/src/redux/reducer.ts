@@ -3,6 +3,7 @@ import {
   getAllBeer,
   orderFiltersReducer,
   productCreated,
+  postCompany,
   userCreated,
   saveLocalStorageCart
 } from "./reducerFunctions";
@@ -10,6 +11,7 @@ import {
   CREATED_PRODUCT,
   ADD_ALL_BEER,
   ORDER_FILTERS,
+  CREATED_COMPANY,
   CREATED_USER,
   LOCAL_STORAGE,
 } from "../redux/actions/actionsTypes";
@@ -19,6 +21,7 @@ import {
 export interface AppState {
   allBeer: object[];
   beerFilters: BeerFilters;
+  allCompany: object[]
   localStorageCart:object
 }
 export interface BeerFilters {
@@ -35,6 +38,7 @@ export interface BeerFilters {
 export const initialState: AppState = {
   allBeer: [],
   beerFilters: {},
+  allCompany: []
   localStorageCart:localStorage
 };
 
@@ -52,9 +56,15 @@ const rootReducer = (
     case CREATED_PRODUCT: {
       return productCreated(state);
     }
+
+    case CREATED_COMPANY: {
+      return postCompany(state)
+    }
+
     case CREATED_USER: {
       return userCreated(state)
     };
+      
     case LOCAL_STORAGE: {
       return saveLocalStorageCart(state,action);
     }

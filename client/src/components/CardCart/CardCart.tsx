@@ -1,7 +1,7 @@
 import { Container, Button, Card, Col, Row } from "react-bootstrap";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./CardCart.css";
+import "../CardCart/CardCart.css";
 
 const CardCart = () => {
   const [contador, setContador] = useState(0);
@@ -21,7 +21,12 @@ const CardCart = () => {
   // let precioPagar = contador * precio;
   return (
     <Container>
-      <Card className="custom-card">
+      <Card style={{backgroundColor:"#4b0909", color:"#fff",
+      fontSize:"16px",
+      padding: "10px 20px",
+      borderRadius:"8px",
+      textAlign:"center"
+    }}>
         <Card.Body>
           <Row>
             <Col>
@@ -29,9 +34,9 @@ const CardCart = () => {
                 <Card.Img
                   src="https://www.ngenespanol.com/wp-content/uploads/2018/08/7-buenas-razones-para-tomar-cerveza-1280x720.png"
                   style={{
-                    width: "300px",
+                    width: "100%",
                     height: "100%",
-                    marginLeft: "-70px",
+                    marginLeft: "-10%",
                   }}
                 />
               </Link>
