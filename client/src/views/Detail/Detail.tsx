@@ -22,6 +22,7 @@ interface Beer {
 const Detail = () => {
   const { id } = useParams();
   const [beer, setBeer] = useState<Beer | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchBeer = async () => {
@@ -31,13 +32,41 @@ const Detail = () => {
       } catch (error) {
         console.log(error);
         console.error('Error fetching beer', error);
+      }finally {
+        // Se oculta la imagen de loading después de 3 segundos
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 3000);
       }
     };
     fetchBeer();
   }, [id]);
 
+  if (isLoading) {
+    return (
+      <div className={styles.containLoading}>
+        <img
+          className={styles.beerLoading}
+          src="https://4.bp.blogspot.com/-646VVaYA-bg/WPHrAyqN7YI/AAAAAAAADjI/7lAJmMNHpm4vCT49MlX51SBPDzlrx0MFACLcB/s1600/aa2.gif"
+          alt=""
+        />
+      </div>
+    );
+  }
+
   if (!beer) {
-    return <div><img src="https://i.pinimg.com/originals/9d/c2/a9/9dc2a9af62e5d06ac0b9dce59e5b1d64.gif" alt="" /></div>;
+    return (
+      <div className={styles.notFound}>
+        <div>
+          ¡Producto no encontrado!
+        </div>
+        <Link to="/shop" aria-disabled>
+          <Button variant="danger" className={styles.buttonback}>
+            Volver
+          </Button>
+        </Link>
+      </div>
+    );
   }
 
   return (

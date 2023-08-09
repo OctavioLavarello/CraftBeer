@@ -8,6 +8,7 @@ import {
   ORDER_FILTERS,
   CREATED_COMPANY,
   CREATED_USER,
+  LOCAL_STORAGE
 } from "../actions/actionsTypes";
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
@@ -57,14 +58,23 @@ export const allBeers = () => {
 };
 
 //Actions para recibir filtros por orden
-export const orderFilters = (
-  filters: object
-): ActionWithPayload<"ORDER_FILTERS", object> => {
+export const orderFilters = (filters: object): ActionWithPayload<"ORDER_FILTERS", object> => {
   return {
     type: ORDER_FILTERS,
     payload: filters,
   };
 };
+
+
+//actions para guardar el localStorage 
+
+export const localStorageCart = (data:object)=>{
+  return {
+    type: LOCAL_STORAGE,
+    payload:data
+  }
+}
+
 
 //Actions para crear un producto (cerveza)
 export const createdProduct = ({

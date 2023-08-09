@@ -10,6 +10,8 @@ export const getAllBeer = (
     allBeer: action.payload,
   };
 };
+
+//ALMACENAR FILTROS 
 export const orderFiltersReducer = (
   state = initialState,
   action: ActionWithPayload<string, any>
@@ -19,6 +21,7 @@ export const orderFiltersReducer = (
     beerFilters: action.payload,
   };
 };
+//CREAR PRODUCTOS 
 
 export const productCreated = (state = initialState) => {
   return {
@@ -38,3 +41,14 @@ export const userCreated = (state = initialState) => {
     ...state,
   };
 };
+//ALMACENAR LOCAL STORAGE 
+
+export const saveLocalStorageCart = (
+  state = initialState,
+  action: ActionWithPayload<string, any>
+)=>{
+return{
+  ...state,
+  localStorageCart: action.payload
+}
+}

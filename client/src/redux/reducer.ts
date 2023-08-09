@@ -5,6 +5,7 @@ import {
   productCreated,
   postCompany,
   userCreated,
+  saveLocalStorageCart
 } from "./reducerFunctions";
 import {
   CREATED_PRODUCT,
@@ -12,6 +13,7 @@ import {
   ORDER_FILTERS,
   CREATED_COMPANY,
   CREATED_USER,
+  LOCAL_STORAGE,
 } from "../redux/actions/actionsTypes";
 
 /* import { Action } from 'redux';
@@ -20,6 +22,7 @@ export interface AppState {
   allBeer: object[];
   beerFilters: BeerFilters;
   allCompany: object[]
+  localStorageCart:object
 }
 export interface BeerFilters {
   IBU?: number,  // El signo de interrogación indica que la propiedad es opcional
@@ -31,10 +34,12 @@ export interface BeerFilters {
   type?:String,
   order?:String,
 }
+
 export const initialState: AppState = {
   allBeer: [],
   beerFilters: {},
   allCompany: []
+  localStorageCart:localStorage
 };
 
 const rootReducer = (
@@ -58,6 +63,10 @@ const rootReducer = (
 
     case CREATED_USER: {
       return userCreated(state)
+    };
+      
+    case LOCAL_STORAGE: {
+      return saveLocalStorageCart(state,action);
     }
 
     default:
