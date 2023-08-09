@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import { Col, Row } from 'react-bootstrap';
 import style from "./CardModel.module.css";
 import { Link } from "react-router-dom";
-import { saveDataCart } from "../LocalStorage/LocalStorage";
+import { SaveDataLS, saveDataCart } from "../LocalStorage/LocalStorage";
 import { useState, useEffect } from "react"; // Agrega 'useEffect'
 import { useDispatch } from "react-redux";
 import { localStorageCart } from "../../redux/actions/actions";
@@ -36,20 +36,25 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
             setItem(parseInt(savedQuantity));
         }
     }, [id]);
+
+
     // setea los cambios de cantidades y ejecuta para cargar en localStorage
     const handlerItemCart = (event: React.MouseEvent<HTMLButtonElement>) => {
         const target = event.currentTarget;
         const updatedQuantity = target.name === '+' ? item + 1 : item - 1;
-
         setItem(updatedQuantity);
-        saveDataCart({
-            key: id,
-            quantity: updatedQuantity
-        });
 
+        const itemData: SaveDataLS = {
+            id: id,
+            quantity: updatedQuantity,
+        };
+        saveDataCart(itemData);
         dispatch(localStorageCart(localStorage));
     }
 
+        
+  
+    //borrar el localstorage por ahora
     const addProductoCart = () => {
         localStorage.clear()
     }
