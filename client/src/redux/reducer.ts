@@ -3,11 +3,13 @@ import {
   getAllBeer,
   orderFiltersReducer,
   productCreated,
+  postCompany
 } from "./reducerFunctions";
 import {
   CREATED_PRODUCT,
   ADD_ALL_BEER,
   ORDER_FILTERS,
+  CREATED_COMPANY,
 } from "../redux/actions/actionsTypes";
 
 /* import { Action } from 'redux';
@@ -15,6 +17,7 @@ import {
 export interface AppState {
   allBeer: object[];
   beerFilters: BeerFilters;
+  allCompany: object[]
 }
 export interface BeerFilters {
   IBU?: number,  // El signo de interrogación indica que la propiedad es opcional
@@ -29,6 +32,7 @@ export interface BeerFilters {
 export const initialState: AppState = {
   allBeer: [],
   beerFilters: {},
+  allCompany: []
 };
 
 const rootReducer = (
@@ -44,6 +48,9 @@ const rootReducer = (
     }
     case CREATED_PRODUCT: {
       return productCreated(state);
+    }
+    case CREATED_COMPANY: {
+      return postCompany(state)
     }
 
     default:

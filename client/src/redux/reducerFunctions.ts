@@ -25,3 +25,9 @@ export const productCreated = (state = initialState) => {
     ...state,
   };
 };
+
+export const postCompany = (state = initialState)=> {
+  return {
+    ...state,
+  }
+}

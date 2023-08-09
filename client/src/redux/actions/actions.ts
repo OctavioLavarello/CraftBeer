@@ -6,13 +6,13 @@ import {
   CREATED_PRODUCT,
   ADD_ALL_BEER,
   ORDER_FILTERS,
+  CREATED_COMPANY
 } from "../actions/actionsTypes";
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
   type: T;
   payload: P;
 }
-
 export interface ProductData {
   name: string;
   type: string;
@@ -23,6 +23,21 @@ export interface ProductData {
   IBU: number;
   presentation: string;
   image: string;
+}
+
+export interface CompanyData {
+  name: string,
+  lastName: string
+  document: number,
+  email: string
+  password: string
+  phone: number,
+  country: string
+  city: string
+  state: string
+  company: string
+  address: string,
+  image: string
 }
 
 const localhost = "http://localhost:3001";
@@ -78,9 +93,58 @@ export const createdProduct = ({
         type: CREATED_PRODUCT,
         payload: createdBeer,
       });
+      console.log(createdBeer);
+      
       toast.success("Se creo correctamente su producto")
     };
   } catch (error) {
+    console.log("Entre al error");
+    
    toast.error("No ha sido posible cargar su producto");
   }
+  
+};
+
+//Actions para crear un usuario de vendedor (postCompany)
+export const createdCompany = ({
+  name,
+  lastName,
+  document,
+  email,
+  password,
+  phone,
+  country,
+  city,
+  state,
+  company,
+  address,
+  image,
+}: CompanyData) => {
+  try {
+    return async function (dispatch: any) {
+      let companyCreated = await axios.post(`${localhost}/product`, {
+        name,
+        lastName,
+        document,
+        email,
+        password,
+        phone,
+        country,
+        city,
+        state,
+        company,
+        address,
+        image,
+      });
+      dispatch({
+        type: CREATED_COMPANY,
+        payload: companyCreated,
+      });
+      console.log(companyCreated);
+      
+      toast.success("Se creo correctamente su compañía")
+    };
+  } catch (error) {
+   toast.error("No ha sido posible cargar su compañía");
+  }  
 };
