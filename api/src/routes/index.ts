@@ -8,8 +8,8 @@ import getAllProducts from '../controller/getAllProducts';
 import putUserPerson from "../controller/putUserPerson"
 import logIn from '../controller/logIn';
 import putProduct from '../controller/putProduct';
-
 import putUserCompany from '../controller/putUserCompany';
+import getAllUserPersons from '../controller/getAllUserPersons';
 
 const router = Router();
 
@@ -23,6 +23,7 @@ router.get("/companies", getAllCompanies);
 router.get("/product/:idProduct", getProductById);
 router.get("/product", getAllProducts);
 router.get("/login", logIn);
+router.get("/persons", getAllUserPersons);
 
 // ------- update routes-------//
 router.put("/user", putUserPerson);
