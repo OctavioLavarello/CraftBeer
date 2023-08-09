@@ -3,13 +3,15 @@ import {
   getAllBeer,
   orderFiltersReducer,
   productCreated,
-  postCompany
+  postCompany,
+  userCreated,
 } from "./reducerFunctions";
 import {
   CREATED_PRODUCT,
   ADD_ALL_BEER,
   ORDER_FILTERS,
   CREATED_COMPANY,
+  CREATED_USER,
 } from "../redux/actions/actionsTypes";
 
 /* import { Action } from 'redux';
@@ -49,8 +51,13 @@ const rootReducer = (
     case CREATED_PRODUCT: {
       return productCreated(state);
     }
+
     case CREATED_COMPANY: {
       return postCompany(state)
+    }
+
+    case CREATED_USER: {
+      return userCreated(state)
     }
 
     default:

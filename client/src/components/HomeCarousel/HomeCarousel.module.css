@@ -3,9 +3,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    height: 500px;
-    margin-top: 50px;
-    margin-bottom: 30px;
+    height: 90vh;
+    margin-top: 9vh;
+    margin-bottom: 6vh;
 }
 .carouselContainer {
     display: flex;
@@ -18,66 +18,59 @@
     align-items: center;
 }
 .carousel div {
-    margin-bottom: 20px;
-}
-.linkLeft {
-    border: 2px solid rgba(163, 125, 52, 1);
-    margin-right: -98px;
-    z-index: 1;
+    margin-bottom: 4vh;
 }
 .linkMain {
-    border: 2px solid rgba(163, 125, 52, 1);
-    border-radius: 15px;
-    width: 650px;
+    border: 0.3vh solid rgba(163, 125, 52, 1);
+    border-radius: 1%;
+    width: 50vw;
     z-index: 2;
 }
-.linkRight {
-    border: 2px solid rgba(163, 125, 52, 1);
-    margin-left: -98px;
+.linkLeft, .linkRight {
+    border: 0.3vh solid rgba(163, 125, 52, 1);
     z-index: 1;
 }
-.linkLeft img{
+.linkLeft {
+    margin-right: -8vw;
+}
+.linkRight {
+    margin-left: -8vw;
+}
+.linkLeft img, .linkRight img{
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    width: 400px;
-    height: 300px;
+    width: 72vh;
+    height: 54vh;
     opacity: 0.5;
 }
 .linkMain img{
-    border-radius: 15px;
+    border-radius: 1%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     width: 100%;
-    height: 500px;
-}
-.linkRight img{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    width: 400px;
-    height: 300px;
-    opacity: 0.5;
+    height: 90vh;
 }
 
 .linkLeft, .linkMain, .linkRight {
     position: relative;
 }
 .carousel a:first-of-type span {
-    height: 200px;
-    margin-top: -65px;
-    margin-right: 155px;
+    height: 36vh;
+    width: 2vw;
+    margin-top: -12vh;
+    margin-right: 12.6vw;
     background-color: rgba(163, 125, 52, 1);
     border-radius: 0 10px 10px 0;
 }
 .carousel a:last-of-type span {
-    height: 200px;
-    margin-top: -65px;
-    margin-left: 155px;
+    height: 36vh;
+    width: 2vw;
+    margin-top: -12vh;
+    margin-left: 12.6vw;
     background-color: rgba(163, 125, 52, 1);
     border-radius: 10px 0 0 10px;
 }

@@ -26,8 +26,15 @@ export const productCreated = (state = initialState) => {
   };
 };
 
+
 export const postCompany = (state = initialState)=> {
   return {
     ...state,
   }
 }
+
+export const userCreated = (state = initialState) => {
+  return {
+    ...state,
+  };
+};

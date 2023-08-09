@@ -37,7 +37,7 @@ const Detail = () => {
   }, [id]);
 
   if (!beer) {
-    return <div>Loading...</div>;
+    return <div><img src="https://i.pinimg.com/originals/9d/c2/a9/9dc2a9af62e5d06ac0b9dce59e5b1d64.gif" alt="" /></div>;
   }
 
   return (
