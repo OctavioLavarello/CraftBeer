@@ -1,25 +1,12 @@
 import { DataTypes, Model, ModelCtor } from "sequelize";
 import { sequelize } from "../../db";
 import UserRole from "../emuns";
+import { UserPersonModelInterface } from "../interfaces/interfaces";
 
-interface UserAttributes {
-  id: string;
-  name: string;
-  lastName: string;
-  document: number;
-  email: string;
-  password: string;
-  status: boolean;
-  country: string;
-  city: string;
-  state: string;
-  address: string;
-  image?: Text;
-  role: UserRole;
-}
 
-type UserModel = Model<UserAttributes> & {
-  new (): UserAttributes;
+
+type UserModel = Model<UserPersonModelInterface> & {
+  new (): UserPersonModelInterface;
 };
 
 const defineUserModel = (): ModelCtor<UserModel> => {

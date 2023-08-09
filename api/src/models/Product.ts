@@ -1,23 +1,10 @@
 import { DataTypes, Model, ModelCtor } from "sequelize";
 import { sequelize } from "../../db";
+import { ProductModelInterface } from "../interfaces/interfaces"; 
 
-interface Attributes {
-  id: string;
-  image: string;
-  name: string;
-  type: string;
-  description: string;
-  ABV: number;
-  presentation: string;
-  price: number;
-  stock: number;
-  IBU: number;
-  qualification?: number;
-  status: boolean;
-  userCompanyId: string
-}
-type ProductModel = Model<Attributes> & {
-  new (): Attributes;
+
+type ProductModel = Model<ProductModelInterface> & {
+  new (): ProductModelInterface;
 };
 
 const defineModel = (): ModelCtor<ProductModel> => {

@@ -7,7 +7,7 @@ export const getAllBeer = (
 ) => {
   return {
     ...state,
-    allBeer: action.payload,
+    allBeer: action.payload.products,
   };
 };
 
@@ -29,6 +29,13 @@ export const productCreated = (state = initialState) => {
   };
 };
 
+
+export const postCompany = (state = initialState)=> {
+  return {
+    ...state,
+  }
+}
+
 export const userCreated = (state = initialState) => {
   return {
     ...state,
@@ -43,5 +50,16 @@ export const saveLocalStorageCart = (
 return{
   ...state,
   localStorageCart: action.payload
+}
+}
+//ALMACENAR numero de paginas para el shop 
+
+export const totalPagesShop = (
+  state = initialState,
+  action: ActionWithPayload<string, number>
+)=>{
+return{
+  ...state,
+  totalPages: action.payload
 }
 }
