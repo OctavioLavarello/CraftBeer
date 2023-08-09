@@ -42,7 +42,7 @@ export const initialState: AppState = {
   allBeer: [],
   beerFilters: {},
   localStorageCart:localStorage,
-  totalPages:0
+  totalPages:0,
   allCompany: []
 };
 
