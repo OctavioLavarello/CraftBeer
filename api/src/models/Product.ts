@@ -14,6 +14,7 @@ interface Attributes {
   IBU: number;
   qualification?: number;
   status: boolean;
+  userCompanyId: string
 }
 type ProductModel = Model<Attributes> & {
   new (): Attributes;
@@ -70,6 +71,12 @@ const defineModel = (): ModelCtor<ProductModel> => {
       allowNull: false,
       defaultValue: true,
     },
+
+    userCompanyId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+    },
+    
   }) as ModelCtor<ProductModel>;
 };
 
