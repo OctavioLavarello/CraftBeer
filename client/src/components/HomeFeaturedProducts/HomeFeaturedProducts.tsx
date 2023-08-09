@@ -1,15 +1,15 @@
 /// IMPORTS
 import React from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store"
 // COMPONENTS
 import MiniCard from "../miniCard/MiniCard";
 // STYLES
 import styles from "./HomeFeaturedProducts.module.css"
+import { AppState } from "../../redux/reducer";
 
 // HOME FEATURED PRODUCTS
 const HomeFeaturedProducts: React.FC = () => {
-    const { allBeer } = useSelector((state: RootState) => state)
+    const  allBeer  = useSelector((state: AppState) => state.allBeer)
 
     const firstFourCards = allBeer.slice(0, 4);
     const lastFourCards = allBeer.slice(4, 8);

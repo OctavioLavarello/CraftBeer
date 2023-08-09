@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CardModel from "../CardModel/CardModel";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { AppState } from "../../redux/reducer";
 import { Toaster, toast } from "react-hot-toast";
 import style from "./CardShop.module.css"
@@ -19,11 +19,15 @@ interface BeerData {
     stock: number;
     qualification?: number;
 }
+interface responseBack {
+    products: BeerData[],
+    totalpages: number
+}
 
 const CardShop = () => {
     //estados 
 
-    const [dataLoaded, setDataLoaded] = useState(false); 
+    const [dataLoaded, setDataLoaded] = useState(false);
     // Variable para controlar la carga de datos
     let [allBeersData, setAllBeersData] = useState<BeerData[]>([]);
 
@@ -36,8 +40,8 @@ const CardShop = () => {
     const getAllBeers = async () => {
         const endpoint = "http://localhost:3001/product";
         try {
-            const response = await axios.get<BeerData[]>(endpoint, { params: filters.beerFilters });
-            setAllBeersData(response.data);
+            const response = await axios.get<responseBack>(endpoint, { params: filters.beerFilters });
+            setAllBeersData(response.data.products);
         } catch (error) {
             console.error(error);
         }
@@ -62,24 +66,24 @@ const CardShop = () => {
         }
     }, [allBeersData, dataLoaded]);
 
+    console.log(allBeersData);
 
-     let messageAlert = (
-          <div className={style.message}>
-              <h2>❌ ❌ ❌</h2>
-              <h1> Upps!!! no hay cervezas disponibles. </h1>
-              <h5>Prueba con filtros distintos</h5>
-          </div>)
-  
+    let messageAlert = (
+        <div className={style.message}>
+            <h2>❌ ❌ ❌</h2>
+            <h1> Upps!!! no hay cervezas disponibles. </h1>
+            <h5>Prueba con filtros distintos</h5>
+        </div>)
+
 
 
     return (
         <>
-
             <div>
                 <Toaster toastOptions={{ className: style["customToast"], duration: 2000 }} />
             </div>
-                        {dataLoaded && allBeersData.length === 0 && messageAlert}
- 
+            {dataLoaded && allBeersData.length === 0 && messageAlert}
+
             {allBeersData?.map((product) => (
                 <CardModel
                     key={product.id}
