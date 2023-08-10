@@ -3,24 +3,43 @@
     flex-direction: row;
 }
 
+.botonCentro {
+    text-align: center;
+}
+
 .bodyMisArt {
-    max-width: 650px;
+    max-width: 47%;
     border-left: inset #A37D34 2px ;
 
 }
 
 .spamMisArt {
-    margin: 15px;   
+    margin: 5%;
+    text-align: left;   
 }
 
 .botonFormProd:hover {
     background-color: grey;
     color: black;
- 
 }
 
 .mensajes {
     font-size: 10px;
     color: red;
     margin: 3px;
+}
+
+.selector {
+    background-color: white;
+    color: black;
+    width: 100%;
+    border-radius: 5px;
+    height: 70%;
+}
+
+.tituloFormCreacion {
+    text-align: left;
+    margin-left: 5%;
+    margin-top: 2%;
+        
 }
