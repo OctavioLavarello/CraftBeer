@@ -3,10 +3,11 @@ import Card from 'react-bootstrap/Card';
 import { Col, Row } from 'react-bootstrap';
 import style from "./CardModel.module.css";
 import { Link } from "react-router-dom";
-import { SaveDataLS, saveDataCart } from "../LocalStorage/LocalStorage";
+import { SaveDataLS, deleteDataCart, saveDataCart } from "../LocalStorage/LocalStorage";
 import { useState, useEffect } from "react"; // Agrega 'useEffect'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { localStorageCart } from "../../redux/actions/actions";
+import { AppState } from "../../redux/reducer";
 
 interface CardModelProps {
     id: string;
@@ -23,27 +24,29 @@ interface CardModelProps {
 const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardModelProps) => {
 
     const dispatch = useDispatch();
-
-
+    //estado del carrrito 
+    const itemCart = useSelector((state: AppState) => state.localStorageCart)
 
     //estado para controlar los input de cantidades 
     const [item, setItem] = useState(0);
 
     // Cargar la cantidad del localStorage cuando el componente se monta
     useEffect(() => {
-        const savedQuantity = localStorage.getItem(id);
-        if (savedQuantity !== null) {
-            const parsedQuantity = JSON.parse(savedQuantity).quantity;
-            setItem(parsedQuantity);
+
+        const savedQuantity = itemCart.find(item => item.id === id)
+        if (savedQuantity !== undefined) {
+            setItem(savedQuantity?.quantity);
         } else {
             setItem(0);
         }
     }, [id]);
 
-   // setea los cambios de cantidades y ejecuta para cargar en localStorage
+    // setea los cambios de cantidades y ejecuta para cargar en localStorage
     const handlerItemCart = (event: React.MouseEvent<HTMLButtonElement>) => {
         const target = event.currentTarget;
         const updatedQuantity = target.name === '+' ? item + 1 : item - 1;
+
+
         setItem(updatedQuantity);
         const itemData: SaveDataLS = {
             id,
@@ -53,14 +56,21 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
             summary,
             quantity: updatedQuantity,
         };
-        saveDataCart(itemData);
+
+        if (updatedQuantity > 0) {
+            saveDataCart(itemData)
+        } else {
+            deleteDataCart(itemData.id)
+        };
+
         dispatch(localStorageCart(itemData));
+
     }
 
 
 
-  
-    
+
+
 
     return (
         <Container>

@@ -49,13 +49,34 @@ export const saveLocalStorageCart = (
   action: ActionWithPayload<string, any>
 ) => {
 
+  const existingItem = state.localStorageCart.find(item => item.id === action.payload.id);
 
-  return {
-    ...state,
-    localStorageCart: action.payload
+  if (action.payload.quantity === 0) {
+    const updatedCart = state.localStorageCart.filter(item => item.id !== action.payload.id);
+    return {
+      ...state,
+      localStorageCart: updatedCart
+    };
+  } else if (existingItem) {
+    const updatedCart = state.localStorageCart.map(item => {
+      if (item.id === action.payload.id) {
+        return action.payload;
+      } else {
+        return item;
+      }
+    });
+    return {
+      ...state,
+      localStorageCart: updatedCart
+    };
+  } else {
+    return {
+      ...state,
+      localStorageCart: [...state.localStorageCart, action.payload]
+    };
   }
-}
 
+};
 
 
 
