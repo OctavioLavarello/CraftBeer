@@ -6,7 +6,7 @@ import {
   postCompany,
   userCreated,
   saveLocalStorageCart,
-  login
+  login,
   totalPagesShop
 } from "./reducerFunctions";
 import {
@@ -16,7 +16,7 @@ import {
   CREATED_COMPANY,
   CREATED_USER,
   LOCAL_STORAGE,
-  LOGIN
+  LOGIN,
   TOTAL_PAGES,
 } from "../redux/actions/actionsTypes";
 
@@ -62,15 +62,12 @@ const rootReducer = (
     case CREATED_PRODUCT: {
       return productCreated(state);
     }
-
     case CREATED_COMPANY: {
       return postCompany(state)
     }
-
     case CREATED_USER: {
       return userCreated(state)
     };
-      
     case LOCAL_STORAGE: {
       return saveLocalStorageCart(state,action);
     }

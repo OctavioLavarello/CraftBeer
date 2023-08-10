@@ -9,7 +9,7 @@ import {
   CREATED_COMPANY,
   CREATED_USER,
   LOCAL_STORAGE,
-  LOGIN
+  LOGIN,
   TOTAL_PAGES
 } from "../actions/actionsTypes";
 //interface para las Actions

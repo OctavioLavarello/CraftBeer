@@ -47,13 +47,11 @@ export const userCreated = (state = initialState) => {
 export const saveLocalStorageCart = (
   state = initialState,
   action: ActionWithPayload<string, any>
-) => {
-
-
-  return {
-    ...state,
-    localStorageCart: action.payload
-  }
+)=>{
+return{
+  ...state,
+  localStorageCart: action.payload
+}
 }
 // LOGIN 
 export const login = (state = initialState, action: loginAction) => {
@@ -66,9 +64,9 @@ export const login = (state = initialState, action: loginAction) => {
 export const totalPagesShop = (
   state = initialState,
   action: ActionWithPayload<string, number>
-) => {
-  return {
-    ...state,
-    totalPages: action.payload
-  }
+)=>{
+return{
+  ...state,
+  totalPages: action.payload
+}
 }
