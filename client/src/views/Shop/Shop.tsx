@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { orderFilters } from "../../redux/actions/actions";
 import { AppState } from "../../redux/reducer";
+import { Link } from "react-router-dom";
 
 // SHOP
 
@@ -21,18 +22,23 @@ const Shop = () => {
   let pages = useSelector((state: AppState) => state.totalPages)
 
 
-  //traer la cantidad de articulos en el local storage
-  const [cartAdd, setCartAdd] = useState(0)
-  let cart = useSelector((state: AppState) => state.localStorageCart);
-  let products = Object.values(cart)
-  const numberArray = products.map(str => parseInt(str));
-  const sumProducts = numberArray.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-
+  /* //traer la cantidad de articulos en el local storage
+  const [cartAdd, setCartAdd] = useState(0);
+  const cart = useSelector((state: AppState) => state.localStorageCart);
+  
+  // Convertir el objeto en un array de valores
+  const cartValues = Object.values(cart);
+  
+  // Obtener la suma total de la propiedad 'quantity'
+  const sumProducts = cartValues.reduce((accumulator, currentValue) => {
+    const parsedValue = JSON.parse(currentValue);
+    return accumulator + parsedValue.quantity;
+  }, 0);
+  
   useEffect(() => {
-    setCartAdd(sumProducts)
-  }, [cartAdd])
- 
-
+    setCartAdd(sumProducts);
+  }, [cart]);
+ */
 
   // estado para controlar el input search
   const [input, setInput] = useState("")
@@ -93,12 +99,15 @@ const Shop = () => {
         />
         <button className={style.button} disabled={disableBoton.search} onClick={handlerClick}>🔍</button>
         <button className={style.buttonAll} onClick={handlerClick}>All</button>
+
+        <Link to={"/cart"}>
         <div className={style.imageCart}>
           <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" />
-          <div>
-            <p>{cartAdd}</p>
+          <div className={style.imageCartdiv}>
+            03
           </div>
         </div>
+        </Link>
       </div>
       <Row>
         <Col xs={12} md={3}>

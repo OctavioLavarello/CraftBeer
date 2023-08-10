@@ -62,15 +62,12 @@ const rootReducer = (
     case CREATED_PRODUCT: {
       return productCreated(state);
     }
-
     case CREATED_COMPANY: {
       return postCompany(state)
     }
-
     case CREATED_USER: {
       return userCreated(state)
     };
-      
     case LOCAL_STORAGE: {
       return saveLocalStorageCart(state,action);
     }

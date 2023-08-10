@@ -30,7 +30,7 @@ export const productCreated = (state = initialState) => {
 };
 
 
-export const postCompany = (state = initialState)=> {
+export const postCompany = (state = initialState) => {
   return {
     ...state,
   }
@@ -41,8 +41,9 @@ export const userCreated = (state = initialState) => {
     ...state,
   };
 };
-//ALMACENAR LOCAL STORAGE 
 
+
+//ALMACENAR LOCAL STORAGE 
 export const saveLocalStorageCart = (
   state = initialState,
   action: ActionWithPayload<string, any>
