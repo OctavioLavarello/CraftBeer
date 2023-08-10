@@ -28,6 +28,7 @@ export interface AppState {
   localStorageCart:object;
   totalPages:number
   allCompany: object[]
+  access: boolean
 }
 export interface BeerFilters {
   IBU?: number,  // El signo de interrogación indica que la propiedad es opcional
@@ -45,7 +46,8 @@ export const initialState: AppState = {
   beerFilters: {},
   localStorageCart:localStorage,
   totalPages:0,
-  allCompany: []
+  allCompany: [],
+  access: false,
 };
 
 const rootReducer = (

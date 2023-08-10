@@ -57,7 +57,7 @@ return{
 export const login = (state = initialState, action: loginAction) => {
   return {
     ...state,
-    localStorageCart: action.payload
+    access: action.payload.access
   }
 }
 //ALMACENAR numero de paginas para el shop 

@@ -105,6 +105,11 @@
     box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
     border: 0.02vh solid black;
 }
+.submit:active {
+    background-color: rgb(96, 163, 52);
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+    border: 0.02vh solid black;
+}
 .checks div input:not(:checked)  {
     background-color: rgba(163, 125, 52, 1);
     border: 0.02vh solid black;

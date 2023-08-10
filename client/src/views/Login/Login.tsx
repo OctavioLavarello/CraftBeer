@@ -1,7 +1,12 @@
 /// IMPORTS
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import loginValidation from "./LoginValidation";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-hot-toast";
+import { AppState } from "../../redux/reducer";
+// ACTION
+import { login } from "../../redux/actions/actions";
 // STYLES
 import styles from "./Login.module.css";
 import Button from 'react-bootstrap/Button';
@@ -16,6 +21,9 @@ export interface login {
 }
 // LOGIN
 const Login: React.FC = () => {
+    // GLOBAL STATE
+    const { access } = useSelector((state: AppState) => state) 
+    const dispatch = useDispatch();
     // LOCAL STATES
     const [userLogin, setUserLogin] = useState<login>({
         email: "",
@@ -26,6 +34,8 @@ const Login: React.FC = () => {
         password: "",
     });
     // HANDLERS
+    const navigate = useNavigate();
+
     const handlerOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setUserLogin((prevUserLogin) => ({
@@ -36,7 +46,13 @@ const Login: React.FC = () => {
     };
     const handlerOnSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
-        // despacho de userLogin
+        dispatch(login(userLogin))
+        if (access){
+            navigate("/cart")
+        }
+        else {
+            toast.error("That user does not exist")
+        }
     };
     return (
         <div className={styles.all}>
