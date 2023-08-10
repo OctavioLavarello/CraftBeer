@@ -19,7 +19,7 @@ const postProductValidation = (
         return "Invalid name format. Only letters, spaces, and apostrophes are allowed.";
     }
     if (!image) return "image is required";
-    const validImageURLRegex = /^(https?:\/\/)?([\w\-]+\.)+\w{2,}(\/[\w\-./?%&=]*)?$/;
+    const validImageURLRegex = /^(https?|ftp):[^\s/$.?#].[^\s]*\.(jpg|jpeg|png|gif|bmp|webp|svg|tiff|ico|jfif|pjpeg|pjp|avif|apng)$|^.+$/;
     if (!validImageURLRegex.test(image)) {
         return "Invalid image URL";
     }
