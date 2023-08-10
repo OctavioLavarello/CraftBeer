@@ -26,7 +26,7 @@ const getAllCompanies = async (req: Request, res: Response) => {
       });
     } else {
       companies = await UserCompany.findAll({
-        // include: [includeOptions], // Cargar productos relacionados
+        include: [includeOptions], // Cargar productos relacionados
       });
     }
 
