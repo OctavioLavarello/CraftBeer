@@ -33,6 +33,8 @@ const Login: React.FC = () => {
         email: "",
         password: "",
     });
+    const [isClicked, setIsClicked] = useState<boolean>(false);
+    const [isError, setIsError] = useState<boolean>(false);
     // HANDLERS
     const navigate = useNavigate();
 
@@ -54,12 +56,14 @@ const Login: React.FC = () => {
     const handlerOnSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
         try {
+            await setIsClicked(!isClicked);
             await dispatch(login(userLogin));
             handlerNavigate();
         } catch (error: any) { 
             if (error.response && error.response.data && error.response.data.message) {
                 const errorMessage = error.response.data.message;
                 toast.error(errorMessage);
+                setIsError(!isError)
             } else {
             toast.error("An error occurred while logging in.");
             }
@@ -67,7 +71,7 @@ const Login: React.FC = () => {
     };
     return (
         <div className={styles.all}>
-            <div className={styles.avatarCont}>
+            <div className={!isError ? (!isClicked ? styles.avatarCont : styles.avatarContSubmit) : styles.avatarContError}>
                 <img 
                 src={avatar} 
                 alt="avatar"
@@ -75,7 +79,7 @@ const Login: React.FC = () => {
                 />
             </div>
             <Form 
-            className={styles.form}
+            className={!isError ? (!isClicked ? styles.form : styles.formSubmit) : styles.formError}
             onSubmit={handlerOnSubmit}
             >
                 <Form.Group className={`${errors.email ? styles.inputError1 : styles.input1}`}>
