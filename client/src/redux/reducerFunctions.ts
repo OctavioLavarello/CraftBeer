@@ -57,7 +57,11 @@ return{
 export const login = (state = initialState, action: loginAction) => {
   return {
     ...state,
-    access: action.payload.access
+    accessLogin: {
+      access: action.payload.access,
+      id: action.payload.user.id,
+      role: action.payload.user.role
+    }
   }
 }
 //ALMACENAR numero de paginas para el shop 

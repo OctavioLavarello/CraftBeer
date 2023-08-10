@@ -22,13 +22,18 @@ import {
 
 /* import { Action } from 'redux';
  */
+export interface AccessLogin {
+  access: boolean;
+  id?: string;
+  role?: string;
+}
 export interface AppState {
   allBeer: object[];
   beerFilters: BeerFilters;
   localStorageCart:object;
   totalPages:number
   allCompany: object[]
-  access: boolean
+  accessLogin: AccessLogin;
 }
 export interface BeerFilters {
   IBU?: number,  // El signo de interrogación indica que la propiedad es opcional
@@ -47,7 +52,11 @@ export const initialState: AppState = {
   localStorageCart:localStorage,
   totalPages:0,
   allCompany: [],
-  access: false,
+  accessLogin: {
+    access: false,
+    id: "",
+    role: ""
+  },
 };
 
 const rootReducer = (

@@ -8,7 +8,7 @@ import styles from "./NavBar.module.css";
 
 const NavBar: React.FC = () => {
   // GLOBAL STATE
-  const { access } = useSelector((state: AppState) => state) 
+  const { accessLogin } = useSelector((state: AppState) => state) 
   return (
     <div className={styles.navContainer}>
       <div className={styles.RouterConteiner}>
@@ -29,7 +29,7 @@ const NavBar: React.FC = () => {
         <NavLink to="/cart" className={styles.link}>
           <h5>Cart</h5>
         </NavLink>
-        {!access ? 
+        {!accessLogin.access ? 
         (
           <NavLink to="/login" className={styles.link}>
             <h5>Login</h5>

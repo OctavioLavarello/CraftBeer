@@ -22,7 +22,7 @@ export interface login {
 // LOGIN
 const Login: React.FC = () => {
     // GLOBAL STATE
-    const { access } = useSelector((state: AppState) => state) 
+    const { localStorageCart } = useSelector((state: AppState) => state) 
     const dispatch = useDispatch();
     // LOCAL STATES
     const [userLogin, setUserLogin] = useState<login>({
@@ -44,14 +44,25 @@ const Login: React.FC = () => {
         }));
         loginValidation(userLogin, setErrors);
     };
-    const handlerOnSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
-        event.preventDefault();
-        dispatch(login(userLogin))
-        if (access){
+    const handlerNavigate = () => {
+        if (Object.keys(localStorageCart).length === 0){
+            navigate("/shop")
+        } else {
             navigate("/cart")
         }
-        else {
-            toast.error("That user does not exist")
+    }
+    const handlerOnSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
+        event.preventDefault();
+        try {
+            await dispatch(login(userLogin));
+            handlerNavigate();
+        } catch (error: any) { 
+            if (error.response && error.response.data && error.response.data.message) {
+                const errorMessage = error.response.data.message;
+                toast.error(errorMessage);
+            } else {
+            toast.error("An error occurred while logging in.");
+            }
         }
     };
     return (
