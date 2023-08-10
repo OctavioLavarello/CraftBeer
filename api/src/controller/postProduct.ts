@@ -1,29 +1,26 @@
 import { Request, Response } from "express";
 import { Product, UserCompany } from "../../db";
+import postProductValidation from "../validations/postProductValidations";
 
 const postProduct = async (req: Request, res: Response) => {
   try {
-    const {
-      name,
-      image,
-      type,
-      ABV,
-      description,
-      price,
-      stock,
-      IBU,
-      presentation,
-      userCompanyId,
+    const {name, image, type, ABV, description, price, stock, IBU, presentation, userCompanyId,
     } = req.body;
 
-    if (!name) return res.status(400).json({ message: "name is required" });
-    if (!image) return res.status(400).json({ message: "image is required" });
-    if (!type) return res.status(400).json({ message: "type is required" });
-    if (!ABV) return res.status(400).json({ message: "ABV is required" });
-    if (!description) return res.status(400).json({ message: "description is required" });
-    if (!price) return res.status(400).json({ message: "price is required" });
-    if (!stock) return res.status(400).json({ message: "stock is required" });
-    if (!presentation) return res.status(400).json({ message: "presentation is required" });
+    const errors = postProductValidation(
+      name, 
+      image, 
+      type, 
+      ABV, 
+      description, 
+      price, 
+      stock, 
+      IBU, 
+      presentation,
+      userCompanyId,
+    )
+
+    if (errors) return res.status(400).json({message: errors})
 
     const company = await UserCompany.findByPk(userCompanyId);
     if (!company) {
@@ -41,6 +38,7 @@ const postProduct = async (req: Request, res: Response) => {
       presentation,
       IBU,
       status: true,
+      userCompanyId
     });
     //realizo la relacion del producto con la empresa
     company.addProduct(product)

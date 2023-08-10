@@ -19,13 +19,14 @@ import {
   LOGIN,
   TOTAL_PAGES,
 } from "../redux/actions/actionsTypes";
+import { SaveDataLS } from "../components/LocalStorage/LocalStorage";
 
 /* import { Action } from 'redux';
  */
 export interface AppState {
   allBeer: object[];
   beerFilters: BeerFilters;
-  localStorageCart:object;
+  localStorageCart:SaveDataLS [];
   totalPages:number
   allCompany: object[]
 }
@@ -40,10 +41,13 @@ export interface BeerFilters {
   order?:String,
 }
 
+//hidratar el estado localStorageCart desde la storage 
+const dataStorage = Object.keys(localStorage).map(key => JSON.parse(localStorage[key]));
+
 export const initialState: AppState = {
   allBeer: [],
   beerFilters: {},
-  localStorageCart:localStorage,
+  localStorageCart:dataStorage,
   totalPages:0,
   allCompany: []
 };

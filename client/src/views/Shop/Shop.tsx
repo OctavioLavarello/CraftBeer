@@ -22,23 +22,16 @@ const Shop = () => {
   let pages = useSelector((state: AppState) => state.totalPages)
 
 
-  /* //traer la cantidad de articulos en el local storage
-  const [cartAdd, setCartAdd] = useState(0);
-  const cart = useSelector((state: AppState) => state.localStorageCart);
-  
-  // Convertir el objeto en un array de valores
-  const cartValues = Object.values(cart);
-  
-  // Obtener la suma total de la propiedad 'quantity'
-  const sumProducts = cartValues.reduce((accumulator, currentValue) => {
-    const parsedValue = JSON.parse(currentValue);
-    return accumulator + parsedValue.quantity;
-  }, 0);
-  
-  useEffect(() => {
-    setCartAdd(sumProducts);
-  }, [cart]);
- */
+  //traer la cantidad de articulos en el local storage
+  const itemCart = useSelector((state: AppState) => state.localStorageCart)
+  let sumItem = 0
+
+  itemCart.forEach(element => {
+    sumItem = sumItem + element.quantity
+  });
+
+
+
 
   // estado para controlar el input search
   const [input, setInput] = useState("")
@@ -101,12 +94,12 @@ const Shop = () => {
         <button className={style.buttonAll} onClick={handlerClick}>All</button>
 
         <Link to={"/cart"}>
-        <div className={style.imageCart}>
-          <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" />
-          <div className={style.imageCartdiv}>
-            03
+          <div className={style.imageCart}>
+            <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" />
+            <div className={style.imageCartdiv}>
+              {sumItem}
+            </div>
           </div>
-        </div>
         </Link>
       </div>
       <Row>
