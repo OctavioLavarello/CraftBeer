@@ -30,7 +30,7 @@ const getAllCompanies = async (req: Request, res: Response) => {
       });
     }
 
-    return res.status(200).send(companies);
+    return res.status(200).json(companies);
   } catch (error) {
     return res.status(400).send( 'error de catch' );
   }
