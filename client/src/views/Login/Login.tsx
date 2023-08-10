@@ -25,7 +25,6 @@ const Login: React.FC = () => {
         email: "",
         password: "",
     });
-    console.log(userLogin)
     // HANDLERS
     const handlerOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
@@ -39,7 +38,6 @@ const Login: React.FC = () => {
         event.preventDefault();
         // despacho de userLogin
     };
-
     return (
         <div className={styles.all}>
             <div className={styles.avatarCont}>
@@ -58,6 +56,7 @@ const Login: React.FC = () => {
                         <img src={email} alt="email" />
                     </div>
                     <Form.Control 
+                    required
                     type="email" 
                     name="email"
                     placeholder="Enter email"
@@ -70,6 +69,7 @@ const Login: React.FC = () => {
                         <img src={password} alt="password" />    
                     </div>
                     <Form.Control 
+                    required
                     type="password" 
                     name="password"
                     placeholder="Password"
