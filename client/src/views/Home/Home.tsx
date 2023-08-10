@@ -15,7 +15,7 @@ const Home: React.FC = () => {
   const dispatch = useDispatch(); 
   
   useEffect(() => {
-      dispatch(allBeers())
+    dispatch(allBeers())
   }, []);
 
   return (

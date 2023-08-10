@@ -1,11 +1,11 @@
 /// IMPORTS
 import React from "react";
 import { useSelector } from "react-redux";
+import { AppState } from "../../redux/reducer";
 // COMPONENTS
 import MiniCard from "../miniCard/MiniCard";
 // STYLES
 import styles from "./HomeFeaturedProducts.module.css"
-import { AppState } from "../../redux/reducer";
 
 // HOME FEATURED PRODUCTS
 const HomeFeaturedProducts: React.FC = () => {

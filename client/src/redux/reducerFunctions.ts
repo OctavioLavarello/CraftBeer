@@ -82,7 +82,11 @@ export const saveLocalStorageCart = (
 export const login = (state = initialState, action: loginAction) => {
   return {
     ...state,
-    localStorageCart: action.payload
+    accessLogin: {
+      access: action.payload.access,
+      id: action.payload.user.id,
+      role: action.payload.user.role
+    }
   }
 }
 

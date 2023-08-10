@@ -1,7 +1,12 @@
 /// IMPORTS
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import loginValidation from "./LoginValidation";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-hot-toast";
+import { AppState } from "../../redux/reducer";
+// ACTION
+import { login } from "../../redux/actions/actions";
 // STYLES
 import styles from "./Login.module.css";
 import Button from 'react-bootstrap/Button';
@@ -16,6 +21,9 @@ export interface login {
 }
 // LOGIN
 const Login: React.FC = () => {
+    // GLOBAL STATE
+    const { localStorageCart } = useSelector((state: AppState) => state) 
+    const dispatch = useDispatch();
     // LOCAL STATES
     const [userLogin, setUserLogin] = useState<login>({
         email: "",
@@ -25,7 +33,11 @@ const Login: React.FC = () => {
         email: "",
         password: "",
     });
+    const [isClicked, setIsClicked] = useState<boolean>(false);
+    const [isError, setIsError] = useState<boolean>(false);
     // HANDLERS
+    const navigate = useNavigate();
+
     const handlerOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setUserLogin((prevUserLogin) => ({
@@ -34,13 +46,32 @@ const Login: React.FC = () => {
         }));
         loginValidation(userLogin, setErrors);
     };
+    const handlerNavigate = () => {
+        if (Object.keys(localStorageCart).length === 0){
+            navigate("/shop")
+        } else {
+            navigate("/cart")
+        }
+    }
     const handlerOnSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
-        // despacho de userLogin
+        try {
+            await setIsClicked(!isClicked);
+            await dispatch(login(userLogin));
+            handlerNavigate();
+        } catch (error: any) { 
+            if (error.response && error.response.data && error.response.data.message) {
+                const errorMessage = error.response.data.message;
+                toast.error(errorMessage);
+                setIsError(!isError)
+            } else {
+            toast.error("An error occurred while logging in.");
+            }
+        }
     };
     return (
         <div className={styles.all}>
-            <div className={styles.avatarCont}>
+            <div className={!isError ? (!isClicked ? styles.avatarCont : styles.avatarContSubmit) : styles.avatarContError}>
                 <img 
                 src={avatar} 
                 alt="avatar"
@@ -48,7 +79,7 @@ const Login: React.FC = () => {
                 />
             </div>
             <Form 
-            className={styles.form}
+            className={!isError ? (!isClicked ? styles.form : styles.formSubmit) : styles.formError}
             onSubmit={handlerOnSubmit}
             >
                 <Form.Group className={`${errors.email ? styles.inputError1 : styles.input1}`}>

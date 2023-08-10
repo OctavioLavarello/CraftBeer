@@ -1,7 +1,7 @@
 /// IMPORTS
 import React from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store"
+import { AppState } from "../../redux/reducer";
 // COMPONENTS
 import MiniCard from "../miniCard/MiniCard";
 // STYLES
@@ -10,7 +10,7 @@ import styles from "./HomeBestSellers.module.css"
 // HOME FEATURED PRODUCTS
 const HomeBestSellers: React.FC = () => {
     // GLOBAL STATE
-    const { allBeer } = useSelector((state: RootState) => state)
+    const { allBeer } = useSelector((state: AppState) => state)
     
     const threeCards = allBeer.slice(0, 3);
 

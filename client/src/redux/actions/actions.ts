@@ -10,7 +10,7 @@ import {
   CREATED_USER,
   LOCAL_STORAGE,
   LOGIN,
-  TOTAL_PAGES
+  TOTAL_PAGES,
 } from "../actions/actionsTypes";
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
