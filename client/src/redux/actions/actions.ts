@@ -26,7 +26,7 @@ export interface ProductData {
   IBU: number;
   presentation: string;
   image: string;
-  userCompanyId: string;
+  userCompanyId: `string`;
 }
 
 export interface CompanyData {
@@ -93,8 +93,9 @@ export const createdProduct = ({
   presentation,
   userCompanyId,  
 }: ProductData) => {
+
+  return async function (dispatch: any) {
   try {
-    return async function (dispatch: any) {
       let createdBeer = await axios.post(`/product`, {
         name,
         image,
@@ -112,15 +113,13 @@ export const createdProduct = ({
         payload: createdBeer,
       });
       console.log(createdBeer);
-      
       toast.success("Se creo correctamente su producto")
-    };
-  } catch (error) {
-    console.log("Entre al error");
+    } 
     
-   toast.error("No ha sido posible cargar su producto");
+    catch (error) {
+      toast.error("No ha sido posible cargar su producto");
+    };
   }
-  
 };
 
 //Actions para crear un usuario de vendedor (postCompany)

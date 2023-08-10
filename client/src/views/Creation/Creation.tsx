@@ -25,7 +25,7 @@ const Creation = () => {
     stock: 0,
     presentation: "",
     IBU: 0,
-    userCompanyId: "",
+    userCompanyId: `string`,
   });
 
   const [errors, setErrors] = useState({
