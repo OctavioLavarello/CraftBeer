@@ -13,7 +13,7 @@ const postProduct = async (req: Request, res: Response) => {
       stock,
       IBU,
       presentation,
-      UserCompanyId,
+      userCompanyId,
     } = req.body;
 
     if (!name) return res.status(400).json({ message: "name is required" });
@@ -25,7 +25,7 @@ const postProduct = async (req: Request, res: Response) => {
     if (!stock) return res.status(400).json({ message: "stock is required" });
     if (!presentation) return res.status(400).json({ message: "presentation is required" });
 
-    const company = await UserCompany.findByPk(UserCompanyId);
+    const company = await UserCompany.findByPk(userCompanyId);
     if (!company) {
       return res.status(404).json({ message: "Company not found" });
     }
@@ -41,10 +41,11 @@ const postProduct = async (req: Request, res: Response) => {
       presentation,
       IBU,
       status: true,
-      UserCompanyId
     });
-
-    res.status(200).json(product);
+    //realizo la relacion del producto con la empresa
+    company.addProduct(product)
+    // se envia plain:true para solo recibir los datos que necesitamos.
+    res.status(200).json({...product.get({ plain: true }),userCompanyId});
   } catch (error) {
     if (error instanceof Error) {
       return res.status(500).send(error.message);
