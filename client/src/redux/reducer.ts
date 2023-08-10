@@ -24,8 +24,9 @@ import {
  */
 export interface AccessLogin {
   access: boolean;
-  id?: string;
-  role?: string;
+  id: string;
+  role: string;
+  cart?: typeof localStorage;
 }
 export interface AppState {
   allBeer: object[];
@@ -55,7 +56,8 @@ export const initialState: AppState = {
   accessLogin: {
     access: false,
     id: "",
-    role: ""
+    role: "",
+    cart: { ...localStorage },
   },
 };
 

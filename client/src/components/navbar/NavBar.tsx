@@ -34,12 +34,12 @@ const NavBar: React.FC = () => {
           <NavLink to="/login" className={styles.link}>
             <h5>Login</h5>
           </NavLink> 
-        ) : 
+        ) : accessLogin.role === "Person" ? null : accessLogin.role === "Company" ? 
         (
           <NavLink to="/post" className={styles.link}>
-          <h5>Post beer</h5>
-          </NavLink> 
-          )
+            <h5>Post beer</h5>
+          </NavLink>
+        ) : null
         }
       </div>
     </div>
