@@ -32,32 +32,35 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
     // Cargar la cantidad del localStorage cuando el componente se monta
     useEffect(() => {
         const savedQuantity = localStorage.getItem(id);
-        if (savedQuantity) {
-            setItem(parseInt(savedQuantity));
+        if (savedQuantity !== null) {
+            const parsedQuantity = JSON.parse(savedQuantity).quantity;
+            setItem(parsedQuantity);
+        } else {
+            setItem(0);
         }
     }, [id]);
 
-
-    // setea los cambios de cantidades y ejecuta para cargar en localStorage
+   // setea los cambios de cantidades y ejecuta para cargar en localStorage
     const handlerItemCart = (event: React.MouseEvent<HTMLButtonElement>) => {
         const target = event.currentTarget;
         const updatedQuantity = target.name === '+' ? item + 1 : item - 1;
         setItem(updatedQuantity);
-
         const itemData: SaveDataLS = {
-            id: id,
+            id,
+            name,
+            price,
+            image,
+            summary,
             quantity: updatedQuantity,
         };
         saveDataCart(itemData);
-        dispatch(localStorageCart(localStorage));
+        dispatch(localStorageCart(itemData));
     }
 
-        
+
+
   
-    //borrar el localstorage por ahora
-    const addProductoCart = () => {
-        localStorage.clear()
-    }
+    
 
     return (
         <Container>
@@ -85,7 +88,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                                 </div>
                                 <div className={style.navButton}>
                                     <Link to={"/cart"}>
-                                        <button className={style.buttonBuy} disabled={item < 1} onClick={addProductoCart}>COMPRAR</button>
+                                        <button className={style.buttonBuy} disabled={item < 1}>COMPRAR</button>
                                     </Link>
                                     {item ? <p>Tienes {item} 🍺 En tu carrito !!</p> : <></>}
                                 </div>

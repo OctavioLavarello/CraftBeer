@@ -68,7 +68,6 @@ export const orderFilters = (filters: object): ActionWithPayload<"ORDER_FILTERS"
 
 
 //actions para guardar el localStorage 
-
 export const localStorageCart = (data:object)=>{
   return {
     type: LOCAL_STORAGE,
@@ -76,7 +75,7 @@ export const localStorageCart = (data:object)=>{
   }
 }
 
-//actions para guardar el localStorage 
+//actions para guardar la cantidad de paginas
 
 export const totalPages = (data:number)=>{
   return {
