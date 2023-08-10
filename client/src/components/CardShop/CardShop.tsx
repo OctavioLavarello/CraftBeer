@@ -40,7 +40,7 @@ const CardShop = () => {
 
     // solicitud a back concatenando el los filtros en la url 
     const getAllBeers = async () => {
-        const endpoint = "http://localhost:3001/product";
+        const endpoint = "https://craftbeer.up.railway.app/product";
         try {
             const response = await axios.get<responseBack>(endpoint, { params: filters.beerFilters });
             setAllBeersData(response.data.products);
