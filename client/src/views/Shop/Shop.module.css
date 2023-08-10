@@ -108,6 +108,10 @@
     z-index: 9999;
 
 }
+.imageCart:hover{
+    scale: 1.1;
+    transition: .2s;
+}
 
 .imageCart img {
     width: 30px;
@@ -115,7 +119,7 @@
     margin-right: 5px;
   }
 
-.imageCart div {
+.imageCartdiv{
     text-align: center;
     position: absolute;
     align-items: center;
