@@ -30,15 +30,6 @@ fs.readdirSync(path.join(__dirname, "src/models"))
 
 modelDefiners.forEach((modelDefiner) => modelDefiner(sequelize));
 
-sequelize
-  .sync({ alter: true }) // El parámetro 'alter' intentará alterar las tablas existentes en lugar de reemplazarlas
-  .then(() => {
-    console.log("Database synchronized");
-  })
-  .catch((error: Error) => {
-    console.error("Error synchronizing database:", error);
-  });
-
 const upperCaseModels: Record<string, any> = {};
 Object.entries(sequelize.models).forEach(([name, model]) => {
   const upperCaseName = name[0].toUpperCase() + name.slice(1);
