@@ -232,12 +232,13 @@ const Creation = () => {
             />
             <h6 className="mensajes">{errors.description}</h6>
           </Col>
-          <Col>
+        </Row>
+        <Row style={{ margin: "15px" }}>
+        <Col style={{color:"red"}}>Información solo temporal. De uso dev
             <Form.Control
-              style={{ height: "100px" }}
-              placeholder="Descripción del producto"
+              style={{ color: "red" }}
+              placeholder="ID de la compañía. Esta información es solo para prueba, se optendrá desde el localstorage una vez se haga el login del usuario"
               name="userCompanyId"
-             
               onChange={handlerChange}
             />
           </Col>
