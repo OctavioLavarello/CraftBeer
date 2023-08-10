@@ -1,79 +1,89 @@
-import { Container, Button, Card, Col, Row } from "react-bootstrap";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import "../CardCart/CardCart.css";
+import { Container } from "react-bootstrap";
+import style from "./CardCart.module.css"
+import { useEffect, useState } from "react";
+import { SaveDataLS, saveDataCart } from "../LocalStorage/LocalStorage";
+import { useDispatch, useSelector } from "react-redux";
+import { localStorageCart } from "../../redux/actions/actions";
+import { AppState } from "../../redux/reducer";
 
-const CardCart = () => {
-  const [contador, setContador] = useState(0);
-  const [precio] = useState(55);
 
-  const handlerCounter = (event: React.BaseSyntheticEvent<MouseEvent, EventTarget & HTMLButtonElement, EventTarget>) => {
-    if (event.currentTarget.value === "+") {
-      setContador((prevContador) => prevContador + 1);
+export interface productCart {
+  name: string;
+  summary: string;
+  image: string;
+  price: number;
+  quantity: number,
+  id: string
+}
+
+const CardCart = ({ name, summary, price, image, quantity, id }: productCart) => {
+
+
+  const dispatch = useDispatch();
+
+  //estado para controlar los input de cantidades 
+  const [item, setItem] = useState(0);
+
+  let localStorageRedux = useSelector((state:AppState)=>state.localStorageCart)
+
+  // setea los cambios de cantidades y ejecuta para cargar en localStorage
+  const handlerItemCart = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const target = event.currentTarget;
+    const updatedQuantity = target.name === '+' ? item + 1 : item - 1;
+    setItem(updatedQuantity);
+
+    const itemData: SaveDataLS = {
+      id,
+      name,
+      price,
+      image,
+      summary,
+      quantity: updatedQuantity,
+    };
+    saveDataCart(itemData);
+    dispatch(localStorageCart(itemData));
+  }
+
+   // Cargar la cantidad del localStorage cuando el componente se monta
+   useEffect(() => {
+    const savedQuantity = localStorage.getItem(id);
+    if (savedQuantity !== null) {
+      const parsedQuantity = JSON.parse(savedQuantity).quantity;
+      setItem(parsedQuantity);
+      
+    } else {
+      setItem(0);
     }
-    if (contador >= 1) {
-      if (event.currentTarget.value === "-") {
-        setContador((prevContador) => prevContador - 1);
-      }
-    }
-  };
 
-  // let precioPagar = contador * precio;
+  }, [id,localStorageRedux]);
+
+
+  //eliminar item del local storage 
+  const deleteItemLocal = () => {
+    localStorage.removeItem(id)
+  }
+
   return (
     <Container>
-      <Card style={{backgroundColor:"#4b0909", color:"#fff",
-      fontSize:"16px",
-      padding: "10px 20px",
-      borderRadius:"8px",
-      textAlign:"center"
-    }}>
-        <Card.Body>
-          <Row>
-            <Col>
-              <Link to={"/detail/:id"}>
-                <Card.Img
-                  src="https://www.ngenespanol.com/wp-content/uploads/2018/08/7-buenas-razones-para-tomar-cerveza-1280x720.png"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    marginLeft: "-10%",
-                  }}
-                />
-              </Link>
-            </Col>
-            <Col sm={1}>
-              <Card.Title>Card Title</Card.Title>
-            </Col>
-            <Col sm={5}>
-              <Card.Text style={{ fontSize: "13px" }}>
-                Some quick example text to build on the card title and make up
-                the .of the card's content.of the card's content.of the card's
-                content.'s content.of
-              </Card.Text>
-            </Col>
-            <Col>
-              <h3>USD {precio}</h3>
-              <Button
-                onClick={handlerCounter}
-                className="custom-button"
-                variant="dark"
-                value="-"
-              >
-                -
-              </Button>
-              <a>{contador}</a>
-              <Button
-                onClick={handlerCounter}
-                className="custom-button"
-                variant="dark"
-                value="+"
-              >
-                +
-              </Button>
-            </Col>
-          </Row>
-        </Card.Body>
-      </Card>
+
+      <div className={style.container}>
+        <div className={style.image}>
+          <img src={image} alt="" />
+        </div>
+        <div className={style.title}>
+          <h5>{name}</h5>
+          <p>{summary} </p>
+        </div>
+        <div className={style.buttons}>
+          <button className={style.custom_button} name={"-"} onClick={handlerItemCart} >-</button>
+          <div className={style.quantityUn}>{quantity} unidades</div>
+          <button className={style.custom_button} name={"+"} onClick={handlerItemCart} >+</button>
+        </div>
+        <div className={style.price}>
+          <h3>$ {(price * quantity).toFixed(2)}</h3>
+        </div>
+        <button className={style.buttonClose} onClick={deleteItemLocal}>x</button>
+      </div>
     </Container>
   );
 };

@@ -1,4 +1,4 @@
-import { ActionWithPayload } from "./actions/actions";
+import { ActionWithPayload, loginAction } from "./actions/actions";
 import { initialState } from "./reducer";
 
 export const getAllBeer = (
@@ -30,7 +30,7 @@ export const productCreated = (state = initialState) => {
 };
 
 
-export const postCompany = (state = initialState)=> {
+export const postCompany = (state = initialState) => {
   return {
     ...state,
   }
@@ -41,8 +41,9 @@ export const userCreated = (state = initialState) => {
     ...state,
   };
 };
-//ALMACENAR LOCAL STORAGE 
 
+
+//ALMACENAR LOCAL STORAGE 
 export const saveLocalStorageCart = (
   state = initialState,
   action: ActionWithPayload<string, any>
@@ -52,8 +53,14 @@ return{
   localStorageCart: action.payload
 }
 }
+// LOGIN 
+export const login = (state = initialState, action: loginAction) => {
+  return {
+    ...state,
+    localStorageCart: action.payload
+  }
+}
 //ALMACENAR numero de paginas para el shop 
-
 export const totalPagesShop = (
   state = initialState,
   action: ActionWithPayload<string, number>

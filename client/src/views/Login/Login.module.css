@@ -83,7 +83,6 @@
 .label {
     width: 80%;
     font-size: 1vw;
-    margin-top: -3vh;
     color: gray;
 }
 .checks {
@@ -97,7 +96,7 @@
     width: 50%;
     border: 0.02vh solid black;
 }
-.submit :disabled {
+.submit:disabled {
     background-color: rgb(87, 87, 87);
     border: rgb(87, 87, 87);
 }
@@ -105,6 +104,20 @@
     background-color: rgba(163, 125, 52, 1);
     box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
     border: 0.02vh solid black;
+}
+.checks div input:not(:checked)  {
+    background-color: rgba(163, 125, 52, 1);
+    border: 0.02vh solid black;
+}
+.checks div input:checked {
+    background-color: rgb(96, 163, 52);
+    border: 0.02vh solid black;
+}
+.checks div input:focus  {
+    box-shadow: 0 0 1vw black;
+}
+.checks div label {
+    color: gray;
 }
 .signUp {
     margin-top: -4vh;
@@ -123,4 +136,50 @@
 }
 .forgot:hover {
     color: black
+}
+.validationMessage {
+    color: red;
+    margin-top: -5.2vh;
+    margin-bottom: -5.6vh;
+}
+.inputError1 {
+    margin-top: 10vh;
+}
+.inputError1, .inputError {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+.inputError1 div, .inputError div {
+    height: 7vh;
+    width: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(119, 89, 33);
+    border: 0.03vh solid rgb(0, 0, 0);
+}
+.inputError1 div img, .inputError div img {
+    height: 5vh;
+}
+
+.inputError1 input, .inputError input{
+    height: 7vh;
+    background-color: rgba(163, 125, 52, 1);
+    border: 0.03vh solid red;
+    border-radius: 1px;
+    color: white;
+}
+.inputError1 input::placeholder, .inputError input::placeholder {
+    color: white;
+}
+.inputError1 input:focus, .inputError input:focus {
+    height: 7vh;
+    background-color: rgba(163, 125, 52, 1);
+    border: 0.03vh solid red;
+    border-radius: 1px;
+    box-shadow: 0 0 1vw red;
+    outline: none;
+    color: white
 }

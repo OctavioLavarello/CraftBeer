@@ -4,7 +4,7 @@ import { error } from "console";
 
 const logIn = async (req: Request, res: Response) => {
     try {
-      const { password, email } = req.body;
+      const { password, email } = req.query
   
       if (!email) return res.status(400).json({ message: "email is required" });
       else if (!password) return res.status(400).json({ message: "Password is required" });
