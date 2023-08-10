@@ -9,7 +9,7 @@ import Form from 'react-bootstrap/Form';
 export interface message {
   name: string,
   email: string,
-  phone: number,
+  phone: string,
   message: string
 }
 // CONTACT
@@ -18,13 +18,13 @@ const Contact: React.FC = () => {
   const [userMessage, setUserMessage] = useState<message>({
     name: "",
     email: "",
-    phone: 0,
+    phone: "",
     message: "",
   });
   const [errors, setErrors] = useState<message>({
     name: "",
     email: "",
-    phone: 0,
+    phone: "",
     message: "",
   });
   // HANDLERS
@@ -46,7 +46,7 @@ const Contact: React.FC = () => {
   };
   const handlerOnSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
-    // despacho de userLogin
+    // despacho de userMessage
   };
   console.log(userMessage)
   return (
@@ -57,32 +57,41 @@ const Contact: React.FC = () => {
       >
         <div className={styles.upper}>
           <div className={styles.upperLeft}>
-            <Form.Group>
+            <Form.Group className={`${errors.name ? styles.upperLeftError : ""}`}>
               <Form.Label>Name</Form.Label>
-              <Form.Control
-              required 
-              type="text" 
-              name="name"
-              onChange={handlerOnChange}
-              />
+              <div className={styles.inputDiv}>
+                <Form.Control
+                required 
+                type="text" 
+                name="name"
+                onChange={handlerOnChange}
+                />
+                {errors.name && <p className={styles.validationMessage}>{errors.name}</p>}
+              </div>
             </Form.Group>
-            <Form.Group>
+            <Form.Group className={`${errors.email ? styles.upperLeftError : ""}`}>
               <Form.Label>Email</Form.Label>
-              <Form.Control 
-              required
-              type="email" 
-              name="email"
-              onChange={handlerOnChange}
-              />
+              <div className={styles.inputDiv}>
+                <Form.Control 
+                required
+                type="email" 
+                name="email"
+                onChange={handlerOnChange}
+                />
+                {errors.email && <p className={styles.validationMessage}>{errors.email}</p>}
+              </div>
             </Form.Group>
-            <Form.Group>
+            <Form.Group className={`${errors.phone ? styles.upperLeftError : ""}`}>
               <Form.Label>Phone</Form.Label>
-              <Form.Control 
-              required
-              type="number" 
-              name="phone"
-              onChange={handlerOnChange}
-              />
+              <div className={styles.inputDiv}>
+                <Form.Control 
+                required
+                type="text" 
+                name="phone"
+                onChange={handlerOnChange}
+                />
+                {errors.phone && <p className={styles.validationMessage}>{errors.phone}</p>}
+              </div>
             </Form.Group>
           </div>
           <div className={styles.upperRight}>

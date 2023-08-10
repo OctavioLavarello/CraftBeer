@@ -20,29 +20,42 @@
 .upperLeft {
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 50%;
 }
-.upperLeft div label {
+.upperLeft label {
     margin-bottom: -2vh;
 }
-.upperLeft div input {
+.upperLeft input {
     background-color: rgb(63, 63, 63);
     border-color: rgba(163, 125, 52, 1);
     color: white;
     margin-bottom: 2vh;
+    width: 25%;
 }
-.upperLeft div input:focus {
+.upperLeft input:focus {
     background-color: rgb(63, 63, 63);
     border-color: rgba(163, 125, 52, 1);
     color: white;
     box-shadow: 0 0 1vw rgba(163, 125, 52, 0.5);
+}
+.upperLeftError input {
+    background-color: rgb(63, 63, 63);
+    border-color: red;
+    color: white;
+    margin-bottom: 2vh;
+}
+.upperLeftError input:focus {
+    background-color: rgb(63, 63, 63);
+    border-color: red;
+    color: white;
+    box-shadow: 0 0 1vw red;
 }
 .upperRight {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-right: 15vw;
+    margin-right: 10vw;
 }
 .message {
     display: flex;
@@ -85,4 +98,16 @@
     background-color: rgba(163, 125, 52, 1);
     box-shadow: 0 0 1vw rgba(163, 125, 52, 0.5);
     border: 0.02vh solid black;
+}
+.inputDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.inputDiv input {
+    width: 20vw;
+}
+.inputDiv p {
+    color: red;
+    margin-left: 15vh;
 }
