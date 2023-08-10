@@ -27,7 +27,7 @@ export interface ProductData {
   IBU: number;
   presentation: string;
   image: string;
-  UserCompanyId: string
+  userCompanyId: `string`;
 }
 
 export interface CompanyData {
@@ -44,8 +44,6 @@ export interface CompanyData {
   address: string,
   image: string
 }
-
-
 
 //Actions para recibir todas las cervezas
 export const allBeers = () => {
@@ -67,7 +65,6 @@ export const orderFilters = (filters: object): ActionWithPayload<"ORDER_FILTERS"
   };
 };
 
-
 //actions para guardar el localStorage 
 export const localStorageCart = (data:object)=>{
   return {
@@ -76,7 +73,7 @@ export const localStorageCart = (data:object)=>{
   }
 }
 
-//actions para guardar la cantidad de paginas
+//actions para guardar el localStorage 
 
 export const totalPages = (data:number)=>{
   return {
@@ -84,7 +81,6 @@ export const totalPages = (data:number)=>{
     payload:data
   }
 }
-
 
 //Actions para crear un producto (cerveza)
 export const createdProduct = ({
@@ -97,10 +93,11 @@ export const createdProduct = ({
   stock,
   IBU,
   presentation,
-  UserCompanyId
+  userCompanyId,  
 }: ProductData) => {
+
+  return async function (dispatch: any) {
   try {
-    return async function (dispatch: any) {
       let createdBeer = await axios.post(`/product`, {
         name,
         image,
@@ -111,22 +108,20 @@ export const createdProduct = ({
         stock,
         IBU,
         presentation,
-        UserCompanyId
+        userCompanyId,
       });
       dispatch({
         type: CREATED_PRODUCT,
         payload: createdBeer,
       });
       console.log(createdBeer);
-      
       toast.success("Se creo correctamente su producto")
-    };
-  } catch (error) {
-    console.log("Entre al error");
+    } 
     
-   toast.error("No ha sido posible cargar su producto");
+    catch (error) {
+      toast.error("No ha sido posible cargar su producto");
+    };
   }
-  
 };
 
 //Actions para crear un usuario de vendedor (postCompany)
@@ -172,7 +167,6 @@ export const createdCompany = ({
    toast.error("No ha sido posible cargar su compañía");
   }  
 };
-
 
 export interface UserData {
   id: string;

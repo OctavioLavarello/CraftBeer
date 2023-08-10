@@ -2,13 +2,7 @@
 import { useState } from "react";
 //import { Dispatch, AnyAction } from "redux";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  Form,
-  Row,
-  Col,
-  Button,
-  InputGroup,
-} from "react-bootstrap";
+import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
 import "../Creation/Creation.css";
 import CardUserProduct from "../../components/CardUsersProduct/CardUserProduct";
 import { useDispatch } from "react-redux";
@@ -31,7 +25,7 @@ const Creation = () => {
     stock: 0,
     presentation: "",
     IBU: 0,
-    UserCompanyId: ""
+    userCompanyId: `string`,
   });
 
   const [errors, setErrors] = useState({
@@ -87,7 +81,6 @@ const Creation = () => {
 
   const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(input);
     dispatch(createdProduct(input));
     setInput({
       ...input,
@@ -110,7 +103,7 @@ const Creation = () => {
     );
   };
 
-  const disable = (errors:{ [key: string]: string }): boolean => {
+  const disable = (errors: { [key: string]: string }): boolean => {
     let disabled = true;
     for (let error in errors) {
       if (errors[error] === "") disabled = false;
@@ -122,7 +115,6 @@ const Creation = () => {
     return disabled;
   };
   console.log(input);
-  
 
   return (
     <div className="bodyFormP">
@@ -134,7 +126,8 @@ const Creation = () => {
         onSubmit={handlerSubmit}
       >
         <div className="tituloFormCreacion">
-        A continuación podrás indicar la información para la publicación de tu producto:
+          A continuación podrás indicar la información para la publicación de tu
+          producto:
         </div>
         <Row style={{ margin: "15px" }}>
           <Col>
@@ -238,6 +231,16 @@ const Creation = () => {
               onChange={handlerChange}
             />
             <h6 className="mensajes">{errors.description}</h6>
+          </Col>
+        </Row>
+        <Row style={{ margin: "15px" }}>
+        <Col style={{color:"red"}}>Información solo temporal. De uso dev
+            <Form.Control
+              style={{ color: "red" }}
+              placeholder="ID de la compañía. Esta información es solo para prueba, se optendrá desde el localstorage una vez se haga el login del usuario"
+              name="userCompanyId"
+              onChange={handlerChange}
+            />
           </Col>
         </Row>
         <div className="botonCentro">
