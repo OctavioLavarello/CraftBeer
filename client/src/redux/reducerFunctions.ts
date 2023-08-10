@@ -1,4 +1,4 @@
-import { ActionWithPayload } from "./actions/actions";
+import { ActionWithPayload, loginAction } from "./actions/actions";
 import { initialState } from "./reducer";
 
 export const getAllBeer = (
@@ -55,10 +55,13 @@ export const saveLocalStorageCart = (
     localStorageCart: action.payload
   }
 }
-
-
-
-
+// LOGIN 
+export const login = (state = initialState, action: loginAction) => {
+  return {
+    ...state,
+    localStorageCart: action.payload
+  }
+}
 //ALMACENAR numero de paginas para el shop 
 export const totalPagesShop = (
   state = initialState,

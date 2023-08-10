@@ -36,7 +36,7 @@ const BuyerSingUp: React.FC = () => {
     event.preventDefault();
     // Realizar la solicitud POST al backend para guardar los datos en la base de datos
     axios
-      .post("http://localhost:3001/user", formData)
+      .post("https://craftbeer.up.railway.app//user", formData)
       .then((response) => {
         // Manejar la respuesta del backend si es necesario
         console.log("Usuario creado exitosamente:", response.data);

@@ -10,35 +10,34 @@ import avatar from "../../assets/icons/avatar.png"
 import email from "../../assets/icons/sobre.png"
 import password from "../../assets/icons/candado.png"
 
+export interface login {
+    email: string,
+    password: string
+}
 // LOGIN
 const Login: React.FC = () => {
     // LOCAL STATES
-    const [userLogin, setUserLogin] = useState<Object>({
-        name: "",
+    const [userLogin, setUserLogin] = useState<login>({
         email: "",
         password: "",
     });
-    const [errors, setErrors] = useState<Object>({
-        name: "",
+    const [errors, setErrors] = useState<login>({
         email: "",
         password: "",
-        message: "",
     });
-
+    console.log(userLogin)
     // HANDLERS
     const handlerOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        // const { name, value } = event.target;
-        // setUserLogin((userLogin) => ({
-        //     ...userLogin,
-        //     [name]: value
-        // }));
-        // loginValidation(userLogin, setErrors);
+        const { name, value } = event.target;
+        setUserLogin((prevUserLogin) => ({
+            ...prevUserLogin,
+            [name]: value
+        }));
+        loginValidation(userLogin, setErrors);
     };
-    const handlerOnSubmit = async (
-        event: React.ChangeEvent<HTMLInputElement>
-    ) => {
+    const handlerOnSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
-        // ACA DESPACHA LOS DATOS DEL ESTADO USERLOGIN
+        // despacho de userLogin
     };
 
     return (
@@ -50,25 +49,34 @@ const Login: React.FC = () => {
                 className={styles.avatar}
                 />
             </div>
-            <Form className={styles.form}>
-                <Form.Group className={styles.input1}>
+            <Form 
+            className={styles.form}
+            onSubmit={handlerOnSubmit}
+            >
+                <Form.Group className={`${errors.email ? styles.inputError1 : styles.input1}`}>
                     <div>
                         <img src={email} alt="email" />
                     </div>
                     <Form.Control 
                     type="email" 
-                    placeholder="Enter email" 
+                    name="email"
+                    placeholder="Enter email"
+                    onChange={handlerOnChange} 
                     />
                 </Form.Group>
-                <Form.Group className={styles.input}>
+                {errors.email && <p className={styles.validationMessage}>{errors.email}</p>}
+                <Form.Group className={`${errors.password ? styles.inputError : styles.input}`}>
                     <div>
                         <img src={password} alt="password" />    
                     </div>
                     <Form.Control 
                     type="password" 
+                    name="password"
                     placeholder="Password"
+                    onChange={handlerOnChange}
                     />
                 </Form.Group>
+                {errors.password && <p className={styles.validationMessage}>{errors.password}</p>}
                 <label className={styles.label}>
                     We'll never share your password with anyone else.
                 </label>
@@ -89,6 +97,12 @@ const Login: React.FC = () => {
                 variant="primary" 
                 type="submit"
                 className={styles.submit}
+                disabled={
+                    !userLogin.email ||
+                    !userLogin.password ||
+                    !!errors.email ||
+                    !!errors.password
+                    }
                 >
                     Submit
                 </Button>
