@@ -107,7 +107,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                         <Col className={style.colPrice}>
                             <div className={style.containerInfo}>
                                 <h2 className={style.title}>${price}</h2>
-                                <p>☆☆☆☆☆ </p> <br /> <p className={item === stock || stock === 0 ? style.alertOutStock : style.alertStock}>Stock Disponible : {stock} un.</p>
+                                <p>☆☆☆☆☆ </p>  <p className={item === stock || stock === 0 ? style.alertOutStock : style.alertStock}>Stock Disponible : {stock} un.</p>
                                 <div className={style.input}>{item} Un.</div>
                                 <button className={style.custom_button} name={"-"} onClick={handlerItemCart} disabled={item < 1}>-</button>
                                 <button className={style.custom_button} name={"+"} onClick={handlerItemCart} disabled={item >= stock}>+</button>
