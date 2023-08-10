@@ -11,3 +11,7 @@ export interface SaveDataLS {
 export const saveDataCart = (data: SaveDataLS) => {
     localStorage.setItem(data.id, JSON.stringify(data))
 }
+
+export const deleteDataCart = (id:string) => {
+    localStorage.removeItem (id)
+}
