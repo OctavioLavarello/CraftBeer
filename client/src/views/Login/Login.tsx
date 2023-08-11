@@ -117,15 +117,14 @@ const Login: React.FC = () => {
                     label="Check me out" 
                     />
                     <NavLink 
-                    to="https://www.bbc.com/mundo/noticias/2015/05/150501_vert_fut_cinco_consejos_tonto_finde_ac"
+                    to="/home"
                     target="_blank"
                     className={styles.forgot}
                     >
                         Forgot Password?
                     </NavLink>
                 </Form.Group>
-                <Button 
-                variant="primary" 
+                <button 
                 type="submit"
                 className={styles.submit}
                 disabled={
@@ -136,7 +135,7 @@ const Login: React.FC = () => {
                     }
                 >
                     Submit
-                </Button>
+                </button>
                 <NavLink 
                 to="/chooseSignUp">
                     <Button 
