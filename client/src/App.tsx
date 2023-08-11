@@ -15,11 +15,15 @@ import Cart from './views/Cart/Cart';
 import AboutUs from './views/aboutUs/AboutUs';
 import Contact from './views/Contact/Contact';
 import Creation from './views/Creation/Creation';
+import { Toaster } from 'react-hot-toast'
+import Pay from './views/Pay/Pay';
+
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar"
 import Footer from "./components/footer/Footer"
 // STYLES
 import './App.css';
+import SuccessPay from './views/Pay/succesPay';
 import { useSelector } from 'react-redux';
 import { AppState } from './redux/reducer';
 
@@ -52,6 +56,12 @@ function App() {
           <Route path='/aboutUs' element={ <AboutUs />} />
           <Route path='/contact' element={ <Contact />} />
           <Route path='/post' element={ <Creation />} />
+
+          {/* ---------- pay ------*/}
+          <Route path='/pay' element={<Pay/>}/>
+          <Route path='/succes' element={<SuccessPay/>}/>
+
+
           {/* Otras rutas pueden definirse aquí */}
         </Routes>
       </div>
