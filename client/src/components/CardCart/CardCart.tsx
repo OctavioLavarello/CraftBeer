@@ -91,7 +91,7 @@ const CardCart = ({ name, summary, price, image, quantity, id }: productCart) =>
           <button className={style.custom_button} name={"+"} onClick={handlerItemCart} >+</button>
         </div>
         <div className={style.price}>
-          <h3>$ {(price * quantity).toFixed(2)}</h3>
+          <h3>U$S {(price * quantity).toFixed(2)}</h3>
         </div>
         <button className={style.buttonClose} onClick={deleteItemLocal}>x</button>
       </div>
