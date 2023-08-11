@@ -1,14 +1,23 @@
 /// IMPORTS
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AppState } from "../../redux/reducer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+// ACTIONS
+import { logout } from "../../redux/actions/actions";
 // STYLES
 import styles from "./NavBar.module.css";
 
 const NavBar: React.FC = () => {
   // GLOBAL STATE
-  const { accessLogin } = useSelector((state: AppState) => state) 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { accessLogin } = useSelector((state: AppState) => state); 
+  // HANDLERS
+  const handlerLogout = () => {
+    dispatch(logout())
+    navigate("home")
+  }
   return (
     <div className={styles.navContainer}>
       <div className={styles.RouterConteiner}>
@@ -47,7 +56,7 @@ const NavBar: React.FC = () => {
           </NavLink> 
         ) : 
         <button className={styles.link}>
-          <h5>Logout</h5>
+          <h5 onClick={handlerLogout}>Logout</h5>
         </button>
         }
         
