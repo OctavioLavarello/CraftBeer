@@ -1,6 +1,9 @@
 /// IMPORTS
-import { Routes, Route, useLocation } from 'react-router-dom';  
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';  
 import { Toaster } from 'react-hot-toast'
+import { useSelector } from 'react-redux';
+import { AppState } from './redux/reducer';
+import { useEffect } from 'react';
 // VIEWS
 import Landing from './views/Landing/Landing';
 import Home from './views/Home/Home'
@@ -20,20 +23,32 @@ import NavBar from "./components/navbar/NavBar"
 import Footer from "./components/footer/Footer"
 // STYLES
 import './App.css';
-import { useSelector } from 'react-redux';
-import { AppState } from './redux/reducer';
 
 // APP
 function App() {
-  const location = useLocation();
-  const hasPermissions = false;
-  const { accessLogin } = useSelector((state: AppState) => state) 
+  const { accessLogin, localStorageCart } = useSelector((state: AppState) => state) 
   console.log(accessLogin)
+  const navigate = useNavigate();
+  const location = useLocation();
+  const handlerNavigate = () => {
+    if (accessLogin.role === "Person" && Object.keys(localStorageCart).length === 0){
+        navigate("/shop")
+    } else if (accessLogin.role === "Person" && Object.keys(localStorageCart).length > 0){
+        navigate("/cart") 
+    }
+    if (accessLogin.role === "Company"){
+        navigate("/home")
+    }
+  }
+  useEffect(() => {
+    handlerNavigate();
+  }, [accessLogin, localStorageCart]);
   return (
     <div>
       <div><Toaster/></div>
       <div>
         {
+        location.pathname !== "/" && 
         <NavBar/>
         }
       </div>
@@ -42,7 +57,7 @@ function App() {
         (<Routes>
           <Route path='/' element={ <Landing />} />
           <Route path='/home' element={ <Home />} />
-        <Route path='/shop' element={ <Shop />} />
+          <Route path='/shop' element={ <Shop />} />
           <Route path='/detail/:id' element={ <Detail />} />
           <Route path='/user/:id' element={ <User />} />
           <Route path='/cart' element={ <Cart />} />
@@ -85,3 +100,4 @@ function App() {
 };
 
 export default App;
+

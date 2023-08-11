@@ -1,11 +1,10 @@
 /// IMPORTS
 import { AnyAction, Dispatch } from "redux";
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import loginValidation from "./LoginValidation";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import { AppState } from "../../redux/reducer";
 // ACTION
 import { login } from "../../redux/actions/actions";
 // STYLES
@@ -23,7 +22,6 @@ export interface login {
 // LOGIN
 const Login: React.FC = () => {
     // GLOBAL STATE
-    const { accessLogin, localStorageCart } = useSelector((state: AppState) => state) 
     const dispatch = useDispatch<Dispatch<AnyAction> | any>();
     // LOCAL STATES
     const [userLogin, setUserLogin] = useState<login>({
@@ -37,8 +35,6 @@ const Login: React.FC = () => {
     const [isClicked, setIsClicked] = useState<boolean>(false);
     const [isError, setIsError] = useState<boolean>(false);
     // HANDLERS
-    const navigate = useNavigate();
-
     const handlerOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setUserLogin((prevUserLogin) => ({
@@ -47,24 +43,11 @@ const Login: React.FC = () => {
         }));
         loginValidation(userLogin, setErrors);
     };
-    const handlerNavigate = () => {
-        if (accessLogin.role === "Person"){
-           if (Object.keys(localStorageCart).length === 0){
-                navigate("/shop")
-            } else if (Object.keys(localStorageCart).length > 0){
-                navigate("/cart")
-            }  
-        }
-        if (accessLogin.role === "Company"){
-            navigate("/home")
-        }
-    }
     const handlerOnSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
         try {
             await setIsClicked(!isClicked);
             await dispatch(login(userLogin));
-            handlerNavigate();
         } catch (error: any) { 
             if (error.response && error.response.data && error.response.data.message) {
                 const errorMessage = error.response.data.message;
