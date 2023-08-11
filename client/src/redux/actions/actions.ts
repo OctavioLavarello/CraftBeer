@@ -255,6 +255,7 @@ export const login = (loginUserData: loginUserData) => {
 }
 // LOGIN ACTION
 export const logout = () => {
+  toast.success("Logout successful")
   return {
     type: LOGOUT,
   };
