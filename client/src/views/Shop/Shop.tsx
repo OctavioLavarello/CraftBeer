@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { orderFilters } from "../../redux/actions/actions";
 import { AppState } from "../../redux/reducer";
 import { Link } from "react-router-dom";
+import craftBeerLogo from "../../assets/img/craftBeerLogo.jpg";
 
 // SHOP
 
@@ -103,7 +104,12 @@ const Shop = () => {
         </Link>
       </div>
       <Row>
-        <Col xs={12} md={3}>
+
+        <Col xs={12} md={3} style={{ justifyContent: "center", alignItems: "center" }}>
+          <div className={style.containerLogo}>
+            <img src={craftBeerLogo} alt="" style={{ objectFit: "cover", width: "100%" }} />
+          </div>
+          <h5 style={{ marginLeft: "38%" }}>PAGINAS</h5>
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <button className={style.button_Pagechange} onClick={handlerPage} name="<" disabled={disableBoton.back}>{"<"} </button>
             <button className={style.button_Pagelateral}>{numberPage === 1 ? <></> : numberPage - 1} </button>
@@ -112,6 +118,16 @@ const Shop = () => {
             <button className={style.button_Pagechange} onClick={handlerPage} name=">" disabled={disableBoton.adv}>{">"} </button>
           </div>
           <Filters />
+          <h5 style={{ marginLeft: "12%" }}>ESPACIO PUBLICITARIO</h5>
+          <div className={style.containerpublicidad}>
+            <img src="https://thumbs.gfycat.com/IlliteratePoliteLeech-size_restricted.gif" alt="" style={{ objectFit: "cover", width: "100%" }} />
+          </div>
+          <div className={style.containerpublicidad}>
+            <img src="https://i.pinimg.com/originals/77/81/ae/7781ae6ad9627464d20fc605b774e6a9.gif" alt="" style={{ objectFit: "cover", width: "100%" }} />
+          </div>
+          <div className={style.containerpublicidad}>
+            <img src="https://unapausaparalapublicidad.files.wordpress.com/2014/08/san-miguel.gif" alt="" style={{ objectFit: "cover", width: "100%" }} />
+          </div>
         </Col>
         <Col xs={12} md={9}>
           <div className="d-flex flex-column">

@@ -14,11 +14,11 @@ const defineModel = (): ModelCtor<ItemModel> => {
       defaultValue: DataTypes.UUIDV4,
     },
     amount: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
     totalPrice: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
   }) as ModelCtor<ItemModel>;
