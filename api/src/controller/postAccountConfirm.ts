@@ -5,15 +5,13 @@ dotenv.config();
 const { NODEMAILER_USER, NODEMAILER_PASS } = process.env;
 
 const postAccountConfirm = async (req: Request, res: Response) => {
-
   try {
     const { name, email } = req.body;
-    let transporter = nodemailer.createTransport({  
-    
+    let transporter = nodemailer.createTransport({
       //options -- define los datos de conexión
-      host:"smtp.gmail.com",
-      port:587,
-      secure:false,
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
       auth: {
         user: NODEMAILER_USER,
         pass: NODEMAILER_PASS,
@@ -33,7 +31,7 @@ const postAccountConfirm = async (req: Request, res: Response) => {
         <p>craftbeer514@gmail.com</p>
 		</body>
 	</head>
-</html>`
+</html>`,
     };
 
     transporter.sendMail(mailOptions, (error: any, res: any) => {
