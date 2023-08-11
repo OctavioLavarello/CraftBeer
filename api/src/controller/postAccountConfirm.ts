@@ -29,7 +29,7 @@ const postAccountConfirm = async (req: Request, res: Response) => {
         <body>
         <h2>¡Hola ${name}, bienvenido!🍻 </h2><img src='https://i.postimg.cc/wjbRFfkV/Simple-October-Fest-Instagram-Post-6.png'/>
         <p>Tu cuenta ha sido creada satisfactoriamente en Craftbeer.</p>
-        <p>Si no has sido tú quien realizó esta solicitud, comunícate con nuestra línea de atención al cliente:</p>
+        <p>Si no has sido tú quien realizó esta solicitud, comunícate con atención al cliente:</p>
         <p>craftbeer514@gmail.com</p>
 		</body>
 	</head>
