@@ -11,6 +11,7 @@ import putProduct from '../controller/putProduct';
 import putUserCompany from '../controller/putUserCompany';
 import getAllUserPersons from '../controller/getAllUserPersons';
 import postQualification from "../controller/postQualification"
+import {createOrder} from "../controller/payment/get.create-order"
 import postShoppingHistory from '../controller/postShoppingHistory';
 import getShoppingHistories from '../controller/getShoppingHistories';
 
@@ -20,8 +21,10 @@ const router = Router();
 router.post("/user", postUserPerson);
 router.post("/company", postCompany);
 router.post("/product", postProduct);
+router.post("/qualification", postQualification)
 router.post("/qualification", postQualification);
 router.post("/shoppingHistory", postShoppingHistory);
+
 
 // ------- get routes ------- //
 router.get("/companies", getAllCompanies);
@@ -35,5 +38,10 @@ router.get("/shoppingHistories", getShoppingHistories);
 router.put("/user", putUserPerson);
 router.put("/company", putUserCompany);
 router.put("/product/:productId", putProduct);
+
+// ------- payment routes ----//
+
+router.get("/create-order", createOrder)
+
 
 module.exports = router

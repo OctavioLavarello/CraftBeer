@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { ThunkDispatch } from 'redux-thunk';
 import { Form, Row, Col, Button } from "react-bootstrap";
-import { AnyAction } from 'redux';
-import axios from "axios";
 import { createdUser } from "../../redux/actions/actions"; // Importa la acción creadora de usuarios
 import craftBeerLogo from "../../assets/img/craftBeerLogo.jpg";
 import Styles from "./BuyerSingUp.module.css"
 interface UserData {
-  id: string;
   name: string;
   lastName: string;
-  document: string;
+  document: number;
   email: string;
   password: string;
   country: string;
@@ -25,10 +21,9 @@ interface UserData {
 const BuyerSingUp: React.FC = () => {
   const dispatch = useDispatch<any>();
   const [formData, setFormData] = useState<UserData>({ 
-    id: "", 
     name: "",
     lastName: "",
-    document: "",
+    document: 0,
     email: "",
     password: "",
     country: "",
@@ -50,8 +45,6 @@ const BuyerSingUp: React.FC = () => {
     state:"Se requiere estado",
     address: "Se requiere direccion",
     image: "Se requiere una imagen",
-    status:"Se requier un estatus",
-    role:"Se requiere un rol"
   })
 
   const validation = (input: any, name: any) =>{
@@ -102,27 +95,35 @@ const BuyerSingUp: React.FC = () => {
       if (input.image !== "") setErrors({ ...errors, image: "" });
       else setErrors({ ...errors, image: "Información requerida" });
     }
-    if(name === "status"){
-      if (input.status !== "") setErrors({ ...errors, status: "" });
-      else setErrors({ ...errors, status: "Información requerida" });
+
     }
-    if(name === "role"){
-      if (input.role !== "") setErrors({ ...errors, role: "" });
-      else setErrors({ ...errors, role: "Información requerida" });
-    }
-    }
+  
   
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      // Realizar la solicitud POST al backend para guardar los datos en la base de datos
-     console.log(formData)
-     dispatch(createdUser(formData))
-     setFormData({
-      ...formData,
-    });
-    };
- 
+    //  console.log(formData)
+
+
+  console.log(formData)
+  dispatch(createdUser(formData))
+  // setFormData({
+  //   name: "",
+  //   lastName: "",
+  //   document: 0,
+  //   email: "",
+  //   password: "",
+  //   country: "",
+  //   city: "",
+  //   state: "",
+  //   address: "",
+  //   image: "",
+  //   status: "",
+  //   role: ""
+  // });
+};
+
+// console.log(formData);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> | any) => {
     const { name, value } = event.target;
@@ -140,7 +141,7 @@ const BuyerSingUp: React.FC = () => {
     }
     return disabled;
   };
-  
+  // console.log(formData);
 
 
 
@@ -148,7 +149,7 @@ const BuyerSingUp: React.FC = () => {
     <div className={Styles.container}>
     
       <div className={Styles.formBox}>
-      <Form style={{ width: "700px", height: "auto", padding: "10px" }}>
+      <Form  onSubmit={handleSubmit} style={{ width: "700px", height: "auto", padding: "10px" }}>
   <Row style={{ margin: '15px' }}>
     <Col>
       Nombre:
@@ -157,7 +158,7 @@ const BuyerSingUp: React.FC = () => {
         type="text"
         name="name"
         onChange={handleInputChange}
-        value={formData.name}
+       
       />
        <h6 className={Styles.mensajes}>{errors.name}</h6>
     </Col>
@@ -168,7 +169,7 @@ const BuyerSingUp: React.FC = () => {
         type="text"
         name="lastName"
         onChange={handleInputChange}
-        value={formData.lastName}
+       
       />
       <h6 className={Styles.mensajes}>{errors.lastName}</h6>
     </Col>
@@ -181,7 +182,7 @@ const BuyerSingUp: React.FC = () => {
         type="number"
         name="document"
         onChange={handleInputChange}
-        value={formData.document}
+       
       />
       <h6 className={Styles.mensajes}>{errors.document}</h6>
     </Col>
@@ -192,7 +193,7 @@ const BuyerSingUp: React.FC = () => {
         type="password"
         name="password"
         onChange={handleInputChange}
-        value={formData.password}
+       
       />
       <h6 className={Styles.mensajes}>{errors.password}</h6>
     </Col>
@@ -204,7 +205,7 @@ const BuyerSingUp: React.FC = () => {
         placeholder="Dirección"
         name="address"
         onChange={handleInputChange}
-        value={formData.address}
+        
       />
       <h6 className={Styles.mensajes}>{errors.address}</h6>
     </Col>
@@ -215,7 +216,7 @@ const BuyerSingUp: React.FC = () => {
         type="url"
         name="image"
         onChange={handleInputChange}
-        value={formData.image}
+       
       />
       <h6 className={Styles.mensajes}>{errors.image}</h6>
     </Col>
@@ -228,7 +229,7 @@ const BuyerSingUp: React.FC = () => {
         type="email"
         name="email"
         onChange={handleInputChange}
-        value={formData.email}
+       
       />
       <h6 className={Styles.mensajes}>{errors.email}</h6>
     </Col>
@@ -241,7 +242,7 @@ const BuyerSingUp: React.FC = () => {
         type="text"
         name="country"
         onChange={handleInputChange}
-        value={formData.country}
+      
       />
       <h6 className={Styles.mensajes}>{errors.country}</h6>
     </Col>
@@ -252,7 +253,7 @@ const BuyerSingUp: React.FC = () => {
         type="text"
         name="city"
         onChange={handleInputChange}
-        value={formData.city}
+ 
       />
       <h6 className={Styles.mensajes}>{errors.city}</h6>
     </Col>
@@ -265,46 +266,20 @@ const BuyerSingUp: React.FC = () => {
         type="text"
         name="state"
         onChange={handleInputChange}
-        value={formData.state}
+    
       />
       <h6 className={Styles.mensajes}>{errors.state}</h6>
     </Col>
     <Col>
-      Estatus:
-      <Form.Control
-        as="select"
-        name="status"
-        onChange={handleInputChange}
-        value={formData.status.toString()} // Convertir boolean a string
-      >
-        <option value="true">Disponible</option>
-        <option value="false">No disponible</option>
-      </Form.Control>
-      <h6 className={Styles.mensajes}>{errors.status}</h6>
+
     </Col>
   </Row>
-  <Row style={{ margin: '15px' }}>
-    <Col>
-      Rol:
-      <Form.Control
-        placeholder="Rol"
-        type="text"
-        name="role"
-        onChange={handleInputChange}
-        value={formData.role}
-      />
-      <h6 className={Styles.mensajes}>{errors.role}</h6>
-    </Col>
-  </Row>
-  
- 
-    <form onSubmit={handleSubmit}>
       <Button type="submit"
       disabled={disable(errors)}>
         
         Crear Usuario
       </Button>
-    </form>
+   
  
     </Form>
 
