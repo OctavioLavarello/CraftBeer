@@ -44,7 +44,7 @@ const postUserPerson = async (req: Request, res: Response) => {
     });
 
     if (userPerson) {
-      return postAccountConfirm(email, name);
+      return postAccountConfirm(name, email);
     }
     return res.status(200).json(userPerson);
   } catch (error) {

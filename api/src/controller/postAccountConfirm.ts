@@ -4,6 +4,7 @@ dotenv.config();
 const { NODEMAILER_USER, NODEMAILER_PASS } = process.env;
 
 const postAccountConfirm = async (name:String, email:String) => {
+  console.log(name,email)
   try {
   
     let transporter = nodemailer.createTransport({
