@@ -11,7 +11,7 @@ import putProduct from '../controller/putProduct';
 import putUserCompany from '../controller/putUserCompany';
 import getAllUserPersons from '../controller/getAllUserPersons';
 import postQualification from "../controller/postQualification"
-
+import postAccountConfirm from "../controller/postAccountConfirm"
 
 const router = Router();
 
@@ -20,6 +20,7 @@ router.post("/user", postUserPerson);
 router.post("/company", postCompany);
 router.post("/product", postProduct);
 router.post("/qualification", postQualification)
+router.post("/account-confirm", postAccountConfirm)
 
 // ------- get routes ------- //
 router.get("/companies", getAllCompanies);
