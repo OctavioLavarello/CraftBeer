@@ -47,7 +47,6 @@ const Contact: React.FC = () => {
     event.preventDefault();
     // despacho de userMessage
   };
-  console.log(userMessage)
   return (
     <div className={styles.all}>
       <Form 

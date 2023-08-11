@@ -104,7 +104,18 @@ export const login = (state = initialState, action: loginAction) => {
     }
   }
 }
-
+// LOGOUT
+export const logout = (state = initialState) => {
+  return {
+    ...state,
+    accessLogin: {
+      access: false,
+      id: "",
+      role: "",
+      cart: null,
+    }
+  }
+}
 export const loginVerification = (state = initialState, action:loginAction)=> {
   return {
     ...state,
@@ -113,7 +124,6 @@ export const loginVerification = (state = initialState, action:loginAction)=> {
     role: action.payload.user.role
   }
 }
-
 //ALMACENAR numero de paginas para el shop 
 export const totalPagesShop = (
   state = initialState,

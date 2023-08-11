@@ -8,7 +8,8 @@ import {
   saveLocalStorageCart,
   login,
   totalPagesShop,
-  loginVerification
+  loginVerification,
+  logout,
 } from "./reducerFunctions";
 import {
   CREATED_PRODUCT,
@@ -19,7 +20,8 @@ import {
   LOCAL_STORAGE,
   LOGIN,
   TOTAL_PAGES,
-  LOGIN_VERIFICATION
+  LOGIN_VERIFICATION,
+  LOGOUT,
 } from "../redux/actions/actionsTypes";
 import { SaveDataLS } from "../components/LocalStorage/LocalStorage";
 
@@ -92,6 +94,9 @@ const rootReducer = (
     }
     case LOGIN: {
       return login(state, action);
+    }
+    case LOGOUT: {
+      return logout(state);
     }
     case TOTAL_PAGES: {
       return totalPagesShop (state,action);
