@@ -23,7 +23,7 @@ export interface login {
 // LOGIN
 const Login: React.FC = () => {
     // GLOBAL STATE
-    const { localStorageCart } = useSelector((state: AppState) => state) 
+    const { accessLogin, localStorageCart } = useSelector((state: AppState) => state) 
     const dispatch = useDispatch<Dispatch<AnyAction> | any>();
     // LOCAL STATES
     const [userLogin, setUserLogin] = useState<login>({
@@ -48,10 +48,15 @@ const Login: React.FC = () => {
         loginValidation(userLogin, setErrors);
     };
     const handlerNavigate = () => {
-        if (Object.keys(localStorageCart).length === 0){
-            navigate("/shop")
-        } else {
-            navigate("/cart")
+        if (accessLogin.role === "Person"){
+           if (Object.keys(localStorageCart).length === 0){
+                navigate("/shop")
+            } else if (Object.keys(localStorageCart).length > 0){
+                navigate("/cart")
+            }  
+        }
+        if (accessLogin.role === "Company"){
+            navigate("/home")
         }
     }
     const handlerOnSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {

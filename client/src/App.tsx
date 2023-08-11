@@ -38,7 +38,8 @@ function App() {
         }
       </div>
       <div className="App">
-        <Routes>
+        {!accessLogin.access ? 
+        (<Routes>
           <Route path='/' element={ <Landing />} />
           <Route path='/home' element={ <Home />} />
           <Route path='/shop' element={ <Shop />} />
@@ -52,8 +53,29 @@ function App() {
           <Route path='/aboutUs' element={ <AboutUs />} />
           <Route path='/contact' element={ <Contact />} />
           <Route path='/post' element={ <Creation />} />
-          {/* Otras rutas pueden definirse aquí */}
-        </Routes>
+        </Routes>) : (accessLogin.role === "Person" ? 
+        (<Routes>
+          <Route path='/' element={ <Landing />} />
+          <Route path='/home' element={ <Home />} />
+          <Route path='/shop' element={ <Shop />} />
+          <Route path='/detail/:id' element={ <Detail />} />
+          <Route path='/user/:id' element={ <User />} />
+          <Route path='/cart' element={ <Cart />} />
+          <Route path='/aboutUs' element={ <AboutUs />} />
+          <Route path='/contact' element={ <Contact />} />
+        </Routes>) :
+        (<Routes>
+          <Route path='/' element={ <Landing />} />
+          <Route path='/home' element={ <Home />} />
+          <Route path='/shop' element={ <Shop />} />
+          <Route path='/detail/:id' element={ <Detail />} />
+          <Route path='/user/:id' element={ <User />} />
+          <Route path='/aboutUs' element={ <AboutUs />} />
+          <Route path='/contact' element={ <Contact />} />
+          <Route path='/post' element={ <Creation />} />
+        </Routes>)
+        )
+        }
       </div>
       <div>
         <Footer />
