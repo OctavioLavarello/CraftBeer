@@ -85,6 +85,8 @@ const Creation = () => {
 
   const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log("fdfdfdfdf",input);
+    
     dispatch(createdProduct(input));
     setInput({
       ...input,

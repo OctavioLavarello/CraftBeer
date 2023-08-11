@@ -4,86 +4,6 @@
 
 
 
-@media (max-width: 1288px) {
-
-    .card {
-        display: block;
-        height: auto;
-        margin: 10px auto;
-        padding: 10px;
-    }
-
-    .image {
-        order: -1;
-        /* Cambia el orden de la imagen para que esté en la parte superior */
-    }
-
-    .colPrice {
-        text-align: center;
-    }
-
-    .custom_button {
-        width: 25px;
-        /* Reduce el ancho de los botones */
-        height: 25px;
-        margin: 2px;
-        /* Reduce el margen */
-        font-size: 12px;
-        /* Reduce el tamaño de fuente */
-    }
-
-    .title {
-        font-size: 18px;
-        /* Reduce el tamaño de fuente del título */
-    }
-
-    .alertStock,
-    .alertOutStock {
-        margin-top: 5px;
-        /* Ajusta el margen superior */
-        font-size: 12px;
-        /* Reduce el tamaño de fuente de las alertas */
-    }
-
-    .textContainer {
-        height: auto;
-        margin-top: 5px;
-        font-size: 12px;
-        /* Reduce el tamaño de fuente del texto */
-    }
-
-    .navButton p {
-        margin-top: 5px;
-        font-size: 12px;
-        /* Reduce el tamaño de fuente de los botones */
-    }
-
-    .buttonBuy {
-        width: 100%;
-        height: auto;
-        margin-top: 10px;
-        font-size: 12px;
-        /* Reduce el tamaño de fuente del botón */
-    }
-
-    .input {
-        width: auto;
-        height: auto;
-        margin-left: 0;
-        font-size: 12px;
-        /* Reduce el tamaño de fuente del contador */
-    }
-
-    .IBU {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-        font-size: 12px;
-        /* Reduce el tamaño de fuente de los detalles */
-    }
-}
-
-
 
 /* Pantallas pequeñas (dispositivos móviles pequeños) */
 @media (max-width: 480px) {
@@ -104,7 +24,7 @@
 /* Pantallas medianas (1024px - 1365px)  -----------------------------------------------*/
 @media (min-width: 768px) and (max-width: 1365px) {
     .card {
-        background-color: rgb(0, 0, 0);
+        background-color: rgb(13, 12, 12);
         border-radius: 8px;
         padding: 5px;
         color: #d09527;
@@ -112,7 +32,7 @@
         display: flex;
         flex-direction: column; /* Cambio a columna */
         margin: 10px;
-        box-shadow: 0 4px 8px rgba(255, 253, 253, 0.3);
+        box-shadow: 0 4px 8px rgba(79, 72, 72, 0.3);
     }
 
     .link {
@@ -121,7 +41,7 @@
 
     .image {
         border-radius: 6px;
-        width: 100%; /* Ajuste al 100% del ancho */
+        width: 90%; /* Ajuste al 100% del ancho */
         height: 32vh; /* Ajuste automático de altura */
         background-color: rgb(21, 20, 20);
         text-align: center;
@@ -193,13 +113,13 @@
     }
 
     .title {
-        font-size: 25px;
+        font-size: 100%;
         background-color: rgb(82, 82, 82);
         border-radius: 10px;
         color: #d09527;
     }
     .title br {
-        height: 200px;
+        height: 100px;
     }
 
     .inputContainer {
@@ -212,6 +132,8 @@
     .alertStock {
         color: #d09527;
         margin-top: 0px;
+        font-size: 80%;
+        
     }
  
 
@@ -219,6 +141,7 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
+        font-size: auto;
     }
 
     .textContainer {
@@ -228,6 +151,7 @@
         flex-direction: column;
         justify-content: flex-start;
         overflow: hidden;
+        font-size: 70%;
     }
 
     .textContainer p {
@@ -238,23 +162,28 @@
         justify-content: center;
         text-align: center;
         display: flex;
+        font-size: 60%;
         flex-direction: column;
         margin-top: 20px;
+        width: 80%;
     }
 
     .navButton p {
         color: #dfe4db;
         font-weight: 700;
+        font-size: auto;
         background-color: #398310;
         border-radius: 4px;
         margin-top: 10px;
+        margin-left: 22%;
     }
 
     .buttonBuy {
         color: #cdc7c7;
         margin: 0px;
-        font-size: auto;
-        width: 8vw;
+        font-size: 120%;
+        width: 10vw;
+        margin-left: 22%;
         opacity: 0.8;
         height: 4vh;
         border: none;
@@ -311,15 +240,15 @@
     .card {
         background-color: rgb(0, 0, 0);
         border-radius: 8px;
+        border: 0.1px solid #d09527;
         padding: 5px;
         color: #d09527;
-        border: none;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         margin: 10px;
         height: 240px;
-        box-shadow: 0 4px 8px rgba(255, 253, 253, 0.3)
+        box-shadow: 0 0 8px 4px rgba(208, 149, 39, 0.1);
     }
 
     .link {

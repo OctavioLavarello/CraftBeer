@@ -26,6 +26,7 @@ import { AppState } from './redux/reducer';
 // APP
 function App() {
   const location = useLocation();
+  const hasPermissions = false;
   const { accessLogin } = useSelector((state: AppState) => state) 
   console.log(accessLogin)
   return (
@@ -33,7 +34,6 @@ function App() {
       <div><Toaster/></div>
       <div>
         {
-        location.pathname !== "/" && 
         <NavBar/>
         }
       </div>
@@ -41,7 +41,7 @@ function App() {
         <Routes>
           <Route path='/' element={ <Landing />} />
           <Route path='/home' element={ <Home />} />
-          <Route path='/shop' element={ <Shop />} />
+        <Route path='/shop' element={ <Shop />} />
           <Route path='/detail/:id' element={ <Detail />} />
           <Route path='/user/:id' element={ <User />} />
           <Route path='/cart' element={ <Cart />} />
