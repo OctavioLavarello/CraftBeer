@@ -118,7 +118,6 @@ const Login: React.FC = () => {
                     />
                     <NavLink 
                     to="/home"
-                    target="_blank"
                     className={styles.forgot}
                     >
                         Forgot Password?
