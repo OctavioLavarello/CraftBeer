@@ -11,7 +11,8 @@ import {
   LOCAL_STORAGE,
   LOGIN,
   TOTAL_PAGES,
-  LOGIN_VERIFICATION
+  LOGIN_VERIFICATION,
+  LOGOUT,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
 //interface para las Actions
@@ -233,7 +234,7 @@ enum UserRole {
 // LOGIN ACTION
 export const login = (loginUserData: loginUserData) => {
   try {
-    const endpoint = "http://localhost:3001/login";
+    const endpoint = "/login";
     return async function (dispatch: Dispatch<loginAction>) {
       const url = `${endpoint}?email=${loginUserData.email}&password=${loginUserData.password}`
       const { data } = await axios.get(url);
@@ -248,6 +249,12 @@ export const login = (loginUserData: loginUserData) => {
     toast.error("Login Error")
   }
 }
+// LOGIN ACTION
+export const logout = () => {
+  return {
+    type: LOGOUT,
+  };
+};
 
 export const verificationLogin = (user)=>{
  return {

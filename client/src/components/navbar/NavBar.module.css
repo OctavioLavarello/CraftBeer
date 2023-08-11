@@ -25,6 +25,8 @@
     margin-left: 1.5vw;
     margin-right: 1.5vw;
     position: relative;
+    background-color: black;
+    border: none;
 }
 .link h2 {
     width: 100%;

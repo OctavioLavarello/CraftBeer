@@ -26,21 +26,31 @@ const NavBar: React.FC = () => {
         </NavLink>
       </div>
       <div className={styles.RouterConteiner}>
-        <NavLink to="/cart" className={styles.link}>
-          <h5>Cart</h5>
-        </NavLink>
-        {!accessLogin.access ? 
+        {accessLogin.role === "Company" ? null : accessLogin.role === "Person" || accessLogin.role === "" ? 
         (
-          <NavLink to="/login" className={styles.link}>
-            <h5>Login</h5>
-          </NavLink> 
-        ) : accessLogin.role === "Person" ? null : accessLogin.role === "Company" ? 
+          <NavLink to="/cart" className={styles.link}>
+            <h5>Cart</h5>
+          </NavLink>
+        ) : null
+        }
+        {accessLogin.role === "Person" ? null : accessLogin.role === "Company" ? 
         (
           <NavLink to="/post" className={styles.link}>
             <h5>Post beer</h5>
           </NavLink>
         ) : null
         }
+        {!accessLogin.access ? //ES FALSE 
+        (
+          <NavLink to="/login" className={styles.link}>
+            <h5>Login</h5>
+          </NavLink> 
+        ) : 
+        <button className={styles.link}>
+          <h5>Logout</h5>
+        </button>
+        }
+        
       </div>
     </div>
   );
