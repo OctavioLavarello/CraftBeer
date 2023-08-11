@@ -11,7 +11,9 @@ import {
   LOCAL_STORAGE,
   LOGIN,
   TOTAL_PAGES,
+  LOGIN_VERIFICATION
 } from "../actions/actionsTypes";
+import { saveUserData } from "../../components/LocalStorage/LocalStorage";
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
   type: T;
@@ -27,7 +29,7 @@ export interface ProductData {
   IBU: number;
   presentation: string;
   image: string;
-  userCompanyId: `string`;
+  userCompanyId: any;
 }
 
 export interface CompanyData {
@@ -48,7 +50,7 @@ export interface CompanyData {
 //Actions para recibir todas las cervezas
 export const allBeers = () => {
   const endpoint = "/product";
-  return async function (dispatch: Dispatch<any>) {
+    return async function (dispatch: Dispatch<any>) {
     const response = await axios.get(endpoint);
     return dispatch({
       type: ADD_ALL_BEER,
@@ -158,9 +160,7 @@ export const createdCompany = ({
       dispatch({
         type: CREATED_COMPANY,
         payload: companyCreated,
-      });
-      console.log(companyCreated);
-      
+      });      
       toast.success("Se creo correctamente su compañía")
     };
   } catch (error) {
@@ -237,12 +237,21 @@ export const login = (loginUserData: loginUserData) => {
     return async function (dispatch: Dispatch<loginAction>) {
       const url = `${endpoint}?email=${loginUserData.email}&password=${loginUserData.password}`
       const { data } = await axios.get(url);
-      return dispatch ({
+      saveUserData(data)
+      dispatch ({
         type: LOGIN,
         payload: data,
       });
+      toast.success("Sesión iniciada con éxito")
     }
   } catch (error) {
     toast.error("Login Error")
   }
+}
+
+export const verificationLogin = (user)=>{
+ return {
+  type: LOGIN_VERIFICATION,
+  payload: user
+ } 
 }
