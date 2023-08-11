@@ -12,7 +12,6 @@ import putUserCompany from '../controller/putUserCompany';
 import getAllUserPersons from '../controller/getAllUserPersons';
 import postQualification from "../controller/postQualification"
 
-
 const router = Router();
 
 //-------- post routes -----//
