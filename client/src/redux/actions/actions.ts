@@ -9,9 +9,12 @@ import {
   CREATED_COMPANY,
   CREATED_USER,
   LOCAL_STORAGE,
-  LOGIN
-  TOTAL_PAGES
+  LOGIN,
+  TOTAL_PAGES,
+  LOGIN_VERIFICATION,
+  LOGOUT,
 } from "../actions/actionsTypes";
+import { saveUserData } from "../../components/LocalStorage/LocalStorage";
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
   type: T;
@@ -27,7 +30,7 @@ export interface ProductData {
   IBU: number;
   presentation: string;
   image: string;
-  UserCompanyId: string
+  userCompanyId: any;
 }
 
 export interface CompanyData {
@@ -45,12 +48,10 @@ export interface CompanyData {
   image: string
 }
 
-
-
 //Actions para recibir todas las cervezas
 export const allBeers = () => {
   const endpoint = "/product";
-  return async function (dispatch: Dispatch<any>) {
+    return async function (dispatch: Dispatch<any>) {
     const response = await axios.get(endpoint);
     return dispatch({
       type: ADD_ALL_BEER,
@@ -67,7 +68,6 @@ export const orderFilters = (filters: object): ActionWithPayload<"ORDER_FILTERS"
   };
 };
 
-
 //actions para guardar el localStorage 
 export const localStorageCart = (data:object)=>{
   return {
@@ -76,7 +76,7 @@ export const localStorageCart = (data:object)=>{
   }
 }
 
-//actions para guardar la cantidad de paginas
+//actions para guardar el localStorage 
 
 export const totalPages = (data:number)=>{
   return {
@@ -84,7 +84,6 @@ export const totalPages = (data:number)=>{
     payload:data
   }
 }
-
 
 //Actions para crear un producto (cerveza)
 export const createdProduct = ({
@@ -97,10 +96,11 @@ export const createdProduct = ({
   stock,
   IBU,
   presentation,
-  UserCompanyId
+  userCompanyId,  
 }: ProductData) => {
+
+  return async function (dispatch: any) {
   try {
-    return async function (dispatch: any) {
       let createdBeer = await axios.post(`/product`, {
         name,
         image,
@@ -111,22 +111,20 @@ export const createdProduct = ({
         stock,
         IBU,
         presentation,
-        UserCompanyId
+        userCompanyId,
       });
       dispatch({
         type: CREATED_PRODUCT,
         payload: createdBeer,
       });
       console.log(createdBeer);
-      
       toast.success("Se creo correctamente su producto")
-    };
-  } catch (error) {
-    console.log("Entre al error");
+    } 
     
-   toast.error("No ha sido posible cargar su producto");
+    catch (error) {
+      toast.error("No ha sido posible cargar su producto");
+    };
   }
-  
 };
 
 //Actions para crear un usuario de vendedor (postCompany)
@@ -163,16 +161,13 @@ export const createdCompany = ({
       dispatch({
         type: CREATED_COMPANY,
         payload: companyCreated,
-      });
-      console.log(companyCreated);
-      
+      });      
       toast.success("Se creo correctamente su compañía")
     };
   } catch (error) {
    toast.error("No ha sido posible cargar su compañía");
   }  
 };
-
 
 export interface UserData {
   id: string;
@@ -239,16 +234,31 @@ enum UserRole {
 // LOGIN ACTION
 export const login = (loginUserData: loginUserData) => {
   try {
-    const endpoint = "http://localhost:3001/login";
+    const endpoint = "/login";
     return async function (dispatch: Dispatch<loginAction>) {
       const url = `${endpoint}?email=${loginUserData.email}&password=${loginUserData.password}`
       const { data } = await axios.get(url);
-      return dispatch ({
+      saveUserData(data)
+      dispatch ({
         type: LOGIN,
         payload: data,
       });
+      toast.success("Login successful")
     }
   } catch (error) {
     toast.error("Login Error")
   }
+}
+// LOGIN ACTION
+export const logout = () => {
+  return {
+    type: LOGOUT,
+  };
+};
+
+export const verificationLogin = (user)=>{
+ return {
+  type: LOGIN_VERIFICATION,
+  payload: user
+ } 
 }

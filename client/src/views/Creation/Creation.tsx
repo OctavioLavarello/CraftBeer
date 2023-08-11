@@ -2,17 +2,12 @@
 import { useState } from "react";
 //import { Dispatch, AnyAction } from "redux";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  Form,
-  Row,
-  Col,
-  Button,
-  InputGroup,
-} from "react-bootstrap";
+import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
 import "../Creation/Creation.css";
 import CardUserProduct from "../../components/CardUsersProduct/CardUserProduct";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createdProduct, ProductData } from "../../redux/actions/actions";
+import { AppState } from "../../redux/reducer";
 
 // STYLES
 //.....
@@ -20,6 +15,9 @@ import { createdProduct, ProductData } from "../../redux/actions/actions";
 // CREATION
 const Creation = () => {
   const dispatch = useDispatch<any>();
+  const access = useSelector((state: AppState) => state.accessLogin)
+  const idCompany = access.id
+
 
   const [input, setInput] = useState<ProductData>({
     name: "",
@@ -31,7 +29,7 @@ const Creation = () => {
     stock: 0,
     presentation: "",
     IBU: 0,
-    UserCompanyId: ""
+    userCompanyId: idCompany,
   });
 
   const [errors, setErrors] = useState({
@@ -87,13 +85,14 @@ const Creation = () => {
 
   const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(input);
+    console.log("fdfdfdfdf",input);
+    
     dispatch(createdProduct(input));
     setInput({
       ...input,
     });
   };
-
+  
   const handlerChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> | any
   ) => {
@@ -110,7 +109,7 @@ const Creation = () => {
     );
   };
 
-  const disable = (errors:{ [key: string]: string }): boolean => {
+  const disable = (errors: { [key: string]: string }): boolean => {
     let disabled = true;
     for (let error in errors) {
       if (errors[error] === "") disabled = false;
@@ -122,7 +121,6 @@ const Creation = () => {
     return disabled;
   };
   console.log(input);
-  
 
   return (
     <div className="bodyFormP">
@@ -134,7 +132,8 @@ const Creation = () => {
         onSubmit={handlerSubmit}
       >
         <div className="tituloFormCreacion">
-        A continuación podrás indicar la información para la publicación de tu producto:
+          A continuación podrás indicar la información para la publicación de tu
+          producto:
         </div>
         <Row style={{ margin: "15px" }}>
           <Col>
@@ -240,6 +239,17 @@ const Creation = () => {
             <h6 className="mensajes">{errors.description}</h6>
           </Col>
         </Row>
+        //Para incorporar el idCompany de forma manual
+        {/* <Row style={{ margin: "15px" }}>
+        <Col style={{color:"red"}}>Información solo temporal. De uso dev
+            <Form.Control
+              style={{ color: "red" }}
+              placeholder="ID de la compañía. Esta información es solo para prueba, se optendrá desde el localstorage una vez se haga el login del usuario"
+              name="userCompanyId"
+              onChange={handlerChange}
+            />
+          </Col>
+        </Row> */}
         <div className="botonCentro">
           <Button
             type="submit"

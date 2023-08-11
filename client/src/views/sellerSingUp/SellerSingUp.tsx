@@ -6,6 +6,7 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 import "../sellerSingUp/selllerSingUp.css";
 import { useDispatch } from "react-redux";
 import { createdCompany } from "../../redux/actions/actions";
+//import { toast } from "react-hot-toast";
 
 // STYLES
 //....
@@ -52,6 +53,8 @@ const SellerSingUp: React.FC = () => {
       ...input,
     });
   };
+  console.log(input);
+  
 
   const validation = (input: any, name: any) => {
     if (name === "name") {
@@ -71,8 +74,15 @@ const SellerSingUp: React.FC = () => {
       else setErrors({ ...errors, email: "Información requerida" });
     }
     if (name === "password") {
-      if (input.password !== "") setErrors({ ...errors, password: "" });
-      else setErrors({ ...errors, password: "Información requerida" });
+      if (input.password !== "") {
+        if (/^(?=.*[A-Z])(?=.*[0-9]).+$/.test(input.password)) {
+          setErrors({ ...errors, password: "" });
+        } else {
+          setErrors({ ...errors, password: "La contraseña debe contener al menos una letra mayúscula y un número" });
+        }
+      } else {
+        setErrors({ ...errors, password: "Información requerida" });
+      }
     }
     if (name === "phone") {
       if (input.phone !== "") setErrors({ ...errors, phone: "" });

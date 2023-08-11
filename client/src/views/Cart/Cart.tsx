@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CardCart, { productCart } from "../../components/CardCart/CardCart";
 // STYLES
 import style from "./Cart.module.css";
+import { useSelector } from "react-redux";
+import { AppState } from "../../redux/reducer";
 
 
 
@@ -15,20 +17,11 @@ const Cart = () => {
 
   //Funcion para almacenar los valores del cart 
   let productsCartItems: productCart[] = []
+  const itemCart = useSelector((state: AppState) => state.localStorageCart)
 
-
-  for (const key in localStorage) {
-    if (localStorage.hasOwnProperty(key)) {
-      const storedItem = localStorage.getItem(key);
-      if (storedItem !== null) {
-        const parsedItem = JSON.parse(storedItem);
-        productsCartItems.push(parsedItem);
-      }
-    }
+  for (let i = 0; i < itemCart.length; i++) {
+    productsCartItems.push(itemCart[i])
   }
-
-
-
 
 
   // sumar total de precios de productos 
@@ -50,8 +43,7 @@ const Cart = () => {
               <h3>Aun no hay productos en el carrito !!!</h3>
             </div>}
 
-          {productsCartItems?.map((product) => (
-
+          {productsCartItems.map((product) => (
             <CardCart
               key={product.id}
               id={product.id}
@@ -83,7 +75,7 @@ const Cart = () => {
 
           <div className={style.listelement}>
             <h5>TOTAL</h5>
-            <h5>$ {total}</h5>
+            <h5>$ {(total.toFixed(2))}</h5>
           </div>
 
           <hr />

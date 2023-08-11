@@ -19,6 +19,34 @@
     border-radius: 50%;
     margin-bottom: -10vh;
 }
+.avatarContSubmit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+    width: 20vh;
+    border: 0.03vh solid rgb(96, 163, 52);
+    box-shadow: 0 0 1vw rgb(96, 163, 52);
+    position: relative;
+    z-index: 2;
+    background-color: rgb(63, 63, 63);
+    border-radius: 50%;
+    margin-bottom: -10vh;
+}
+.avatarContError {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+    width: 20vh;
+    border: 0.03vh solid red;
+    box-shadow: 0 0 1vw red;
+    position: relative;
+    z-index: 2;
+    background-color: rgb(63, 63, 63);
+    border-radius: 50%;
+    margin-bottom: -10vh;
+}
 .avatar {
     height: 15vh;
     border-radius: 20px;
@@ -30,6 +58,34 @@
     height: 80vh;
     width: 30%;
     border: 0.03vh solid rgba(163, 125, 52, 1);
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(63, 63, 63);
+    position: relative;
+    z-index: 1;
+}
+.formSubmit {
+    height: 80vh;
+    width: 30%;
+    border: 0.03vh solid rgb(96, 163, 52);
+    box-shadow: 0 0 1vw rgb(96, 163, 52);
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(63, 63, 63);
+    position: relative;
+    z-index: 1;
+}
+.formError {
+    height: 80vh;
+    width: 30%;
+    border: 0.03vh solid red;
+    box-shadow: 0 0 1vw red;
     border-radius: 3%;
     display: flex;
     flex-direction: column;
@@ -92,16 +148,35 @@
     width: 80%;
 }
 .submit {
+    height: 6vh;
+    border-radius: 1vh;
     background-color: rgba(163, 125, 52, 1);
     width: 50%;
     border: 0.02vh solid black;
 }
 .submit:disabled {
+    height: 6vh;
+    border-radius: 1vh;
+    background-color: rgb(87, 87, 87);
+    border: rgb(87, 87, 87);
+}
+.submit:disabled:hover {
+    height: 6vh;
+    border-radius: 1vh;
     background-color: rgb(87, 87, 87);
     border: rgb(87, 87, 87);
 }
 .submit:hover {
+    height: 6vh;
+    border-radius: 1vh;
     background-color: rgba(163, 125, 52, 1);
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+    border: 0.02vh solid black;
+}
+.submit:active {
+    height: 6vh;
+    border-radius: 1vh;    
+    background-color: rgb(96, 163, 52);
     box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
     border: 0.02vh solid black;
 }

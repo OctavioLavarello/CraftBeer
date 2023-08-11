@@ -1,5 +1,6 @@
 /// IMPORTS
 import { Routes, Route, useLocation } from 'react-router-dom';  
+import { Toaster } from 'react-hot-toast'
 // VIEWS
 import Landing from './views/Landing/Landing';
 import Home from './views/Home/Home'
@@ -16,27 +17,27 @@ import Contact from './views/Contact/Contact';
 import Creation from './views/Creation/Creation';
 import { Toaster } from 'react-hot-toast'
 import Pay from './views/Pay/Pay';
+
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar"
 import Footer from "./components/footer/Footer"
 // STYLES
 import './App.css';
 import SuccessPay from './views/Pay/succesPay';
+import { useSelector } from 'react-redux';
+import { AppState } from './redux/reducer';
 
 // APP
-
-
-
 function App() {
-
   const location = useLocation();
-
+  const hasPermissions = false;
+  const { accessLogin } = useSelector((state: AppState) => state) 
+  console.log(accessLogin)
   return (
     <div>
       <div><Toaster/></div>
       <div>
         {
-        location.pathname !== "/" && 
         <NavBar/>
         }
       </div>
@@ -44,7 +45,7 @@ function App() {
         <Routes>
           <Route path='/' element={ <Landing />} />
           <Route path='/home' element={ <Home />} />
-          <Route path='/shop' element={ <Shop />} />
+        <Route path='/shop' element={ <Shop />} />
           <Route path='/detail/:id' element={ <Detail />} />
           <Route path='/user/:id' element={ <User />} />
           <Route path='/cart' element={ <Cart />} />

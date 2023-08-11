@@ -6,8 +6,10 @@ import {
   postCompany,
   userCreated,
   saveLocalStorageCart,
-  login
-  totalPagesShop
+  login,
+  totalPagesShop,
+  loginVerification,
+  logout,
 } from "./reducerFunctions";
 import {
   CREATED_PRODUCT,
@@ -16,18 +18,28 @@ import {
   CREATED_COMPANY,
   CREATED_USER,
   LOCAL_STORAGE,
-  LOGIN
+  LOGIN,
   TOTAL_PAGES,
+  LOGIN_VERIFICATION,
+  LOGOUT,
 } from "../redux/actions/actionsTypes";
+import { SaveDataLS } from "../components/LocalStorage/LocalStorage";
 
 /* import { Action } from 'redux';
  */
+export interface AccessLogin {
+  access: boolean;
+  id: string;
+  role: string;
+  cart?: typeof localStorage;
+}
 export interface AppState {
   allBeer: object[];
   beerFilters: BeerFilters;
-  localStorageCart:object;
+  localStorageCart:SaveDataLS [];
   totalPages:number
   allCompany: object[]
+  accessLogin: AccessLogin;
 }
 export interface BeerFilters {
   IBU?: number,  // El signo de interrogación indica que la propiedad es opcional
@@ -40,12 +52,21 @@ export interface BeerFilters {
   order?:String,
 }
 
+//hidratar el estado localStorageCart desde la storage 
+const dataStorage = Object.keys(localStorage).map(key => JSON.parse(localStorage[key]));
+
 export const initialState: AppState = {
   allBeer: [],
   beerFilters: {},
-  localStorageCart:localStorage,
+  localStorageCart:dataStorage,
   totalPages:0,
-  allCompany: []
+  allCompany: [],
+  accessLogin: {
+    access: false,
+    id: "",
+    role: "",
+    cart: {...localStorage}
+  },
 };
 
 const rootReducer = (
@@ -62,23 +83,26 @@ const rootReducer = (
     case CREATED_PRODUCT: {
       return productCreated(state);
     }
-
     case CREATED_COMPANY: {
       return postCompany(state)
     }
-
     case CREATED_USER: {
       return userCreated(state)
     };
-      
     case LOCAL_STORAGE: {
       return saveLocalStorageCart(state,action);
     }
     case LOGIN: {
       return login(state, action);
     }
+    case LOGOUT: {
+      return logout(state);
+    }
     case TOTAL_PAGES: {
       return totalPagesShop (state,action);
+    }
+    case LOGIN_VERIFICATION: {
+      return loginVerification (state, action)
     }
     default:
       return state;

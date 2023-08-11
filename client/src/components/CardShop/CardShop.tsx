@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CardModel from "../CardModel/CardModel";
 import { useDispatch, useSelector } from "react-redux";
-import { AppState } from "../../redux/reducer";
+import { AppState, BeerFilters } from "../../redux/reducer";
 import { Toaster, toast } from "react-hot-toast";
 import style from "./CardShop.module.css"
 import { totalPages } from "../../redux/actions/actions";
@@ -36,15 +36,14 @@ const CardShop = () => {
 
 
     // traemos el estado de filtros 
-    const filters: AppState = useSelector((state: AppState) => state)
+    const filters: BeerFilters = useSelector((state: AppState) => state.beerFilters)
 
     // solicitud a back concatenando el los filtros en la url 
     const getAllBeers = async () => {
-        const endpoint = "https://craftbeer.up.railway.app/product";
+        const endpoint = "/product";
         try {
-            const response = await axios.get<responseBack>(endpoint, { params: filters.beerFilters });
+            const response = await axios.get<responseBack>(endpoint, { params: filters });
             setAllBeersData(response.data.products);
-            console.log(response.data.totalPages);
             
             dispatch(totalPages(response.data.totalPages))
         } catch (error) {
@@ -55,7 +54,7 @@ const CardShop = () => {
     //allama al backend cada vez que se modifica filters
     useEffect(() => {
         getAllBeers();
-    }, [filters.beerFilters]);
+    }, [filters]);
 
     // Marcar que los datos se han cargado cuando allBeersData tiene elementos
     useEffect(() => {

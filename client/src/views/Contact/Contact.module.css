@@ -1,0 +1,136 @@
+.all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3vh;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+.upper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.upperLeft {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.upperLeft label {
+    margin-bottom: -2vh;
+}
+.upperLeft input {
+    background-color: rgb(63, 63, 63);
+    border-color: rgba(163, 125, 52, 1);
+    color: white;
+    margin-bottom: 2vh;
+    width: 25%;
+}
+.upperLeft input:focus {
+    background-color: rgb(63, 63, 63);
+    border-color: rgba(163, 125, 52, 1);
+    color: white;
+    box-shadow: 0 0 1vw rgba(163, 125, 52, 0.5);
+}
+.upperLeftError input {
+    background-color: rgb(63, 63, 63);
+    border-color: red;
+    color: white;
+    margin-bottom: 2vh;
+}
+.upperLeftError input:focus {
+    background-color: rgb(63, 63, 63);
+    border-color: red;
+    color: white;
+    box-shadow: 0 0 1vw red;
+}
+.upperRight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10vw;
+}
+.message {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    width: 100%;
+}
+.message textarea {
+    resize: none;
+    height: 20vh;
+    width: 100%;
+    color: white;
+    background-color: rgb(63, 63, 63);
+    border-color: rgba(163, 125, 52, 1);
+    border-radius: 1vh;
+}
+.message textarea:focus {
+    background-color: rgb(63, 63, 63);
+    border-color: rgba(163, 125, 52, 1);
+    color: white;
+    box-shadow: 0 0 1vw rgba(163, 125, 52, 0.5);
+    outline: none;
+}
+.inputDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.inputDiv input {
+    width: 20vw;
+}
+.inputDiv p {
+    color: red;
+    margin-left: 15vh;
+}
+.submit {
+    margin-top: 5vh;
+    width: 15%;
+    height: 6vh;
+    border-radius: 1vh;
+    background-color: rgba(163, 125, 52, 1);
+    border: 0.02vh solid black;
+}
+.submit:disabled {
+    margin-top: 5vh;
+    width: 15%;
+    height: 6vh;
+    border-radius: 1vh;
+    background-color: rgb(87, 87, 87);
+    border: rgb(87, 87, 87);
+}
+.submit:disabled:hover {
+    margin-top: 5vh;
+    width: 15%;
+    height: 6vh;
+    border-radius: 1vh;
+    background-color: rgb(87, 87, 87);
+    border: rgb(87, 87, 87);
+}
+.submit:hover {
+    margin-top: 5vh;
+    width: 15%;
+    height: 6vh;
+    border-radius: 1vh;
+    background-color: rgba(163, 125, 52, 1);
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+    border: 0.02vh solid black;
+}
+.submit:active {
+    margin-top: 5vh;
+    width: 15%;
+    height: 6vh;
+    border-radius: 1vh;    
+    background-color: rgb(96, 163, 52);
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+    border: 0.02vh solid black;
+}

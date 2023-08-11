@@ -9,7 +9,7 @@ import styles from "./HomeCarousel.module.css";
 const HomeCarousel: React.FC = () => {
     // LOCAL STATES
     const images = [
-        { src: "https://www.mundocerveza.com/wp-content/uploads/2018/09/3-9.jpg",
+        { src: "https://3cordilleras.com/wp-content/uploads/2021/12/1.-nuestras-cervezas-scaled.jpeg",
         id: 1},
         { src:"https://w.forfun.com/fetch/6b/6b53ccdda60e6d052d9c9782baffa35b.jpeg",
         id: 2},
@@ -20,7 +20,6 @@ const HomeCarousel: React.FC = () => {
         { src:"https://img2.s3wfg.com/web/img/images_uploaded/9/5/inbev.jpg",
         id: 5}
     ];
-    
     return (
       <div className={styles.div}>
         <Carousel
@@ -31,7 +30,7 @@ const HomeCarousel: React.FC = () => {
             <CarouselItem key={index} >
               <div className={styles.carouselContainer}>
                 <NavLink 
-                to={`/detail/${image.id}`}
+                to={`/detail/${image.id - 1}`}
                 className={styles.linkLeft}>
                   <img
                     src={images[(index - 1 + images.length) % images.length].src}
@@ -47,7 +46,7 @@ const HomeCarousel: React.FC = () => {
                   />
                 </NavLink>
                 <NavLink 
-                to={`/detail/${image.id}`}
+                to={`/detail/${image.id + 1}`}
                 className={styles.linkRight}>
                   <img
                     src={images[(index + 1) % images.length].src}
