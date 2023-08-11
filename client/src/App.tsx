@@ -26,15 +26,13 @@ import { verificationLogin } from './redux/actions/actions';
 // STYLES
 import './App.css';
 import SuccessPay from './views/Pay/succesPay';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppState } from './redux/reducer';
+import { useDispatch } from 'react-redux';
 
 // APP
 function App() {
   const dispatch = useDispatch()
   const location = useLocation();
   const hasPermissions = false;
-  const { accessLogin } = useSelector((state: AppState) => state) 
   useEffect(()=>{
     const userJSON = localStorage.getItem("user")   
     if(userJSON){
@@ -48,7 +46,6 @@ function App() {
 
   console.log(accessLogin)
   const navigate = useNavigate();
-  const location = useLocation();
   const handlerNavigate = () => {
     if (accessLogin.role === "Person" && Object.keys(localStorageCart).length === 0){
         navigate("/shop")
@@ -116,7 +113,6 @@ function App() {
         </Routes>)
         )
         }
-        </Routes>
       </div>
       <div>
         <Footer />
