@@ -18,19 +18,34 @@ import Cart from './views/Cart/Cart';
 import AboutUs from './views/aboutUs/AboutUs';
 import Contact from './views/Contact/Contact';
 import Creation from './views/Creation/Creation';
-import { Toaster } from 'react-hot-toast'
 import Pay from './views/Pay/Pay';
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar"
 import Footer from "./components/footer/Footer"
+import { verificationLogin } from './redux/actions/actions';
 // STYLES
 import './App.css';
 import SuccessPay from './views/Pay/succesPay';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from './redux/reducer';
+
 // APP
 function App() {
+  const dispatch = useDispatch()
+  const location = useLocation();
+  const hasPermissions = false;
+  const { accessLogin } = useSelector((state: AppState) => state) 
+  useEffect(()=>{
+    const userJSON = localStorage.getItem("user")   
+    if(userJSON){
+      const user = JSON.parse(userJSON)
+      dispatch(verificationLogin(user))
+      console.log(user);
+    }
+  }, [dispatch])
+
   const { accessLogin, localStorageCart } = useSelector((state: AppState) => state) 
+
   console.log(accessLogin)
   const navigate = useNavigate();
   const location = useLocation();
