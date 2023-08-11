@@ -1,6 +1,6 @@
 //import { Dispatch, Action } from "redux";
 import axios from "axios";
-import toast from 'react-hot-toast'
+import toast from "react-hot-toast"
 import { AnyAction, Dispatch } from "redux";
 import {
   CREATED_PRODUCT,
@@ -15,6 +15,7 @@ import {
   LOGOUT,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
+import { Toast } from "react-bootstrap";
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
   type: T;
@@ -161,11 +162,13 @@ export const createdCompany = ({
       dispatch({
         type: CREATED_COMPANY,
         payload: companyCreated,
-      });      
-      toast.success("Se creo correctamente su compañía")
+      });  
+      alert("Se creo correctamente su compañía")
+      // toast.success("Se creo correctamente su compañía")
     };
   } catch (error) {
-   toast.error("No ha sido posible cargar su compañía");
+    alert("No ha sido posible cargar su compañía")
+  //  toast.error("No ha sido posible cargar su compañía");
   }  
 };
 
@@ -189,7 +192,7 @@ export const createdUser = (userData: UserData) => {
         type: CREATED_USER,
         payload: createdUser,
       });
-      toast.success("Usuario creado exitosamente");
+      toast.success("Usuario creado exitosamente")
     };
   } catch (error) {
     toast.error("Error al crear usuario");

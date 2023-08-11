@@ -45,8 +45,6 @@ const BuyerSingUp: React.FC = () => {
     state:"Se requiere estado",
     address: "Se requiere direccion",
     image: "Se requiere una imagen",
-    status:"Se requier un estatus",
-    role:"Se requiere un rol"
   })
 
   const validation = (input: any, name: any) =>{
@@ -97,14 +95,7 @@ const BuyerSingUp: React.FC = () => {
       if (input.image !== "") setErrors({ ...errors, image: "" });
       else setErrors({ ...errors, image: "Información requerida" });
     }
-    if(name === "status"){
-      if (input.status !== "") setErrors({ ...errors, status: "" });
-      else setErrors({ ...errors, status: "Información requerida" });
-    }
-    if(name === "role"){
-      if (input.role !== "") setErrors({ ...errors, role: "" });
-      else setErrors({ ...errors, role: "Información requerida" });
-    }
+
     }
   
   
@@ -116,20 +107,20 @@ const BuyerSingUp: React.FC = () => {
 
   console.log(formData)
   dispatch(createdUser(formData))
-  setFormData({
-    name: "",
-    lastName: "",
-    document: 0,
-    email: "",
-    password: "",
-    country: "",
-    city: "",
-    state: "",
-    address: "",
-    image: "",
-    status: "",
-    role: ""
-  });
+  // setFormData({
+  //   name: "",
+  //   lastName: "",
+  //   document: 0,
+  //   email: "",
+  //   password: "",
+  //   country: "",
+  //   city: "",
+  //   state: "",
+  //   address: "",
+  //   image: "",
+  //   status: "",
+  //   role: ""
+  // });
 };
 
 // console.log(formData);
@@ -280,34 +271,9 @@ const BuyerSingUp: React.FC = () => {
       <h6 className={Styles.mensajes}>{errors.state}</h6>
     </Col>
     <Col>
-      Estatus:
-      <Form.Control
-        as="select"
-        name="status"
-        onChange={handleInputChange}
-      >
-        <option value="true">Disponible</option>
-        <option value="false">No disponible</option>
-      </Form.Control>
-      <h6 className={Styles.mensajes}>{errors.status}</h6>
-    </Col>
-  </Row>
-  <Row style={{ margin: '15px' }}>
-    <Col>
-      Rol:
-      <Form.Control
-        placeholder="Rol"
-        type="text"
-        name="role"
-        onChange={handleInputChange}
-        
-      />
-      <h6 className={Styles.mensajes}>{errors.role}</h6>
-    </Col>
-  </Row>
-  
- 
 
+    </Col>
+  </Row>
       <Button type="submit"
       disabled={disable(errors)}>
         
