@@ -242,7 +242,7 @@ export const login = (loginUserData: loginUserData) => {
         type: LOGIN,
         payload: data,
       });
-      toast.success("Sesión iniciada con éxito")
+      toast.success("Login successful")
     }
   } catch (error) {
     toast.error("Login Error")
