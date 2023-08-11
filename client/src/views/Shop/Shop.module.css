@@ -24,6 +24,7 @@
 
 .button_Page {
     border: none;
+    
     width: 40px;
     height: 40px;
     border-radius: 5px;
@@ -33,6 +34,8 @@
 }
 
 .button_Pagelateral {
+    border: 0.1px solid #d09527;
+
     border: none;
     width: 40px;
     height: 40px;
@@ -41,8 +44,27 @@
     background-color: rgb(171, 163, 147);
     margin: 3px;
 }
-
+.containerpublicidad{
+ 
+    width: 300px;
+    margin-top: 10px;
+    height: 169px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.containerLogo{
+    border: 0.1px solid #d09527;
+    box-shadow: 0 0 8px 4px rgba(208, 149, 39, 0.3);
+    width: 300px;
+    margin-top: -60px;
+    height: 300px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 10%;
+}
 .button_Pagechange {
+    box-shadow: 0 0 8px 4px rgba(208, 149, 39, 0.3);
+
     border: none;
     width: 40px;
     height: 40px;
