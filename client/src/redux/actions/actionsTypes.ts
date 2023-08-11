@@ -8,3 +8,4 @@ export const LOCAL_STORAGE = "LOCAL_STORAGE";
 export const LOGIN = "LOGIN";
 export const SET_ACCESS_TRUE = "SET_ACCESS_TRUE"
 export const TOTAL_PAGES = "TOTAL_PAGES";
+export const LOGIN_VERIFICATION = "LOGIN_VERIFICATION"

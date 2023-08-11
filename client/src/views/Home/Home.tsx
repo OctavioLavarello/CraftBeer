@@ -6,7 +6,7 @@ import HomeCarousel from "../../components/HomeCarousel/HomeCarousel";
 import HomeFeaturedProducts from "../../components/HomeFeaturedProducts/HomeFeaturedProducts";
 import HomeBestSellers from "../../components/HomeBestSellers/HomeBestSellers";
 // ACTIONS
-import { allBeers } from "../../redux/actions/actions";
+import { allBeers, verificationLogin } from "../../redux/actions/actions";
 // STYLES
 import styles from "./Home.module.css";
 
@@ -17,6 +17,17 @@ const Home: React.FC = () => {
   useEffect(() => {
     dispatch(allBeers())
   }, []);
+  useEffect(()=>{
+    const userJSON = localStorage.getItem("user")
+    console.log(userJSON);
+    
+    if(userJSON){
+      const user = JSON.parse(userJSON)
+      dispatch(verificationLogin(user))
+      console.log(user);
+    }
+  }, [dispatch])
+
 
   return (
     <div className={styles.grandContainer}>

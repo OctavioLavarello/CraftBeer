@@ -1,4 +1,5 @@
 /// IMPORTS
+import { AnyAction, Dispatch } from "redux";
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import loginValidation from "./LoginValidation";
@@ -23,7 +24,7 @@ export interface login {
 const Login: React.FC = () => {
     // GLOBAL STATE
     const { localStorageCart } = useSelector((state: AppState) => state) 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<Dispatch<AnyAction> | any>();
     // LOCAL STATES
     const [userLogin, setUserLogin] = useState<login>({
         email: "",
