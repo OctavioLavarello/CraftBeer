@@ -80,25 +80,6 @@
     box-shadow: 0 0 1vw rgba(163, 125, 52, 0.5);
     outline: none;
 }
-.message button {
-    margin-top: 5vh;
-    width: 15%;
-    background-color: rgba(163, 125, 52, 1);
-    border: 0.02vh solid black;
-}
-.message button:disabled {
-    margin-top: 5vh;
-    width: 15%;
-    background-color: rgb(87, 87, 87);
-    border: rgb(87, 87, 87);
-}
-.message button:hover {
-    margin-top: 5vh;
-    width: 15%;
-    background-color: rgba(163, 125, 52, 1);
-    box-shadow: 0 0 1vw rgba(163, 125, 52, 0.5);
-    border: 0.02vh solid black;
-}
 .inputDiv {
     display: flex;
     justify-content: space-between;
@@ -110,4 +91,46 @@
 .inputDiv p {
     color: red;
     margin-left: 15vh;
+}
+.submit {
+    margin-top: 5vh;
+    width: 15%;
+    height: 6vh;
+    border-radius: 1vh;
+    background-color: rgba(163, 125, 52, 1);
+    border: 0.02vh solid black;
+}
+.submit:disabled {
+    margin-top: 5vh;
+    width: 15%;
+    height: 6vh;
+    border-radius: 1vh;
+    background-color: rgb(87, 87, 87);
+    border: rgb(87, 87, 87);
+}
+.submit:disabled:hover {
+    margin-top: 5vh;
+    width: 15%;
+    height: 6vh;
+    border-radius: 1vh;
+    background-color: rgb(87, 87, 87);
+    border: rgb(87, 87, 87);
+}
+.submit:hover {
+    margin-top: 5vh;
+    width: 15%;
+    height: 6vh;
+    border-radius: 1vh;
+    background-color: rgba(163, 125, 52, 1);
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+    border: 0.02vh solid black;
+}
+.submit:active {
+    margin-top: 5vh;
+    width: 15%;
+    height: 6vh;
+    border-radius: 1vh;    
+    background-color: rgb(96, 163, 52);
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+    border: 0.02vh solid black;
 }
