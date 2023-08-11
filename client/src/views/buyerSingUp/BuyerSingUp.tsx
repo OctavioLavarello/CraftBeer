@@ -140,7 +140,7 @@ const BuyerSingUp: React.FC = () => {
     }
     return disabled;
   };
-  console.log(formData);
+  
 
 
 
