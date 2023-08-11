@@ -16,7 +16,7 @@
     justify-content: space-between;
     align-items: center;
     height: 70%;
-
+    width: 18%;
 }
 .p_container {
     width: 50%;
@@ -34,6 +34,16 @@
     background-color: rgba(163, 125, 52, 1);
     border: 0.015vh solid rgb(226, 179, 93);
     border-radius: 1%;
-    width: 30%;
+    width: 5vw;
     height: 11vh;
+}
+.a:hover {
+    box-shadow: 0 0 1.5vw rgba(163, 125, 52, 1);
+}
+.a img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3vw;
+    height: 6.6vh;
 }

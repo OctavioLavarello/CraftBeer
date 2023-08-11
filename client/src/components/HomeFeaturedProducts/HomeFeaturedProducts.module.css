@@ -26,6 +26,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: rgba(163, 125, 52, 1);
+    box-shadow: 0 0 1vw rgba(163, 125, 52, 1);
     height: 81vh;
     margin-bottom: 17%;
     margin-top: 15%;

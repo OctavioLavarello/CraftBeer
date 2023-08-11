@@ -27,8 +27,9 @@ import { SaveDataLS } from "../components/LocalStorage/LocalStorage";
  */
 export interface AccessLogin {
   access: boolean;
-  id?: string;
-  role?: string;
+  id: string;
+  role: string;
+  cart?: typeof localStorage;
 }
 export interface AppState {
   allBeer: object[];

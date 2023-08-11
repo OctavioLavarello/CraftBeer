@@ -20,15 +20,14 @@ import NavBar from "./components/navbar/NavBar"
 import Footer from "./components/footer/Footer"
 // STYLES
 import './App.css';
+import { useSelector } from 'react-redux';
+import { AppState } from './redux/reducer';
 
 // APP
-
-
-
 function App() {
-
   const location = useLocation();
-
+  const { accessLogin } = useSelector((state: AppState) => state) 
+  console.log(accessLogin)
   return (
     <div>
       <div><Toaster/></div>
