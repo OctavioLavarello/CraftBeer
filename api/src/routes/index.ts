@@ -11,7 +11,6 @@ import putProduct from '../controller/putProduct';
 import putUserCompany from '../controller/putUserCompany';
 import getAllUserPersons from '../controller/getAllUserPersons';
 import postQualification from "../controller/postQualification"
-import postAccountConfirm from "../controller/postAccountConfirm"
 
 const router = Router();
 
