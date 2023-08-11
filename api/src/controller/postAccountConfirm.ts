@@ -1,12 +1,11 @@
-import { Request, Response } from "express";
 const nodemailer = require("nodemailer");
 import dotenv from "dotenv";
 dotenv.config();
 const { NODEMAILER_USER, NODEMAILER_PASS } = process.env;
 
-const postAccountConfirm = async (req: Request, res: Response) => {
+const postAccountConfirm = async (name:String, email:String) => {
   try {
-    const { name, email } = req.body;
+  
     let transporter = nodemailer.createTransport({
       //options -- define los datos de conexión
       host: "smtp.gmail.com",
@@ -34,20 +33,18 @@ const postAccountConfirm = async (req: Request, res: Response) => {
 </html>`,
     };
 
-    transporter.sendMail(mailOptions, (error: any, res: any) => {
+    transporter.sendMail(mailOptions, (error: any, info:string) => {
       if (error) {
-        console.log(error);
-        return res.status(400).send(error.message);
+        console.log(error.message);
       } else {
-        console.log("Message sent:" + res.message);
+        console.log("Message sent:" + info);
       }
     });
   } catch (error) {
-    console.log(error);
     if (error instanceof Error) {
-      return res.status(500).send(error.message);
+      console.log(error.message);
     } else {
-      return res.status(500).send("Unexpected error.");
+      console.log("Unexpected error.");
     }
   }
 };

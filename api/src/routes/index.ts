@@ -20,7 +20,6 @@ router.post("/user", postUserPerson);
 router.post("/company", postCompany);
 router.post("/product", postProduct);
 router.post("/qualification", postQualification)
-router.post("/account-confirm", postAccountConfirm)
 
 // ------- get routes ------- //
 router.get("/companies", getAllCompanies);
