@@ -11,7 +11,9 @@ import putProduct from '../controller/putProduct';
 import putUserCompany from '../controller/putUserCompany';
 import getAllUserPersons from '../controller/getAllUserPersons';
 import postQualification from "../controller/postQualification"
-import handlerPay from '../controller/pay';
+//import handlerPay from '../controller/pay';
+import {createOrder} from "../controller/payment/get.create-order"
+import getSuccess from '../controller/payment/get.Success';
 
 
 const router = Router();
@@ -21,7 +23,7 @@ router.post("/user", postUserPerson);
 router.post("/company", postCompany);
 router.post("/product", postProduct);
 router.post("/qualification", postQualification)
-router.post("/pay", handlerPay)
+//router.post("/pay", handlerPay)
 
 // ------- get routes ------- //
 router.get("/companies", getAllCompanies);
@@ -34,5 +36,13 @@ router.get("/persons", getAllUserPersons);
 router.put("/user", putUserPerson);
 router.put("/company", putUserCompany);
 router.put("/product/:productId", putProduct);
+
+// ------- payment routes ----//
+
+router.get("/create-order", createOrder)
+router.get("/success", getSuccess)
+router.get("/pending")
+router.get("/failure")
+router.post("/webhook")
 
 module.exports = router

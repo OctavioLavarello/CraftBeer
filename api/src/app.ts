@@ -10,7 +10,7 @@ const routes = require("./routes/index.ts");
 server.use(express.json());
 
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
-server.use(bodyParser.json({ limit: "50mb" }));
+server.use(bodyParser.json());
 server.use(cookieParser());
 server.use(morgan("dev"));
 server.use((req: Request, res: Response, next: NextFunction) => {

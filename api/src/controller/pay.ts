@@ -14,8 +14,8 @@ import {
   PreferencePayer,
 } from "mercadopago/models/preferences/create-payload.model";
 
-export default function handlerPay(req: Request, res: Response) {
-  const { user, pay } = req.body;
+export const createOrder = (req: Request, res: Response) => {
+  const { user, product } = req.body;
 
   mercadopago.configure({
     access_token: `${TEST_ACCES_TOKEN}`,
@@ -26,12 +26,12 @@ export default function handlerPay(req: Request, res: Response) {
     binary_mode: true,
     items: [
       {
-        title: `${pay.name} - nombre del producto`,
-        description: `${pay.description} - descripcion del producto`,
-        picture_url: `${pay.image} - imagen del producto`,
+        title: `${product.name} - nombre del producto`,
+        description: `${product.description} - descripcion del producto`,
+        picture_url: `${product.image} - imagen del producto`,
         quantity: 1,
         currency_id: "USD",
-        unit_price: pay.price,
+        unit_price: product.price,
       },
     ],
     payer: {
@@ -51,8 +51,7 @@ export default function handlerPay(req: Request, res: Response) {
     .create(preference)
     .then(function (response) {
       // En esta instancia deberás asignar el valor dentro de response.body.id por el ID de preferencia solicitado en el siguiente paso
-
-      return res.status(200).json({global: response.body.id})
+      return res.status(200).json(response);
     })
     .catch(function (error) {
       console.log(error);
