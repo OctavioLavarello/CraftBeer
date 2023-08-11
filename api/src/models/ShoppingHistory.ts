@@ -18,7 +18,7 @@ import { ShoppingHistoryModelInterface } from "../interfaces/interfaces";
         allowNull:false,
       },
       totalPrice: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
       },
     }) as ModelCtor<ShoppingHistoryModel>;
