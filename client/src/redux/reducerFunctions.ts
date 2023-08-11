@@ -111,7 +111,8 @@ export const logout = (state = initialState) => {
     accessLogin: {
       access: false,
       id: "",
-      role: ""
+      role: "",
+      cart: null,
     }
   }
 }
