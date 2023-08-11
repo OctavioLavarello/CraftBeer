@@ -51,7 +51,7 @@ const postUserPerson = async (req: Request, res: Response) => {
     if (error instanceof Error) {
       return res.status(500).send(error.message);
     } else {
-      res.status(500).send("Unexpected error.");
+      return res.status(500).send("Unexpected error.");
     }
   }
 };
