@@ -37,6 +37,9 @@
     width: 5vw;
     height: 11vh;
 }
+.a:hover {
+    box-shadow: 0 0 1.5vw rgba(163, 125, 52, 1);
+}
 .a img {
     display: flex;
     align-items: center;
