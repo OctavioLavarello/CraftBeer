@@ -53,6 +53,8 @@ const SellerSingUp: React.FC = () => {
       ...input,
     });
   };
+  console.log(input);
+  
 
   const validation = (input: any, name: any) => {
     if (name === "name") {

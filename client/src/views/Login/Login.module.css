@@ -148,20 +148,34 @@
     width: 80%;
 }
 .submit {
+    height: 6vh;
+    border-radius: 1vh;
     background-color: rgba(163, 125, 52, 1);
     width: 50%;
     border: 0.02vh solid black;
 }
 .submit:disabled {
+    height: 6vh;
+    border-radius: 1vh;
+    background-color: rgb(87, 87, 87);
+    border: rgb(87, 87, 87);
+}
+.submit:disabled:hover {
+    height: 6vh;
+    border-radius: 1vh;
     background-color: rgb(87, 87, 87);
     border: rgb(87, 87, 87);
 }
 .submit:hover {
+    height: 6vh;
+    border-radius: 1vh;
     background-color: rgba(163, 125, 52, 1);
     box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
     border: 0.02vh solid black;
 }
 .submit:active {
+    height: 6vh;
+    border-radius: 1vh;    
     background-color: rgb(96, 163, 52);
     box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
     border: 0.02vh solid black;

@@ -1,4 +1,5 @@
 /// IMPORTS
+import { AnyAction, Dispatch } from "redux";
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import loginValidation from "./LoginValidation";
@@ -23,7 +24,7 @@ export interface login {
 const Login: React.FC = () => {
     // GLOBAL STATE
     const { localStorageCart } = useSelector((state: AppState) => state) 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<Dispatch<AnyAction> | any>();
     // LOCAL STATES
     const [userLogin, setUserLogin] = useState<login>({
         email: "",
@@ -117,15 +118,13 @@ const Login: React.FC = () => {
                     label="Check me out" 
                     />
                     <NavLink 
-                    to="https://www.bbc.com/mundo/noticias/2015/05/150501_vert_fut_cinco_consejos_tonto_finde_ac"
-                    target="_blank"
+                    to="/home"
                     className={styles.forgot}
                     >
                         Forgot Password?
                     </NavLink>
                 </Form.Group>
-                <Button 
-                variant="primary" 
+                <button 
                 type="submit"
                 className={styles.submit}
                 disabled={
@@ -136,7 +135,7 @@ const Login: React.FC = () => {
                     }
                 >
                     Submit
-                </Button>
+                </button>
                 <NavLink 
                 to="/chooseSignUp">
                     <Button 

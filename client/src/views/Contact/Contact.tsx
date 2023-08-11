@@ -3,7 +3,6 @@ import React, { useState } from "react"
 import contactValidation from "./ContactValidation"
 // STYLES
 import styles from "./Contact.module.css";
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 export interface message {
@@ -112,8 +111,7 @@ const Contact: React.FC = () => {
             onChange={handlerTextareaOnChange}
             />
           </Form.Group>
-          <Button 
-          variant="primary" 
+          <button
           type="submit"
           className={styles.submit}
           disabled={
@@ -128,7 +126,7 @@ const Contact: React.FC = () => {
             }
           >
             Submit
-          </Button>
+          </button>
         </div>
       </Form>
     </div>

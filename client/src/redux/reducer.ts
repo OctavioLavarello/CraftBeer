@@ -7,7 +7,8 @@ import {
   userCreated,
   saveLocalStorageCart,
   login,
-  totalPagesShop
+  totalPagesShop,
+  loginVerification
 } from "./reducerFunctions";
 import {
   CREATED_PRODUCT,
@@ -18,6 +19,7 @@ import {
   LOCAL_STORAGE,
   LOGIN,
   TOTAL_PAGES,
+  LOGIN_VERIFICATION
 } from "../redux/actions/actionsTypes";
 import { SaveDataLS } from "../components/LocalStorage/LocalStorage";
 
@@ -25,8 +27,9 @@ import { SaveDataLS } from "../components/LocalStorage/LocalStorage";
  */
 export interface AccessLogin {
   access: boolean;
-  id?: string;
-  role?: string;
+  id: string;
+  role: string;
+  cart?: typeof localStorage;
 }
 export interface AppState {
   allBeer: object[];
@@ -59,7 +62,8 @@ export const initialState: AppState = {
   accessLogin: {
     access: false,
     id: "",
-    role: ""
+    role: "",
+    cart: {...localStorage}
   },
 };
 
@@ -91,6 +95,9 @@ const rootReducer = (
     }
     case TOTAL_PAGES: {
       return totalPagesShop (state,action);
+    }
+    case LOGIN_VERIFICATION: {
+      return loginVerification (state, action)
     }
     default:
       return state;
