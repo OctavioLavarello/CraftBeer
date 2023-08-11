@@ -239,7 +239,7 @@ const Creation = () => {
             <h6 className="mensajes">{errors.description}</h6>
           </Col>
         </Row>
-        //Para incorporar el idCompany de forma manual
+        {/* Para incorporar el idCompany de forma manual */}
         {/* <Row style={{ margin: "15px" }}>
         <Col style={{color:"red"}}>Información solo temporal. De uso dev
             <Form.Control
