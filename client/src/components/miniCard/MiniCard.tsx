@@ -19,7 +19,7 @@ const MiniCard: React.FC<MiniCardProps> = ({name, image, id}) => {
                     <img src={image} alt="card img" className={styles.img} />
                 </div>
                 <div className={styles.h2_Container}>
-                    <h2>{name}</h2>
+                    <h4>{name}</h4>
                 </div>
             </NavLink>
         </div>

@@ -56,7 +56,7 @@ function App() {
   }
   useEffect(() => {
     handlerNavigate();
-  }, [accessLogin, localStorageCart]);
+  }, [accessLogin]);
   return (
     <div>
       <div><Toaster/></div>
