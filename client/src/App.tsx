@@ -18,7 +18,6 @@ import Cart from './views/Cart/Cart';
 import AboutUs from './views/aboutUs/AboutUs';
 import Contact from './views/Contact/Contact';
 import Creation from './views/Creation/Creation';
-import Pay from './views/Pay/Pay';
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar"
 import Footer from "./components/footer/Footer"
@@ -32,7 +31,6 @@ import { useDispatch } from 'react-redux';
 function App() {
   const dispatch = useDispatch()
   const location = useLocation();
-  const hasPermissions = false;
   useEffect(()=>{
     const userJSON = localStorage.getItem("user")   
     if(userJSON){
@@ -97,7 +95,6 @@ function App() {
           <Route path='/cart' element={ <Cart />} />
           <Route path='/aboutUs' element={ <AboutUs />} />
           <Route path='/contact' element={ <Contact />} />
-          <Route path='/pay' element={<Pay/>} />
           <Route path='/succes' element={<SuccessPay/>} />
         </Routes>) :
         (
