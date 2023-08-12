@@ -6,7 +6,7 @@ const dataBase = async () => {
       name: "Alberto",
       lastName: "Mendez",
       document: 40556481,
-      email: "cumplimiento@3cordilleras.com",
+      email: "craftbeer514@gmail.com",
       password: "12345678ABC",
       phone: 3158183233,
       country: "Colombia",
