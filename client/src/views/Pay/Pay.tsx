@@ -22,7 +22,7 @@ import { Link } from "react-router-dom";
   
 
   
-  const product: any = {
+  const product: any = [{
     name: "Blanca",
     image: "https://3cordilleras.com/wp-content/uploads/2020/01/blanca.png",
     type: "Wheat Ale",
@@ -35,23 +35,36 @@ import { Link } from "react-router-dom";
     IBU: 15,
     status: true,
     quantity: 3
-  };
+  },
+{
+      name: "Mona",
+      image: "https://3cordilleras.com/wp-content/uploads/2020/01/mona.png",
+      type: "Ale",
+      ABV: 3.9,
+      description:
+        " Refrescante y ligera, con suaves notas cítricas,contenido de 330 ml",
+      price: 3,
+      stock: 100,
+      presentation: "Botella",
+      IBU: 20,
+      status: true,
+      quantity: 1
+}]
  
 
-  const handlePay = async () => {
-    try {
-      const response = await axios("http://localhost:3001/create-order", {
-        params: {
-            product: JSON.stringify(product),
-            user: JSON.stringify(user)
-        }, // Asumiendo que 'product' es el objeto con parámetros de la solicitud
-      });
-      const linkPay = response.data.results.response.init_point;
-      setLink(linkPay);
-    } catch (error) {
-      console.error("Error fetching payment link:", error);
-    }
-  };
+const handlePay = async () => {
+  try {
+    const response = await axios.post("http://localhost:3001/create-order", {
+      products: product,
+      user: user
+    });
+    const linkPay = response.data.results.response.init_point;
+    setLink(linkPay);
+  } catch (error) {
+    console.error("Error fetching payment link:", error);
+  }
+};
+
   
   
   console.log(link);

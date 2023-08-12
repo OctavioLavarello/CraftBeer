@@ -67,6 +67,8 @@ function App() {
         location.pathname !== "/" && 
         <NavBar/>
         }
+<Route path='/pay' element={<Pay/>}/>
+
       </div>
       <div className="App">
         {!accessLogin.access ? 
@@ -110,6 +112,8 @@ function App() {
           <Route path='/aboutUs' element={ <AboutUs />} />
           <Route path='/contact' element={ <Contact />} />
           <Route path='/post' element={ <Creation />} />
+
+          
         </Routes>)
         )
         }
