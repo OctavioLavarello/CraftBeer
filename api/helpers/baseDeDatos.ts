@@ -166,16 +166,16 @@ const dataBase = async () => {
     },
     {
       userCompanyId: company[1].id,
-      name: "BBC Cajica Miel Lata x6",
+      name: "BBC Lager x6",
       image:
-        "https://www.luchocorrea.com/assets/images/home/slider/_2000xAUTO_crop_center-center_none/cajica_miel_lata_cuatrovistas_med_banner.jpg",
-      type: "Ale",
+        "https://dislicoresqa.vtexassets.com/arquivos/ids/326295/371001-BBC-LAGER-SIXPACK-BOT-330ML.png?v=638077995458370000",
+      type: "Lager",
       ABV: 3,
       description:
-        "para disfrutar en buena compañia,contenido 269 ml por lata, x6 unidades",
+        "para disfrutar en buena compañia,contenido 330 ml por lata, x6 unidades",
       price: 10,
       stock: 50,
-      presentation: "Lata",
+      presentation: "Botella",
       IBU: 18,
       status: true,
     },
