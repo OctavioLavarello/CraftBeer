@@ -41,7 +41,7 @@ router.put("/product/:productId", putProduct);
 
 // ------- payment routes ----//
 
-router.get("/create-order", createOrder)
+router.post("/create-order", createOrder)
 
 
 module.exports = router
