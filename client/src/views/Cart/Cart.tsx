@@ -69,13 +69,13 @@ const Cart = () => {
           {productsCartItems?.map((product) => (
             <div className={style.listelement}>
               <li>{product.quantity}  {product.name}/s</li>
-              <p>$ {(product.price * product.quantity).toFixed(2)}</p>
+              <p>U$S {(product.price * product.quantity).toFixed(2)}</p>
             </div>))
           }
 
           <div className={style.listelement}>
             <h5>TOTAL</h5>
-            <h5>$ {(total.toFixed(2))}</h5>
+            <h5>U$S {(total.toFixed(2))}</h5>
           </div>
 
           <hr />

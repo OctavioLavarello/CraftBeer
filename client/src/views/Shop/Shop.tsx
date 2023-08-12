@@ -79,6 +79,7 @@ const Shop = () => {
   // cargar el estado filter con el nombre que ingresa en el input 
   const handlerClick = () => {
     setInput("")
+    setNumberPage(1)
     dispatch(orderFilters({ name: input }))
   }
 
@@ -129,8 +130,8 @@ const Shop = () => {
             <img src="https://unapausaparalapublicidad.files.wordpress.com/2014/08/san-miguel.gif" alt="" style={{ objectFit: "cover", width: "100%" }} />
           </div>
         </Col>
-        <Col xs={12} md={9}>
-          <div className="d-flex flex-column">
+        <Col xs={12} md={9} className={style.cardsContainer}>
+          <div className={style.Cards}>
             <CardShop />
           </div>
         </Col>
