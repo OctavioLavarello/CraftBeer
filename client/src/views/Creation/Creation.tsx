@@ -15,9 +15,8 @@ import { AppState } from "../../redux/reducer";
 // CREATION
 const Creation = () => {
   const dispatch = useDispatch<any>();
-  const access = useSelector((state: AppState) => state.accessLogin)
-  const idCompany = access.id
-
+  const access = useSelector((state: AppState) => state.accessLogin);
+  const idCompany = access.id;
 
   const [input, setInput] = useState<ProductData>({
     name: "",
@@ -85,14 +84,14 @@ const Creation = () => {
 
   const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("fdfdfdfdf",input);
-    
+    console.log("fdfdfdfdf", input);
+
     dispatch(createdProduct(input));
     setInput({
       ...input,
     });
   };
-  
+
   const handlerChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> | any
   ) => {
