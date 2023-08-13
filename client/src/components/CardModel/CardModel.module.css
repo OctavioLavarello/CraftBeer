@@ -322,6 +322,7 @@
     }
 
     .colPrice {
+     /* muestra puntos suspensivos */
 
         justify-content: center;
         align-items: center;
@@ -338,6 +339,13 @@
         color: #7c5e26;
 
 
+    }
+    .colPrice h3 {
+        color: #e89c04;
+        font-size: auto;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
     }
 
     .custom_button {
@@ -422,6 +430,7 @@
         border-radius: 4px;
         margin-top: 10px;
     }
+    
 
     .navButtonNull {
         opacity: 0;
@@ -458,12 +467,9 @@
         opacity: 0.2;
     }
 
-
-
     .alertOutStock {
         color: #e50505;
-        margin-top: 19px;
-        font-weight: 800;
+        margin-bottom: 25px;
         animation: fadeInOut .3s 1;
     }
 
@@ -484,11 +490,16 @@
     }
 
     .input {
-        width: 100px;
+        width: 90px;
+        margin-left: 30px;
         height: 25px;
+        padding-left: 10px;
         color: black;
         border-radius: 4px;
         background-color: rgb(214, 210, 210);
+        text-align: center;
+        border: none;
+        appearance:none
     }
 
 }

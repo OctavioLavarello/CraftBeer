@@ -36,13 +36,11 @@ function App() {
     if(userJSON){
       const user = JSON.parse(userJSON)
       dispatch(verificationLogin(user))
-      console.log(user);
     }
   }, [dispatch])
 
   const { accessLogin, localStorageCart } = useSelector((state: AppState) => state) 
 
-  console.log(accessLogin)
   const navigate = useNavigate();
   const handlerNavigate = () => {
     if (accessLogin.role === "Person" && Object.keys(localStorageCart).length === 0){
