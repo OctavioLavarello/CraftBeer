@@ -322,6 +322,7 @@
     }
 
     .colPrice {
+     /* muestra puntos suspensivos */
 
         justify-content: center;
         align-items: center;
@@ -338,6 +339,13 @@
         color: #7c5e26;
 
 
+    }
+    .colPrice h3 {
+        color: #e89c04;
+        font-size: auto;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
     }
 
     .custom_button {
@@ -422,6 +430,7 @@
         border-radius: 4px;
         margin-top: 10px;
     }
+    
 
     .navButtonNull {
         opacity: 0;

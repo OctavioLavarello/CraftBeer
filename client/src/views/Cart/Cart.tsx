@@ -68,7 +68,6 @@ const Cart = () => {
     }
   }, [itemCart]);
 
-console.log(dataPay);
 
   // iniciar compra 
   const handlerBuy = () => {
