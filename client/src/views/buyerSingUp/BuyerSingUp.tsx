@@ -66,10 +66,10 @@ const BuyerSingUp: React.FC = () => {
     }
     if (name === "password") {
       if (input.password !== "") {
-        if (/^(?=.*[A-Z])(?=.*[0-9]).+$/.test(input.password)) {
+        if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(input.password)) {
           setErrors({ ...errors, password: "" });
         } else {
-          setErrors({ ...errors, password: "La contraseña debe contener al menos una letra mayúscula y un número" });
+          setErrors({ ...errors, password: "La contraseña debe contener al menos una mayúscula, una minúscula, un número y tener más de 8 caracteres." });
         }
       } else {
         setErrors({ ...errors, password: "Información requerida" });

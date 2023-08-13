@@ -22,15 +22,30 @@ import Pay from './views/Pay/Pay';
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar"
 import Footer from "./components/footer/Footer"
+import { verificationLogin } from './redux/actions/actions';
 // STYLES
 import './App.css';
 import SuccessPay from './views/Pay/succesPay';
+import { useDispatch } from 'react-redux';
+
 // APP
 function App() {
+  const dispatch = useDispatch()
+  const location = useLocation();
+  const hasPermissions = false;
+  useEffect(()=>{
+    const userJSON = localStorage.getItem("user")   
+    if(userJSON){
+      const user = JSON.parse(userJSON)
+      dispatch(verificationLogin(user))
+      console.log(user);
+    }
+  }, [dispatch])
+
   const { accessLogin, localStorageCart } = useSelector((state: AppState) => state) 
+
   console.log(accessLogin)
   const navigate = useNavigate();
-  const location = useLocation();
   const handlerNavigate = () => {
     if (accessLogin.role === "Person" && Object.keys(localStorageCart).length === 0){
         navigate("/shop")

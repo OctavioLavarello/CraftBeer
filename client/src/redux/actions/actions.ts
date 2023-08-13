@@ -15,7 +15,6 @@ import {
   LOGOUT,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
-import { Toast } from "react-bootstrap";
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
   type: T;
@@ -163,12 +162,12 @@ export const createdCompany = ({
         type: CREATED_COMPANY,
         payload: companyCreated,
       });  
-      alert("Se creo correctamente su compañía")
-      // toast.success("Se creo correctamente su compañía")
+      //alert("Se creo correctamente su compañía")
+      toast.success("Se creo correctamente su compañía")
     };
   } catch (error) {
-    alert("No ha sido posible cargar su compañía")
-  //  toast.error("No ha sido posible cargar su compañía");
+    //alert("No ha sido posible cargar su compañía")
+  toast.error("No ha sido posible cargar su compañía");
   }  
 };
 
@@ -261,7 +260,7 @@ export const logout = () => {
   };
 };
 
-export const verificationLogin = (user)=>{
+export const verificationLogin = (user:any)=>{
  return {
   type: LOGIN_VERIFICATION,
   payload: user

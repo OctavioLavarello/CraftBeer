@@ -80,7 +80,7 @@ export const saveLocalStorageCart = (
 
 // LOGIN 
 export const login = (state = initialState, action: loginAction) => {
-  const user = localStorage.getItem(action.payload.user.id)
+  const user:any = localStorage.getItem(action.payload.user.id)
   console.log(user);
   const json = JSON.parse(user)
   console.log(json);
@@ -119,9 +119,11 @@ export const logout = (state = initialState) => {
 export const loginVerification = (state = initialState, action:loginAction)=> {
   return {
     ...state,
-    access: action.payload.access,
-    id: action.payload.user.id,
-    role: action.payload.user.role
+    accessLogin:{
+      access: action.payload.access,
+      id: action.payload.user.id,
+      role: action.payload.user.role
+    }
   }
 }
 //ALMACENAR numero de paginas para el shop 
