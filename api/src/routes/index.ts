@@ -22,7 +22,6 @@ router.post("/user", postUserPerson);
 router.post("/company", postCompany);
 router.post("/product", postProduct);
 router.post("/qualification", postQualification)
-router.post("/qualification", postQualification);
 router.post("/shoppingHistory", postShoppingHistory);
 
 

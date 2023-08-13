@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { ShoppingHistory, UserPerson } from '../../db'; 
 import { Item } from '../../db';
+import postPurchaseConfirmation from "./postPurchaseConfirmation"
 
 const postShoppingHistory = async (req: Request, res: Response) => {
   try {
@@ -29,11 +30,11 @@ const postShoppingHistory = async (req: Request, res: Response) => {
         totalPrice,
         userPersonId,
     });
-
+    let newItems;
     if (!items || items.length === 0){
         return res.status(404).send({ error: 'No items found to upload' });
     }else{
-        const newItems = await Item.bulkCreate(
+         newItems = await Item.bulkCreate(
             items.map((item: any) => ({
                 ...item,
                 ShoppingHistoryId: newShoppingHistory.id,
@@ -41,7 +42,9 @@ const postShoppingHistory = async (req: Request, res: Response) => {
         );
         await newShoppingHistory.setItems(newItems);
     }
-
+    if(newShoppingHistory){
+       return  postPurchaseConfirmation(date,totalPrice,userPersonId,newItems)
+    }
     return res.status(201).send(newShoppingHistory);
   } catch (error) {
     console.error('Error creating shoppingHistory:', error);
