@@ -1,7 +1,7 @@
 .navContainer {
     display: flex;
     justify-content: space-between;
-    background: linear-gradient(to bottom, black, #242424);
+    background: linear-gradient(to top, black, #242424);
     color: white;
     text-decoration: none;
     height: 9vh;
