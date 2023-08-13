@@ -46,7 +46,8 @@ const postUserPerson = async (req: Request, res: Response) => {
     if (userPerson) {
       return postAccountConfirm(name, email);
     }
-    return res.status(200).json(userPerson);
+    console.log("creacion exitosa")
+    return res.status(200).send("usuario creado exitosamente");
   } catch (error) {
     if (error instanceof Error) {
       return res.status(500).send(error.message);
