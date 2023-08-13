@@ -11,7 +11,7 @@ import putProduct from '../controller/putProduct';
 import putUserCompany from '../controller/putUserCompany';
 import getAllUserPersons from '../controller/getAllUserPersons';
 import postQualification from "../controller/postQualification"
-import {createOrder} from "../controller/payment/get.create-order"
+import {createOrder} from "../controller/payment/create-order"
 import postShoppingHistory from '../controller/postShoppingHistory';
 import getShoppingHistories from '../controller/getShoppingHistories';
 
@@ -41,7 +41,7 @@ router.put("/product/:productId", putProduct);
 
 // ------- payment routes ----//
 
-router.get("/create-order", createOrder)
+router.post("/create-order", createOrder)
 
 
 module.exports = router

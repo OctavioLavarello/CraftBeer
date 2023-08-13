@@ -13,7 +13,8 @@ export interface productCart {
   image: string;
   price: number;
   quantity: number,
-  id: string
+  id: string,
+  subTotal?:number
 }
 
 const CardCart = ({ name, summary, price, image, quantity, id }: productCart) => {

@@ -18,7 +18,6 @@ import Cart from './views/Cart/Cart';
 import AboutUs from './views/aboutUs/AboutUs';
 import Contact from './views/Contact/Contact';
 import Creation from './views/Creation/Creation';
-import Pay from './views/Pay/Pay';
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar"
 import Footer from "./components/footer/Footer"
@@ -37,13 +36,11 @@ function App() {
     if(userJSON){
       const user = JSON.parse(userJSON)
       dispatch(verificationLogin(user))
-      console.log(user);
     }
   }, [dispatch])
 
   const { accessLogin, localStorageCart } = useSelector((state: AppState) => state) 
 
-  console.log(accessLogin)
   const navigate = useNavigate();
   const handlerNavigate = () => {
     if (accessLogin.role === "Person" && Object.keys(localStorageCart).length === 0){
@@ -96,7 +93,6 @@ function App() {
           <Route path='/cart' element={ <Cart />} />
           <Route path='/aboutUs' element={ <AboutUs />} />
           <Route path='/contact' element={ <Contact />} />
-          <Route path='/pay' element={<Pay/>} />
           <Route path='/succes' element={<SuccessPay/>} />
         </Routes>) :
         (
