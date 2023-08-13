@@ -24,11 +24,11 @@ const postUserValidation = (
         return "lastName must contain only letters" ;
     }
     
-    if (typeof document === "undefined") return "document is required";
-    //Expresion regular que permite solo numeros.
-    if (typeof document !== "number") {
-        return "Document must be a number";
-      }
+    // if (typeof document === "undefined") return "document is required";
+    // //Expresion regular que permite solo numeros.
+    // if (typeof document !== "number") {
+    //     return "Document must be a number";
+    //   }
 
     if (!email) return "email is required";
     // Expresión regular para validar direcciones de correo electrónico.

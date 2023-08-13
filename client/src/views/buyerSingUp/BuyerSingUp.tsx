@@ -16,8 +16,6 @@ interface UserData {
   state: string;
   address: string;
   image: string;
-  status: string;
-  role: string;
 }
 const BuyerSingUp: React.FC = () => {
   const dispatch = useDispatch<any>();
@@ -32,8 +30,7 @@ const BuyerSingUp: React.FC = () => {
     state: "",
     address: "",
     image: "",
-    status: "",
-    role: ""
+   
   });
   const [errors, setErrors] = useState({
     name: "Se requiere nombre",
@@ -108,20 +105,18 @@ const BuyerSingUp: React.FC = () => {
 
   console.log(formData)
   dispatch(createdUser(formData))
-  // setFormData({
-  //   name: "",
-  //   lastName: "",
-  //   document: 0,
-  //   email: "",
-  //   password: "",
-  //   country: "",
-  //   city: "",
-  //   state: "",
-  //   address: "",
-  //   image: "",
-  //   status: "",
-  //   role: ""
-  // });
+  setFormData({
+    name: "",
+    lastName: "",
+    document: 0,
+    email: "",
+    password: "",
+    country: "",
+    city: "",
+    state: "",
+    address: "",
+    image: "",
+  });
 };
 
 // console.log(formData);
