@@ -45,7 +45,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
     // setea los cambios de cantidades y ejecuta para cargar en localStorage
     const handlerItemCart = (event: React.MouseEvent<HTMLButtonElement>) => {
         const target = event.currentTarget;
-        const updatedQuantity = target.name === '+' ? item + 1 : item - 1;
+        const updatedQuantity = target.name === '+' ? (item ?? 0) + 1 : Math.max((item ?? 0) - 1, 0);
 
 
         setItem(updatedQuantity);
