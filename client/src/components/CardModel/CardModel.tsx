@@ -28,7 +28,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
     const itemCart = useSelector((state: AppState) => state.localStorageCart)
 
     //estado para controlar los input de cantidades 
-    const [item, setItem] = useState(0);
+    const [item, setItem] = useState<number>(0);
 
     // Cargar la cantidad del localStorage cuando el componente se monta
     useEffect(() => {
@@ -45,7 +45,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
     // setea los cambios de cantidades y ejecuta para cargar en localStorage
     const handlerItemCart = (event: React.MouseEvent<HTMLButtonElement>) => {
         const target = event.currentTarget;
-        const updatedQuantity = target.name === '+' ? (item ?? 0) + 1 : Math.max((item ?? 0) - 1, 0);
+        const updatedQuantity = target.name === '+' ? item + 1 : item - 1;
 
 
         setItem(updatedQuantity);
@@ -182,7 +182,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                                     <Link to={"/cart"}>
                                         <button className={style.buttonBuy} disabled={disabledButton.buy}>COMPRAR</button>
                                     </Link>
-                                    { <p className={item? style.navButtonAdd:style.navButtonNull}>Tienes {String(item)} 🍺 En tu carrito !!</p> }
+                                    { <p className={item? style.navButtonAdd:style.navButtonNull}>Tienes {item} 🍺 En tu carrito !!</p> }
                                 </div>
                             </div>
                         </Col>
