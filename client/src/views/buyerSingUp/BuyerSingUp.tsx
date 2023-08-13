@@ -6,6 +6,7 @@ import craftBeerLogo from "../../assets/img/craftBeerLogo.jpg";
 import Styles from "./BuyerSingUp.module.css"
 interface UserData {
   name: string;
+  id?: string;
   lastName: string;
   document: number;
   email: string;

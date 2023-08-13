@@ -173,6 +173,7 @@ export const createdCompany = ({
 
 export interface UserData {
   name: string;
+  id?: string;
   lastName: string;
   document: number;
   email: string;
