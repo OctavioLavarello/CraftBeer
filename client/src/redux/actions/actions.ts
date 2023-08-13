@@ -170,14 +170,15 @@ export const createdCompany = ({
 };
 
 export interface UserData {
-  id: string;
   name: string;
   lastName: string;
-  document: string;
+  document: number;
   email: string;
   password: string;
   address: string;
   image: string;
+  country: string;
+  city: string;
 }
 //action crear user comprador
 export const createdUser = (userData: UserData) => {

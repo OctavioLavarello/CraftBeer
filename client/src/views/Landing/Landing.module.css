@@ -1,22 +1,38 @@
-.wallpaper{
-    background-image: url('../../assets/img/thumbbig-779302.webp');
-    background-size: cover;
-    display: flex;
-    flex-direction: column; /* Cambia la dirección de los elementos a columna */
-    align-items: center; /* Centra horizontalmente los elementos en el contenedor */
-    justify-content: center; /* Centra verticalmente los elementos en el contenedor */
-    height: 100%; /* Asegura que el contenedor ocupe todo el alto de la ventana visible */
-    width: 100%;
-    
+.wallpaper {
+  background-image: url('../../assets/img/thumbbig-779302.webp');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: relative; /* Agrega posición relativa para que ::before funcione correctamente */
 }
 
+.wallpaper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Cambia el valor alfa (0.5) para ajustar la intensidad de oscurecimiento */
+}
+
+/* Resto de tus estilos */
+
+
 .whiteText{
-flex-shrink: 0;
-color: #FFF;
+  z-index: 1; 
+  flex-shrink: 0;
+  -webkit-text-stroke: 1.2px black; /* Ancho y color del borde en navegadores basados en WebKit (Safari, Chrome) */
+  text-stroke: 1px black;
+color: rgb(255, 255, 255);
 text-align: center;
-padding: 3%;
+padding: 2.5%;
 font-family: Inter;
-font-size: 40px;
+font-size: 50px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
@@ -25,12 +41,13 @@ margin-right: 10%;
 
 }
 .cuestion{
- 
+  z-index: 1;
     text-align: center;
     color: #FFF;
     font-size: 50px;
 }
 .birdthday{
+  z-index: 1;
 position: center;
 font-size: 30px;
 border: 2px solid #ccc;
