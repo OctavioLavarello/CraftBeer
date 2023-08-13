@@ -39,6 +39,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
         } else {
             setItem(0);
         }
+        if (item < 0) setItem(0)
     }, [id]);
 
     // setea los cambios de cantidades y ejecuta para cargar en localStorage
@@ -66,11 +67,47 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
         dispatch(localStorageCart(itemData));
 
     }
+    // validacion  de input para cantidad de items 
+    const [inputDisabled, setInputDisabled] = useState({
+        supStock: false,
+        negative: false
+    })
+    const hanldlerQuantity = (event: any) => {
+        if (event.target.value > stock) {
+            setInputDisabled((prevState) => ({
+                ...prevState,
+                supStock: true
+            }))
+        }
+        if (event.target.value.toString() ==="-") {
+            setInputDisabled((prevState) => ({
+                ...prevState,
+                negative: true
+            }))
+        }
+        setItem(event.target.value)
+    }
+    useEffect(() => {
+        if (inputDisabled.supStock === true) {
+            setItem(stock)
+            setInputDisabled((prevState) => ({
+                ...prevState,
+                supStock: false
+            }))
+        }
+        if (inputDisabled.negative === true) {
+            setItem(0)
+            setInputDisabled((prevState) => ({
+                ...prevState,
+                supStock: false
+            }))
+        }
+
+    }, [inputDisabled])
 
 
 
     //controlar la visualizacion de los botones para comprar 
-
     const rol = useSelector((state: AppState) => state)
     const [disabledButton, setdisabledButton] = useState({
         buy: true,
@@ -154,7 +191,10 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                                 <h2 className={style.title}> {price.toFixed(2)} U$S</h2>
                                 <p>☆☆☆☆☆ </p>  <p className={item === stock || stock === 0 ? style.alertOutStock : style.alertStock}>Stock Disponible : {stock} un.</p>
                                 <div className={style.centeredContainer}>
-                                    <div className={style.input}>{item} Un.</div>
+                                    <form>
+                                        <input type="number" className={style.input} value={item == 0 ? null : item} max={stock} onChange={hanldlerQuantity}
+                                            placeholder="0" /> Un.
+                                    </form>
                                 </div>
                                 <button className={style.custom_button} name={"-"} onClick={handlerItemCart} disabled={disabledButton.remove}>-</button>
                                 <button className={style.custom_button} name={"+"} onClick={handlerItemCart} disabled={disabledButton.add}>+</button>
