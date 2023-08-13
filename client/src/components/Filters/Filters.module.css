@@ -20,10 +20,30 @@
     height: 30px;
     box-shadow: 0 2px 2px rgba(181, 176, 176, 0.1)
 }
-.select:hover{
+
+.select:hover {
     transition: 0.3s;
     scale: 1.1;
 }
+
+.buttonFilters{
+    border: 1px solid  rgb(239, 180, 18);;
+    margin-top: 20px;
+    color:rgb(239, 180, 18) ;
+    padding: 4px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 30px;
+    background-color: rgb(63, 54, 54);
+}
+.buttonFilters:hover{
+    scale: 1.1;
+    transition: .3s;
+}
+.buttonFilters:disabled{
+    opacity: 0;
+}
+
 
 .filters {
     background-color: #0f0f0e;

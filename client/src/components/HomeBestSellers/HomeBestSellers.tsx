@@ -12,7 +12,7 @@ const HomeBestSellers: React.FC = () => {
     // GLOBAL STATE
     const { allBeer } = useSelector((state: AppState) => state)
     
-    const threeCards = allBeer.slice(0, 3);
+    const threeCards = allBeer.slice(2, 5);
 
     return (
         <div className={styles.div}>

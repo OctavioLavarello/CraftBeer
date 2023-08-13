@@ -11,11 +11,14 @@ const Filters = () => {
     const [inputValue, setInputValue] = useState({
     })
 
+    const [buttonDisable, setbuttonDisable] = useState(true)
+
     // controlar los input de option 
     const handlerOptions = (event: React.ChangeEvent<HTMLSelectElement>) => {
 
         const { name, value } = event.target;
         if (value) {
+            setbuttonDisable(false)
             setInputValue((prevState) => ({
                 ...prevState,
                 [name]: value,
@@ -29,6 +32,18 @@ const Filters = () => {
         }
     }
 
+  
+
+    const handlerButtonClick = () => {
+        setInputValue({}),
+        setbuttonDisable(true)
+        const selectElements = document.querySelectorAll(`.${style.select}`);
+        selectElements.forEach((selectElement:any) => {
+          selectElement.value = "";
+        });
+    }
+
+
     useEffect(() => {
         dispatch(orderFilters(inputValue));
     }, [inputValue, dispatch]);
@@ -37,6 +52,7 @@ const Filters = () => {
     return (
         <div className={style.container}>
             <div className={style.filters}>
+                <button className={style.buttonFilters} disabled={buttonDisable} onClick={handlerButtonClick}>Limpiar filtros</button>
                 <p className={style.title_select}>Ordenar por precio</p>
                 <select onChange={handlerOptions} className={style.select} name="order">
                     <option value="">TODOS LOS PRECIOS</option>
@@ -46,20 +62,24 @@ const Filters = () => {
                 <p className={style.title_select}>Filtrar por precio</p>
                 <select onChange={handlerOptions} className={style.select} name="price">
                     <option value="" >TODOS LOS PRECIOS</option>
-                    <option value="5">MENOR A 5</option>
+                    <option value="1">MENOR A 1</option>
+                    <option value="2">MENOR A 2</option>
+                    <option value="4">MENOR A 4</option>
+                    <option value="8">MENOR A 8</option>
                     <option value="10">MENOR A 10</option>
+                    <option value="15">MENOR A 15</option>
                     <option value="20">MENOR A 20</option>
-                    <option value="30">MENOR A 30</option>
-                    <option value="50">MENOR A 50</option>
                 </select>
                 <p className={style.title_select}>Filtrar por IBU</p>
                 <select onChange={handlerOptions} className={style.select} name="IBU">
                     <option value="">TODOS LOS IBUS</option>
+                    <option value="5">MENOR A 5</option>
+                    <option value="10">MENOR A 10</option>
+                    <option value="15">MENOR A 15</option>
                     <option value="20">MENOR A 20</option>
+                    <option value="25">MENOR A 25</option>
                     <option value="30">MENOR A 30</option>
                     <option value="40">MENOR A 40</option>
-                    <option value="50">MENOR A 50</option>
-                    <option value="60">MENOR A 60</option>
                 </select>
                 <p className={style.title_select}>Filtrar por puntuación</p>
                 <select onChange={handlerOptions} className={style.select} name="qualification">

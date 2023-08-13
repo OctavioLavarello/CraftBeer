@@ -12,7 +12,7 @@ import styles from "./Home.module.css";
 
 // HOME
 const Home: React.FC = () => {
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch<any>(); 
   
   useEffect(() => {
     dispatch(allBeers())
