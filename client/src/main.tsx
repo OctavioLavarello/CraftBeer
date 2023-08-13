@@ -8,7 +8,7 @@ import { store } from './redux/store';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:3001'
-//axios.defaults.baseURL = 'https://craftbeer.up.railway.app/'
+// axios.defaults.baseURL = 'https://craftbeer.up.railway.app/'
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

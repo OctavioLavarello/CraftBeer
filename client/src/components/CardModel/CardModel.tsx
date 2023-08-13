@@ -39,6 +39,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
         } else {
             setItem(0);
         }
+        if (item < 0) setItem(0)
     }, [id]);
 
     // setea los cambios de cantidades y ejecuta para cargar en localStorage
@@ -66,10 +67,91 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
         dispatch(localStorageCart(itemData));
 
     }
+    // validacion  de input para cantidad de items 
+    const [inputDisabled, setInputDisabled] = useState({
+        supStock: false,
+        negative: false
+    })
+    const hanldlerQuantity = (event: any) => {
+        if (event.target.value > stock) {
+            setInputDisabled((prevState) => ({
+                ...prevState,
+                supStock: true
+            }))
+        }
+        if (event.target.value.toString() ==="-") {
+            setInputDisabled((prevState) => ({
+                ...prevState,
+                negative: true
+            }))
+        }
+        setItem(event.target.value)
+    }
+    useEffect(() => {
+        if (inputDisabled.supStock === true) {
+            setItem(stock)
+            setInputDisabled((prevState) => ({
+                ...prevState,
+                supStock: false
+            }))
+        }
+        if (inputDisabled.negative === true) {
+            setItem(0)
+            setInputDisabled((prevState) => ({
+                ...prevState,
+                supStock: false
+            }))
+        }
+
+    }, [inputDisabled])
 
 
 
+    //controlar la visualizacion de los botones para comprar 
+    const rol = useSelector((state: AppState) => state)
+    const [disabledButton, setdisabledButton] = useState({
+        buy: true,
+        add: true,
+        remove: true
+    })
 
+    useEffect(() => {
+        if (rol.accessLogin.role == "Company") {
+            setdisabledButton((prevState) => ({
+                ...prevState,
+                buy: true,
+                add: true,
+                remove: true
+            }))
+        } else {
+            if (item > 0) {
+                setdisabledButton((prevState) => ({
+                    ...prevState,
+                    buy: false,
+                    remove: false
+                }))
+            } else {
+                setdisabledButton((prevState) => ({
+                    ...prevState,
+                    buy: true,
+                    remove: true
+                }))
+            }
+            if (item === stock) {
+                setdisabledButton((prevState) => ({
+                    ...prevState,
+                    add: true,
+                }))
+            } else {
+                setdisabledButton((prevState) => ({
+                    ...prevState,
+                    add: false,
+                }))
+            }
+        }
+
+
+    }, [item])
 
 
     return (
@@ -98,7 +180,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                                 </div>
                                 <div className={style.navButton}>
                                     <Link to={"/cart"}>
-                                        <button className={style.buttonBuy} disabled={item < 1}>COMPRAR</button>
+                                        <button className={style.buttonBuy} disabled={disabledButton.buy}>COMPRAR</button>
                                     </Link>
                                     { <p className={item? style.navButtonAdd:style.navButtonNull}>Tienes {String(item)} 🍺 En tu carrito !!</p> }
                                 </div>
@@ -109,10 +191,13 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                                 <h2 className={style.title}> {price.toFixed(2)} U$S</h2>
                                 <p>☆☆☆☆☆ </p>  <p className={item === stock || stock === 0 ? style.alertOutStock : style.alertStock}>Stock Disponible : {stock} un.</p>
                                 <div className={style.centeredContainer}>
-                                    <div className={style.input}>{item} Un.</div>
+                                    <form>
+                                        <input type="number" className={style.input} value={item == 0 ? null : item} max={stock} onChange={hanldlerQuantity}
+                                            placeholder="0" /> Un.
+                                    </form>
                                 </div>
-                                <button className={style.custom_button} name={"-"} onClick={handlerItemCart} disabled={item < 1}>-</button>
-                                <button className={style.custom_button} name={"+"} onClick={handlerItemCart} disabled={item >= stock}>+</button>
+                                <button className={style.custom_button} name={"-"} onClick={handlerItemCart} disabled={disabledButton.remove}>-</button>
+                                <button className={style.custom_button} name={"+"} onClick={handlerItemCart} disabled={disabledButton.add}>+</button>
                             </div>
                         </Col>
                     </Row>
