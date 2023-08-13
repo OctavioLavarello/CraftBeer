@@ -32,7 +32,6 @@ import { useDispatch } from 'react-redux';
 function App() {
   const dispatch = useDispatch()
   const location = useLocation();
-  const hasPermissions = false;
   useEffect(()=>{
     const userJSON = localStorage.getItem("user")   
     if(userJSON){
