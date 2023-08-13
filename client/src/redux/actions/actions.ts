@@ -184,18 +184,19 @@ export interface UserData {
 }
 //action crear user comprador
 export const createdUser = (userData: UserData) => {
-  try {
-    return async function (dispatch: Dispatch<any>) {
-      let createdUser = await axios.post(`/user`, userData);
+  return (async (dispatch: Dispatch<any>) => {
+    try {
+      let createdUserResponse = await axios.post("/user", userData);
       dispatch({
         type: CREATED_USER,
-        payload: createdUser,
+        payload: createdUserResponse.data,
       });
-      toast.success("Usuario creado exitosamente")
-    };
-  } catch (error) {
-    toast.error("Error al crear usuario");
+      toast.success("Usuario creado exitosamente");
+    } catch (error) {
+      toast.error("Error al crear usuario");
+    }
   }
+  )
 };
  
 /// LOGIN ____________________________________________________________________________________________
