@@ -116,6 +116,7 @@ export const logout = (state = initialState) => {
     }
   }
 }
+
 export const loginVerification = (state = initialState, action:loginAction)=> {
   return {
     ...state,
@@ -135,4 +136,11 @@ return{
   ...state,
   totalPages: action.payload
 }
+}
+
+export const urlImage = (state = initialState, action: ActionWithPayload<string, number>)=> {
+  return {
+    ...state,
+    urlImage: action.payload
+  }
 }

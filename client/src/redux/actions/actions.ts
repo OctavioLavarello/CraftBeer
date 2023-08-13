@@ -13,6 +13,7 @@ import {
   TOTAL_PAGES,
   LOGIN_VERIFICATION,
   LOGOUT,
+  URL_IMAGE,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
 //interface para las Actions
@@ -29,7 +30,7 @@ export interface ProductData {
   stock: number;
   IBU: number;
   presentation: string;
-  image: string;
+  image: string
   userCompanyId: any;
 }
 
@@ -164,6 +165,10 @@ export const createdCompany = ({
       });  
       //alert("Se creo correctamente su compañía")
       toast.success("Se creo correctamente su compañía")
+      setTimeout(()=>{
+        window.location.href = "/login"
+
+      }, 2000)
     };
   } catch (error) {
     //alert("No ha sido posible cargar su compañía")
@@ -184,17 +189,17 @@ export interface UserData {
 }
 //action crear user comprador
 export const createdUser = (userData: UserData) => {
+  return async function (dispatch: Dispatch<any>) {
   try {
-    return async function (dispatch: Dispatch<any>) {
       let createdUser = await axios.post(`/user`, userData);
       dispatch({
         type: CREATED_USER,
         payload: createdUser,
       });
       toast.success("Usuario creado exitosamente")
+    } catch (error) {
+      toast.error("Error al crear usuario");
     };
-  } catch (error) {
-    toast.error("Error al crear usuario");
   }
 };
  
@@ -265,4 +270,11 @@ export const verificationLogin = (user:any)=>{
   type: LOGIN_VERIFICATION,
   payload: user
  } 
+}
+
+export const uploadImage = (url: any)=> {
+  return {
+    type: URL_IMAGE,
+    payload: url
+  }
 }
