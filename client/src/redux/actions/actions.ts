@@ -13,6 +13,7 @@ import {
   TOTAL_PAGES,
   LOGIN_VERIFICATION,
   LOGOUT,
+  URL_IMAGE,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
 //interface para las Actions
@@ -29,7 +30,7 @@ export interface ProductData {
   stock: number;
   IBU: number;
   presentation: string;
-  image: string;
+  image: string
   userCompanyId: any;
 }
 
@@ -163,6 +164,10 @@ export const createdCompany = ({
         payload: companyCreated,
       });      
       toast.success("Se creo correctamente su compañía")
+      setTimeout(()=>{
+        window.location.href = "/login"
+
+      }, 2000)
     };
   } catch (error) {
    toast.error("No ha sido posible cargar su compañía");
@@ -264,4 +269,11 @@ export const verificationLogin = (user:any)=>{
   type: LOGIN_VERIFICATION,
   payload: user
  } 
+}
+
+export const uploadImage = (url: any)=> {
+  return {
+    type: URL_IMAGE,
+    payload: url
+  }
 }

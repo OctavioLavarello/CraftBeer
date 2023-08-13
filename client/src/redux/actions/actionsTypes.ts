@@ -10,3 +10,4 @@ export const LOGOUT = "LOGOUT";
 export const SET_ACCESS_TRUE = "SET_ACCESS_TRUE"
 export const TOTAL_PAGES = "TOTAL_PAGES";
 export const LOGIN_VERIFICATION = "LOGIN_VERIFICATION"
+export const URL_IMAGE = "URL_IMAGE"

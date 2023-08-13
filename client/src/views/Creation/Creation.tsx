@@ -8,6 +8,8 @@ import CardUserProduct from "../../components/CardUsersProduct/CardUserProduct";
 import { useDispatch, useSelector } from "react-redux";
 import { createdProduct, ProductData } from "../../redux/actions/actions";
 import { AppState } from "../../redux/reducer";
+import {DragAndDrop} from "../../components/Cloudinary/Cloudinary.tsx"
+
 
 // STYLES
 //.....
@@ -15,13 +17,16 @@ import { AppState } from "../../redux/reducer";
 // CREATION
 const Creation = () => {
   const dispatch = useDispatch<any>();
-  const access = useSelector((state: AppState) => state.accessLogin)
-  const idCompany = access.id
-
+  const access = useSelector((state: AppState) => state.accessLogin);
+  const idCompany = access.id;
+  const urlImage = useSelector((state: AppState)=> state.urlImage)
+  console.log(urlImage);
+  
+ 
 
   const [input, setInput] = useState<ProductData>({
     name: "",
-    image: "",
+    image: urlImage,
     type: "",
     ABV: 0,
     description: "",
@@ -31,6 +36,8 @@ const Creation = () => {
     IBU: 0,
     userCompanyId: idCompany,
   });
+ 
+  
 
   const [errors, setErrors] = useState({
     name: "Se requeire de un nombre para el producto",
@@ -49,10 +56,9 @@ const Creation = () => {
       if (input.name !== "") setErrors({ ...errors, name: "" });
       else setErrors({ ...errors, name: "Información requerida" });
     }
-    if (name === "image") {
-      if (input.image !== "") setErrors({ ...errors, image: "" });
+    if (input.image !== "") setErrors({ ...errors, image: "" });
       else setErrors({ ...errors, image: "Información requerida" });
-    }
+    
     if (name === "type") {
       if (input.type !== "") setErrors({ ...errors, type: "" });
       else setErrors({ ...errors, type: "Información requerida" });
@@ -85,14 +91,13 @@ const Creation = () => {
 
   const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("fdfdfdfdf",input);
-    
+    console.log("fdfdfdfdf", input);
     dispatch(createdProduct(input));
     setInput({
       ...input,
     });
   };
-  
+
   const handlerChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> | any
   ) => {
@@ -209,11 +214,8 @@ const Creation = () => {
         </Row>
         <Row style={{ margin: "15px" }}>
           <Col>
-            <Form.Control
-              placeholder="URL Imagen del producto"
-              name="image"
-              onChange={handlerChange}
-            />
+            <DragAndDrop/>
+                   
             {/* <Form.Group controlId="formFile" className="mb-1">
               <Form.Control type="file" name="image" onChange={handlerChange}/>
               <h6 className="mensajes">{errors.image}</h6>

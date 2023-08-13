@@ -6,6 +6,8 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 import "../sellerSingUp/selllerSingUp.css";
 import { useDispatch } from "react-redux";
 import { createdCompany } from "../../redux/actions/actions";
+import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 //import { toast } from "react-hot-toast";
 
 // STYLES
@@ -53,6 +55,8 @@ const SellerSingUp: React.FC = () => {
       ...input,
     });
   };
+  
+  
   console.log(input);
   
 
