@@ -1,18 +1,29 @@
 /// IMPORTS
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CardCart, { productCart } from "../../components/CardCart/CardCart";
 // STYLES
 import style from "./Cart.module.css";
 import { useSelector } from "react-redux";
 import { AppState } from "../../redux/reducer";
+import { useEffect, useState } from "react";
+import Pay from "../Pay/Pay";
+import { UserData } from "../../components/LocalStorage/LocalStorage";
 
 
+
+export interface Cart {
+  user: UserData,
+  product: productCart[]
+}
 
 
 
 // CART
 const Cart = () => {
+
+  const navigation = useNavigate()
+  const acces = useSelector((state: AppState) => state.accessLogin)
 
 
   //Funcion para almacenar los valores del cart 
@@ -20,7 +31,8 @@ const Cart = () => {
   const itemCart = useSelector((state: AppState) => state.localStorageCart)
 
   for (let i = 0; i < itemCart.length; i++) {
-    productsCartItems.push(itemCart[i])
+    if (!itemCart[i].hasOwnProperty("user"))
+      productsCartItems.push(itemCart[i])
   }
 
 
@@ -31,6 +43,40 @@ const Cart = () => {
   }
 
 
+  // logica para cargar productos a la pasarela de pago 
+  const [dataPay, setDataPay] = useState<Cart>({
+    user: {
+      id: "",
+      name: "",
+      lastName: "",
+      role: "",
+      access: ""
+    },
+    product:[]
+  })
+
+  useEffect(() => {
+    const userLogin = localStorage.getItem('user');
+    if (userLogin) {
+      const parsedUserLogin = JSON.parse(userLogin);
+      const user = parsedUserLogin.user;
+      const dataUser: UserData = user
+      setDataPay({
+        user: dataUser,
+        product: productsCartItems
+      });
+    }
+  }, [itemCart]);
+
+
+  // iniciar compra 
+  const handlerBuy = () => {
+    if (!acces.access) {
+      navigation("/login")
+    } else {
+      Pay(dataPay)
+    }
+  }
 
   return (
     <>
@@ -79,9 +125,14 @@ const Cart = () => {
           </div>
 
           <hr />
-          <Link to={"/login"}>
-            <button className={style.buttonBuy}>Iniciar Compra</button>
-          </Link>
+          <button
+            className={style.buttonBuy}
+            onClick={handlerBuy}
+            disabled={productsCartItems.length <= 0}
+          >
+            Iniciar Compra
+          </button>
+
 
         </div>
       </div>

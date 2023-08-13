@@ -95,9 +95,9 @@ const Contact: React.FC = () => {
           <div className={styles.upperRight}>
             <h4>Contact information</h4>
             <div>
-              <h5>PHONE : 123456789</h5>
-              <h5>EMAIL: Craftbeer@email.com</h5>
-              <h5>ADDRESS: </h5>
+              <h5>PHONE : ...</h5>
+              <h5>EMAIL: craftbeer514@gmail.com</h5>
+              <h5>ADDRESS: ...</h5>
             </div>
           </div>
         </div>

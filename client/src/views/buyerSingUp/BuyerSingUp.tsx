@@ -6,6 +6,7 @@ import craftBeerLogo from "../../assets/img/craftBeerLogo.jpg";
 import Styles from "./BuyerSingUp.module.css"
 interface UserData {
   name: string;
+  id?: string;
   lastName: string;
   document: number;
   email: string;
@@ -15,8 +16,6 @@ interface UserData {
   state: string;
   address: string;
   image: string;
-  status: string;
-  role: string;
 }
 const BuyerSingUp: React.FC = () => {
   const dispatch = useDispatch<any>();
@@ -31,8 +30,7 @@ const BuyerSingUp: React.FC = () => {
     state: "",
     address: "",
     image: "",
-    status: "",
-    role: ""
+   
   });
   const [errors, setErrors] = useState({
     name: "Se requiere nombre",
@@ -66,10 +64,10 @@ const BuyerSingUp: React.FC = () => {
     }
     if (name === "password") {
       if (input.password !== "") {
-        if (/^(?=.*[A-Z])(?=.*[0-9]).+$/.test(input.password)) {
+        if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(input.password)) {
           setErrors({ ...errors, password: "" });
         } else {
-          setErrors({ ...errors, password: "La contraseña debe contener al menos una letra mayúscula y un número" });
+          setErrors({ ...errors, password: "La contraseña debe contener al menos una mayúscula, una minúscula, un número y tener más de 8 caracteres." });
         }
       } else {
         setErrors({ ...errors, password: "Información requerida" });
@@ -107,20 +105,18 @@ const BuyerSingUp: React.FC = () => {
 
   console.log(formData)
   dispatch(createdUser(formData))
-  // setFormData({
-  //   name: "",
-  //   lastName: "",
-  //   document: 0,
-  //   email: "",
-  //   password: "",
-  //   country: "",
-  //   city: "",
-  //   state: "",
-  //   address: "",
-  //   image: "",
-  //   status: "",
-  //   role: ""
-  // });
+  setFormData({
+    name: "",
+    lastName: "",
+    document: 0,
+    email: "",
+    password: "",
+    country: "",
+    city: "",
+    state: "",
+    address: "",
+    image: "",
+  });
 };
 
 // console.log(formData);

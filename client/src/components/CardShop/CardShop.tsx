@@ -83,7 +83,7 @@ const CardShop = () => {
     return (
         <>
             <div>
-                <Toaster toastOptions={{ className: style["customToast"], duration: 2000 }} />
+                <Toaster toastOptions={{ className: style["customToast"], duration: 700 }} />
             </div>
             {dataLoaded && allBeersData.length === 0 && messageAlert}
 

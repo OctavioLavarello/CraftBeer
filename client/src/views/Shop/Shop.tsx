@@ -16,7 +16,6 @@ import craftBeerLogo from "../../assets/img/craftBeerLogo.jpg";
 const Shop = () => {
 
   const dispatch = useDispatch()
-
   const filters = useSelector((state: AppState) => state.beerFilters)
 
   //numero de paginas recibidas desde el back 
@@ -26,9 +25,9 @@ const Shop = () => {
   //traer la cantidad de articulos en el local storage
   const itemCart = useSelector((state: AppState) => state.localStorageCart)
   let sumItem = 0
-
   itemCart.forEach(element => {
-    sumItem = sumItem + element.quantity
+    if (!element.hasOwnProperty("user"))
+      sumItem = sumItem + element.quantity
   });
 
 
@@ -39,6 +38,12 @@ const Shop = () => {
   const handlerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value)
   }
+
+
+  useEffect(() => {
+    dispatch(orderFilters({ ...filters, name: input }))
+  }, [input])
+
 
   // estado para controlar el paginado 
   interface CustomEventTarget extends EventTarget {
@@ -56,7 +61,7 @@ const Shop = () => {
   //si se aplican filtros se redirige a la pagina 1
   useEffect(() => {
     setNumberPage(1);
-  }, [filters.IBU, filters.order, filters.AVB, filters.price, filters.qualification, filters.type])
+  }, [filters.IBU, filters.order, filters.AVB, filters.price, filters.qualification, filters.type, filters.name])
 
   // controla el estado del paginado en la propiedad pag
   useEffect(() => {
@@ -71,16 +76,18 @@ const Shop = () => {
     search: true,
   };
   if (numberPage < 2) disableBoton.back = true
-  if (numberPage === pages) disableBoton.adv = true
+  if (numberPage === pages || pages === 0) disableBoton.adv = true
   if (input.length > 2) disableBoton.search = false
 
+  //mostrar carrito en pantalla solo si es usuario 
+  const rol = useSelector((state: AppState) => state)
 
 
   // cargar el estado filter con el nombre que ingresa en el input 
   const handlerClick = () => {
     setInput("")
     setNumberPage(1)
-    dispatch(orderFilters({ name: input }))
+    dispatch(orderFilters({ ...filters, name: input }))
   }
 
   return (
@@ -95,14 +102,16 @@ const Shop = () => {
         <button className={style.button} disabled={disableBoton.search} onClick={handlerClick}>🔍</button>
         <button className={style.buttonAll} onClick={handlerClick}>All</button>
 
-        <Link to={"/cart"}>
-          <div className={style.imageCart}>
-            <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" />
-            <div className={style.imageCartdiv}>
-              {sumItem}
+        {rol.accessLogin.role !== "Company" && (
+          <Link to={"/cart"}>
+            <div className={style.imageCart}>
+              <img src="https://www.freeiconspng.com/thumbs/cart-icon/basket-cart-icon-27.png" />
+              <div className={style.imageCartdiv}>
+                {sumItem}
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        )}
       </div>
       <Row>
 

@@ -6,7 +6,7 @@ const dataBase = async () => {
       name: "Alberto",
       lastName: "Mendez",
       document: 40556481,
-      email: "cumplimiento@3cordilleras.com",
+      email: "craftbeer514@gmail.com",
       password: "12345678ABC",
       phone: 3158183233,
       country: "Colombia",
@@ -136,7 +136,7 @@ const dataBase = async () => {
     },
     {
       userCompanyId: company[1].id,
-      name: "BBC Cajica Miel",
+      name: "BBC Cajica Miel x4",
       image:
         "https://www.bbccerveceria.com/sites/g/files/seuoyk221/files/2022-06/caja%20rubia%20final.png",
       type: "Ale",
@@ -151,9 +151,9 @@ const dataBase = async () => {
     },
     {
       userCompanyId: company[1].id,
-      name: "BBC Cajica Miel",
+      name: "BBC Cajica Miel Lata x4",
       image:
-        "https://www.luchocorrea.com/assets/images/home/slider/_2000xAUTO_crop_center-center_none/cajica_miel_lata_cuatrovistas_med_banner.jpg",
+        "https://dislicoresqa.vtexassets.com/arquivos/ids/326309/371096-CERVEZA_BBC_CAJICA_LATA_FOUR_PACK_269ML.png?v=638077995538270000",
       type: "Ale",
       ABV: 3.8,
       description:
@@ -166,23 +166,23 @@ const dataBase = async () => {
     },
     {
       userCompanyId: company[1].id,
-      name: "BBC Cajica Miel",
+      name: "BBC Lager x6",
       image:
-        "https://www.luchocorrea.com/assets/images/home/slider/_2000xAUTO_crop_center-center_none/cajica_miel_lata_cuatrovistas_med_banner.jpg",
-      type: "Ale",
+        "https://dislicoresqa.vtexassets.com/arquivos/ids/326295/371001-BBC-LAGER-SIXPACK-BOT-330ML.png?v=638077995458370000",
+      type: "Lager",
       ABV: 3,
       description:
-        "para disfrutar en buena compañia,contenido 269 ml por lata, x6 unidades",
+        "para disfrutar en buena compañia,contenido 330 ml por lata, x6 unidades",
       price: 10,
       stock: 50,
-      presentation: "Lata",
+      presentation: "Botella",
       IBU: 18,
       status: true,
     },
     {
       userCompanyId: company[1].id,
       name: "BBC Cotidiana",
-      image: "https://bevgo.com.co/wp-content/uploads/2020/12/7845.jpg",
+      image: "https://lalicorera.com/img/products/bbc-la-cotidiana.png",
       type: "Stout",
       ABV: 4,
       description: "para disfrutar en buena compañia,contenido 269 ml por lata",
@@ -194,9 +194,9 @@ const dataBase = async () => {
     },
     {
       userCompanyId: company[1].id,
-      name: "BBC Cotidiana",
+      name: "BBC Cotidiana x4",
       image:
-        "https://pimiento.com.co/2299-large_default/cerveza-artesanal-bbc-la-cotidiana-lata-4-und-x-269-ml.jpg",
+        "https://dislicoresqa.vtexassets.com/arquivos/ids/326310/371092-LA-COTIDIANA-269-x4.png?v=638077995543270000",
       type: "Stout",
       ABV: 4,
       description:
@@ -209,9 +209,9 @@ const dataBase = async () => {
     },
     {
       userCompanyId: company[1].id,
-      name: "BBC Cotidiana",
+      name: "BBC Cotidiana x12",
       image:
-        "https://pimiento.com.co/2299-large_default/cerveza-artesanal-bbc-la-cotidiana-lata-4-und-x-269-ml.jpg",
+        "https://dislicoresqa.vtexassets.com/arquivos/ids/326310/371092-LA-COTIDIANA-269-x4.png?v=638077995543270000",
       type: "Stout",
       ABV: 4,
       description:
@@ -224,9 +224,9 @@ const dataBase = async () => {
     },
     {
       userCompanyId: company[1].id,
-      name: "BBC Cotidiana",
+      name: "BBC Cotidiana x24",
       image:
-        "https://http2.mlstatic.com/D_NQ_NP_921964-MCO47837822170_102021-O.webp",
+        "https://licoresmiprimershot.com.co/wp-content/uploads/2021/01/Four-Pack-BBC-La-Cotidiana-x269ml.png",
       type: "Stout",
       ABV: 4,
       description:
@@ -241,7 +241,7 @@ const dataBase = async () => {
       userCompanyId: company[1].id,
       name: "BBC Monserrate",
       image:
-        "https://jumbocolombiaio.vtexassets.com/arquivos/ids/440082/7707358310029.jpg?v=638043996772430000",
+        "https://www.bbccerveceria.com/sites/g/files/seuoyk221/files/2022-06/MONSERRATE.png",
       type: "Ale",
       ABV: 4,
       description: "para disfrutar en buena compañia,contenido 330 ml",
@@ -253,9 +253,9 @@ const dataBase = async () => {
     },
     {
       userCompanyId: company[1].id,
-      name: "BBC Monserrate",
+      name: "BBC Monserrate x4",
       image:
-        "https://plazaenvivo.com/wp-content/uploads/2020/11/7707358310449.jpg",
+        "https://www.bbccerveceria.com/sites/g/files/seuoyk221/files/2022-06/caja%20roja%20final.png",
       type: "Porter",
       ABV: 4,
       description:
@@ -268,7 +268,7 @@ const dataBase = async () => {
     },
     {
       userCompanyId: company[1].id,
-      name: "BBC CHAPINERO",
+      name: "BBC Chapinero x4",
       image:
         "https://dislicoresqa.vtexassets.com/arquivos/ids/342411/371011-CERVEZABBCFOURPACK-CHAPINEROPORTER330.png?v=638138475213200000",
       type: "Porter",
@@ -283,8 +283,8 @@ const dataBase = async () => {
     },
     {
       userCompanyId: company[1].id,
-      name: "BBC CHAPINERO",
-      image: "https://bevgo.com.co/wp-content/uploads/2020/12/7845.jpg",
+      name: "BBC Chapinero",
+      image: "https://www.bbccerveceria.com/sites/g/files/seuoyk221/files/2022-06/CHAPINERO_0.png",
       type: "Ale",
       ABV: 6,
       description: "para disfrutar en buena compañia,contenido 330 ml",
@@ -298,7 +298,7 @@ const dataBase = async () => {
       userCompanyId: company[2].id,
       name: "Birrificio Angelo",
       image:
-        "https://www.carlsberggroup.com/media/55550/it_birrificio-angelo-poretti-4-luppoli-l-originale.png?height=570&mode=max",
+        "https://s3.amazonaws.com/images.ecwid.com/images/16242262/3063887751.jpg",
       type: "Ale",
       ABV: 6,
       description:
@@ -313,11 +313,26 @@ const dataBase = async () => {
       userCompanyId: company[2].id,
       name: "Carlsberg",
       image:
-        "https://www.carlsberggroup.com/media/45401/cb_nd_00_pilsner_330ml_bottle_wet_isolated_rgb_72dpi.png?height=570&mode=max",
+        "https://i.pinimg.com/originals/ff/b9/5f/ffb95f7f5fd3f9772f9fdfa37add99be.png",
       type: "Pilsner",
       ABV: 0,
       description:
         "ahora podemos disfrutar de una cerveza de gran sabor en cualquier momento,contenido 330 ml",
+      price: 2,
+      stock: 120,
+      presentation: "Botella",
+      IBU: 6,
+      status: true,
+    },
+    {
+      userCompanyId: company[2].id,
+      name: "Carlsberg x6",
+      image:
+        "https://jumbo.vtexassets.com/arquivos/ids/342058/376543PAK1-42586.jpg?v=637280082554300000",
+      type: "Pilsner",
+      ABV: 0,
+      description:
+        "ahora podemos disfrutar de una cerveza de gran sabor en cualquier momento,contenido 330 ml, x4 unidades",
       price: 2,
       stock: 120,
       presentation: "Botella",

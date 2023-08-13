@@ -1,6 +1,6 @@
 //import { Dispatch, Action } from "redux";
 import axios from "axios";
-import toast from "react-hot-toast"
+import toast from 'react-hot-toast'
 import { AnyAction, Dispatch } from "redux";
 import {
   CREATED_PRODUCT,
@@ -162,8 +162,7 @@ export const createdCompany = ({
       dispatch({
         type: CREATED_COMPANY,
         payload: companyCreated,
-      });  
-      //alert("Se creo correctamente su compañía")
+      });      
       toast.success("Se creo correctamente su compañía")
       setTimeout(()=>{
         window.location.href = "/login"
@@ -171,13 +170,13 @@ export const createdCompany = ({
       }, 2000)
     };
   } catch (error) {
-    //alert("No ha sido posible cargar su compañía")
-  toast.error("No ha sido posible cargar su compañía");
+   toast.error("No ha sido posible cargar su compañía");
   }  
 };
 
 export interface UserData {
   name: string;
+  id?: string;
   lastName: string;
   document: number;
   email: string;
@@ -189,18 +188,19 @@ export interface UserData {
 }
 //action crear user comprador
 export const createdUser = (userData: UserData) => {
-  return async function (dispatch: Dispatch<any>) {
-  try {
-      let createdUser = await axios.post(`/user`, userData);
+  return (async (dispatch: Dispatch<any>) => {
+    try {
+      let createdUserResponse = await axios.post("/user", userData);
       dispatch({
         type: CREATED_USER,
-        payload: createdUser,
+        payload: createdUserResponse.data,
       });
       toast.success("Usuario creado exitosamente")
     } catch (error) {
       toast.error("Error al crear usuario");
-    };
+    }
   }
+  )
 };
  
 /// LOGIN ____________________________________________________________________________________________
@@ -259,7 +259,6 @@ export const login = (loginUserData: loginUserData) => {
 }
 // LOGIN ACTION
 export const logout = () => {
-  toast.success("Logout successful")
   return {
     type: LOGOUT,
   };

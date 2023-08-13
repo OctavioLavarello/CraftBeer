@@ -35,8 +35,25 @@ export interface AccessLogin {
   role: string;
   cart?: typeof localStorage;
 }
+export interface beers {
+  ABV: number;
+  IBU: number;
+  createdAt: string;
+  description: string;
+  id: string;
+  image: string;
+  name: string
+  presentation: string;
+  price: number;
+  qualification?: null;
+  status: boolean;
+  stock: number;
+  type: string;
+  updatedAt: string;
+  userCompanyId: string;
+}
 export interface AppState {
-  allBeer: object[];
+  allBeer: beers[];
   beerFilters: BeerFilters;
   localStorageCart:SaveDataLS [];
   totalPages:number
