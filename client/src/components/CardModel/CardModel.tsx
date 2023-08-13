@@ -182,7 +182,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                                     <Link to={"/cart"}>
                                         <button className={style.buttonBuy} disabled={disabledButton.buy}>COMPRAR</button>
                                     </Link>
-                                    {<p className={item ? style.navButtonAdd : style.navButtonNull}>Tienes {item} 🍺 En tu carrito !!</p>}
+                                    { <p className={item? style.navButtonAdd:style.navButtonNull}>Tienes {String(item)} 🍺 En tu carrito !!</p> }
                                 </div>
                             </div>
                         </Col>
