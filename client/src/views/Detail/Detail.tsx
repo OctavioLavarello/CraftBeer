@@ -96,9 +96,6 @@ const Detail = () => {
         </Col>
         <Col md={6} className={styles.imageContainer}>
           <img src={beer?.image} alt="" className={styles.image} />
-          <Button className={styles.addButton}>
-            Añadir al carrito
-          </Button>
         </Col>
       </Row>
     </Container>
