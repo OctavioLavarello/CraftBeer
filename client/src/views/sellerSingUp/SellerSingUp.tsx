@@ -1,13 +1,13 @@
 ///IMPORTS
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnyAction, Dispatch } from "redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import "../sellerSingUp/selllerSingUp.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createdCompany } from "../../redux/actions/actions";
-import { Link } from "react-router-dom";
-import { toast } from "react-hot-toast";
+import {DragAndDrop} from "../../components/Cloudinary/Cloudinary.tsx"
+import { AppState } from "../../redux/reducer";
 //import { toast } from "react-hot-toast";
 
 // STYLES
@@ -16,6 +16,7 @@ import { toast } from "react-hot-toast";
 // SELLER SING UP
 const SellerSingUp: React.FC = () => {
   const dispatch = useDispatch<Dispatch<AnyAction> | any>();
+  const urlImage = useSelector((state: AppState)=> state.urlImage)
 
   const [input, setInput] = useState({
     name: "",
@@ -29,8 +30,12 @@ const SellerSingUp: React.FC = () => {
     state: "",
     company: "",
     address: "",
-    image: "",
+    image: urlImage,
   });
+
+  useEffect(() => {
+    setInput((prevInput) => ({ ...prevInput, image: urlImage }));
+  }, [urlImage]);
 
   const [errors, setErrors] = useState({
     name: "Debe indicar su nombre",
@@ -44,7 +49,7 @@ const SellerSingUp: React.FC = () => {
     state: "Debe indicar el estado/región/provincia donde reside",
     company: "Debe indicar el nombre de su compañía",
     address: "Debe indicar la dirección de la compañía",
-    image: "Debe proporcionar una imagen del logo de su compañía",
+    //image: "Debe proporcionar una imagen del logo de su compañía",
   });
 
   const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -58,6 +63,7 @@ const SellerSingUp: React.FC = () => {
   
   
   console.log(input);
+  console.log(errors);
   
 
   const validation = (input: any, name: any) => {
@@ -67,7 +73,7 @@ const SellerSingUp: React.FC = () => {
     }
     if (name === "lastName") {
       if (input.lastName !== "") setErrors({ ...errors, lastName: "" });
-      else setErrors({ ...errors, image: "Información requerida" });
+      else setErrors({ ...errors, lastName: "Información requerida" });
     }
     if (name === "document") {
       if (input.document !== "") setErrors({ ...errors, document: "" });
@@ -112,10 +118,10 @@ const SellerSingUp: React.FC = () => {
       if (input.address !== "") setErrors({ ...errors, address: "" });
       else setErrors({ ...errors, address: "Información requerida" });
     }
-    if (name === "image") {
-      if (input.image !== "") setErrors({ ...errors, image: "" });
-      else setErrors({ ...errors, image: "Información requerida" });
-    }
+    // if (name === "image") {
+    //   if (input.image !== "") setErrors({ ...errors, image: "" });
+    //   else setErrors({ ...errors, image: "Información requerida" });
+    // }
   };
 
   const handlerChange = (
@@ -318,12 +324,13 @@ const SellerSingUp: React.FC = () => {
           }}
         >
           <Col>
-            <Form.Control
+          <DragAndDrop/>
+            {/* <Form.Control
               placeholder="URL Logo o imagen"
               onChange={handlerChange}
               name="image"
             />
-            <h6 className="errorCompany">{errors.image}</h6>
+            <h6 className="errorCompany">{errors.image}</h6> */}
           </Col>
         </Row>
         <div className="centrado">

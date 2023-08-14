@@ -106,6 +106,7 @@ export const login = (state = initialState, action: loginAction) => {
 }
 // LOGOUT
 export const logout = (state = initialState) => {
+  localStorage.removeItem("user")
   return {
     ...state,
     accessLogin: {

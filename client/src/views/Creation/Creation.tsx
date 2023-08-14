@@ -1,5 +1,5 @@
 /// IMPORTS
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //import { Dispatch, AnyAction } from "redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
@@ -20,9 +20,6 @@ const Creation = () => {
   const access = useSelector((state: AppState) => state.accessLogin);
   const idCompany = access.id;
   const urlImage = useSelector((state: AppState)=> state.urlImage)
-  console.log(urlImage);
-  
- 
 
   const [input, setInput] = useState<ProductData>({
     name: "",
@@ -37,7 +34,9 @@ const Creation = () => {
     userCompanyId: idCompany,
   });
  
-  
+  useEffect(() => {
+    setInput((prevInput) => ({ ...prevInput, image: urlImage }));
+  }, [urlImage]);
 
   const [errors, setErrors] = useState({
     name: "Se requeire de un nombre para el producto",
@@ -56,8 +55,11 @@ const Creation = () => {
       if (input.name !== "") setErrors({ ...errors, name: "" });
       else setErrors({ ...errors, name: "Información requerida" });
     }
-    if (input.image !== "") setErrors({ ...errors, image: "" });
-      else setErrors({ ...errors, image: "Información requerida" });
+
+    if(name === "image"){
+      if (input.image !== "") setErrors({ ...errors, image: "" });
+        else setErrors({ ...errors, image: "Información requerida" });
+    }
     
     if (name === "type") {
       if (input.type !== "") setErrors({ ...errors, type: "" });
@@ -91,7 +93,6 @@ const Creation = () => {
 
   const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("fdfdfdfdf", input);
     dispatch(createdProduct(input));
     setInput({
       ...input,
@@ -215,10 +216,10 @@ const Creation = () => {
         <Row style={{ margin: "15px" }}>
           <Col>
             <DragAndDrop/>
-                   
+            <h6 className="mensajes">{errors.image}</h6>     
             {/* <Form.Group controlId="formFile" className="mb-1">
               <Form.Control type="file" name="image" onChange={handlerChange}/>
-              <h6 className="mensajes">{errors.image}</h6>
+              
             </Form.Group> */}
           </Col>
           <Col>
