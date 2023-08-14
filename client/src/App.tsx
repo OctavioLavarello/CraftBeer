@@ -24,8 +24,8 @@ import Footer from "./components/footer/Footer"
 import { verificationLogin } from './redux/actions/actions';
 // STYLES
 import './App.css';
-import SuccessPay from './views/Pay/succesPay';
 import { useDispatch } from 'react-redux';
+import MyShop from './views/MyShop/MyShop';
 
 // APP
 function App() {
@@ -81,6 +81,7 @@ function App() {
           <Route path='/aboutUs' element={ <AboutUs />} />
           <Route path='/contact' element={ <Contact />} />
           <Route path='/post' element={ <Creation />} />
+
         </Routes>
         ) : (accessLogin.role === "Person" ? 
         (
@@ -93,7 +94,8 @@ function App() {
           <Route path='/cart' element={ <Cart />} />
           <Route path='/aboutUs' element={ <AboutUs />} />
           <Route path='/contact' element={ <Contact />} />
-          <Route path='/succes' element={<SuccessPay/>} />
+          <Route path='/myShop' element={<MyShop/>} />
+
         </Routes>) :
         (
         <Routes>

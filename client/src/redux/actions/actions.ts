@@ -16,7 +16,6 @@ import {
   URL_IMAGE,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
-import { log } from "console";
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
   type: T;

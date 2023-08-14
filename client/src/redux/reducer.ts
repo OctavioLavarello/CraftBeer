@@ -73,7 +73,8 @@ export interface BeerFilters {
 }
 
 //hidratar el estado localStorageCart desde la storage 
-const dataStorage = Object.keys(localStorage).map(key => JSON.parse(localStorage[key]));
+const dataStorage = Object.keys(localStorage).map((key) =>   JSON.parse(localStorage[key]));
+console.log("fadfsf",dataStorage);
 
 export const initialState: AppState = {
   allBeer: [],
