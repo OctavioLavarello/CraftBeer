@@ -40,7 +40,7 @@ const Creation = () => {
 
   const [errors, setErrors] = useState({
     name: "Se requeire de un nombre para el producto",
-    image: "Debe suministrar un URL valido para la imagen",
+    //image: "Debe suministrar un URL valido para la imagen",
     type: "Indicar el tipo del producto",
     ABV: "Indicar un valor entre 0 y 90",
     description: "Indicar la descripción del producto",
@@ -56,10 +56,10 @@ const Creation = () => {
       else setErrors({ ...errors, name: "Información requerida" });
     }
 
-    if(name === "image"){
-      if (input.image !== "") setErrors({ ...errors, image: "" });
-        else setErrors({ ...errors, image: "Información requerida" });
-    }
+    // if(name === "image"){
+    //   if (input.image !== "") setErrors({ ...errors, image: "" });
+    //     else setErrors({ ...errors, image: "Información requerida" });
+    // }
     
     if (name === "type") {
       if (input.type !== "") setErrors({ ...errors, type: "" });
