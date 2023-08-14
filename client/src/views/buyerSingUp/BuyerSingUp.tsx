@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { createdUser } from "../../redux/actions/actions"; // Importa la acción creadora de usuarios
 import craftBeerLogo from "../../assets/img/craftBeerLogo.jpg";
 import Styles from "./BuyerSingUp.module.css"
+import {DragAndDrop} from "../../components/Cloudinary/Cloudinary.tsx"
+import { AppState } from "../../redux/reducer";
 interface UserData {
   name: string;
   id?: string;
@@ -19,6 +21,8 @@ interface UserData {
 }
 const BuyerSingUp: React.FC = () => {
   const dispatch = useDispatch<any>();
+  const urlImage = useSelector((state: AppState)=> state.urlImage)
+
   const [formData, setFormData] = useState<UserData>({ 
     name: "",
     lastName: "",
@@ -32,6 +36,12 @@ const BuyerSingUp: React.FC = () => {
     image: "",
    
   });
+
+  useEffect(() => {
+    setFormData((prevInput) => ({ ...prevInput, image: urlImage }));
+  }, [urlImage]);
+
+
   const [errors, setErrors] = useState({
     name: "Se requiere nombre",
     lastName: "Se requiere apellido",
@@ -42,7 +52,7 @@ const BuyerSingUp: React.FC = () => {
     city:"Se requiere ciudad",
     state:"Se requiere estado",
     address: "Se requiere direccion",
-    image: "Se requiere una imagen",
+    // image: "Se requiere una imagen",
   })
 
   const validation = (input: any, name: any) =>{
@@ -89,10 +99,10 @@ const BuyerSingUp: React.FC = () => {
       if (input.address !== "") setErrors({ ...errors, address: "" });
       else setErrors({ ...errors, address: "Información requerida" });
     }
-    if(name === "image"){
-      if (input.image !== "") setErrors({ ...errors, image: "" });
-      else setErrors({ ...errors, image: "Información requerida" });
-    }
+    // if(name === "image"){
+    //   if (input.image !== "") setErrors({ ...errors, image: "" });
+    //   else setErrors({ ...errors, image: "Información requerida" });
+    // }
 
     }
   
@@ -207,7 +217,8 @@ const BuyerSingUp: React.FC = () => {
       <h6 className={Styles.mensajes}>{errors.address}</h6>
     </Col>
     <Col>
-      Imagen:
+    <DragAndDrop/>
+      {/* Imagen:
       <Form.Control
         placeholder="URL"
         type="url"
@@ -215,7 +226,7 @@ const BuyerSingUp: React.FC = () => {
         onChange={handleInputChange}
        
       />
-      <h6 className={Styles.mensajes}>{errors.image}</h6>
+      <h6 className={Styles.mensajes}>{errors.image}</h6> */}
     </Col>
   </Row>
   <Row style={{ margin: '15px' }}>
