@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { UserCompany } from "../../db";
+import { UserCompany, UserPerson } from "../../db";
+import postAccountConfirm from "./postAccountConfirm";
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,30}$/;
@@ -81,7 +82,11 @@ const postCompany = async (req: Request, res: Response) => {
         message:
           "Password must contain at least one uppercase letter, one lowercase letter, and one digit. (6 - 30 char)",
       });
-
+      //validacion para que no se pueda registrar , si ya se encuentra en la base de datos.
+    if (email) {
+      const EmailUnique = await UserPerson.findOne({ where: {email: email} });
+      if(EmailUnique) return res.status(400).send( "This email is already registered");
+    }
     const userCompany = await UserCompany.create({
       name,
       lastName,
@@ -98,7 +103,9 @@ const postCompany = async (req: Request, res: Response) => {
       status: true,
       role: "Company",
     });
-
+    if (userCompany) {
+      postAccountConfirm(company, email);
+    }
     return res.status(200).json(userCompany);
   } catch (error) {
     if (error instanceof Error) {

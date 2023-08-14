@@ -8,6 +8,7 @@ const postUserValidation = (
     image: string,
     country: string, 
     city: string,
+    state:string
     ): string | null => {
     
     if (!name) return "Name is required";
@@ -64,7 +65,12 @@ const postUserValidation = (
     if (!cityRegex.test(city)) {
         return "Invalid city name format.";
     }
-
+    if (!state) return "City is required"; 
+    // Expresión regular que permite letras, espacios, guiones y apóstrofes.
+    const stateRegex = /^[a-zA-Z\s\-']+$/;
+    if (!stateRegex.test(state)) {
+        return "Invalid city name format.";
+    }
     return null 
 
 };
