@@ -16,7 +16,7 @@ import {
   URL_IMAGE,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
-import { log } from "console";
+
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
   type: T;
@@ -122,7 +122,7 @@ export const createdProduct = ({
       console.log(createdBeer);
       toast.success("Se creo correctamente su producto")
       setTimeout(()=>{
-        window.location.href = "/login"
+        window.location.href = "/home"
       }, 2000)
     } 
     
