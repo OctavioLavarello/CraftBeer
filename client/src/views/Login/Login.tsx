@@ -34,6 +34,7 @@ const Login: React.FC = () => {
     });
     const [isClicked, setIsClicked] = useState<boolean>(false);
     const [isError, setIsError] = useState<boolean>(false);
+    const [showPassword, setShowPassword] = useState<boolean>(false);
     // HANDLERS
     const handlerOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
@@ -57,6 +58,9 @@ const Login: React.FC = () => {
             toast.error("An error occurred while logging in.");
             }
         }
+    };
+    const handlerCheck= () => {
+        setShowPassword(!showPassword);
     };
     return (
         <div className={styles.all}>
@@ -90,7 +94,7 @@ const Login: React.FC = () => {
                     </div>
                     <Form.Control 
                     required
-                    type="password" 
+                    type={showPassword ? 'text' : 'password'}
                     name="password"
                     placeholder="Password"
                     onChange={handlerOnChange}
@@ -104,6 +108,7 @@ const Login: React.FC = () => {
                     <Form.Check 
                     type="checkbox" 
                     label="Check me out" 
+                    onChange={handlerCheck}
                     />
                     <NavLink 
                     to="/home"
