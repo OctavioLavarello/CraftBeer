@@ -120,6 +120,9 @@ export const createdProduct = ({
       });
       console.log(createdBeer);
       toast.success("Se creo correctamente su producto")
+      setTimeout(()=>{
+        window.location.href = "/login"
+      }, 2000)
     } 
     
     catch (error) {
@@ -166,7 +169,6 @@ export const createdCompany = ({
       toast.success("Se creo correctamente su compañía")
       setTimeout(()=>{
         window.location.href = "/login"
-
       }, 2000)
     };
   } catch (error) {
@@ -196,6 +198,9 @@ export const createdUser = (userData: UserData) => {
         payload: createdUserResponse.data,
       });
       toast.success("Usuario creado exitosamente")
+      setTimeout(()=>{
+        window.location.href = "/login"
+      }, 2000)
     } catch (error) {
       toast.error("Error al crear usuario");
     }

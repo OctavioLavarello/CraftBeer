@@ -18,7 +18,7 @@ export const DragAndDrop = () => {
   const onUpload = async () => {
     setLoading(true);
     const url = await fileUpload(images[0].file!);
-    console.log(url);
+    console.log(typeof(url));
     await dispatch(uploadImage(url));
     setLoading(false);
 
