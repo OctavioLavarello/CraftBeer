@@ -28,7 +28,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
     const itemCart = useSelector((state: AppState) => state.localStorageCart)
 
     //estado para controlar los input de cantidades 
-    const [item, setItem] = useState<number>(0);
+    const [item, setItem] = useState<number | any>(0);
 
     // Cargar la cantidad del localStorage cuando el componente se monta
     useEffect(() => {
