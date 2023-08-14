@@ -16,6 +16,7 @@ import {
   URL_IMAGE,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
+import { log } from "console";
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
   type: T;
@@ -192,15 +193,19 @@ export interface UserData {
 export const createdUser = (userData: UserData) => {
   return (async (dispatch: Dispatch<any>) => {
     try {
+  
+      toast.success("Usuario creado exitosamente")
       let createdUserResponse = await axios.post("/user", userData);
       dispatch({
         type: CREATED_USER,
         payload: createdUserResponse.data,
       });
+
       toast.success("Usuario creado exitosamente")
       setTimeout(()=>{
         window.location.href = "/login"
       }, 2000)
+
     } catch (error) {
       toast.error("Error al crear usuario");
     }

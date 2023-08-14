@@ -17,7 +17,6 @@
   
   .imageContainer {
     border-right: 15%;
-    align-items: center;
     flex: 1;
     display: flex;
     justify-content: flex-end;
@@ -34,4 +33,12 @@
   .mensajes{
     color: rgb(202, 10, 10);
     font-size: px;
+  }
+
+  .imageCol {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
   }
