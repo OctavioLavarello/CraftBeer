@@ -215,8 +215,7 @@ const Creation = () => {
         </Row>
         <Row style={{ margin: "15px" }}>
           <Col>
-            <DragAndDrop/>
-            <h6 className="mensajes">{errors.image}</h6>     
+            <DragAndDrop/>    
             {/* <Form.Group controlId="formFile" className="mb-1">
               <Form.Control type="file" name="image" onChange={handlerChange}/>
               
