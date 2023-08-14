@@ -14,6 +14,7 @@ import postQualification from "../controller/postQualification"
 import {createOrder} from "../controller/payment/create-order"
 import postShoppingHistory from '../controller/postShoppingHistory';
 import getShoppingHistories from '../controller/getShoppingHistories';
+import getPersonById from '../controller/getPersonById';
 
 const router = Router();
 
@@ -32,6 +33,7 @@ router.get("/product", getAllProducts);
 router.get("/login", logIn);
 router.get("/persons", getAllUserPersons);
 router.get("/shoppingHistories", getShoppingHistories);
+router.get("/persons/:idPerson", getPersonById);
 
 // ------- update routes-------//
 router.put("/user", putUserPerson);
