@@ -39,7 +39,7 @@ const AboutUs: React.FC = () => {
             <button className={styles.link}>Lets Go...</button>
           </NavLink>
         </div>
-        <div className={styles.container}>
+        <div className={styles.container2}>
           <img src={img} alt="CraftBeer" className={styles.img}/>
         </div>
       </div>

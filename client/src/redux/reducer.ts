@@ -59,7 +59,7 @@ export interface AppState {
   totalPages:number
   allCompany: object[]
   accessLogin: AccessLogin;
-  urlImage: string
+  urlImage: any;
 }
 export interface BeerFilters {
   IBU?: number,  // El signo de interrogación indica que la propiedad es opcional

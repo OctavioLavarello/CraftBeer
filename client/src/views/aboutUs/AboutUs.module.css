@@ -20,7 +20,7 @@
     margin-left: 1vw;
     margin-right: 1vw;
 }
-.container{
+.container, .container2{
     align-items: center;
     justify-content: center;
     width: 50%;
@@ -110,4 +110,127 @@
 }
 .link:hover {
     background-color: rgba(178, 152, 57, 0.47);
+}
+@media (max-width: 768px) {
+    .all {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2vh;
+        margin-top: 0.75vw;
+    }
+    .containerP{
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .containerP h2 {
+        margin-left: 1vw;
+    }
+    .containerP p {
+        margin-left: 1vw;
+        margin-right: 1vw;
+    }
+    .container{
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+    .container2{
+        margin-top: 2vh;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .img {
+        width: 100%;
+        border: solid 0.03vh rgba(163, 125, 52, 1);
+        border-right: none;
+        border-left: none;
+        margin-top: -1.8vh;
+    }
+    .linkedAccounts {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 30vh;
+        margin-bottom: 3.6vh;
+    }
+    .linkedAccounts h2 {
+        margin-bottom: 3vh;
+    }
+    .accountsContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+    .accounts {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 48%;
+    }
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 0.03vh solid rgba(163, 125, 52, 1);
+        width: 100%;
+        color: white;
+        text-decoration: none;
+    }
+    .nav h4 {
+        margin: 0;
+        margin-left: 1vw;
+        margin-right: 1vw;
+    }
+    .perfileImg {
+        height: 5vh;
+        border: 0.03vh solid rgba(163, 125, 52, 1);
+        border-left: none;
+        border-top: none;
+        border-bottom: none;
+    }
+    .letsGo {
+        margin-top: .5vh;
+        text-decoration: none;
+        background-color: black;
+        width: 100%;
+        height: 10vh;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        border: 0.03vh solid rgba(163, 125, 52, 1);
+        border-right: none;
+        border-left: none;
+    }
+    .link {
+        background-color: transparent;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        color: white;
+        text-decoration: none;
+        margin-left: 2vw;
+        margin-right: 2vw;
+        position: relative;
+    }
+    .link:hover {
+        background-color: rgba(178, 152, 57, 0.47);
+    }
 }
