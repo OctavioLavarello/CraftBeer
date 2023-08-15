@@ -47,7 +47,6 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
         const target = event.currentTarget;
         const updatedQuantity = target.name === '+' ? item + 1 : item - 1;
 
-
         setItem(updatedQuantity);
         const itemData: SaveDataLS = {
             id,
@@ -59,6 +58,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
         };
 
         if (updatedQuantity > 0) {
+            hanldlerQuantity(updatedQuantity)
             saveDataCart(itemData)
         } else {
             deleteDataCart(itemData.id)
@@ -91,18 +91,19 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
 
     }
     useEffect(() => {
-        if (inputDisabled.supStock === true) {
+        if (inputDisabled.supStock) {
             setItem(stock)
             setInputDisabled((prevState) => ({
                 ...prevState,
                 supStock: false
             }))
         }
-        if (inputDisabled.negative === true) {
+        console.log("facu", inputDisabled.negative)
+        if (inputDisabled.negative) {
             setItem(0)
             setInputDisabled((prevState) => ({
                 ...prevState,
-                supStock: false
+                negative: true
             }))
         }
 
