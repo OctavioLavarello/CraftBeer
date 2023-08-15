@@ -2,6 +2,9 @@ import { Card, Col, Container, Row, Form, Button } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { DragAndDrop } from "../../components/Cloudinary/Cloudinary.tsx";
+import { AppState } from "../../redux/reducer";
 import styles from "./User.module.css";
 
 interface UserData {
@@ -40,6 +43,7 @@ const User = () => {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedUserData, setEditedUserData] = useState<EditableUserData>({});
+  const urlImage = useSelector((state: AppState) => state.urlImage);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -53,6 +57,15 @@ const User = () => {
     }
     fetchUsers()
   }, [id]);
+
+   useEffect(() => {
+    if (urlImage) {
+      setEditedUserData((prevData) => ({
+        ...prevData,
+        image: urlImage,
+      }));
+    }
+  }, [urlImage]);
 
   const handleEditClick = () => {
     // Initialize editedUserData with the current user data
@@ -101,7 +114,16 @@ const User = () => {
                     onChange={handleInputChange}
                   />
                 </Form.Group>
-                <Form.Group controlId="formLastName">
+                   <Form.Group controlId="formImage">
+                    <Form.Label>Imagen</Form.Label>
+                    <DragAndDrop />
+                    <Form.Control
+                      type="text"
+                      name="image"
+                      value={editedUserData.image}
+                      onChange={handleInputChange}
+                    />
+                  <Form.Group controlId="formLastName">
                   <Form.Label>Apellido</Form.Label>
                    <Form.Control
                     type="text"
@@ -109,6 +131,16 @@ const User = () => {
                     value={editedUserData.lastName}
                    onChange={handleInputChange}
                   />
+                  </Form.Group>
+                  <Form.Group controlId="formDocument">
+                  <Form.Label>Documento</Form.Label>
+                   <Form.Control
+                    type="text"
+                    name="document"
+                    value={editedUserData.document}
+                   onChange={handleInputChange}
+                  />
+                  </Form.Group>
                 </Form.Group>
                 <Form.Group controlId="formCountry">
                   <Form.Label>Pais</Form.Label>
