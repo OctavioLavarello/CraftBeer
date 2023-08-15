@@ -26,6 +26,7 @@ import { verificationLogin } from './redux/actions/actions';
 import './App.css';
 import { useDispatch } from 'react-redux';
 import MyShop from './views/MyShop/MyShop';
+import Succes from './components/Succes/Succes';
 
 // APP
 function App() {
@@ -95,6 +96,7 @@ function App() {
           <Route path='/aboutUs' element={ <AboutUs />} />
           <Route path='/contact' element={ <Contact />} />
           <Route path='/myShop' element={<MyShop/>} />
+          <Route path='/succes' element={<Succes/>} />
 
         </Routes>) :
         (

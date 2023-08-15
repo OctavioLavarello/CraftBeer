@@ -132,7 +132,7 @@ const Cart = () => {
           >
             Iniciar Compra
           </button>
-<Link to={"/myShop"}>
+<Link to={"/succes"}>
 <button>sdsd</button>
 </Link>
        

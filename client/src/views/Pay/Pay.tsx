@@ -10,13 +10,7 @@ const PayCart = (dataPay: Cart) => {
         user: dataPay.user
       });
       const linkPay = response.data.results.response.init_point;
-      // borrar el storage si se ejecuta la compra 
-      if (response.data.results.response.auto_return === "approved") {
-        const dataStorage = Object.keys(localStorage).filter(key => key !== "user")
-        dataStorage.forEach(key => {
-          localStorage.removeItem(key);
-        })
-      }
+  
       return window.location.href = linkPay
     } catch (error) {
       console.error("Error fetching payment link:", error);

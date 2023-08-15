@@ -58,8 +58,9 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
         };
 
         if (updatedQuantity > 0) {
-            hanldlerQuantity(updatedQuantity)
-            saveDataCart(itemData)
+            const syntheticEvent = { target: { value: updatedQuantity } }; 
+            hanldlerQuantity(syntheticEvent); 
+            saveDataCart(itemData);
         } else {
             deleteDataCart(itemData.id)
         };

@@ -1,0 +1,11 @@
+.containerCard{
+    width: 70vw;
+    height: 20vh;
+ border-bottom: 2px solid ;
+}
+.containerImg{
+    width: 20%;
+    height:90%;
+    background-color: aqua;
+    border-radius: 5px;
+}

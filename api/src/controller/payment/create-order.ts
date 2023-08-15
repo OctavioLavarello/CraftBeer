@@ -43,7 +43,7 @@ export const createOrder = async (req: Request, res: Response) => {
         email: user.email,
       } as PreferencePayer,
       back_urls: {
-        success: "http://localhost:5173/MyShop",
+        success: "http://localhost:5173/succes",
         pending: "http://localhost:5173/pending",
         failure: "http://localhost:5173/failure",
       } as PreferenceBackUrl,
