@@ -17,10 +17,18 @@ const defineModel = (): ModelCtor<ItemModel> => {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
+    unitPrice: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
     totalPrice: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
+    summary: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    }
   }) as ModelCtor<ItemModel>;
 };
 export default defineModel;

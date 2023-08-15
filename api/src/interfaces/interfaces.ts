@@ -53,6 +53,7 @@ export interface UserCompanyModelInterface {
 export interface QualificationModelInterface {
     id:string;
     rate:number;
+    comment:string;
 };
 
 export interface ShoppingHistoryModelInterface {
@@ -64,6 +65,8 @@ export interface ShoppingHistoryModelInterface {
 export interface ItemModelInterface {
     id:string;
     amount:number;
+    unitPrice:number,
     totalPrice:number;
+    summary:string;
 }
 
