@@ -21,6 +21,11 @@ const defineModel = (): ModelCtor<qualificationModel> => {
         max: 5,
       },
     },
+    comment:{
+      type:DataTypes.TEXT,
+      allowNull:false,
+      defaultValue:""
+    }
   }) as ModelCtor<qualificationModel>;
 };
 export default defineModel;
