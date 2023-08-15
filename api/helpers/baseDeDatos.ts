@@ -372,41 +372,51 @@ const dataBase = async () => {
       rate: 5,
       userPersonId: personSaved[0].id,
       ProductId: productSaved[2].id,
+      comment:"excelente producto"
     },
     {
       rate: 5,
       userPersonId: personSaved[1].id,
       ProductId: productSaved[2].id,
+      comment:"me encanto su sabor"
     },
     {
       rate: 5,
       userPersonId: personSaved[1].id,
       ProductId: productSaved[0].id,
+      comment:"inigualable 10/10"
     },
     {
       rate: 5,
       userPersonId: personSaved[0].id,
       ProductId: productSaved[5].id,
+      comment:"inigualable 10/10"
     },
     {
       rate: 5,
       userPersonId: personSaved[0].id,
       ProductId: productSaved[4].id,
+      comment:"me encanto su sabor"
     },
     {
       rate: 5,
       userPersonId: personSaved[0].id,
       ProductId: productSaved[7].id,
+      comment:"excelente producto"
+    
     },
     {
       rate: 5,
       userPersonId: personSaved[0].id,
       ProductId: productSaved[9].id,
+      comment:"una cerveza llena de magia"
     },
   ];
   const qualificationSaved = await Qualification.bulkCreate(qualification);
    //busco las calificaciones del producto
   qualificationSaved.forEach( async (arg:any) => {
+    const productById = await Product.findByPk(arg.ProductId)
+    productById.addQualification(arg)
    let rating = await Qualification.findAll({
     where: { ProductId: arg.ProductId},
     attributes: ["rate"],
