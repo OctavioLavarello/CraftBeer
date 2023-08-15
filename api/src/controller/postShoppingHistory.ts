@@ -43,7 +43,7 @@ const postShoppingHistory = async (req: Request, res: Response) => {
         await newShoppingHistory.setItems(newItems);
     }
     if(newShoppingHistory){
-       return  postPurchaseConfirmation(date,totalPrice,userPersonId,newItems)
+         postPurchaseConfirmation(date,totalPrice,userPersonId,newItems)
     }
     return res.status(201).send(newShoppingHistory);
   } catch (error) {

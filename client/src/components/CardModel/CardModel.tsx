@@ -58,8 +58,9 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
         };
 
         if (updatedQuantity > 0) {
-            hanldlerQuantity(updatedQuantity)
-            saveDataCart(itemData)
+            const syntheticEvent = { target: { value: updatedQuantity } }; 
+            hanldlerQuantity(syntheticEvent); 
+            saveDataCart(itemData);
         } else {
             deleteDataCart(itemData.id)
         };
@@ -72,20 +73,23 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
         supStock: false,
         negative: false
     })
+
+
+
+
+
     const hanldlerQuantity = (event: any) => {
-        if (event.target.value > stock) {
+        const inputValue = parseInt(event.target.value);
+        if (!isNaN(inputValue) && inputValue >= 0 && inputValue <= stock) {
+            setItem(inputValue);
+        }
+        if (inputValue > stock) {
             setInputDisabled((prevState) => ({
                 ...prevState,
                 supStock: true
             }))
         }
-        if (event.target.value < 0) {
-            setInputDisabled((prevState) => ({
-                ...prevState,
-                negative: true
-            }))
-        }
-        setItem(event.target.value)
+
     }
     useEffect(() => {
         if (inputDisabled.supStock) {
@@ -183,7 +187,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                                     <Link to={"/cart"}>
                                         <button className={style.buttonBuy} disabled={disabledButton.buy}>COMPRAR</button>
                                     </Link>
-                                    { <p className={item? style.navButtonAdd:style.navButtonNull}>Tienes {item} 🍺 En tu carrito !!</p> }
+                                    {<p className={item ? style.navButtonAdd : style.navButtonNull}>Tienes {item} 🍺 En tu carrito !!</p>}
                                 </div>
                             </div>
                         </Col>

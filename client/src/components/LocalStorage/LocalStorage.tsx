@@ -15,6 +15,7 @@ export interface UserData {
     lastName: string,
     role: string,
     access: string
+    compra?: string
 }
 
 export const saveDataCart = (data: SaveDataLS) => {
