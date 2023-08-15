@@ -22,6 +22,13 @@
     width: 50%;
     text-align: left;
 }
+.p_container p {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 2.5vh;
+    font-weight: bold;
+    display: inline-block;
+    color: rgba(163, 125, 52, 1)
+}
 .a_container {
     display: flex;
     justify-content: space-between;
@@ -46,4 +53,76 @@
     justify-content: center;
     width: 3vw;
     height: 6.6vh;
+}
+.links h2 {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 4.5vh;
+    font-weight: bold;
+    display: inline-block;
+    color: rgba(163, 125, 52, 1);
+}
+@media (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(to bottom, black, #242424);
+        color: rgba(163, 125, 52, 1);
+        border: 0.03vh solid rgba(163, 125, 52, 1);
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+        width: 100%
+    }
+    .links {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 50%;
+    }
+    .p_container {
+        margin-top: 3vh;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .p_container p {
+        font-family: 'Arial Black', sans-serif;
+        font-size: 1.5vh;
+        font-weight: bold;
+        color: rgba(163, 125, 52, 1);
+        width: 90%;
+    }
+    .a_container {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-top: 1vh
+    }
+    .a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(163, 125, 52, 1);
+        border: 0.015vh solid rgb(226, 179, 93);
+        border-radius: 1vh;
+        width: 30%;
+        height: 7vh;
+    }
+    .a:hover {
+        box-shadow: 0 0 1vh rgba(163, 125, 52, 1);
+    }
+    .a img {
+        width: 9vw;
+        height: auto; 
+    }
+    .links h2 {
+        font-family: 'Arial Black', sans-serif;
+        font-size: 2.5vh; 
+        font-weight: bold;
+        color: rgba(163, 125, 52, 1);
+    }
 }
