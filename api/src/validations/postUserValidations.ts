@@ -25,8 +25,8 @@ const postUserValidation = (
         return "lastName must contain only letters" ;
     }
     
-    // if (typeof document === "undefined") return "document is required";
-    // //Expresion regular que permite solo numeros.
+    if (typeof document === "undefined") return "document is required";
+    //Expresion regular que permite solo numeros.
     // if (typeof document !== "number") {
     //     return "Document must be a number";
     //   }

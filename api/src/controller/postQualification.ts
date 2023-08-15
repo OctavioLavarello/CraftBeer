@@ -1,21 +1,25 @@
 import { Request, Response } from "express";
-import { Qualification } from "../../db";
-import { Product } from "../../db";
+import { Qualification, Product} from "../../db";
 
 const postQualification = async (req: Request, res: Response) => {
   try {
     // se recibe por body
-    const { rate, userPersonId, productId } = req.body;
+    const { rate, userPersonId, productId, comment="" } = req.body;
     if (!rate || !userPersonId || !productId) {
       return res.status(400).send("Required information");
-    } else {
+    }
       // si estan todos los datos de Qualification se crea en la base de datos
       const creatingRatings = await Qualification.create({
         rate,
         userPersonId,
         ProductId: productId,
+        comment,
       });
-    }
+    
+    //relacion de Qualification y Product
+    const product = await Product.findByPk(productId)
+    product.addQualification(creatingRatings)
+
     //busco las calificaciones del producto
     let rating = await Qualification.findAll({
       where: { ProductId: productId },
