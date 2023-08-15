@@ -134,18 +134,18 @@ const BuyerSingUp: React.FC = () => {
       event.preventDefault();
       console.log(formData);
       dispatch(createdUser(formData));
-      setFormData({
-        name: "",
-        lastName: "",
-        document: 0,
-        email: "",
-        password: "",
-        country: "",
-        city: "",
-        state: "",
-        address: "",
-        image: "",
-      });
+      // setFormData({
+      //   name: "",
+      //   lastName: "",
+      //   document: 0,
+      //   email: "",
+      //   password: "",
+      //   country: "",
+      //   city: "",
+      //   state: "",
+      //   address: "",
+      //   image: "",
+      // });
     };
 
 // console.log(formData);
