@@ -23,7 +23,7 @@ const Succes = () => {
     useEffect(() => {
         const redirectTimeout = setTimeout(() => {
             navigate("/myShop");
-        }, 6000);
+        }, 3000);
         // Limpieza del timeout en la desaparición del componente
         return () => {
             clearTimeout(redirectTimeout);
@@ -41,11 +41,13 @@ const Succes = () => {
     let dataCartItems = cartFilter.map((item) => ({
         ProductId: item.id,
         amount: item.quantity,
-        subTotalPrice: item.quantity * item.price
+        totalPrice: item.quantity * item.price,
+        unitPrice:item.price,
+        summary:item.summary
     }))
     let totalPrice = 0
     for (let i = 0; i < dataCartItems.length; i++) {
-        totalPrice = totalPrice + dataCartItems[i].subTotalPrice
+        totalPrice = totalPrice + dataCartItems[i].totalPrice
     }
 
     // cargar informacion de compra en el servidor 
@@ -55,7 +57,6 @@ const Succes = () => {
         userPersonId: userPersonId,
         items: dataCartItems
     }
-    console.log(dataPay);
     
 
     // peticion  post al servidor 
