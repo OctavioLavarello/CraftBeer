@@ -17,6 +17,7 @@ import {
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
 
+
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
   type: T;
@@ -79,7 +80,6 @@ export const localStorageCart = (data:object)=>{
 }
 
 //actions para guardar el localStorage 
-
 export const totalPages = (data:number)=>{
   return {
     type: TOTAL_PAGES,
@@ -126,8 +126,10 @@ export const createdProduct = ({
       }, 2000)
     } 
     
-    catch (error) {
-      toast.error("No ha sido posible cargar su producto");
+    catch (error:any) {
+      if(error.response.data.message === undefined) toast.error(`No ha sido posible cargar su compañía\n\n${error.response.data}`)
+      else {toast.error(`No ha sido posible cargar su compañía\n\n${error.response.data.message}`)}
+      console.log(error.response.data);
     };
   }
 };
@@ -147,8 +149,8 @@ export const createdCompany = ({
   address,
   image,
 }: CompanyData) => {
+  return async function (dispatch: AnyAction | any) {
   try {
-    return async function (dispatch: AnyAction | any) {
       let companyCreated = await axios.post(`/company`, {
         name,
         lastName,
@@ -166,14 +168,17 @@ export const createdCompany = ({
       dispatch({
         type: CREATED_COMPANY,
         payload: companyCreated,
-      });      
+      });
+      
       toast.success("Se creo correctamente su compañía")
-      setTimeout(()=>{
-        window.location.href = "/login"
-      }, 2000)
+      // setTimeout(()=>{
+      //   window.location.href = "/login"
+      // }, 2000)
+    } catch (error: any) {
+      if(error.response.data.message === undefined) toast.error(`No ha sido posible cargar su compañía\n\n${error.response.data}`)
+      else {toast.error(`No ha sido posible cargar su compañía\n\n${error.response.data.message}`)}
+      console.log(error.response.data);
     };
-  } catch (error) {
-   toast.error("No ha sido posible cargar su compañía");
   }  
 };
 

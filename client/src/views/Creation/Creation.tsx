@@ -156,6 +156,7 @@ const Creation = () => {
                 onChange={handlerChange}
                 placeholder="Precio"
                 name="price"
+                type="number"
               />
               <InputGroup.Text>USD</InputGroup.Text>
             </InputGroup>
@@ -170,6 +171,7 @@ const Creation = () => {
               onChange={handlerChange}
               max={90}
               min={0}
+              type="number"
             />
             <h6 className="mensajes">{errors.IBU}</h6>
           </Col>
@@ -178,6 +180,7 @@ const Creation = () => {
               placeholder="Stock"
               name="stock"
               onChange={handlerChange}
+              type="number"
             />
             <h6 className="mensajes">{errors.stock}</h6>
           </Col>
@@ -209,6 +212,7 @@ const Creation = () => {
               placeholder="Graduación alcohólica"
               name="ABV"
               onChange={handlerChange}
+              type="number"
             />
             <h6 className="mensajes">{errors.ABV}</h6>
           </Col>
@@ -216,11 +220,6 @@ const Creation = () => {
         <Row style={{ margin: "15px" }}>
           <Col>
             <DragAndDrop/>
-            {/* <h6 className="mensajes">{errors.image}</h6>      */}
-            {/* <Form.Group controlId="formFile" className="mb-1">
-              <Form.Control type="file" name="image" onChange={handlerChange}/>
-              
-            </Form.Group> */}
           </Col>
           <Col>
             <Form.Control
@@ -242,17 +241,6 @@ const Creation = () => {
             <h6 className="mensajes">{errors.description}</h6>
           </Col>
         </Row>
-        {/* Para incorporar el idCompany de forma manual */}
-        {/* <Row style={{ margin: "15px" }}>
-        <Col style={{color:"red"}}>Información solo temporal. De uso dev
-            <Form.Control
-              style={{ color: "red" }}
-              placeholder="ID de la compañía. Esta información es solo para prueba, se optendrá desde el localstorage una vez se haga el login del usuario"
-              name="userCompanyId"
-              onChange={handlerChange}
-            />
-          </Col>
-        </Row> */}
         <div className="botonCentro">
           <Button
             type="submit"
