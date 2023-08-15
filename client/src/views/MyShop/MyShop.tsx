@@ -10,7 +10,7 @@ import { AppState } from "../../redux/reducer"
 const MyShop = () => {
 
     let userId = useSelector((state: AppState) => state.accessLogin)
-    const [allHistoryData, setallHistoryData] = useState([])
+    const [allHistoryData, setallHistoryData] = useState<any>([])
     const getShopingHistory = async () => {
         try {
             // peticion  post al servidor 
@@ -20,8 +20,8 @@ const MyShop = () => {
                     userPersonId: userId.id
                 }
             });
-            setallHistoryData ( response.data)
-     
+            setallHistoryData(response.data)
+
 
         } catch (error) {
             console.error(error);
@@ -40,9 +40,19 @@ const MyShop = () => {
             <Container>
                 <div className={style.container}>
                     <h2>Mis compras</h2>
-                    <CardMyShop />
-                    <CardMyShop />
-                    <CardMyShop />
+                    {allHistoryData.map((item:any) =>
+                    (<CardMyShop
+                        name={item.name}
+                        summary={item.summary}
+                        date={item.date}
+                        quantity={item.amount}
+                        unitPrice={item.unitPrice}
+                        totalPrice={item.totalPrice}
+                    />
+
+                    ))}
+
+
                 </div>
 
             </Container>

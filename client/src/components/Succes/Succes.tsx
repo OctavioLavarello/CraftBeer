@@ -42,8 +42,10 @@ const Succes = () => {
         ProductId: item.id,
         amount: item.quantity,
         totalPrice: item.quantity * item.price,
-        unitPrice:item.price,
-        summary:item.summary
+        unitPrice: item.price,
+        summary: item.summary,
+        image: item.image,
+        name: item.name
     }))
     let totalPrice = 0
     for (let i = 0; i < dataCartItems.length; i++) {
@@ -57,26 +59,27 @@ const Succes = () => {
         userPersonId: userPersonId,
         items: dataCartItems
     }
-    
 
-    // peticion  post al servidor 
-    const postHistoryShop = async () => {
-        const endpoint = "/shoppingHistory";
-        try {
-            console.log(dataPay);
-            
-           const response = await axios.post(endpoint, dataPay);
-           console.log(response);
-           
-        } catch (error) {
-            console.error(error);
-        }
-    };
+
+
     useEffect(() => {
+
+        // peticion  post al servidor 
+        const postHistoryShop = async () => {
+            const endpoint = "/shoppingHistory";
+            try {
+                const response = await axios.post(endpoint, dataPay);
+                console.log(response);
+
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
         postHistoryShop()
+      
     }, [])
-    
-    postHistoryShop()
+
 
     return (
         <>
