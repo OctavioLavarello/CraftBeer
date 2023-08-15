@@ -13,6 +13,14 @@ const defineModel = (): ModelCtor<ItemModel> => {
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    image: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
     amount: {
       type: DataTypes.FLOAT,
       allowNull: false,
@@ -28,7 +36,7 @@ const defineModel = (): ModelCtor<ItemModel> => {
     summary: {
       type: DataTypes.TEXT,
       allowNull: false
-    }
+    },
   }) as ModelCtor<ItemModel>;
 };
 export default defineModel;

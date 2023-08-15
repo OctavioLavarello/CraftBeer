@@ -39,6 +39,8 @@ const postShoppingHistory = async (req: Request, res: Response) => {
     const createdItems = await Promise.all(items.map(async (item: any) => {
       const {
         ProductId,
+        name,
+        image,
         amount,
         unitPrice,
         summary,
@@ -59,6 +61,8 @@ const postShoppingHistory = async (req: Request, res: Response) => {
 
       const createdItem = await Item.create({
         ProductId,
+        name,
+        image,
         amount,
         unitPrice,
         summary,
@@ -87,8 +91,3 @@ const postShoppingHistory = async (req: Request, res: Response) => {
 };
 
 export default postShoppingHistory;
-
-
-
-// unitPrice:item.price,
-// summary:item.summary

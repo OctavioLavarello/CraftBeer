@@ -64,6 +64,8 @@ export interface ShoppingHistoryModelInterface {
 
 export interface ItemModelInterface {
     id:string;
+    name: string;
+    image: string;
     amount:number;
     unitPrice:number,
     totalPrice:number;
