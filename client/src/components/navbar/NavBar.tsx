@@ -67,13 +67,19 @@ const NavBar: React.FC = () => {
           </button>
           {showDropdown && (
             <div className={styles.dropdownContent}>
-              <h5 
+              <button 
               className={styles.link} 
               onClick={handlerLogout}
-              >Logout</h5>
+              >Logout</button>
               <NavLink to={`/user/${accessLogin.id}`} className={styles.link}>
                 <h5>User</h5>
               </NavLink>
+              <NavLink to="/myShop" className={styles.link}>
+                <h5>My Purchases</h5>
+              </NavLink>
+              <button
+              onClick={() => setShowDropdown(!showDropdown)}
+              className={styles.link}>▲</button>
             </div>
           )}
           </div>
@@ -94,6 +100,9 @@ const NavBar: React.FC = () => {
               <NavLink to={`/company/${accessLogin.id}`} className={styles.link}>
                 <h5>Company</h5>
               </NavLink>
+              <button
+              onClick={() => setShowDropdown(!showDropdown)}
+              className={styles.link}>▲</button>
             </div>
           )}
           </div>
