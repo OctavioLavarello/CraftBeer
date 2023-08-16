@@ -1,5 +1,5 @@
-import {Router} from 'express'
-import postUserPerson from "../controller/postUserPerson"
+import { Router } from "express";
+import postUserPerson from "../controller/postUserPerson";
 import postCompany from "../controller/postCompany";
 import getAllCompanies from '../controller/getAllCompanies';
 import postProduct from '../controller/postProduct';
@@ -16,6 +16,8 @@ import postShoppingHistory from '../controller/postShoppingHistory';
 import getShoppingHistories from '../controller/getShoppingHistories';
 import getPersonById from '../controller/getPersonById';
 import postContactMe from "../controller/postContactMe";
+import reciveWebHook from "../controller/payment/Webhook";
+
 const router = Router();
 
 //-------- post routes -----//
@@ -25,7 +27,6 @@ router.post("/product", postProduct);
 router.post("/qualification", postQualification);
 router.post("/shoppingHistory", postShoppingHistory);
 router.post("/contactme", postContactMe)
-
 
 // ------- get routes ------- //
 router.get("/companies", getAllCompanies);
@@ -43,7 +44,7 @@ router.put("/product/:productId", putProduct);
 
 // ------- payment routes ----//
 
-router.post("/create-order", createOrder)
+router.post("/create-order", createOrder);
+router.post("/webhook", reciveWebHook);
 
-
-module.exports = router
+module.exports = router;
