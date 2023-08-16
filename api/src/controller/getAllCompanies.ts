@@ -14,7 +14,7 @@ const getAllCompanies = async (req: Request, res: Response) => {
         as: 'Products',
       },
     ]
-    //buscar por nombre de comp
+    //buscar por nombre de compañia
     if (name) {
       companies = await UserCompany.findAll({
         where: {
