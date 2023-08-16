@@ -18,7 +18,7 @@ import Cart from './views/Cart/Cart';
 import AboutUs from './views/aboutUs/AboutUs';
 import Contact from './views/Contact/Contact';
 import Creation from './views/Creation/Creation';
-// import SuccessPay from './views/Pay/succesPay';
+// import PayCart from './views/Pay/Pay';
 import MyShop from './views/MyShop/MyShop';
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar"
@@ -33,6 +33,9 @@ import './App.css';
 function App() {
   // GLOBAL STATE
   const { accessLogin, localStorageCart, hasNavigated} = useSelector((state: AppState) => state)
+  // LOCAL STORAGE
+  const hasNavigated1: any = localStorage.getItem("user")
+  const info = JSON.parse(hasNavigated1)
   // HANDLERS
   const dispatch = useDispatch()
   const location = useLocation();
@@ -50,12 +53,6 @@ function App() {
       dispatch(hasNavigatedTrue())
     }
   }
-  const hasNavigated1: any = localStorage.getItem("user")
-  const info = JSON.parse(hasNavigated1)
-  console.log("localStorage___access: ", info?.access)
-  console.log("localStorage___hasNavigated: ", info?.hasNavigated)
-  console.log("hasNavigated__REDUX: ", hasNavigated)
-  console.log("access_REDUX: ", accessLogin.access)
   // USE EFFECTS
   useEffect(() => {
     if(info){
@@ -102,7 +99,6 @@ function App() {
           <Route path='/aboutUs' element={ <AboutUs />} />
           <Route path='/contact' element={ <Contact />} />
           <Route path='/post' element={ <Creation />} />
-
         </Routes>
         ) : (accessLogin.role === "Person" ? 
         (
@@ -117,7 +113,7 @@ function App() {
           <Route path='/contact' element={ <Contact />} />
           <Route path='/myShop' element={<MyShop/>} />
           <Route path='/succes' element={<Succes/>} />
-
+          
         </Routes>) :
         (
         <Routes>
