@@ -1,5 +1,5 @@
 /// IMPORTS
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AppState } from "../../redux/reducer";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +14,8 @@ const NavBar: React.FC = () => {
   // GLOBAL STATE
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [showDropdown, setShowDropdown] = useState(false);
+
   const { accessLogin } = useSelector((state: AppState) => state); 
   // HANDLERS
   const handlerLogout = () => {
@@ -56,16 +58,26 @@ const NavBar: React.FC = () => {
           <NavLink to="/login" className={styles.link}>
             <h5>Login</h5>
           </NavLink> 
-        ) : 
-        <button className={styles.link}>
-          <h5 onClick={handlerLogout}>Logout</h5>
-        </button>
+        ) : <div>
+
+            <button
+            className={styles.link}
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
+          <h5>Menu</h5>
+          </button>
+          {showDropdown && (
+            <div className={styles.dropdownContent}>
+              <h5  className={styles.link} onClick={handlerLogout}>Logout</h5>
+              <NavLink to={`/user/${accessLogin.id}`} className={styles.link}>
+                <h5>User</h5>
+              </NavLink>
+            </div>
+          )}
+       
+        </div>
         }
-        <button>
-          <NavLink to={`/user/${accessLogin.id}`}>
-            <h5>User</h5>
-          </NavLink>
-        </button>
+      
       </div>
     </div>
   );
