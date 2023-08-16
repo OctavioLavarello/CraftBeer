@@ -15,6 +15,7 @@ import {
   LOGOUT,
   URL_IMAGE,
   HAS_NAVIGATED,
+  DELETE_CARTSTORAGE,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
 
@@ -294,6 +295,14 @@ export const uploadImage = (url: any)=> {
 export const hasNavigatedTrue = () => {
   return {
     type: HAS_NAVIGATED
+  }
+}
+
+//Delete cart 
+
+export const deleteCartStorage =()=>{
+  return {
+    type: DELETE_CARTSTORAGE
   }
 }
 

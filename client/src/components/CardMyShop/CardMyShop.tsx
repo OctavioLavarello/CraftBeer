@@ -7,37 +7,51 @@ interface cardMyshop {
     date: string,
     quantity: number,
     unitPrice: number,
-    totalPrice: number
+    totalPrice: number,
+    image: string
 }
 
-const CardMyShop = ({ name, summary, date, quantity, unitPrice, totalPrice }: cardMyshop) => {
+const CardMyShop = ({ name, date, quantity, unitPrice, totalPrice, image }: cardMyshop) => {
+    // formatear fecha 
 
+
+    const fechaOriginal = date;
+    const fecha = new Date(fechaOriginal);
+
+    const dia = fecha.getDate().toString().padStart(2, '0');
+    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+    const anio = fecha.getFullYear();
+
+    const fechaFormateada = `${dia}/${mes}/${anio}`;
     return (
         <Container>
             <div className={style.containerReview}>
                 <p>Dejar valoración de este producto</p>
-                <button className={style.containerButton}>★</button>
+                <button className={style.containerButton}>★★★</button>
             </div>
             <div className={style.containerCard}>
-                <div className={style.containerImg}>
+                <div className={style.image}>
+                    <img src={image} alt="" />
                 </div>
                 <div className={style.containerInfo}>
                     <h3>{name}</h3>
-                    <h6>{summary}</h6>
-                    <p>Fecha de la compra :{date}</p>
+                    <p>Fecha de la compra : {fechaFormateada}</p>
                 </div>
-                <div className={style.containerPrice}>
-                    <h3>Cantidad</h3>
-                    <h6>{quantity} unidades</h6>
-                    <p>Precio unitario : {unitPrice} USD</p>
-                </div>
+
                 <div className={style.containerPriceTotal}>
+                    <div className={style.containerPrice}>
+                    <p>CANTIDAD : {quantity} Unidad/s</p>
+                    <p> PRECIO UNITARIO : {unitPrice} US$</p>
+                    </div>
+                    <div style={{display:"flex",flexDirection:"column",marginLeft:"40px",paddingRight:"20px",borderLeft:"gray 1px solid", paddingLeft:"15px"}}>
                     <h3>Total</h3>
                     <h6>{totalPrice} Usd </h6>
+                    </div>
+              
                 </div>
                 <div className={style.containerState}>
                     <h3>Estado</h3>
-                    <h6>pendiente de envio  </h6>
+                    <h6>Envio pendiente </h6>
                 </div>
 
             </div>
