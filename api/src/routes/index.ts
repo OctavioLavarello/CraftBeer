@@ -16,6 +16,8 @@ import postShoppingHistory from '../controller/postShoppingHistory';
 import getShoppingHistories from '../controller/getShoppingHistories';
 import getPersonById from '../controller/getPersonById';
 import postContactMe from "../controller/postContactMe";
+
+import favoriteHandler from "../controller/FavoriteHandler"
 const router = Router();
 
 //-------- post routes -----//
@@ -25,6 +27,8 @@ router.post("/product", postProduct);
 router.post("/qualification", postQualification);
 router.post("/shoppingHistory", postShoppingHistory);
 router.post("/contactme", postContactMe)
+router.post("/favorite", favoriteHandler)
+
 
 
 // ------- get routes ------- //
@@ -44,6 +48,8 @@ router.put("/product/:productId", putProduct);
 // ------- payment routes ----//
 
 router.post("/create-order", createOrder)
+
+
 
 
 module.exports = router
