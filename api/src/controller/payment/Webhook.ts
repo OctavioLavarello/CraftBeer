@@ -17,7 +17,7 @@ const reciveWebHook = async (req: Request, res: Response) => {
         console.log("--------------respuesta de mercado pago-----------------");
         console.log(data);
 
-        res.status(200).json(data);
+        return res.status(200).json(data);
       }
     }
   } catch (error) {
