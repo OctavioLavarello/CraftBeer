@@ -17,6 +17,7 @@ import getShoppingHistories from '../controller/getShoppingHistories';
 import getPersonById from '../controller/getPersonById';
 import postContactMe from "../controller/postContactMe";
 import reciveWebHook from "../controller/payment/Webhook";
+import getAllFavoritesPerson from "../controller/getAllFavoritesPerson";
 
 const router = Router();
 
@@ -36,7 +37,7 @@ router.get("/login", logIn);
 router.get("/persons", getAllUserPersons);
 router.get("/shoppingHistories", getShoppingHistories);
 router.get("/persons/:idPerson", getPersonById);
-
+router.get("/favorite/:idperson", getAllFavoritesPerson)
 // ------- update routes-------//
 router.put("/user", putUserPerson);
 router.put("/company", putUserCompany);
