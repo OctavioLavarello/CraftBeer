@@ -145,3 +145,15 @@ export const urlImage = (state = initialState, action: ActionWithPayload<string,
     urlImage: action.payload
   }
 }
+
+export const hasNavigatedTrue = (state = initialState) => {
+  const userValue: any  = localStorage.getItem('user');
+  const userObject = JSON.parse(userValue);
+  userObject.hasNavigated = true;
+  const updatedUserValue = JSON.stringify(userObject);
+  localStorage.setItem('user', updatedUserValue);
+  return {
+    ...state,
+    hasNavigated: true
+  }
+}

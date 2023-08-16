@@ -14,6 +14,7 @@ import {
   LOGIN_VERIFICATION,
   LOGOUT,
   URL_IMAGE,
+  HAS_NAVIGATED,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
 
@@ -198,14 +199,11 @@ export interface UserData {
 export const createdUser = (userData: UserData) => {
   return (async (dispatch: Dispatch<any>) => {
     try {
-  
-      toast.success("Usuario creado exitosamente")
       let createdUserResponse = await axios.post("/user", userData);
       dispatch({
         type: CREATED_USER,
         payload: createdUserResponse.data,
       });
-
       toast.success("Usuario creado exitosamente")
       setTimeout(()=>{
         window.location.href = "/login"
@@ -290,5 +288,32 @@ export const uploadImage = (url: any)=> {
   return {
     type: URL_IMAGE,
     payload: url
+  }
+}
+
+export const hasNavigatedTrue = () => {
+  return {
+    type: HAS_NAVIGATED
+  }
+}
+
+// CONTACT
+export interface message {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
+export const contactMessage = async (messageInfo: message) => {
+  try {
+    await axios.post("/contactme", messageInfo)
+    toast.success("message sent successfully")
+  } catch (error: any) {
+    if (error.response && error.response.data && error.response.data.message) {
+      const errorMessage = error.response.data.message;
+      toast.error(errorMessage);
+    } else {
+    toast.error("an error occurred while sending message");
+    }
   }
 }

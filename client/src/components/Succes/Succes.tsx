@@ -23,7 +23,7 @@ const Succes = () => {
     useEffect(() => {
         const redirectTimeout = setTimeout(() => {
             navigate("/myShop");
-        }, 6000);
+        }, 3000);
         // Limpieza del timeout en la desaparición del componente
         return () => {
             clearTimeout(redirectTimeout);
@@ -41,11 +41,15 @@ const Succes = () => {
     let dataCartItems = cartFilter.map((item) => ({
         ProductId: item.id,
         amount: item.quantity,
-        subTotalPrice: item.quantity * item.price
+        totalPrice: item.quantity * item.price,
+        unitPrice: item.price,
+        summary: item.summary,
+        image: item.image,
+        name: item.name
     }))
     let totalPrice = 0
     for (let i = 0; i < dataCartItems.length; i++) {
-        totalPrice = totalPrice + dataCartItems[i].subTotalPrice
+        totalPrice = totalPrice + dataCartItems[i].totalPrice
     }
 
     // cargar informacion de compra en el servidor 
@@ -55,27 +59,27 @@ const Succes = () => {
         userPersonId: userPersonId,
         items: dataCartItems
     }
-    console.log(dataPay);
-    
 
-    // peticion  post al servidor 
-    const postHistoryShop = async () => {
-        const endpoint = "/shoppingHistory";
-        try {
-            console.log(dataPay);
-            
-           const response = await axios.post(endpoint, dataPay);
-           console.log(response);
-           
-        } catch (error) {
-            console.error(error);
-        }
-    };
+
+
     useEffect(() => {
+
+        // peticion  post al servidor 
+        const postHistoryShop = async () => {
+            const endpoint = "/shoppingHistory";
+            try {
+                const response = await axios.post(endpoint, dataPay);
+                console.log(response);
+
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
         postHistoryShop()
+      
     }, [])
-    
-    postHistoryShop()
+
 
     return (
         <>
