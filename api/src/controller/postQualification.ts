@@ -45,7 +45,7 @@ const postQualification = async (req: Request, res: Response) => {
       }
     );
     if (updateProductQualification[0] === 0) {
-      return res.status(400).send("Failed to update rating");
+      return res.status(400).send("Failed to update rating")
     } //retorno el producto con el promedio actualizado
     else {
       return res.status(200).json(updateProductQualification);
