@@ -3,6 +3,8 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AppState } from "../../redux/reducer";
 import { useDispatch, useSelector } from "react-redux";
+import { Dropdown } from 'react-bootstrap';
+
 // ACTIONS
 import { logout } from "../../redux/actions/actions";
 // STYLES
@@ -59,7 +61,11 @@ const NavBar: React.FC = () => {
           <h5 onClick={handlerLogout}>Logout</h5>
         </button>
         }
-        
+        <button>
+          <NavLink to={`/user/${accessLogin.id}`}>
+            <h5>User</h5>
+          </NavLink>
+        </button>
       </div>
     </div>
   );
