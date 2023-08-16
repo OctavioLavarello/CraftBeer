@@ -1,9 +1,8 @@
 /// IMPORTS
 import React, { useState } from "react"
 import contactValidation from "./ContactValidation"
-import { useDispatch } from "react-redux";
-// ACTIONS
-import { contactMessage } from "../../redux/actions/actions";
+import axios from "axios";
+import toast from 'react-hot-toast'
 // STYLES
 import styles from "./Contact.module.css";
 import Form from 'react-bootstrap/Form';
@@ -30,7 +29,6 @@ const Contact: React.FC = () => {
     message: "",
   });
   // HANDLERS
-  const dispatch = useDispatch<any>();
   const handlerOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setUserMessage((prevUserMessage) => ({
@@ -49,7 +47,17 @@ const Contact: React.FC = () => {
   };
   const handlerOnSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
-    dispatch(contactMessage(userMessage))
+    try {
+      await axios.post("/contactme", userMessage)
+      toast.success("message sent successfully")
+    } catch (error: any) {
+      if (error.response && error.response.data && error.response.data.message) {
+        const errorMessage = error.response.data.message;
+        toast.error(errorMessage);
+      } else {
+      toast.error("an error occurred while sending message");
+      }
+    }
   };
   return (
     <div className={styles.all}>
