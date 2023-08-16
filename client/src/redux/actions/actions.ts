@@ -14,6 +14,7 @@ import {
   LOGIN_VERIFICATION,
   LOGOUT,
   URL_IMAGE,
+  HAS_NAVIGATED,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
 
@@ -290,5 +291,11 @@ export const uploadImage = (url: any)=> {
   return {
     type: URL_IMAGE,
     payload: url
+  }
+}
+
+export const hasNavigatedTrue = () => {
+  return {
+    type: HAS_NAVIGATED
   }
 }

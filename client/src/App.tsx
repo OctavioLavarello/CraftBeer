@@ -1,7 +1,7 @@
 /// IMPORTS
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';  
 import { Toaster } from 'react-hot-toast'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from './redux/reducer';
 import { useEffect } from 'react';
 // VIEWS
@@ -18,19 +18,46 @@ import Cart from './views/Cart/Cart';
 import AboutUs from './views/aboutUs/AboutUs';
 import Contact from './views/Contact/Contact';
 import Creation from './views/Creation/Creation';
+import SuccessPay from './views/Pay/succesPay';
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar"
 import Footer from "./components/footer/Footer"
-import { verificationLogin } from './redux/actions/actions';
+// ACTIONS 
+import { hasNavigatedTrue, verificationLogin } from './redux/actions/actions';
 // STYLES
 import './App.css';
-import SuccessPay from './views/Pay/succesPay';
-import { useDispatch } from 'react-redux';
 
 // APP
 function App() {
+  // GLOBAL STATE
+  const { accessLogin, localStorageCart, hasNavigated } = useSelector((state: AppState) => state)
+  // HANDLERS
   const dispatch = useDispatch()
   const location = useLocation();
+  const navigate = useNavigate();
+  const handlerNavigate = () => {
+    if (accessLogin.role === "Person" && Object.keys(localStorageCart).length === 0){
+      navigate("/shop")
+      dispatch(hasNavigatedTrue())
+    } else if (accessLogin.role === "Person" && Object.keys(localStorageCart).length > 0){
+      navigate("/cart") 
+      dispatch(hasNavigatedTrue())
+    }
+    if (accessLogin.role === "Company"){
+      navigate("/home")
+      dispatch(hasNavigatedTrue())
+    }
+  }
+  console.log("hasNavigated", hasNavigated)
+  console.log("access: ", accessLogin.access)
+  // USE EFFECTS
+  useEffect(() => {
+    setTimeout(() => {
+      if (!hasNavigated && accessLogin.access){
+        handlerNavigate();
+      }
+    }, 2000);
+  }, [accessLogin]);
   useEffect(()=>{
     const userJSON = localStorage.getItem("user")   
     if(userJSON){
@@ -38,23 +65,6 @@ function App() {
       dispatch(verificationLogin(user))
     }
   }, [dispatch])
-
-  const { accessLogin, localStorageCart } = useSelector((state: AppState) => state) 
-
-  const navigate = useNavigate();
-  const handlerNavigate = () => {
-    if (accessLogin.role === "Person" && Object.keys(localStorageCart).length === 0){
-        navigate("/shop")
-    } else if (accessLogin.role === "Person" && Object.keys(localStorageCart).length > 0){
-        navigate("/cart") 
-    }
-    if (accessLogin.role === "Company"){
-        navigate("/home")
-    }
-  }
-  useEffect(() => {
-    handlerNavigate();
-  }, [accessLogin]);
   return (
     <div>
       <div><Toaster/></div>

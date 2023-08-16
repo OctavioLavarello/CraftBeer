@@ -11,6 +11,7 @@ import {
   loginVerification,
   logout,
   urlImage,
+  hasNavigatedTrue,
 } from "./reducerFunctions";
 import {
   CREATED_PRODUCT,
@@ -23,7 +24,8 @@ import {
   TOTAL_PAGES,
   LOGIN_VERIFICATION,
   LOGOUT,
-  URL_IMAGE
+  URL_IMAGE,
+  HAS_NAVIGATED,
 } from "../redux/actions/actionsTypes";
 import { SaveDataLS } from "../components/LocalStorage/LocalStorage";
 
@@ -60,6 +62,7 @@ export interface AppState {
   allCompany: object[]
   accessLogin: AccessLogin;
   urlImage: any;
+  hasNavigated: boolean;
 }
 export interface BeerFilters {
   IBU?: number,  // El signo de interrogación indica que la propiedad es opcional
@@ -87,7 +90,8 @@ export const initialState: AppState = {
     role: "",
     cart: {...localStorage}
   },
-  urlImage: ""
+  urlImage: "",
+  hasNavigated: false,
 };
 
 const rootReducer = (
@@ -128,7 +132,9 @@ const rootReducer = (
     case URL_IMAGE: {
       return urlImage(state, action)
     }
-
+    case HAS_NAVIGATED: {
+      return hasNavigatedTrue(state)
+    }
     default:
       return state;
   }
