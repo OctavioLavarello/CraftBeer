@@ -1,0 +1,27 @@
+.messageBuy{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(185, 142, 34);
+    padding: 20px;
+    width: 80vw;
+    z-index: 999;
+    border-radius: 7px;
+    text-align: center;
+  }
+  .container{
+    border-radius: 20px;
+    width: 88vw;
+    min-height: 80vh;
+    max-height: auto;
+    background-color: rgb(50, 52, 52);
+    margin: 20px;
+    padding: 30px;
+  }
+  .container h2{
+    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(185, 142, 34);;
+    border-bottom: 2px solid rgb(72, 71, 71);
+  }

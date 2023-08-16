@@ -15,15 +15,16 @@ import {createOrder} from "../controller/payment/create-order"
 import postShoppingHistory from '../controller/postShoppingHistory';
 import getShoppingHistories from '../controller/getShoppingHistories';
 import getPersonById from '../controller/getPersonById';
-
+import postContactMe from "../controller/postContactMe";
 const router = Router();
 
 //-------- post routes -----//
 router.post("/user", postUserPerson);
 router.post("/company", postCompany);
 router.post("/product", postProduct);
-router.post("/qualification", postQualification)
+router.post("/qualification", postQualification);
 router.post("/shoppingHistory", postShoppingHistory);
+router.post("/contactme", postContactMe)
 
 
 // ------- get routes ------- //

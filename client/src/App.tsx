@@ -18,10 +18,12 @@ import Cart from './views/Cart/Cart';
 import AboutUs from './views/aboutUs/AboutUs';
 import Contact from './views/Contact/Contact';
 import Creation from './views/Creation/Creation';
-import SuccessPay from './views/Pay/succesPay';
+// import SuccessPay from './views/Pay/succesPay';
+import MyShop from './views/MyShop/MyShop';
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar"
 import Footer from "./components/footer/Footer"
+import Succes from './components/Succes/Succes';
 // ACTIONS 
 import { hasNavigatedTrue, verificationLogin } from './redux/actions/actions';
 // STYLES
@@ -91,6 +93,7 @@ function App() {
           <Route path='/aboutUs' element={ <AboutUs />} />
           <Route path='/contact' element={ <Contact />} />
           <Route path='/post' element={ <Creation />} />
+
         </Routes>
         ) : (accessLogin.role === "Person" ? 
         (
@@ -103,7 +106,9 @@ function App() {
           <Route path='/cart' element={ <Cart />} />
           <Route path='/aboutUs' element={ <AboutUs />} />
           <Route path='/contact' element={ <Contact />} />
-          <Route path='/succes' element={<SuccessPay/>} />
+          <Route path='/myShop' element={<MyShop/>} />
+          <Route path='/succes' element={<Succes/>} />
+
         </Routes>) :
         (
         <Routes>
