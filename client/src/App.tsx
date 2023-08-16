@@ -32,7 +32,7 @@ import './App.css';
 // APP
 function App() {
   // GLOBAL STATE
-  const { accessLogin, localStorageCart, hasNavigated } = useSelector((state: AppState) => state)
+  const { accessLogin, localStorageCart, hasNavigated} = useSelector((state: AppState) => state)
   // HANDLERS
   const dispatch = useDispatch()
   const location = useLocation();
@@ -50,15 +50,24 @@ function App() {
       dispatch(hasNavigatedTrue())
     }
   }
-  console.log("hasNavigated", hasNavigated)
-  console.log("access: ", accessLogin.access)
+  const hasNavigated1: any = localStorage.getItem("user")
+  const info = JSON.parse(hasNavigated1)
+  console.log("localStorage___access: ", info?.access)
+  console.log("localStorage___hasNavigated: ", info?.hasNavigated)
+  console.log("hasNavigated__REDUX: ", hasNavigated)
+  console.log("access_REDUX: ", accessLogin.access)
   // USE EFFECTS
   useEffect(() => {
-    setTimeout(() => {
+    if(info){
+      if (!info.hasNavigated && accessLogin.access){
+        handlerNavigate();
+      }
+    }
+    if (!info){
       if (!hasNavigated && accessLogin.access){
         handlerNavigate();
       }
-    }, 2000);
+    }
   }, [accessLogin]);
   useEffect(()=>{
     const userJSON = localStorage.getItem("user")   

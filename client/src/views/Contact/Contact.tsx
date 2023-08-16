@@ -1,6 +1,9 @@
 /// IMPORTS
 import React, { useState } from "react"
 import contactValidation from "./ContactValidation"
+import { useDispatch } from "react-redux";
+// ACTIONS
+import { contactMessage } from "../../redux/actions/actions";
 // STYLES
 import styles from "./Contact.module.css";
 import Form from 'react-bootstrap/Form';
@@ -27,6 +30,7 @@ const Contact: React.FC = () => {
     message: "",
   });
   // HANDLERS
+  const dispatch = useDispatch<any>();
   const handlerOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setUserMessage((prevUserMessage) => ({
@@ -45,7 +49,7 @@ const Contact: React.FC = () => {
   };
   const handlerOnSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
-    // despacho de userMessage
+    dispatch(contactMessage(userMessage))
   };
   return (
     <div className={styles.all}>
