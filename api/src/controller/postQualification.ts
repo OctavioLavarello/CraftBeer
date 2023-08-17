@@ -1,24 +1,32 @@
 import { Request, Response } from "express";
-import { Qualification, Product} from "../../db";
+import { Qualification, Product, UserPerson } from "../../db";
 
 const postQualification = async (req: Request, res: Response) => {
   try {
     // se recibe por body
-    const { rate, userPersonId, productId, comment="" } = req.body;
+    const { rate, userPersonId, productId, comment = "" } = req.body;
     if (!rate || !userPersonId || !productId) {
       return res.status(400).send("Required information");
     }
-      // si estan todos los datos de Qualification se crea en la base de datos
-      const creatingRatings = await Qualification.create({
-        rate,
-        userPersonId,
-        ProductId: productId,
-        comment,
-      });
-    
-    //relacion de Qualification y Product
-    const product = await Product.findByPk(productId)
-    product.addQualification(creatingRatings)
+    const product = await Product.findByPk(productId);
+    if (!product) {
+      return res.status(501).send("Product not found");
+    }
+
+    const person = await UserPerson.findByPk(userPersonId);
+    if (!product) {
+      return res.status(501).send("id User person not found");
+    }
+
+    // si estan todos los datos  Qualification se crea en la base de datos
+    const creatingRatings = await Qualification.create({
+      rate,
+      comment,
+    });
+
+    //relaciones
+    await product.addQualification(creatingRatings);
+    await person.addQualification(creatingRatings);
 
     //busco las calificaciones del producto
     let rating = await Qualification.findAll({
@@ -45,10 +53,10 @@ const postQualification = async (req: Request, res: Response) => {
       }
     );
     if (updateProductQualification[0] === 0) {
-      return res.status(400).send("Failed to update rating")
+      return res.status(400).send("Failed to update rating");
     } //retorno el producto con el promedio actualizado
     else {
-      return res.status(200).json(updateProductQualification);
+      return res.status(200).send("it was successfully updated");
     }
   } catch (error) {
     if (error instanceof Error) {
