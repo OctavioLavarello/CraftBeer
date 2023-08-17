@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AppState } from "../../redux/reducer";
 import { useDispatch, useSelector } from "react-redux";
-import { Dropdown } from 'react-bootstrap';
 
 // ACTIONS
 import { logout } from "../../redux/actions/actions";
@@ -15,7 +14,6 @@ const NavBar: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showDropdown, setShowDropdown] = useState(false);
-
   const { accessLogin } = useSelector((state: AppState) => state); 
   // HANDLERS
   const handlerLogout = () => {
@@ -58,26 +56,58 @@ const NavBar: React.FC = () => {
           <NavLink to="/login" className={styles.link}>
             <h5>Login</h5>
           </NavLink> 
-        ) : <div>
-
+        ) : (accessLogin.role === "Person" ? 
+        (
+          <div>
             <button
             className={styles.link}
             onClick={() => setShowDropdown(!showDropdown)}
           >
-          <h5>Menu</h5>
+            <h5>Menu</h5>
           </button>
           {showDropdown && (
             <div className={styles.dropdownContent}>
-              <h5  className={styles.link} onClick={handlerLogout}>Logout</h5>
+              <button 
+              className={styles.link} 
+              onClick={handlerLogout}
+              >Logout</button>
               <NavLink to={`/user/${accessLogin.id}`} className={styles.link}>
                 <h5>User</h5>
               </NavLink>
+              <NavLink to="/myShop" className={styles.link}>
+                <h5>My Purchases</h5>
+              </NavLink>
+              <button
+              onClick={() => setShowDropdown(!showDropdown)}
+              className={styles.link}>▲</button>
             </div>
           )}
-       
-        </div>
+          </div>
+        ) : (accessLogin.role === "Company" ? (
+          <div>
+            <button
+            className={styles.link}
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
+            <h5>Menu</h5>
+          </button>
+          {showDropdown && (
+            <div className={styles.dropdownContent}>
+              <h5 
+              className={styles.link} 
+              onClick={handlerLogout}
+              >Logout</h5>
+              <NavLink to={`/company/${accessLogin.id}`} className={styles.link}>
+                <h5>Company</h5>
+              </NavLink>
+              <button
+              onClick={() => setShowDropdown(!showDropdown)}
+              className={styles.link}>▲</button>
+            </div>
+          )}
+          </div>
+        ) : null))
         }
-      
       </div>
     </div>
   );
