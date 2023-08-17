@@ -19,9 +19,16 @@ interface UserData {
   address: string;
   image: string;
 }
+
+interface CountryData {
+  name: {
+    common: string;
+  };
+}
 const BuyerSingUp: React.FC = () => {
   const dispatch = useDispatch<any>();
   const urlImage = useSelector((state: AppState)=> state.urlImage)
+  const [countryNames, setCountryNames] = useState<string[]>([]);
 
   const [formData, setFormData] = useState<UserData>({ 
     name: "",
@@ -68,9 +75,16 @@ const BuyerSingUp: React.FC = () => {
       if (input.document !== "") setErrors({ ...errors, document: "" });
       else setErrors({ ...errors, document: "Información requerida" });
     }
-    if(name === "email"){
-      if (input.email !== "") setErrors({ ...errors, email: "" });
-      else setErrors({ ...errors, email: "Información requerida" });
+    if (name === "email") {
+      if (input.email !== "") {
+        if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(input.email)) {
+          setErrors((prevErrors) => ({ ...prevErrors, email: "" }));
+        } else {
+          setErrors((prevErrors) => ({ ...prevErrors, email: "Correo electrónico inválido" }));
+        }
+      } else {
+        setErrors((prevErrors) => ({ ...prevErrors, email: "Información requerida" }));
+      }
     }
     if (name === "password") {
       if (input.password !== "") {
@@ -113,7 +127,7 @@ const BuyerSingUp: React.FC = () => {
         ...prevFormData,
         [name]: value,
       }));
-      validation({ [name]: value }, name);
+      validation({ [name]: value }, name as keyof UserData);
     };
 
     const disable = (errors:{ [key: string]: string }): boolean => {
@@ -149,7 +163,20 @@ const BuyerSingUp: React.FC = () => {
     };
 
 // console.log(formData);
+const fetchCountries = async () => {
+  try {
+    const response = await fetch('https://restcountries.com/v3.1/region/South%20America');
+    const data: CountryData[] = await response.json();
+    const countryNames = data.map(country => country.name.common);
+    setCountryNames(countryNames);
+  } catch (error) {
+    console.error('Error fetching country names:', error);
+  }
+};
 
+useEffect(() => {
+  fetchCountries();
+}, []);
 
 
   return (
@@ -246,12 +273,18 @@ const BuyerSingUp: React.FC = () => {
     <Col>
       País:
       <Form.Control
-        placeholder="País"
-        type="text"
+        as="select"
         name="country"
+        value={formData.country}
         onChange={handleInputChange}
-      
-      />
+        >
+        <option value="">Selecciona un país...</option>
+        {countryNames.map((countryName, index) => (
+        <option key={index} value={countryName}>
+        {countryName}
+        </option>
+          ))}
+      </Form.Control>
       <h6 className={Styles.mensajes}>{errors.country}</h6>
     </Col>
     <Col>

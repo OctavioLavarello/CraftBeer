@@ -30,11 +30,20 @@ interface EditableUserData {
   document?: string;
   email?: string;
   password?: string;
-  address?: string;
+  address?: string; 
   image?: string;
   country?: string;
   city?: string;
   state?: string;
+}
+interface Errors {
+  name: string;
+  lastName: string;
+  document: string;
+  country: string;
+  city: string;
+  state: string;
+  address: string;
 }
 
 
@@ -56,36 +65,16 @@ const User = () => {
     // image: "Se requiere una imagen",
   })
 
-  const validation = (input: any, name: any) =>{
-    if(name==="name"){
-      if (input.name !== "") setErrors({ ...errors, name: "" });
-      else setErrors({ ...errors, name: "Información requerida" });
+  const validation = (input: any, name: keyof Errors) => {
+    const requiredFields: (keyof Errors)[] = ["name", "lastName", "document", "country", "city", "state", "address"];
+    if (requiredFields.includes(name)) {
+      if (input[name] !== "") {
+        setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+      } else {
+        setErrors((prevErrors) => ({ ...prevErrors, [name]: "Información requerida" }));
+      }
     }
-    if(name === "lastName"){
-      if (input.lastName !== "") setErrors({ ...errors, lastName: "" });
-      else setErrors({ ...errors, lastName: "Información requerida" });
-    }
-    if(name === "document"){
-      if (input.document !== "") setErrors({ ...errors, document: "" });
-      else setErrors({ ...errors, document: "Información requerida" });
-    }
-    if(name === "country"){
-      if (input.country !== "") setErrors({ ...errors, country: "" });
-      else setErrors({ ...errors, country: "Información requerida" });
-    }
-    if(name === "city"){
-      if (input.city !== "") setErrors({ ...errors, city: "" });
-      else setErrors({ ...errors, city: "Información requerida" });
-    }
-    if(name === "state"){
-      if (input.state !== "") setErrors({ ...errors, state: "" });
-      else setErrors({ ...errors, state: "Información requerida" });
-    }
-    if(name === "address"){
-      if (input.address !== "") setErrors({ ...errors, address: "" });
-      else setErrors({ ...errors, address: "Información requerida" });
-    }
-  }
+  };
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -109,9 +98,9 @@ const User = () => {
   }, [urlImage]);
 
   const handleEditClick = () => {
-    // Initialize editedUserData with the current user data
-    setEditedUserData(userData || {});
+    setEditedUserData({ ...userData }); 
     setIsEditMode(true);
+console.log(userData)
   };
   
 
@@ -121,20 +110,13 @@ const User = () => {
       ...prevData,
       [name]: value,
     }));
-    validation({ [name]: value }, name);
+    validation({ [name]: value }, name as keyof Errors);
     setIsEditMode(true);
   };
 
-  const disable = (errors:{ [key: string]: string }): boolean => {
-    let disabled = true;
-    for (let error in errors) {
-      if (errors[error] === "") disabled = false;
-      else {
-        disabled = true;
-        break;
-      }
-    }
-    return disabled;
+
+  const disable = (): boolean => {
+    return Object.values(errors).some((error) => error !== "");
   };
   
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -239,7 +221,7 @@ const User = () => {
                   />
                   <h6 className={styles.mensajes}>{errors.address}</h6>
                 </Form.Group>
-                <Button className={styles.buttonEdit} type="submit" disabled={disable(errors)} >Guardar cambios</Button>
+                <Button className={styles.buttonEdit} type="submit" disabled={disable()} >Guardar cambios</Button>
               </Form>
               
             ) : (
