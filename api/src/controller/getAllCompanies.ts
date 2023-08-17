@@ -11,22 +11,22 @@ const getAllCompanies = async (req: Request, res: Response) => {
     const includeOptions = [
       {
         model: Product,
-        as: 'products',
+        as: 'Products',
       },
     ]
-
+    //buscar por nombre de compañia
     if (name) {
       companies = await UserCompany.findAll({
         where: {
-          name: {
+          company: {
             [Op.iLike]: `%${name}%`
           }
         },
-        include: [includeOptions], // Cargar productos relacionados
+        include: includeOptions, // Cargar productos relacionados
       });
     } else {
       companies = await UserCompany.findAll({
-        include: [includeOptions], // Cargar productos relacionados
+        include: includeOptions, // Cargar productos relacionados
       });
     }
 

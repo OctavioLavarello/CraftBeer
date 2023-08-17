@@ -56,6 +56,29 @@
     width: 1.5vw;
     background-color: rgba(178, 152, 57, 0.47);
 }
+.dropdownContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+
+    margin-top: 15vh;
+    color: white;
+    text-decoration: none;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
+    position: relative;
+    border: none;
+    text-align: center;
+    font-family: 'Arial Black', sans-serif;
+}
+.dropdownContent a{
+    width: 100%;
+}
+.dropdownContent button {
+    width: 100%;
+}
 @media (max-width: 768px) {
     .navContainer {
         display: flex;

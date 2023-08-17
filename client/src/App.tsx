@@ -1,7 +1,7 @@
 /// IMPORTS
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';  
 import { Toaster } from 'react-hot-toast'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from './redux/reducer';
 import { useEffect } from 'react';
 // VIEWS
@@ -10,6 +10,7 @@ import Home from './views/Home/Home'
 import Shop from './views/Shop/Shop';
 import Detail from './views/Detail/Detail';
 import User from './views/User/User';
+import Company from './views/Company/Company';
 import ChooseSingUp from './views/chooseSingUp/ChooseSingUp';
 import BuyerSingUp from './views/buyerSingUp/BuyerSingUp';
 import SellerSingUp from './views/sellerSingUp/SellerSingUp';
@@ -18,20 +19,59 @@ import Cart from './views/Cart/Cart';
 import AboutUs from './views/aboutUs/AboutUs';
 import Contact from './views/Contact/Contact';
 import Creation from './views/Creation/Creation';
+import Administrador from "./views/Admin/DashAdmin"
+import DetailBuyer from "./views/Admin/DetailBuyer"
+import DetailSeller from './views/Admin/DetailSeller';
+// import PayCart from './views/Pay/Pay';
+import MyShop from './views/MyShop/MyShop';
+import Error from './views/Error/Error';
+
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar"
 import Footer from "./components/footer/Footer"
-import { verificationLogin } from './redux/actions/actions';
+import Succes from './components/Succes/Succes';
+// ACTIONS 
+import { hasNavigatedTrue, verificationLogin } from './redux/actions/actions';
 // STYLES
 import './App.css';
-import { useDispatch } from 'react-redux';
-import MyShop from './views/MyShop/MyShop';
-import Succes from './components/Succes/Succes';
 
 // APP
 function App() {
+  // GLOBAL STATE
+  const { accessLogin, localStorageCart, hasNavigated} = useSelector((state: AppState) => state)
+  // LOCAL STORAGE
+  const hasNavigatedLocalStorage: any = localStorage.getItem("user")
+  const LocalStorageInfo = JSON.parse(hasNavigatedLocalStorage)
+  // HANDLERS
   const dispatch = useDispatch()
   const location = useLocation();
+  const navigate = useNavigate();
+  const handlerNavigate = () => {
+    if (accessLogin.role === "Person" && Object.keys(localStorageCart).length === 0){
+      navigate("/shop")
+      dispatch(hasNavigatedTrue())
+    } else if (accessLogin.role === "Person" && Object.keys(localStorageCart).length > 0){
+      navigate("/cart") 
+      dispatch(hasNavigatedTrue())
+    }
+    if (accessLogin.role === "Company"){
+      navigate("/home")
+      dispatch(hasNavigatedTrue())
+    }
+  }
+  // USE EFFECTS
+  useEffect(() => {
+    if(LocalStorageInfo){
+      if (!LocalStorageInfo.hasNavigated && accessLogin.access){
+        handlerNavigate();
+      }
+    }
+    if (!LocalStorageInfo){
+      if (!hasNavigated && accessLogin.access){
+        handlerNavigate();
+      }
+    }
+  }, [accessLogin]);
   useEffect(()=>{
     const userJSON = localStorage.getItem("user")   
     if(userJSON){
@@ -39,23 +79,6 @@ function App() {
       dispatch(verificationLogin(user))
     }
   }, [dispatch])
-
-  const { accessLogin, localStorageCart } = useSelector((state: AppState) => state) 
-
-  const navigate = useNavigate();
-  const handlerNavigate = () => {
-    if (accessLogin.role === "Person" && Object.keys(localStorageCart).length === 0){
-        navigate("/shop")
-    } else if (accessLogin.role === "Person" && Object.keys(localStorageCart).length > 0){
-        navigate("/cart") 
-    }
-    if (accessLogin.role === "Company"){
-        navigate("/home")
-    }
-  }
-  useEffect(() => {
-    handlerNavigate();
-  }, [accessLogin]);
   return (
     <div>
       <div><Toaster/></div>
@@ -73,7 +96,6 @@ function App() {
           <Route path='/home' element={ <Home />} />
           <Route path='/shop' element={ <Shop />} />
           <Route path='/detail/:id' element={ <Detail />} />
-          <Route path='/user/:id' element={ <User />} />
           <Route path='/cart' element={ <Cart />} />
           <Route path='/chooseSignUp' element={ <ChooseSingUp />} />
           <Route path='/buyerSignUp' element={ <BuyerSingUp />} />
@@ -82,11 +104,15 @@ function App() {
           <Route path='/aboutUs' element={ <AboutUs />} />
           <Route path='/contact' element={ <Contact />} />
           <Route path='/post' element={ <Creation />} />
+          <Route path='/admin' element={ <Administrador />} />
+          <Route path='/admin/buyer/:id' element={ <DetailBuyer />} />
+          <Route path='/admin/seller/:id' element={ <DetailSeller />} />
+          <Route path='*' element={<Error/>} />
 
         </Routes>
         ) : (accessLogin.role === "Person" ? 
         (
-        <Routes>
+          <Routes>
           <Route path='/' element={ <Landing />} />
           <Route path='/home' element={ <Home />} />
           <Route path='/shop' element={ <Shop />} />
@@ -97,7 +123,7 @@ function App() {
           <Route path='/contact' element={ <Contact />} />
           <Route path='/myShop' element={<MyShop/>} />
           <Route path='/succes' element={<Succes/>} />
-
+          <Route path='*' element={<Error/>} />
         </Routes>) :
         (
         <Routes>
@@ -105,10 +131,11 @@ function App() {
           <Route path='/home' element={ <Home />} />
           <Route path='/shop' element={ <Shop />} />
           <Route path='/detail/:id' element={ <Detail />} />
-          <Route path='/user/:id' element={ <User />} />
+          <Route path='/company/:id' element={ <Company />} />
           <Route path='/aboutUs' element={ <AboutUs />} />
           <Route path='/contact' element={ <Contact />} />
           <Route path='/post' element={ <Creation />} />
+          <Route path='*' element={<Error/>} />
         </Routes>)
         )
         }

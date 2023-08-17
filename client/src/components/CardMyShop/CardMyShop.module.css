@@ -1,11 +1,135 @@
-.containerCard{
-    width: 70vw;
+.containerCard {
+    width: 80vw;
     height: 20vh;
- border-bottom: 2px solid ;
+    border-bottom: 1px solid rgb(92, 88, 88);
+    padding: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
 }
-.containerImg{
-    width: 20%;
-    height:90%;
-    background-color: aqua;
+
+.image {
+    margin: 10px;
+    width: 10vw;
+    height: 12vh;
+    background-color: rgb(21, 20, 20);
+    text-align: center;
+    align-items: center;
+    object-fit: cover;
+    overflow: hidden;
     border-radius: 5px;
+
+}
+
+.image img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.containerInfo {
+    overflow: hidden;
+    color: rgb(198, 202, 202);
+    width: 40%;
+    height: 100%;
+    border-radius: 5px;
+    margin-left: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* Evita que el texto se divida en varias líneas */
+
+}
+
+.containerInfo h3 {
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.containerInfo h6 {
+    font-weight: 100;
+    font-size: 90%;
+    color: rgb(144, 144, 144);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.containerInfo p {
+    color: #d09527;
+}
+
+.containerPrice {
+    color: rgb(198, 202, 202);
+    text-align: center;
+    width: 200px;
+    margin-left: 10px;
+    justify-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+.containerPrice h3 {
+  font-size: 20px;
+}
+
+.containerPriceTotal {
+    background-color: rgb(31, 29, 29);
+    width: 400px;
+    text-align: center;
+    border-radius: 10px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 27px;
+    flex-direction: row;
+    padding-top: 10px;
+}
+
+.containerPriceTotal h6 {
+    color: #d09527;
+    text-align: center;
+}
+
+.containerState {
+    width: 160px;
+    color: rgb(113, 144, 47);
+    text-align: center;
+    border-radius: 20px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+
+}
+
+.containerButton {
+    background-color: black;
+    border: none;
+    width: auto;
+    height: 30px;
+    border-radius: 30px;
+    color: #d09527;
+    margin-left: 15px;
+
+}
+
+.containerButton:hover {
+    scale: 1.1;
+    transition: 0.3s;
+    opacity: 0.8;
+}
+
+.containerReview {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    margin-bottom: -10px;
+    text-align: center;
+    display: flex;
+    align-content: center;
+    margin-left: 16px;
+
 }
