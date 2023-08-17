@@ -1,6 +1,8 @@
 /// IMPORTS
 import React, { useState } from "react"
 import contactValidation from "./ContactValidation"
+import axios from "axios";
+import toast from 'react-hot-toast'
 // STYLES
 import styles from "./Contact.module.css";
 import Form from 'react-bootstrap/Form';
@@ -45,7 +47,17 @@ const Contact: React.FC = () => {
   };
   const handlerOnSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
-    // despacho de userMessage
+    try {
+      await axios.post("/contactme", userMessage)
+      toast.success("message sent successfully")
+    } catch (error: any) {
+      if (error.response && error.response.data && error.response.data.message) {
+        const errorMessage = error.response.data.message;
+        toast.error(errorMessage);
+      } else {
+      toast.error("an error occurred while sending message");
+      }
+    }
   };
   return (
     <div className={styles.all}>

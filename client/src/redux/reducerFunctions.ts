@@ -1,5 +1,5 @@
 import { ActionWithPayload, loginAction } from "./actions/actions";
-import { initialState } from "./reducer";
+import { AppState, initialState } from "./reducer";
 
 export const getAllBeer = (
   state = initialState,
@@ -78,13 +78,27 @@ export const saveLocalStorageCart = (
 
 };
 
+// borrar el cart cuando se aprueba el pago 
+export const deleteStorageCart = (state: AppState) => {
+  let storageCart = []
+  for (let i = 0; i < state.localStorageCart.length; i++) {
+    if (("user" in state.localStorageCart[i]))
+      storageCart.push(state.localStorageCart[i])
+  }
+
+  return {
+    ...state,
+    localStorageCart: storageCart
+  }
+}
+
 // LOGIN 
 export const login = (state = initialState, action: loginAction) => {
-  const user:any = localStorage.getItem(action.payload.user.id)
+  const user: any = localStorage.getItem(action.payload.user.id)
   console.log(user);
   const json = JSON.parse(user)
   console.log(json);
-  if(user === null){
+  if (user === null) {
     return {
       ...state,
       accessLogin: {
@@ -93,9 +107,9 @@ export const login = (state = initialState, action: loginAction) => {
         role: action.payload.user.role
       }
     }
-  }else {
+  } else {
     return {
-      ...state, 
+      ...state,
       accessLogin: {
         access: json.access,
         id: json.user.id,
@@ -118,10 +132,10 @@ export const logout = (state = initialState) => {
   }
 }
 
-export const loginVerification = (state = initialState, action:loginAction)=> {
+export const loginVerification = (state = initialState, action: loginAction) => {
   return {
     ...state,
-    accessLogin:{
+    accessLogin: {
       access: action.payload.access,
       id: action.payload.user.id,
       role: action.payload.user.role
@@ -132,16 +146,28 @@ export const loginVerification = (state = initialState, action:loginAction)=> {
 export const totalPagesShop = (
   state = initialState,
   action: ActionWithPayload<string, number>
-)=>{
-return{
-  ...state,
-  totalPages: action.payload
-}
+) => {
+  return {
+    ...state,
+    totalPages: action.payload
+  }
 }
 
-export const urlImage = (state = initialState, action: ActionWithPayload<string, number>)=> {
+export const urlImage = (state = initialState, action: ActionWithPayload<string, number>) => {
   return {
     ...state,
     urlImage: action.payload
+  }
+}
+
+export const hasNavigatedTrue = (state = initialState) => {
+  const userValue: any = localStorage.getItem('user');
+  const userObject = JSON.parse(userValue);
+  userObject.hasNavigated = true;
+  const updatedUserValue = JSON.stringify(userObject);
+  localStorage.setItem('user', updatedUserValue);
+  return {
+    ...state,
+    hasNavigated: true
   }
 }

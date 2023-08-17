@@ -8,6 +8,10 @@ import {
 } from "mercadopago/models/preferences/create-payload.model";
 dotenv.config();
 
+const localhost = "http://localhost:5173"
+const frontDeploy = "https://craftbeer-team.netlify.app"
+
+
 // SDK de Mercado Pago
 import mercadopago from "mercadopago";
 
@@ -43,11 +47,12 @@ export const createOrder = async (req: Request, res: Response) => {
         email: user.email,
       } as PreferencePayer,
       back_urls: {
-        success: "http://localhost:5173/succes",
-        pending: "http://localhost:5173/pending",
-        failure: "http://localhost:5173/failure",
+        success: `${frontDeploy}/success`,
+        pending: `${frontDeploy}/pending`,
+        failure: `${frontDeploy}/failure`,
       } as PreferenceBackUrl,
-      auto_return: "approved",
+      notification_url: "https://craftbeer.up.railway.app/webhook",
+      auto_return: "all"
     });
 
     console.log(item);

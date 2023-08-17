@@ -32,7 +32,6 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
 
     // Cargar la cantidad del localStorage cuando el componente se monta
     useEffect(() => {
-
         const savedQuantity = itemCart.find(item => item.id === id)
         if (savedQuantity !== undefined) {
             setItem(savedQuantity?.quantity);
@@ -46,8 +45,8 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
     const handlerItemCart = (event: React.MouseEvent<HTMLButtonElement>) => {
         const target = event.currentTarget;
         const updatedQuantity = target.name === '+' ? item + 1 : item - 1;
-
         setItem(updatedQuantity);
+
         const itemData: SaveDataLS = {
             id,
             name,
@@ -64,33 +63,37 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
         } else {
             deleteDataCart(itemData.id)
         };
-
         dispatch(localStorageCart(itemData));
 
     }
+
     // validacion  de input para cantidad de items 
     const [inputDisabled, setInputDisabled] = useState({
         supStock: false,
         negative: false
     })
-
-
-
-
-
+    //handler que para input item 
     const hanldlerQuantity = (event: any) => {
         const inputValue = parseInt(event.target.value);
-        if (!isNaN(inputValue) && inputValue >= 0 && inputValue <= stock) {
-            setItem(inputValue);
-        }
+        setItem(inputValue);
+        const itemData: SaveDataLS = {
+            id,
+            name,
+            price,
+            image,
+            summary,
+            quantity: inputValue,
+        };
+        dispatch(localStorageCart(itemData));
+
         if (inputValue > stock) {
             setInputDisabled((prevState) => ({
                 ...prevState,
                 supStock: true
             }))
         }
-
     }
+
     useEffect(() => {
         if (inputDisabled.supStock) {
             setItem(stock)
@@ -99,7 +102,6 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                 supStock: false
             }))
         }
-        console.log("facu", inputDisabled.negative)
         if (inputDisabled.negative) {
             setItem(0)
             setInputDisabled((prevState) => ({
@@ -113,7 +115,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
 
 
     //controlar la visualizacion de los botones para comprar 
-    const rol = useSelector((state: AppState) => state)
+    const rol = useSelector((state: AppState) => state.accessLogin.role)
     const [disabledButton, setdisabledButton] = useState({
         buy: true,
         add: true,
@@ -121,7 +123,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
     })
 
     useEffect(() => {
-        if (rol.accessLogin.role == "Company") {
+        if (rol == "Company") {
             setdisabledButton((prevState) => ({
                 ...prevState,
                 buy: true,
@@ -129,33 +131,30 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                 remove: true
             }))
         } else {
+            if (item === 0) {
+                setdisabledButton((prevState) => ({
+                    ...prevState,
+                    add:false,
+                    remove: true
+                }))
+            } 
+            if (stock === 0) {
+                setdisabledButton((prevState) => ({
+                    ...prevState,
+                    buy: true,
+                    add: true,
+                    remove: true
+                }))
+            } 
             if (item > 0) {
                 setdisabledButton((prevState) => ({
                     ...prevState,
                     buy: false,
+                    add: false,
                     remove: false
                 }))
-            } else {
-                setdisabledButton((prevState) => ({
-                    ...prevState,
-                    buy: true,
-                    remove: true
-                }))
-            }
-            if (item === stock) {
-                setdisabledButton((prevState) => ({
-                    ...prevState,
-                    add: true,
-                }))
-            } else {
-                setdisabledButton((prevState) => ({
-                    ...prevState,
-                    add: false,
-                }))
-            }
+            } 
         }
-
-
     }, [item])
 
 
@@ -197,7 +196,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                                 <p>☆☆☆☆☆ </p>  <p className={item === stock || stock === 0 ? style.alertOutStock : style.alertStock}>Stock Disponible : {stock} un.</p>
                                 <div className={style.centeredContainer}>
                                     <form>
-                                        <input type="number" className={style.input} value={item == 0 ? null : item} max={stock} onChange={hanldlerQuantity}
+                                        <input type="number" className={style.input} value={item == 0 ? 0 : item} max={stock} onChange={hanldlerQuantity}
                                             placeholder="0" /> Un.
                                     </form>
                                 </div>
