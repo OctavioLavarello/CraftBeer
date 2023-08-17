@@ -24,7 +24,7 @@ const Succes = () => {
     useEffect(() => {
         const redirectTimeout = setTimeout(() => {
             navigate("/myShop");
-        }, 3000);
+        }, 2200);
         // Limpieza del timeout en la desaparición del componente
         return () => {
             clearTimeout(redirectTimeout);
@@ -61,6 +61,7 @@ const Succes = () => {
         items: dataCartItems
     }
 
+console.log("esto es el ID en Succes",dataPay);
 
 
     useEffect(() => {

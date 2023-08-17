@@ -21,7 +21,8 @@ const MyShop = () => {
                 }
             });
             setallHistoryData(response.data)
-            console.log((response.data));
+
+console.log("esto es el id en Myshop",response.data);
 
 
         } catch (error) {
@@ -32,7 +33,6 @@ const MyShop = () => {
         getShopingHistory()
     }, [])
 
-    console.log(allHistoryData);
 
 
 
@@ -43,6 +43,7 @@ const MyShop = () => {
                 <h2>Mis compras</h2>
                 {allHistoryData.map((item: any) =>
                 (<CardMyShop
+                    key={item.Items[0].id}
                     name={item.Items[0].name}
                     summary={item.Items[0].summary}
                     date={item.Items[0].updatedAt}
@@ -50,6 +51,7 @@ const MyShop = () => {
                     unitPrice={item.Items[0].unitPrice}
                     totalPrice={item.Items[0].totalPrice}
                     image={item.Items[0].image}
+                    id={item.Items[0].id}
                 />
                 ))}
             </div>
