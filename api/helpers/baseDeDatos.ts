@@ -367,6 +367,7 @@ const dataBase = async () => {
     },
   ];
   const personSaved = await UserPerson.bulkCreate(person);
+  personSaved[0].addProduct(productSaved[0])
   let qualification = [
     {
       rate: 5,

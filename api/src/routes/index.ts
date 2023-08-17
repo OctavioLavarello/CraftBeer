@@ -16,6 +16,7 @@ import postShoppingHistory from '../controller/postShoppingHistory';
 import getShoppingHistories from '../controller/getShoppingHistories';
 import getPersonById from '../controller/getPersonById';
 import postContactMe from "../controller/postContactMe";
+import favoriteHandler from "../controller/FavoriteHandler"
 import reciveWebHook from "../controller/payment/Webhook";
 import getAllFavoritesPerson from "../controller/getAllFavoritesPerson";
 
@@ -28,6 +29,8 @@ router.post("/product", postProduct);
 router.post("/qualification", postQualification);
 router.post("/shoppingHistory", postShoppingHistory);
 router.post("/contactme", postContactMe)
+router.post("/favorite", favoriteHandler)
+
 
 // ------- get routes ------- //
 router.get("/companies", getAllCompanies);
@@ -48,4 +51,5 @@ router.put("/product/:productId", putProduct);
 router.post("/create-order", createOrder);
 router.post("/webhook", reciveWebHook);
 
-module.exports = router;
+
+module.exports = router
