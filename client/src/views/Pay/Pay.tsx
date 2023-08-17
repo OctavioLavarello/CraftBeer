@@ -9,8 +9,10 @@ const PayCart = (dataPay: Cart) => {
         products: dataPay.product,
         user: dataPay.user
       });
+      localStorage.setItem("mp", JSON.stringify(response))
+
       const linkPay = response.data.results.response.init_point;
-  
+
       return window.location.href = linkPay
     } catch (error) {
       console.error("Error fetching payment link:", error);
@@ -18,18 +20,8 @@ const PayCart = (dataPay: Cart) => {
   };
 
   handlePay();
-
 }
 
 export default PayCart;
 
 
-/* 
-
-
-  const handlerDELETE = ()=>{
-    
-    });
-  
-  
-  }*/

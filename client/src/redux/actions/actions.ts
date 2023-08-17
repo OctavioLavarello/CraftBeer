@@ -15,6 +15,7 @@ import {
   LOGOUT,
   URL_IMAGE,
   HAS_NAVIGATED,
+  DELETE_CARTSTORAGE,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
 
@@ -296,3 +297,33 @@ export const hasNavigatedTrue = () => {
     type: HAS_NAVIGATED
   }
 }
+
+//Delete cart 
+
+export const deleteCartStorage =()=>{
+  return {
+    type: DELETE_CARTSTORAGE
+  }
+}
+
+// CONTACT
+export interface message {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
+export const contactMessage = async (messageInfo: message) => {
+  try {
+    await axios.post("/contactme", messageInfo)
+    toast.success("message sent successfully")
+  } catch (error: any) {
+    if (error.response && error.response.data && error.response.data.message) {
+      const errorMessage = error.response.data.message;
+      toast.error(errorMessage);
+    } else {
+    toast.error("an error occurred while sending message");
+    }
+  }
+}
+

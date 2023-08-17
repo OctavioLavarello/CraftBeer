@@ -12,6 +12,7 @@ import {
   logout,
   urlImage,
   hasNavigatedTrue,
+  deleteStorageCart,
 } from "./reducerFunctions";
 import {
   CREATED_PRODUCT,
@@ -26,6 +27,7 @@ import {
   LOGOUT,
   URL_IMAGE,
   HAS_NAVIGATED,
+  DELETE_CARTSTORAGE,
 } from "../redux/actions/actionsTypes";
 import { SaveDataLS } from "../components/LocalStorage/LocalStorage";
 
@@ -117,6 +119,9 @@ const rootReducer = (
     };
     case LOCAL_STORAGE: {
       return saveLocalStorageCart(state,action);
+    }
+    case DELETE_CARTSTORAGE :{
+      return deleteStorageCart(state)
     }
     case LOGIN: {
       return login(state, action);
