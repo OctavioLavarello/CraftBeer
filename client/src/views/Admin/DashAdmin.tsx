@@ -4,15 +4,35 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import DetailBuyer from "../Admin/DetailBuyer"
+
 
 const Administrador = () => {
+const dispatch = useDispatch<any>()
   const [sellers, setSellers] = useState<any>([]);
   const [buyers, setBuyers] = useState<any>([]);
   const [type, setType] = useState("");
 
-    interface Object {
-        
+    interface User {
         address: string,
+        city: string,
+        country: string
+        document: number,
+        email: string,
+        id: string,
+        image: string,
+        lastName: string,
+        name: string
+        password: string
+        role: string,
+        state: string
+        status: boolean
+    }
+
+    interface Comapny {
+        address: string,
+        company: string,
         city: string,
         country: string
         document: number,
@@ -34,6 +54,7 @@ const Administrador = () => {
       setType("seller");
       console.log(sellers);
       //console.log(type);
+      toast.success("Data cargada satisfactoriamente");
     } catch (error) {
       toast.error("No ha sido posible cargar la data");
     }
@@ -46,12 +67,21 @@ const Administrador = () => {
       setType("buyer");
       console.log(buyers);
       console.log(type);
-
       toast.success("Data cargada satisfactoriamente");
     } catch (error) {
       toast.error("No ha sido posible cargar la data");
     }
   };
+
+  const handlerLink = (event)=> {
+    if(type === "buyer"){
+        const id:string = event.target.name
+        console.log(id);
+        DetailBuyer(id)
+    } else {
+        toast.error("No es posible acceder a la información")
+    }
+  }
   
 
   return (
@@ -72,7 +102,7 @@ const Administrador = () => {
 (      <Table striped bordered hover variant="" responsive>
         <thead className="bordeTabla">
           <tr className="bordeTabla">
-            <th className="anchoTable">ID</th>
+            <th className="anchoTable">Detalle</th>
             <th className="anchoTable">Correo electrónico</th>
             <th className="anchoTable">Nombre</th>
             <th className="anchoTable">Apellidos</th>
@@ -82,10 +112,14 @@ const Administrador = () => {
           </tr>
         </thead>
         <tbody>
-          {buyers?.map((person:Object) => {
+          {buyers?.map((person:User) => {
             return (
               <tr>
-                <td><Link to={`/admin/buyer/${person.id}`}>{person.id}</Link></td>
+                <td><Link  onClick={handlerLink} to={`/admin/buyer/${person.id}`}>
+                    <Button name={person.id}>
+                    Detalle User   
+                    </Button>
+                    </Link></td>
                 <td>{person.email}</td>
                 <td>{person.name}</td>
                 <td>{person.lastName}</td>
@@ -112,16 +146,21 @@ const Administrador = () => {
        </tr>
      </thead>
      <tbody>
-       {buyers?.map((person:Object) => {
+       {sellers?.map((cia:Comapny) => {
          return (
            <tr>
-             <td><Link to={`/admin/seller/${person.id}`}>{person.id}</Link></td>
-             <td>{person.email}</td>
-             <td>{person.name}</td>
-             <td>{person.lastName}</td>
-             <td>{person.document}</td>
-             <td>{person.country}</td>
-             <td>{person.status === true ? "Activo" : "Inactivo"}</td>
+               <td><Link to={`/admin/seller/${cia.id}`}>
+                    <Button name={cia.id} onClick={handlerLink}>
+                    Detalle User   
+                    </Button>
+                    </Link></td>
+             <td><strong>{cia.company}</strong></td>
+             <td>{cia.email}</td>
+             <td>{cia.name}</td>
+             <td>{cia.lastName}</td>
+             <td>{cia.document}</td>
+             <td>{cia.country}</td>
+             <td>{cia.status === true ? "Activo" : "Inactivo"}</td>
            </tr>
          );
        })}

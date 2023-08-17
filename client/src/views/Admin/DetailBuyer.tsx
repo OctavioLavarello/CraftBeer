@@ -7,10 +7,15 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 import "./DahsAdmin.css";
+import axios from "axios";
 
-const DetailBuyer = () => {
-    
+const DetailBuyer = async (id:string) => {
+  console.log(id);
 
+  
+  const solicitud = await axios.get(`/persons/:${id}`)
+  console.log(solicitud.data);
+  
 
 
   return (
