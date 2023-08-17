@@ -1,0 +1,24 @@
+.all {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.formMaster {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.sold {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+}
