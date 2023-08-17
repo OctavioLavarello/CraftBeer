@@ -1,6 +1,6 @@
 .all {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 .formMaster {
@@ -8,13 +8,56 @@
     align-items: center;
     justify-content: center;
     width: 45%;
+    border: 0.02vh solid rgba(163, 125, 52, 1);
+    border-top: none;
 }
-.form {
+.formDiv {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 100%;
+}
+.form, .formPut {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 1vw;
+}
+.form div, .formPut div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.form input, .formPut input {
+    background-color: rgb(63, 63, 63);
+    border-color: rgba(163, 125, 52, 1);
+    color: white;
+    margin-bottom: 2vh;
+    width: 50%;
+}
+.form input:focus {
+    background-color: rgb(63, 63, 63);
+    border-color: rgba(163, 125, 52, 1);
+    color: white;
+    margin-bottom: 2vh;
+    box-shadow: none;
+}
+.formPut input:focus {
+    background-color: rgb(63, 63, 63);
+    border-color: rgba(163, 125, 52, 1);
+    color: white;
+    box-shadow: 0 0 1vw rgba(163, 125, 52, 0.5);
+}
+.formError input {
+    background-color: rgb(63, 63, 63);
+    border-color: red;
+    color: white;
+    margin-bottom: 2vh;
+}
+.formError input:focus {
+    background-color: rgb(63, 63, 63);
+    border-color: red;
+    color: white;
+    box-shadow: 0 0 1vw red;
 }
 .sold {
     display: flex;

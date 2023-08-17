@@ -71,87 +71,87 @@ const Company: React.FC = () => {
             <div className={styles.formMaster}>
                 {!isClicked ? 
                 (
-                <div className={styles.form}>
+                <div className={styles.formDiv}>
                     <Form 
                     className={styles.form}
                     >
                         <Form.Group>
+                            <Form.Label>Name</Form.Label>
                             <Form.Control 
                             readOnly
                             type="text"
-                            name="name"
                             value={companyData.name}
                             />
                         </Form.Group>
                         <Form.Group>
+                            <Form.Label>Last Name</Form.Label>
                             <Form.Control 
                             readOnly
                             type="text"
-                            name="lastName"
                             value={companyData.lastName}
                             />
                         </Form.Group>
                         <Form.Group>
+                            <Form.Label>Email</Form.Label>
                             <Form.Control 
                             readOnly
                             type="email" 
-                            name="email"
                             value={companyData.email}
                             />
                         </Form.Group>
                         <Form.Group>
+                            <Form.Label>Document</Form.Label>
                             <Form.Control 
                             readOnly
                             type="number"
-                            name="document"
                             value={companyData.document}
                             />
                         </Form.Group>
                         <Form.Group>
+                            <Form.Label>Phone Number</Form.Label>
                             <Form.Control 
                             readOnly
                             type="number"
-                            name="phone"
                             value={companyData.phone}
                             />
                         </Form.Group>
                         <Form.Group>
+                            <Form.Label>Country</Form.Label>
                             <Form.Control 
                             readOnly
                             type="text"
-                            name="city"
                             value={companyData.country}
                             />
                         </Form.Group>
                         <Form.Group>
+                            <Form.Label>State</Form.Label>
                             <Form.Control 
                             readOnly
                             type="text"
-                            name="password"
                             value={companyData.state}
                             />
                         </Form.Group>
                         <Form.Group>
+                            <Form.Label>City</Form.Label>
                             <Form.Control 
                             readOnly
                             type="text"
-                            name="password"
                             value={companyData.city}
                             />
                         </Form.Group>
                         <Form.Group>
+                            <Form.Label>Company</Form.Label>
                             <Form.Control 
                             readOnly
                             type="text"
-                            name="password"
                             value={companyData.company}
                             />
                         </Form.Group>
                         <Form.Group>
+                            <Form.Label>Address</Form.Label>
                             <Form.Control 
                             readOnly
                             type="text"
-                            name="password"
                             value={companyData.address}
                             />
                         </Form.Group>
@@ -166,10 +166,11 @@ const Company: React.FC = () => {
                 ) : 
                 (
                 <Form 
-                className={styles.form}
+                className={styles.formPut}
                 onSubmit={handlerOnSubmit}
                 >
                     <Form.Group>
+                        <Form.Label>Name</Form.Label>
                         <Form.Control 
                         required
                         type="text"
@@ -180,6 +181,7 @@ const Company: React.FC = () => {
                         />
                     </Form.Group>
                     <Form.Group>
+                        <Form.Label>Last Name</Form.Label>
                         <Form.Control 
                         required
                         type="text"
@@ -190,6 +192,7 @@ const Company: React.FC = () => {
                         />
                     </Form.Group>
                     <Form.Group>
+                        <Form.Label>Email</Form.Label>
                         <Form.Control 
                         required
                         type="email" 
@@ -200,6 +203,7 @@ const Company: React.FC = () => {
                         />
                     </Form.Group>
                     <Form.Group>
+                        <Form.Label>Document</Form.Label>
                         <Form.Control 
                         required
                         type="number"
@@ -210,6 +214,7 @@ const Company: React.FC = () => {
                         />
                     </Form.Group>
                     <Form.Group>
+                        <Form.Label>Phone Number</Form.Label>
                         <Form.Control 
                         required
                         type="number"
@@ -220,52 +225,57 @@ const Company: React.FC = () => {
                         />
                     </Form.Group>
                     <Form.Group>
+                        <Form.Label>Country</Form.Label>
+                        <Form.Control 
+                        required
+                        type="text"
+                        name="country"
+                        value={companyData.country}
+                        placeholder="change your country?"
+                        onChange={handlerOnChange}
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>State</Form.Label>
+                        <Form.Control 
+                        required
+                        type="text"
+                        name="state"
+                        value={companyData.state}
+                        placeholder="change your state?"
+                        onChange={handlerOnChange}
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>City</Form.Label>
                         <Form.Control 
                         required
                         type="text"
                         name="city"
-                        value={companyData.country}
-                        placeholder="Password"
-                        onChange={handlerOnChange}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Control 
-                        required
-                        type="text"
-                        name="password"
-                        value={companyData.state}
-                        placeholder="Password"
-                        onChange={handlerOnChange}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Control 
-                        required
-                        type="text"
-                        name="password"
                         value={companyData.city}
-                        placeholder="Password"
+                        placeholder="change your city?"
                         onChange={handlerOnChange}
                         />
                     </Form.Group>
                     <Form.Group>
+                        <Form.Label>Company</Form.Label>
                         <Form.Control 
                         required
                         type="text"
-                        name="password"
+                        name="company"
                         value={companyData.company}
-                        placeholder="Password"
+                        placeholder="change your company?"
                         onChange={handlerOnChange}
                         />
                     </Form.Group>
                     <Form.Group>
+                        <Form.Label>Address</Form.Label>
                         <Form.Control 
                         required
                         type="text"
-                        name="password"
+                        name="address"
                         value={companyData.address}
-                        placeholder="Password"
+                        placeholder="change your address?"
                         onChange={handlerOnChange}
                         />
                     </Form.Group>
