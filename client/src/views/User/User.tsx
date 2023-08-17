@@ -197,9 +197,6 @@ const User = () => {
           </Card.Body>
         </Card>
       </Col>
-      <Col>
-        <Card.Title>MI HISTORIAL DE COMPRA!!!</Card.Title>
-      </Col>
     </Row>
     <Row className={styles.Columna}>
       <Col>{/* Other content */}</Col>
