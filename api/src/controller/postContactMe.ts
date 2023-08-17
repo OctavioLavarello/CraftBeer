@@ -20,8 +20,8 @@ const postContactMe = async (req: Request, res: Response) => {
     });
     // se fusionará en cada objeto de mensaje.
     let mailOptions = {
-      from: "craftbeer514@gmail.com",
-      to: "craftbeer514@gmail.com",
+      from: NODEMAILER_USER,
+      to: NODEMAILER_USER,
       subject: "Tienes una solicitud",
       html: `<html>
 	<head>
@@ -38,18 +38,20 @@ const postContactMe = async (req: Request, res: Response) => {
 </html>`,
     };
 
-    transporter.sendMail(mailOptions, (error: any, info: string) => {
+    transporter.sendMail(mailOptions, (error: Error, info:string) => {
       if (error) {
-        console.log(error.message);
+        return res.status(500).send(error.message)
       } else {
-        console.log("Message sent:" + info);
+       return res.status(200).send("it was sent satisfactorily")
       }
     });
   } catch (error) {
     if (error instanceof Error) {
       console.log(error.message);
+     return res.status(500).send(error.message)
     } else {
-      console.log("Unexpected error.");
+      console.log("Unexpected error");
+      return res.status(500).send("Unexpected error")
     }
   }
 };
