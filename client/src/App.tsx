@@ -18,6 +18,9 @@ import Cart from './views/Cart/Cart';
 import AboutUs from './views/aboutUs/AboutUs';
 import Contact from './views/Contact/Contact';
 import Creation from './views/Creation/Creation';
+import Administrador from "./views/Admin/DashAdmin"
+import DetailBuyer from "./views/Admin/DetailBuyer"
+import DetailSeller from './views/Admin/DetailSeller';
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar"
 import Footer from "./components/footer/Footer"
@@ -82,7 +85,9 @@ function App() {
           <Route path='/aboutUs' element={ <AboutUs />} />
           <Route path='/contact' element={ <Contact />} />
           <Route path='/post' element={ <Creation />} />
-
+          <Route path='/admin' element={ <Administrador />} />
+          <Route path='/admin/buyer/:id' element={ <DetailBuyer />} />
+          <Route path='/admin/seller/:id' element={ <DetailSeller />} />
         </Routes>
         ) : (accessLogin.role === "Person" ? 
         (
