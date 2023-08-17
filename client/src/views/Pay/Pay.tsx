@@ -9,7 +9,6 @@ const PayCart = (dataPay: Cart) => {
         products: dataPay.product,
         user: dataPay.user
       });
-      localStorage.setItem("mp", JSON.stringify(response))
 
       const linkPay = response.data.results.response.init_point;
 
