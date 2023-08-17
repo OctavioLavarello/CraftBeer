@@ -6,7 +6,7 @@ const dataBase = async () => {
       name: "Alberto",
       lastName: "Mendez",
       document: 40556481,
-      email: "craftbeer514@gmail.com",
+      email: "artesanos@gmail.com",
       password: "12345678ABC",
       phone: 3158183233,
       country: "Colombia",
@@ -364,6 +364,19 @@ const dataBase = async () => {
       city: "medellin",
       state: "Antioquia",
       address: "calle 44 N° 25 35",
+    },
+    {
+      name: "admin",
+      lastName: "admin",
+      document: 111111,
+      email: "craftbeer514@gmail.com",
+      password: "craftbeer2023",
+      country: "Argentina",
+      city: "Cordoba",
+      state: "cordoba",
+      address: "rondeau 358",
+      role:"Administrator",
+      image:"https://i.postimg.cc/mDYMdsVF/Simple-October-Fest-Instagram-Post-3.png"
     },
   ];
   const personSaved = await UserPerson.bulkCreate(person);
