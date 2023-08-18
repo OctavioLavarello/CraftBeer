@@ -6,7 +6,7 @@ const dataBase = async () => {
       name: "Alberto",
       lastName: "Mendez",
       document: 40556481,
-      email: "craftbeer514@gmail.com",
+      email: "Alber.beer@company.com",
       password: "12345678ABC",
       phone: 3158183233,
       country: "Colombia",
@@ -365,6 +365,19 @@ const dataBase = async () => {
       state: "Antioquia",
       address: "calle 44 N° 25 35",
     },
+    {
+    name: "admin",
+    lastName: "Gamma",
+    document: 12345678,
+    email: "craftbeer514@gmail.com",
+    password: "12345678FG",
+    country: "Colombia",
+    city: "medellin",
+    state: "Antioquia",
+    address: "calle 44 N° 25 35",
+    role: "Admin"
+    }
+
   ];
   const personSaved = await UserPerson.bulkCreate(person);
   personSaved[0].addProduct(productSaved[0])
