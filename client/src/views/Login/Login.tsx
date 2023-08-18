@@ -65,7 +65,6 @@ const Login: React.FC = () => {
     const handlerCheck= () => {
         setShowPassword(!showPassword);
     };
-    
     return (
         <div className={styles.all}>
             <div className={!isError ? (!isClicked ? styles.avatarCont : styles.avatarContSubmit) : styles.avatarContError}>
@@ -141,9 +140,7 @@ const Login: React.FC = () => {
                         Sign Up
                     </Button>
                 </NavLink>
-            </Form>
-            <hr />
-            <GoogleOAuthProvider clientId="613986479282-t9j4clt86pdii5h3m22abarctpm7k3d7.apps.googleusercontent.com">
+                <GoogleOAuthProvider clientId="613986479282-t9j4clt86pdii5h3m22abarctpm7k3d7.apps.googleusercontent.com">
                     <GoogleLogin
                         onSuccess={(credentialResponse: any) => {
                             console.log(credentialResponse);
@@ -153,7 +150,7 @@ const Login: React.FC = () => {
                         }}
                     />
                 </GoogleOAuthProvider>
-            
+            </Form>
         </div>
     );
 };

@@ -37,7 +37,7 @@ const NavBar: React.FC = () => {
         </NavLink>
       </div>
       <div className={styles.RouterConteiner}>
-        {accessLogin.role === "Company" ? null : accessLogin.role === "Person" || accessLogin.role === "" ? 
+        {accessLogin.role === "Company" || accessLogin.role === "Admin" ? null : accessLogin.role === "Person" || accessLogin.role === "" ? 
         (
           <NavLink to="/cart" className={styles.link}>
             <h5>Cart</h5>
@@ -60,33 +60,33 @@ const NavBar: React.FC = () => {
         (
           <div>
             <button
-            className={styles.link}
+            className={styles.link2main}
             onClick={() => setShowDropdown(!showDropdown)}
           >
             <h5>Menu</h5>
           </button>
           {showDropdown && (
-            <div className={styles.dropdownContent}>
+            <div className={styles.dropdownContent2}>
               <button 
-              className={styles.link} 
+              className={styles.link2} 
               onClick={handlerLogout}
               >Logout</button>
-              <NavLink to={`/user/${accessLogin.id}`} className={styles.link}>
+              <NavLink to={`/user/${accessLogin.id}`} className={styles.link3}>
                 <h5>User</h5>
               </NavLink>
-              <NavLink to="/myShop" className={styles.link}>
-                <h5>My Purchases</h5>
+              <NavLink to="/myShop" className={styles.link3}>
+                <h6>My Purchases</h6>
               </NavLink>
               <button
               onClick={() => setShowDropdown(!showDropdown)}
-              className={styles.link}>▲</button>
+              className={styles.link4}>▲</button>
             </div>
           )}
           </div>
         ) : (accessLogin.role === "Company" ? (
           <div>
             <button
-            className={styles.link}
+            className={styles.link2main}
             onClick={() => setShowDropdown(!showDropdown)}
           >
             <h5>Menu</h5>
@@ -94,19 +94,27 @@ const NavBar: React.FC = () => {
           {showDropdown && (
             <div className={styles.dropdownContent}>
               <h5 
-              className={styles.link} 
+              className={styles.link2} 
               onClick={handlerLogout}
               >Logout</h5>
-              <NavLink to={`/company/${accessLogin.id}`} className={styles.link}>
+              <NavLink to={`/company/${accessLogin.id}`} className={styles.link3}>
                 <h5>Company</h5>
               </NavLink>
               <button
               onClick={() => setShowDropdown(!showDropdown)}
-              className={styles.link}>▲</button>
+              className={styles.link4}>▲</button>
             </div>
           )}
           </div>
-        ) : null))
+        ) : 
+        (
+          <button 
+          onClick={handlerLogout}
+          className={styles.link}
+          >
+            <h5>Logout</h5>
+          </button> 
+        )))
         }
       </div>
     </div>
