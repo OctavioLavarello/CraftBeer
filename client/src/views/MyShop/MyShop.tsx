@@ -22,9 +22,6 @@ const MyShop = () => {
             });
             setallHistoryData(response.data)
 
-console.log("esto es el id en Myshop",response.data);
-
-
         } catch (error) {
             console.error(error);
         }
@@ -51,7 +48,7 @@ console.log("esto es el id en Myshop",response.data);
                     unitPrice={item.Items[0].unitPrice}
                     totalPrice={item.Items[0].totalPrice}
                     image={item.Items[0].image}
-                    id={item.Items[0].id}
+                    id={item.Items[0].ProductId}
                 />
                 ))}
             </div>

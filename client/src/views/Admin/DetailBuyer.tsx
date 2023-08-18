@@ -12,10 +12,11 @@ import { useSelector } from "react-redux";
 import { AppState } from "../../redux/reducer";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 const DetailBuyer: React.FC = () => {
+  const navigate = useNavigate()
   const id = useSelector((state: AppState) => state.idBuyer);
   const [infoUser, setInfoUser] = useState<any>({});
 
@@ -45,6 +46,12 @@ const DetailBuyer: React.FC = () => {
     }
   }
 
+
+  const historyShop =(eventKey:any)=>{
+  if(eventKey === "1")  navigate("/adminShopBuyer")
+    
+  }
+
   return (
     <div className="bodyBuyer">
       <Card
@@ -67,8 +74,8 @@ const DetailBuyer: React.FC = () => {
           <NavbarBrand>
             <h2>{`${infoUser.name}, ${infoUser.lastName}`}</h2>
           </NavbarBrand>
-          <NavDropdown title="Otras opciones" menuVariant="dark">
-            <NavDropdown.Item>Historial de compras</NavDropdown.Item>
+          <NavDropdown title="Otras opciones" menuVariant="dark" onSelect={historyShop}>
+            <NavDropdown.Item  eventKey="1">Historial de compras</NavDropdown.Item>
             <NavDropdown.Item>Modificar usuario</NavDropdown.Item>
           </NavDropdown>
         </div>
