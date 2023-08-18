@@ -5,7 +5,9 @@ import { NavLink } from "react-router-dom";
 import loginValidation from "./LoginValidation";
 import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import GoogleLogin from 'react-google-login';
+// GOOGLE LOGIN
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
 // ACTION
 import { login } from "../../redux/actions/actions";
 // STYLES
@@ -62,9 +64,6 @@ const Login: React.FC = () => {
     };
     const handlerCheck= () => {
         setShowPassword(!showPassword);
-    };
-    const responseGoogle = (response: any) => {
-        console.log(response)
     };
     return (
         <div className={styles.all}>
@@ -141,14 +140,17 @@ const Login: React.FC = () => {
                         Sign Up
                     </Button>
                 </NavLink>
+                <GoogleOAuthProvider clientId="613986479282-t9j4clt86pdii5h3m22abarctpm7k3d7.apps.googleusercontent.com">
+                    <GoogleLogin
+                        onSuccess={(credentialResponse: any) => {
+                            console.log(credentialResponse);
+                        }}
+                        onError={() => {
+                            console.log('Login Failed');
+                        }}
+                    />
+                </GoogleOAuthProvider>
             </Form>
-            <GoogleLogin
-                clientId="742002143420-n3cokvd1fpk9l58b7kvotk3m1mvco8c5.apps.googleusercontent.com"
-                buttonText="Login"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={'single_host_origin'}
-            />
         </div>
     );
 };
