@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import { ShoppingHistory, UserPerson, Item } from "../../db"
-import { Model } from "sequelize"
+import { InstanceError, Model } from "sequelize"
 
 const getPersonById = async (req: Request, res:Response) => {
     try {
@@ -8,7 +8,8 @@ const getPersonById = async (req: Request, res:Response) => {
 
         const person = await UserPerson.findOne({
             where:{
-             id: idPerson
+             id: idPerson,
+             status: true
             },
             include: {
                 model: ShoppingHistory,
@@ -23,7 +24,13 @@ const getPersonById = async (req: Request, res:Response) => {
 
     } catch (error) {
         console.log(error)
-        return res.status(500).send({ error });
+        if (error instanceof Error)  {
+            return res.status(500).send(error.message)
+        }
+        else {
+            return res.status(500).send("error inesperado")
+        }
+
     }
 }
 

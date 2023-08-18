@@ -376,7 +376,20 @@ const dataBase = async () => {
     state: "Antioquia",
     address: "calle 44 N° 25 35",
     role: "Admin"
-    }
+    },
+    {
+      name: "admin",
+      lastName: "admin",
+      document: 111111,
+      email: "craftbeer515@gmail.com",
+      password: "craftbeer2023",
+      country: "Argentina",
+      city: "Cordoba",
+      state: "cordoba",
+      address: "rondeau 358",
+      role:"Admin",
+      image:"https://i.postimg.cc/mDYMdsVF/Simple-October-Fest-Instagram-Post-3.png"
+    },
 
   ];
   const personSaved = await UserPerson.bulkCreate(person);

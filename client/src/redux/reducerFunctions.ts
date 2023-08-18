@@ -171,3 +171,17 @@ export const hasNavigatedTrue = (state = initialState) => {
     hasNavigated: true
   }
 }
+
+export const buyerId = (state = initialState, action: ActionWithPayload<string, number>) =>{
+  return{
+    ...state,
+    idBuyer: action.payload
+  }
+} 
+
+export const sellerId = (state = initialState, action: ActionWithPayload<string, number>) =>{
+  return{
+    ...state,
+    idSeller: action.payload
+  }
+} 

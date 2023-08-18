@@ -16,6 +16,8 @@ import {
   URL_IMAGE,
   HAS_NAVIGATED,
   DELETE_CARTSTORAGE,
+  ID_BUYER,
+  ID_SELLER
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
 
@@ -338,4 +340,16 @@ export const contactMessage = async (messageInfo: message) => {
   }
 }
 
+export const idBuyer = (id:string)=> {
+  return {
+    type: ID_BUYER,
+    payload: id 
+  }
+}
 
+export const idSeller = (id:string)=> {
+  return {
+    type: ID_SELLER,
+    payload: id 
+  }
+}
