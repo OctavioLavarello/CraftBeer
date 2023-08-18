@@ -53,17 +53,16 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
             price,
             image,
             summary,
-            quantity: updatedQuantity,
+            quantity: updatedQuantity > stock ? stock : updatedQuantity,
         };
-
-        if (updatedQuantity > 0) {
-            const syntheticEvent = { target: { value: updatedQuantity } }; 
-            hanldlerQuantity(syntheticEvent); 
+        if (updatedQuantity >= 0) {
+            const syntheticEvent = { target: { value: updatedQuantity } };
+            hanldlerQuantity(syntheticEvent);
             saveDataCart(itemData);
         } else {
             deleteDataCart(itemData.id)
         };
-        dispatch(localStorageCart(itemData));
+        //   dispatch(localStorageCart(itemData));
 
     }
 
@@ -72,25 +71,41 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
         supStock: false,
         negative: false
     })
-    //handler que para input item 
+    //handler para input item 
     const hanldlerQuantity = (event: any) => {
-        const inputValue = parseInt(event.target.value);
-        setItem(inputValue);
+        let inputValue = parseInt(event.target.value);
+console.log("1",inputValue);
+
+        if (isNaN(inputValue)) {
+            setItem(0);
+            inputValue=0 // Establecer en 0 si el valor no es un número
+        } else if (inputValue <= 0) {
+            setItem(0); // Establecer en 0 si el valor es negativo
+        } else if (inputValue <= stock) {
+            setItem(inputValue); // Establecer el valor si está dentro del rango de stock
+        }
+        console.log("2",inputValue);
+
         const itemData: SaveDataLS = {
             id,
             name,
             price,
             image,
             summary,
-            quantity: inputValue,
+            quantity: inputValue > stock ? stock : inputValue,
         };
-        dispatch(localStorageCart(itemData));
-
         if (inputValue > stock) {
             setInputDisabled((prevState) => ({
                 ...prevState,
                 supStock: true
             }))
+        }
+        
+        if (inputValue >= 0) {
+            saveDataCart(itemData);
+            dispatch(localStorageCart(itemData));
+        }else {
+            deleteDataCart(itemData.id)
         }
     }
 
@@ -134,10 +149,10 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
             if (item === 0) {
                 setdisabledButton((prevState) => ({
                     ...prevState,
-                    add:false,
+                    add: false,
                     remove: true
                 }))
-            } 
+            }
             if (stock === 0) {
                 setdisabledButton((prevState) => ({
                     ...prevState,
@@ -145,7 +160,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                     add: true,
                     remove: true
                 }))
-            } 
+            }
             if (item > 0) {
                 setdisabledButton((prevState) => ({
                     ...prevState,
@@ -153,7 +168,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                     add: false,
                     remove: false
                 }))
-            } 
+            }
         }
     }, [item])
 
@@ -196,7 +211,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
                                 <p>☆☆☆☆☆ </p>  <p className={item === stock || stock === 0 ? style.alertOutStock : style.alertStock}>Stock Disponible : {stock} un.</p>
                                 <div className={style.centeredContainer}>
                                     <form>
-                                        <input type="number" className={style.input} value={item == 0 ? 0 : item} max={stock} onChange={hanldlerQuantity}
+                                        <input type="number" className={style.input} value={item == 0 ? "" : item} max={stock} min="0" onChange={hanldlerQuantity}
                                             placeholder="0" /> Un.
                                     </form>
                                 </div>
