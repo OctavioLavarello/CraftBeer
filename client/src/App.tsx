@@ -107,6 +107,9 @@ function App() {
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Error />} />
+            <Route path="/admin" element={<Administrador />} />
+            <Route path="/admin/buyer/:id" element={<DetailBuyer />} />
+            <Route path="/admin/seller/:id" element={<DetailSeller />} />
           </Routes>
         ) : accessLogin.role === "Person" ? (
           <Routes>
@@ -143,9 +146,7 @@ function App() {
             <Route path="/detail/:id" element={<Detail />} />
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/admin" element={<Administrador />} />
-            <Route path="/admin/buyer/:id" element={<DetailBuyer />} />
-            <Route path="/admin/seller/:id" element={<DetailSeller />} />
+           
             <Route path="*" element={<Error />} />
           </Routes>
         ) : null))}
