@@ -8,6 +8,7 @@ const getProductById = async (req: Request, res: Response) => {
     const beer = await Product.findOne({
       where: {
         id: idProduct,
+        status: true
       },
       include: {
         model: Qualification,
@@ -15,7 +16,9 @@ const getProductById = async (req: Request, res: Response) => {
       },
     });
 
-    if (!beer) throw new Error("this beer is not exist");
+    if (!beer) {
+      return res.status(404).send("This beer does not exist")
+    }
 
     return res.status(200).json(beer.get({ plain: true }));//guardar los datos planos
   } catch (error) {
