@@ -48,7 +48,7 @@ const DetailBuyer: React.FC = () => {
 
 
   const historyShop =(eventKey:any)=>{
-  if(eventKey === "1")  navigate("/adminShopBuyer")
+  if(eventKey === "1")  navigate(`/admin/buyer/historyShop`)
     
   }
 

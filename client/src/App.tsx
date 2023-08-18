@@ -113,7 +113,7 @@ function App() {
             <Route path="/admin" element={<Administrador />} />
             <Route path="/admin/buyer/:id" element={<DetailBuyer />} />
             <Route path="/admin/seller/:id" element={<DetailSeller />} />
-            <Route path="adminHistoryShop" element={<AdminHistoryShop/>} />
+            <Route path="/admin/buyer/historyShop" element={<AdminHistoryShop/>} />
             <Route path="*" element={<Error />} />
           </Routes>
         ) : accessLogin.role === "Person" ? (

@@ -395,16 +395,20 @@
         flex-direction: row;
         justify-content: center;
     }
+    .IBU h5 {
+        font-size: 15px;
+    }
 
     .textContainer {
         color: #bcb5b5;
         height: 7vh;
+        font-size: 12px;
         /* Altura máxima del div */
-        display: flex;
         flex-direction: column;
         justify-content: flex-start;
         overflow: hidden;
-        /* Mostrar puntos suspensivos (...) al final del texto cortado */
+        text-overflow: ellipsis;
+
     }
 
     .textContainer p {
@@ -416,7 +420,7 @@
         text-align: center;
         display: flex;
         flex-direction: column;
-        margin-top: 20px;
+        margin-top: 10px;
 
     }
 
