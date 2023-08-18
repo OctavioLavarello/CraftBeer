@@ -20,6 +20,7 @@ import favoriteHandler from "../controller/FavoriteHandler"
 import reciveWebHook from "../controller/payment/Webhook";
 import getAllFavoritesPerson from "../controller/getAllFavoritesPerson";
 import getCompanyById from "../controller/getCompanyById";
+import putQualification from "../controller/putQualification";
 
 const router = Router();
 
@@ -48,6 +49,8 @@ router.get("/company/:idCompany", getCompanyById);
 router.put("/user", putUserPerson);
 router.put("/company", putUserCompany);
 router.put("/product/:productId", putProduct);
+router.put("/qualification", putQualification);
+
 
 // ------- payment routes ----//
 
