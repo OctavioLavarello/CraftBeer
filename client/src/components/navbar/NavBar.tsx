@@ -37,7 +37,7 @@ const NavBar: React.FC = () => {
         </NavLink>
       </div>
       <div className={styles.RouterConteiner}>
-        {accessLogin.role === "Company" ? null : accessLogin.role === "Person" || accessLogin.role === "" ? 
+        {accessLogin.role === "Company" || accessLogin.role === "Admin" ? null : accessLogin.role === "Person" || accessLogin.role === "" ? 
         (
           <NavLink to="/cart" className={styles.link}>
             <h5>Cart</h5>
@@ -106,7 +106,15 @@ const NavBar: React.FC = () => {
             </div>
           )}
           </div>
-        ) : null))
+        ) : 
+        (
+          <button 
+          onClick={handlerLogout}
+          className={styles.link}
+          >
+            <h5>Logout</h5>
+          </button> 
+        )))
         }
       </div>
     </div>
