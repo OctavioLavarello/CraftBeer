@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 import loginValidation from "./LoginValidation";
 import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import GoogleLogin from 'react-google-login';
 // ACTION
 import { login } from "../../redux/actions/actions";
 // STYLES
@@ -15,6 +14,9 @@ import Form from 'react-bootstrap/Form';
 import avatar from "../../assets/icons/avatar.png"
 import email from "../../assets/icons/sobre.png"
 import password from "../../assets/icons/candado.png"
+// GOOGLE LOGIN
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
 
 export interface login {
     email: string,
@@ -63,9 +65,7 @@ const Login: React.FC = () => {
     const handlerCheck= () => {
         setShowPassword(!showPassword);
     };
-    const responseGoogle = (response: any) => {
-        console.log(response)
-    };
+    
     return (
         <div className={styles.all}>
             <div className={!isError ? (!isClicked ? styles.avatarCont : styles.avatarContSubmit) : styles.avatarContError}>
@@ -142,13 +142,18 @@ const Login: React.FC = () => {
                     </Button>
                 </NavLink>
             </Form>
-            <GoogleLogin
-                clientId="742002143420-n3cokvd1fpk9l58b7kvotk3m1mvco8c5.apps.googleusercontent.com"
-                buttonText="Login"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={'single_host_origin'}
-            />
+            <hr />
+            <GoogleOAuthProvider clientId="613986479282-t9j4clt86pdii5h3m22abarctpm7k3d7.apps.googleusercontent.com">
+                    <GoogleLogin
+                        onSuccess={(credentialResponse: any) => {
+                            console.log(credentialResponse);
+                        }}
+                        onError={() => {
+                            console.log('Login Failed');
+                        }}
+                    />
+                </GoogleOAuthProvider>
+            
         </div>
     );
 };
