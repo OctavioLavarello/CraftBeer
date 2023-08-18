@@ -1,6 +1,8 @@
 /// IMPORTS
 import React, { useState } from "react"
 import companyPutValidation from "./CompanyPutValidation";
+import axios from "axios";
+import toast from 'react-hot-toast'
 // STYLES
 import styles from "./Company.module.css"
 import Form from 'react-bootstrap/Form';
@@ -62,13 +64,28 @@ const Company: React.FC = () => {
     };
     const handlerOnSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
-        // Dispatch de PUT company
+        try {
+            await axios.put("/company", companyData)
+            toast.success("company data upload successfully")
+          } catch (error: any) {
+            if (error.response && error.response.data && error.response.data.message) {
+              const errorMessage = error.response.data.message;
+              toast.error(errorMessage);
+            } else {
+            toast.error("an error occurred while upload company data");
+            }
+          }
         setIsClicked(!isClicked)
     };
-    console.log(isClicked)
+    console.log(companyData)
+    console.log(errors)
     return (
         <div className={styles.all}>
-            <div className={styles.formMaster}>
+            <div className={`${
+                errors.name || errors.lastName || errors.email || errors.country || 
+                errors.state || errors.city || errors.company || errors.address
+                ? 
+                styles.formMasterError : styles.formMaster }`}>
                 {!isClicked ? 
                 (
                 <div className={styles.formDiv}>
@@ -171,113 +188,151 @@ const Company: React.FC = () => {
                 >
                     <Form.Group>
                         <Form.Label>Name</Form.Label>
-                        <Form.Control 
-                        required
-                        type="text"
-                        name="name"
-                        value={companyData.name}
-                        placeholder="change your name?"
-                        onChange={handlerOnChange}
-                        />
+                        <div className={styles.divInputP}>
+                            <Form.Control
+                            className={`${errors.name ? styles.inputError : styles.input }`}                        
+                            required
+                            type="text"
+                            name="name"
+                            value={companyData.name}
+                            placeholder="change your name?"
+                            onChange={handlerOnChange}
+                            />
+                            {errors.name && <p className={styles.validationMessage}>{errors.name}</p>}
+                        </div>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Last Name</Form.Label>
-                        <Form.Control 
-                        required
-                        type="text"
-                        name="lastName"
-                        value={companyData.lastName}
-                        placeholder="change your last name?"
-                        onChange={handlerOnChange}
-                        />
+                        <div className={styles.divInputP}>
+                            <Form.Control
+                            className={`${errors.lastName ? styles.inputError : styles.input }`} 
+                            required
+                            type="text"
+                            name="lastName"
+                            value={companyData.lastName}
+                            placeholder="change your last name?"
+                            onChange={handlerOnChange}
+                            />
+                            {errors.lastName && <p className={styles.validationMessage}>{errors.lastName}</p>}
+                        </div>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Email</Form.Label>
-                        <Form.Control 
-                        required
-                        type="email" 
-                        name="email"
-                        value={companyData.email}
-                        placeholder="change your email?"
-                        onChange={handlerOnChange} 
-                        />
+                        <div className={styles.divInputP}>
+                            <Form.Control
+                            className={`${errors.email ? styles.inputError : styles.input }`}
+                            required
+                            type="email" 
+                            name="email"
+                            value={companyData.email}
+                            placeholder="change your email?"
+                            onChange={handlerOnChange} 
+                            />
+                            {errors.email && <p className={styles.validationMessage}>{errors.email}</p>}
+                        </div>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Document</Form.Label>
-                        <Form.Control 
-                        required
-                        type="number"
-                        name="document"
-                        value={companyData.document}
-                        placeholder="change your document?"
-                        onChange={handlerOnChange}
-                        />
+                        <div className={styles.divInputP}>
+                            <Form.Control
+                            className={styles.input}
+                            required
+                            type="number"
+                            name="document"
+                            value={companyData.document}
+                            placeholder="change your document?"
+                            onChange={handlerOnChange}
+                            />
+                        </div>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Phone Number</Form.Label>
-                        <Form.Control 
-                        required
-                        type="number"
-                        name="phone"
-                        value={companyData.phone}
-                        placeholder="change your phone number?"
-                        onChange={handlerOnChange}
-                        />
+                        <div className={styles.divInputP}>
+                            <Form.Control
+                            className={styles.input}
+                            required
+                            type="number"
+                            name="phone"
+                            value={companyData.phone}
+                            placeholder="change your phone number?"
+                            onChange={handlerOnChange}
+                            />
+                        </div>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Country</Form.Label>
-                        <Form.Control 
-                        required
-                        type="text"
-                        name="country"
-                        value={companyData.country}
-                        placeholder="change your country?"
-                        onChange={handlerOnChange}
-                        />
+                        <div className={styles.divInputP}>
+                            <Form.Control
+                            className={`${errors.country ? styles.inputError : styles.input }`} 
+                            required
+                            type="text"
+                            name="country"
+                            value={companyData.country}
+                            placeholder="change your country?"
+                            onChange={handlerOnChange}
+                            />
+                            {errors.country && <p className={styles.validationMessage}>{errors.country}</p>}
+                        </div>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>State</Form.Label>
-                        <Form.Control 
-                        required
-                        type="text"
-                        name="state"
-                        value={companyData.state}
-                        placeholder="change your state?"
-                        onChange={handlerOnChange}
-                        />
+                        <div className={styles.divInputP}>
+                            <Form.Control
+                            className={`${errors.state ? styles.inputError : styles.input }`}
+                            required
+                            type="text"
+                            name="state"
+                            value={companyData.state}
+                            placeholder="change your state?"
+                            onChange={handlerOnChange}
+                            />
+                            {errors.state && <p className={styles.validationMessage}>{errors.state}</p>}
+                        </div>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>City</Form.Label>
-                        <Form.Control 
-                        required
-                        type="text"
-                        name="city"
-                        value={companyData.city}
-                        placeholder="change your city?"
-                        onChange={handlerOnChange}
-                        />
+                        <div className={styles.divInputP}>
+                            <Form.Control
+                            className={`${errors.city ? styles.inputError : styles.input }`}                        
+                            required
+                            type="text"
+                            name="city"
+                            value={companyData.city}
+                            placeholder="change your city?"
+                            onChange={handlerOnChange}
+                            />
+                            {errors.city && <p className={styles.validationMessage}>{errors.city}</p>}
+                        </div>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Company</Form.Label>
-                        <Form.Control 
-                        required
-                        type="text"
-                        name="company"
-                        value={companyData.company}
-                        placeholder="change your company?"
-                        onChange={handlerOnChange}
-                        />
+                        <div className={styles.divInputP}>
+                            <Form.Control
+                            className={`${errors.company ? styles.inputError : styles.input }`} 
+                            required
+                            type="text"
+                            name="company"
+                            value={companyData.company}
+                            placeholder="change your company?"
+                            onChange={handlerOnChange}
+                            />
+                            {errors.company && <p className={styles.validationMessage}>{errors.company}</p>}
+                        </div>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Address</Form.Label>
-                        <Form.Control 
-                        required
-                        type="text"
-                        name="address"
-                        value={companyData.address}
-                        placeholder="change your address?"
-                        onChange={handlerOnChange}
-                        />
+                        <div className={styles.divInputP}>
+                            <Form.Control
+                            className={`${errors.address ? styles.inputError : styles.input }`} 
+                            required
+                            type="text"
+                            name="address"
+                            value={companyData.address}
+                            placeholder="change your address?"
+                            onChange={handlerOnChange}
+                            />
+                            {errors.address && <p className={styles.validationMessage}>{errors.address}</p>}
+                        </div>
                     </Form.Group>
                     <button 
                     type="submit"
@@ -296,8 +351,6 @@ const Company: React.FC = () => {
                         !!errors.name ||
                         !!errors.lastName ||
                         !!errors.email ||
-                        !!errors.document ||
-                        !!errors.phone ||
                         !!errors.country ||
                         !!errors.city ||
                         !!errors.state ||
