@@ -9,6 +9,7 @@ const PayCart = (dataPay: Cart) => {
         products: dataPay.product,
         user: dataPay.user
       });
+      console.log(response);
 
       const linkPay = response.data.results.response.init_point;
 
