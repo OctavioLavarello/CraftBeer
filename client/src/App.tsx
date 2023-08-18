@@ -134,7 +134,7 @@ function App() {
             <Route path="/post" element={<Creation />} />
             <Route path="*" element={<Error />} />
           </Routes>
-        ) : 
+        ) : (accessLogin.role === "Admin" ?
         (
           <Routes>
             <Route path="/" element={<Landing />} />
@@ -148,7 +148,7 @@ function App() {
             <Route path="/admin/seller/:id" element={<DetailSeller />} />
             <Route path="*" element={<Error />} />
           </Routes>
-        ))}
+        ) : null))}
       </div>
       <div>
         <Footer />
