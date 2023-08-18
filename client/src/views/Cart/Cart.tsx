@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CardCart, { productCart } from "../../components/CardCart/CardCart";
 // STYLES
 import style from "./Cart.module.css";
-import { useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { AppState } from "../../redux/reducer";
 import { useEffect, useState } from "react";
 import Pay from "../Pay/Pay";
@@ -16,7 +16,6 @@ export interface Cart {
   user: UserData,
   product: productCart[]
 }
-
 
 
 // CART
@@ -78,6 +77,10 @@ const Cart = () => {
     }
   }
 
+
+
+
+
   return (
     <>
 
@@ -113,7 +116,9 @@ const Cart = () => {
           <h5>Productos</h5>
           <hr />
           {productsCartItems?.map((product) => (
-            <div className={style.listelement}>
+         
+            <div className={style.listelement} key={product.id}>
+                
               <li>{product.quantity}  {product.name}/s</li>
               <p>U$S {(product.price * product.quantity).toFixed(2)}</p>
             </div>))
@@ -132,10 +137,6 @@ const Cart = () => {
           >
             Iniciar Compra
           </button>
-<Link to={"/succes"}>
-<button>sdsd</button>
-</Link>
-       
         </div>
       </div>
     </>

@@ -1,6 +1,6 @@
 //import { Dispatch, Action } from "redux";
 import axios from "axios";
-import toast from 'react-hot-toast'
+import toast from "react-hot-toast";
 import { AnyAction, Dispatch } from "redux";
 import {
   CREATED_PRODUCT,
@@ -15,9 +15,11 @@ import {
   LOGOUT,
   URL_IMAGE,
   HAS_NAVIGATED,
+  DELETE_CARTSTORAGE,
+  ID_BUYER,
+  ID_SELLER
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
-
 
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
@@ -33,29 +35,30 @@ export interface ProductData {
   stock: number;
   IBU: number;
   presentation: string;
-  image: string
+  image: string;
   userCompanyId: any;
 }
 
 export interface CompanyData {
-  name: string,
-  lastName: string
-  document: number,
-  email: string
-  password: string
-  phone: number,
-  country: string
-  city: string
-  state: string
-  company: string
-  address: string,
-  image: string
+  id?: string;
+  name: string;
+  lastName: string;
+  document: number;
+  email: string;
+  password: string;
+  phone: number;
+  country: string;
+  city: string;
+  state: string;
+  company: string;
+  address: string;
+  image: string;
 }
 
 //Actions para recibir todas las cervezas
 export const allBeers = () => {
   const endpoint = "/product";
-    return async function (dispatch: Dispatch<any>) {
+  return async function (dispatch: Dispatch<any>) {
     const response = await axios.get(endpoint);
     return dispatch({
       type: ADD_ALL_BEER,
@@ -65,28 +68,30 @@ export const allBeers = () => {
 };
 
 //Actions para recibir filtros por orden
-export const orderFilters = (filters: object): ActionWithPayload<"ORDER_FILTERS", object> => {
+export const orderFilters = (
+  filters: object
+): ActionWithPayload<"ORDER_FILTERS", object> => {
   return {
     type: ORDER_FILTERS,
     payload: filters,
   };
 };
 
-//actions para guardar el localStorage 
-export const localStorageCart = (data:object)=>{
+//actions para guardar el localStorage
+export const localStorageCart = (data: object) => {
   return {
     type: LOCAL_STORAGE,
-    payload:data
-  }
-}
+    payload: data,
+  };
+};
 
-//actions para guardar el localStorage 
-export const totalPages = (data:number)=>{
+//actions para guardar el localStorage
+export const totalPages = (data: number) => {
   return {
     type: TOTAL_PAGES,
-    payload:data
-  }
-}
+    payload: data,
+  };
+};
 
 //Actions para crear un producto (cerveza)
 export const createdProduct = ({
@@ -99,11 +104,10 @@ export const createdProduct = ({
   stock,
   IBU,
   presentation,
-  userCompanyId,  
+  userCompanyId,
 }: ProductData) => {
-
   return async function (dispatch: any) {
-  try {
+    try {
       let createdBeer = await axios.post(`/product`, {
         name,
         image,
@@ -121,18 +125,23 @@ export const createdProduct = ({
         payload: createdBeer,
       });
       console.log(createdBeer);
-      toast.success("Se creo correctamente su producto")
-      setTimeout(()=>{
-        window.location.href = "/home"
-      }, 2000)
-    } 
-    
-    catch (error:any) {
-      if(error.response.data.message === undefined) toast.error(`No ha sido posible cargar su compañía\n\n${error.response.data}`)
-      else {toast.error(`No ha sido posible cargar su compañía\n\n${error.response.data.message}`)}
+      toast.success("Se creo correctamente su producto");
+      setTimeout(() => {
+        window.location.href = "/home";
+      }, 2000);
+    } catch (error: any) {
+      if (error.response.data.message === undefined)
+        toast.error(
+          `No ha sido posible cargar su compañía\n\n${error.response.data}`
+        );
+      else {
+        toast.error(
+          `No ha sido posible cargar su compañía\n\n${error.response.data.message}`
+        );
+      }
       console.log(error.response.data);
-    };
-  }
+    }
+  };
 };
 
 //Actions para crear un usuario de vendedor (postCompany)
@@ -151,7 +160,7 @@ export const createdCompany = ({
   image,
 }: CompanyData) => {
   return async function (dispatch: AnyAction | any) {
-  try {
+    try {
       let companyCreated = await axios.post(`/company`, {
         name,
         lastName,
@@ -170,17 +179,24 @@ export const createdCompany = ({
         type: CREATED_COMPANY,
         payload: companyCreated,
       });
-      
-      toast.success("Se creo correctamente su compañía")
+
+      toast.success("Se creo correctamente su compañía");
       // setTimeout(()=>{
       //   window.location.href = "/login"
       // }, 2000)
     } catch (error: any) {
-      if(error.response.data.message === undefined) toast.error(`No ha sido posible cargar su compañía\n\n${error.response.data}`)
-      else {toast.error(`No ha sido posible cargar su compañía\n\n${error.response.data.message}`)}
+      if (error.response.data.message === undefined)
+        toast.error(
+          `No ha sido posible cargar su compañía\n\n${error.response.data}`
+        );
+      else {
+        toast.error(
+          `No ha sido posible cargar su compañía\n\n${error.response.data.message}`
+        );
+      }
       console.log(error.response.data);
-    };
-  }  
+    }
+  };
 };
 
 export interface UserData {
@@ -197,7 +213,7 @@ export interface UserData {
 }
 //action crear user comprador
 export const createdUser = (userData: UserData) => {
-  return (async (dispatch: Dispatch<any>) => {
+  return async (dispatch: Dispatch<any>) => {
     try {
       let createdUserResponse = await axios.post("/user", userData);
       dispatch({
@@ -208,14 +224,12 @@ export const createdUser = (userData: UserData) => {
       setTimeout(()=>{
         window.location.href = "/login"
       }, 2000)
-
     } catch (error) {
       toast.error("Error al crear usuario");
     }
-  }
-  )
+  };
 };
- 
+
 /// LOGIN ____________________________________________________________________________________________
 
 export interface loginAction {
@@ -223,12 +237,12 @@ export interface loginAction {
   payload: loginPayload;
 }
 export interface loginUserData {
-  email: string,
-  password: string,
+  email: string;
+  password: string;
 }
 export interface loginPayload {
-  access: boolean,
-  user: loginUser
+  access: boolean;
+  user: loginUser;
 }
 export interface loginUser {
   id: string;
@@ -244,7 +258,7 @@ export interface loginUser {
   state: string;
   address: string;
   image?: Text;
-  company?: string
+  company?: string;
   role: UserRole;
 }
 enum UserRole {
@@ -257,19 +271,19 @@ export const login = (loginUserData: loginUserData) => {
   try {
     const endpoint = "/login";
     return async function (dispatch: Dispatch<loginAction>) {
-      const url = `${endpoint}?email=${loginUserData.email}&password=${loginUserData.password}`
+      const url = `${endpoint}?email=${loginUserData.email}&password=${loginUserData.password}`;
       const { data } = await axios.get(url);
-      saveUserData(data)
-      dispatch ({
+      saveUserData(data);
+      dispatch({
         type: LOGIN,
         payload: data,
       });
-      toast.success("Login successful")
-    }
+      toast.success("Login successful");
+    };
   } catch (error) {
-    toast.error("Login Error")
+    toast.error("Login Error");
   }
-}
+};
 // LOGIN ACTION
 export const logout = () => {
   return {
@@ -277,14 +291,14 @@ export const logout = () => {
   };
 };
 
-export const verificationLogin = (user:any)=>{
- return {
-  type: LOGIN_VERIFICATION,
-  payload: user
- } 
-}
+export const verificationLogin = (user: any) => {
+  return {
+    type: LOGIN_VERIFICATION,
+    payload: user,
+  };
+};
 
-export const uploadImage = (url: any)=> {
+export const uploadImage = (url: any) => {
   return {
     type: URL_IMAGE,
     payload: url
@@ -294,6 +308,25 @@ export const uploadImage = (url: any)=> {
 export const hasNavigatedTrue = () => {
   return {
     type: HAS_NAVIGATED
+  }
+}
+//Delete cart 
+export const deleteCartStorage =()=>{
+  return {
+    type: DELETE_CARTSTORAGE
+  }
+}
+export const idBuyer = (id:string)=> {
+  return {
+    type: ID_BUYER,
+    payload: id 
+  }
+}
+
+export const idSeller = (id:string)=> {
+  return {
+    type: ID_SELLER,
+    payload: id 
   }
 }
 

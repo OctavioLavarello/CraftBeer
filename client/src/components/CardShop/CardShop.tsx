@@ -44,7 +44,7 @@ const CardShop = () => {
         try {
             const response = await axios.get<responseBack>(endpoint, { params: filters });
             setAllBeersData(response.data.products);
-            
+            console.log(response.data.products);
             dispatch(totalPages(response.data.totalPages))
         } catch (error) {
             console.error(error);

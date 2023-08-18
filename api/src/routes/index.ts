@@ -1,5 +1,5 @@
-import {Router} from 'express'
-import postUserPerson from "../controller/postUserPerson"
+import { Router } from "express";
+import postUserPerson from "../controller/postUserPerson";
 import postCompany from "../controller/postCompany";
 import getAllCompanies from '../controller/getAllCompanies';
 import postProduct from '../controller/postProduct';
@@ -16,6 +16,10 @@ import postShoppingHistory from '../controller/postShoppingHistory';
 import getShoppingHistories from '../controller/getShoppingHistories';
 import getPersonById from '../controller/getPersonById';
 import postContactMe from "../controller/postContactMe";
+import favoriteHandler from "../controller/FavoriteHandler"
+import reciveWebHook from "../controller/payment/Webhook";
+import getAllFavoritesPerson from "../controller/getAllFavoritesPerson";
+
 const router = Router();
 
 //-------- post routes -----//
@@ -25,6 +29,7 @@ router.post("/product", postProduct);
 router.post("/qualification", postQualification);
 router.post("/shoppingHistory", postShoppingHistory);
 router.post("/contactme", postContactMe)
+router.post("/favorite", favoriteHandler)
 
 
 // ------- get routes ------- //
@@ -35,7 +40,7 @@ router.get("/login", logIn);
 router.get("/persons", getAllUserPersons);
 router.get("/shoppingHistories", getShoppingHistories);
 router.get("/persons/:idPerson", getPersonById);
-
+router.get("/favorite/:idperson", getAllFavoritesPerson)
 // ------- update routes-------//
 router.put("/user", putUserPerson);
 router.put("/company", putUserCompany);
@@ -43,7 +48,8 @@ router.put("/product/:productId", putProduct);
 
 // ------- payment routes ----//
 
-router.post("/create-order", createOrder)
+router.post("/create-order", createOrder);
+router.post("/webhook", reciveWebHook);
 
 
 module.exports = router

@@ -30,11 +30,20 @@ interface EditableUserData {
   document?: string;
   email?: string;
   password?: string;
-  address?: string;
+  address?: string; 
   image?: string;
   country?: string;
   city?: string;
   state?: string;
+}
+interface Errors {
+  name: string;
+  lastName: string;
+  document: string;
+  country: string;
+  city: string;
+  state: string;
+  address: string;
 }
 
 
@@ -45,6 +54,27 @@ const User = () => {
   const [editedUserData, setEditedUserData] = useState<EditableUserData>({});
   const urlImage = useSelector((state: AppState) => state.urlImage);
 
+  const [errors, setErrors] = useState({
+    name: "Se requiere nombre",
+    lastName: "Se requiere apellido",
+    document: "Se requiere documento",
+    country:"Se requiere pais",
+    city:"Se requiere ciudad",
+    state:"Se requiere estado",
+    address: "Se requiere direccion",
+    // image: "Se requiere una imagen",
+  })
+
+  const validation = (input: any, name: keyof Errors) => {
+    const requiredFields: (keyof Errors)[] = ["name", "lastName", "document", "country", "city", "state", "address"];
+    if (requiredFields.includes(name)) {
+      if (input[name] !== "") {
+        setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+      } else {
+        setErrors((prevErrors) => ({ ...prevErrors, [name]: "Información requerida" }));
+      }
+    }
+  };
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -68,9 +98,9 @@ const User = () => {
   }, [urlImage]);
 
   const handleEditClick = () => {
-    // Initialize editedUserData with the current user data
-    setEditedUserData(userData || {});
+    setEditedUserData({ ...userData }); 
     setIsEditMode(true);
+console.log(userData)
   };
   
 
@@ -80,7 +110,13 @@ const User = () => {
       ...prevData,
       [name]: value,
     }));
+    validation({ [name]: value }, name as keyof Errors);
     setIsEditMode(true);
+  };
+
+
+  const disable = (): boolean => {
+    return Object.values(errors).some((error) => error !== "");
   };
   
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -98,10 +134,10 @@ const User = () => {
   return (
     <Container>
     <Row className={styles.Columna}>
-      <Col>
-        <Card>
+      <Col >
+        <Card className={styles.box}>
           <Card.Body>
-            <Card.Title>MIS DATOS PERSONALES!!!</Card.Title>
+            <Card.Title className={styles.Title}>MIS DATOS PERSONALES!!!</Card.Title>
             <Card.Text>Nombre: {userData?.name}</Card.Text>
             {isEditMode ? (
               <Form onSubmit={handleFormSubmit}>
@@ -113,11 +149,12 @@ const User = () => {
                     value={editedUserData.name}
                     onChange={handleInputChange}
                   />
+                   <h6 className={styles.mensajes}>{errors.name}</h6>
                 </Form.Group>
                    <Form.Group controlId="formImage">
                     <Form.Label>Imagen</Form.Label>
                     <DragAndDrop />
-                    <Form.Control
+                    <Form.Control 
                       type="text"
                       name="image"
                       value={editedUserData.image}
@@ -131,15 +168,17 @@ const User = () => {
                     value={editedUserData.lastName}
                    onChange={handleInputChange}
                   />
+                   <h6 className={styles.mensajes}>{errors.lastName}</h6>
                   </Form.Group>
                   <Form.Group controlId="formDocument">
                   <Form.Label>Documento</Form.Label>
                    <Form.Control
-                    type="text"
+                    type="number"
                     name="document"
                     value={editedUserData.document}
                    onChange={handleInputChange}
                   />
+                   <h6 className={styles.mensajes}>{errors.document}</h6>
                   </Form.Group>
                 </Form.Group>
                 <Form.Group controlId="formCountry">
@@ -150,6 +189,7 @@ const User = () => {
                     value={editedUserData.country}
                    onChange={handleInputChange}
                   />
+                   <h6 className={styles.mensajes}>{errors.country}</h6>
                 </Form.Group>
                 <Form.Group controlId="formCity">
                   <Form.Label>Ciudad</Form.Label>
@@ -159,6 +199,7 @@ const User = () => {
                     value={editedUserData.city}
                    onChange={handleInputChange}
                   />
+                   <h6 className={styles.mensajes}>{errors.city}</h6>
                 </Form.Group>
                 <Form.Group controlId="formState">
                   <Form.Label>Estado</Form.Label>
@@ -168,6 +209,7 @@ const User = () => {
                     value={editedUserData.state}
                    onChange={handleInputChange}
                   />
+                   <h6 className={styles.mensajes}>{errors.state}</h6>
                 </Form.Group>
                 <Form.Group controlId="formAddress">
                   <Form.Label>Calle</Form.Label>
@@ -177,13 +219,14 @@ const User = () => {
                     value={editedUserData.address}
                    onChange={handleInputChange}
                   />
+                  <h6 className={styles.mensajes}>{errors.address}</h6>
                 </Form.Group>
-                <Button type="submit">Guardar cambios</Button>
+                <Button className={styles.buttonEdit} type="submit" disabled={disable()} >Guardar cambios</Button>
               </Form>
               
             ) : (
               <>
-                <Card.Img src={userData?.image} />
+                <Card.Img className={styles.image} src={userData?.image} />
                 <Card.Text>Apellido: {userData?.lastName}</Card.Text>
                 <Card.Text>Email: {userData?.email}</Card.Text>
                 <Card.Text>Documento: {userData?.document}</Card.Text>
@@ -191,15 +234,12 @@ const User = () => {
                 <Card.Text>Ciudad: {userData?.city}</Card.Text>
                 <Card.Text>Estado: {userData?.state}</Card.Text>
                 <Card.Text>Calle: {userData?.address}</Card.Text>
-                <Button onClick={handleEditClick}>Editar</Button>
+                <Button  className={styles.buttonEdit} onClick={handleEditClick}>Editar</Button>
               </>
             )}
           </Card.Body>
         </Card>
       </Col>
-    </Row>
-    <Row className={styles.Columna}>
-      <Col>{/* Other content */}</Col>
     </Row>
   </Container>
 );

@@ -12,3 +12,6 @@ export const TOTAL_PAGES = "TOTAL_PAGES";
 export const LOGIN_VERIFICATION = "LOGIN_VERIFICATION"
 export const URL_IMAGE = "URL_IMAGE"
 export const HAS_NAVIGATED = "HAS_NAVIGATED"
+export const DELETE_CARTSTORAGE= "DELETE_CARTSTORAGE"
+export const ID_BUYER = "ID_BUYER"
+export const ID_SELLER = "ID_SELLER"

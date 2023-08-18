@@ -22,6 +22,8 @@ const MyShop = () => {
             });
             setallHistoryData(response.data)
 
+console.log("esto es el id en Myshop",response.data);
+
 
         } catch (error) {
             console.error(error);
@@ -31,32 +33,30 @@ const MyShop = () => {
         getShopingHistory()
     }, [])
 
-    console.log(allHistoryData);
 
 
 
     return (
-        <>
-            <Container>
-                <div className={style.container}>
-                    <h2>Mis compras</h2>
-                    {allHistoryData.map((item:any) =>
-                    (<CardMyShop
-                        name={item.name}
-                        summary={item.summary}
-                        date={item.date}
-                        quantity={item.amount}
-                        unitPrice={item.unitPrice}
-                        totalPrice={item.totalPrice}
-                    />
 
-                    ))}
+        <Container>
+            <div className={style.container}>
+                <h2>Mis compras</h2>
+                {allHistoryData.map((item: any) =>
+                (<CardMyShop
+                    key={item.Items[0].id}
+                    name={item.Items[0].name}
+                    summary={item.Items[0].summary}
+                    date={item.Items[0].updatedAt}
+                    quantity={item.Items[0].amount}
+                    unitPrice={item.Items[0].unitPrice}
+                    totalPrice={item.Items[0].totalPrice}
+                    image={item.Items[0].image}
+                    id={item.Items[0].id}
+                />
+                ))}
+            </div>
+        </Container>
 
-
-                </div>
-
-            </Container>
-        </>
     )
 }
 export default MyShop

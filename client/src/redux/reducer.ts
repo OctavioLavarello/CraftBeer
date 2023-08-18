@@ -12,6 +12,9 @@ import {
   logout,
   urlImage,
   hasNavigatedTrue,
+  deleteStorageCart,
+  buyerId,
+  sellerId
 } from "./reducerFunctions";
 import {
   CREATED_PRODUCT,
@@ -26,6 +29,9 @@ import {
   LOGOUT,
   URL_IMAGE,
   HAS_NAVIGATED,
+  DELETE_CARTSTORAGE,
+  ID_BUYER,
+  ID_SELLER
 } from "../redux/actions/actionsTypes";
 import { SaveDataLS } from "../components/LocalStorage/LocalStorage";
 
@@ -63,6 +69,8 @@ export interface AppState {
   accessLogin: AccessLogin;
   urlImage: any;
   hasNavigated: boolean;
+  idBuyer: string
+  idSeller: string
 }
 export interface BeerFilters {
   IBU?: number,  // El signo de interrogación indica que la propiedad es opcional
@@ -93,6 +101,8 @@ export const initialState: AppState = {
   },
   urlImage: "",
   hasNavigated: false,
+  idBuyer:"",
+  idSeller: ""
 };
 
 const rootReducer = (
@@ -118,6 +128,9 @@ const rootReducer = (
     case LOCAL_STORAGE: {
       return saveLocalStorageCart(state,action);
     }
+    case DELETE_CARTSTORAGE :{
+      return deleteStorageCart(state)
+    }
     case LOGIN: {
       return login(state, action);
     }
@@ -135,6 +148,12 @@ const rootReducer = (
     }
     case HAS_NAVIGATED: {
       return hasNavigatedTrue(state)
+    }
+    case ID_BUYER: {
+      return buyerId(state, action)
+    }
+    case ID_SELLER: {
+      return sellerId(state, action)
     }
     default:
       return state;
