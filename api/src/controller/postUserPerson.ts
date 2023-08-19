@@ -14,7 +14,8 @@ const postUserPerson = async (req: Request, res: Response) => {
       image,
       country,
       city,
-      state
+      state,
+      role
     } = req.body;
     const errors = postUserValidation(
       name,
@@ -35,6 +36,9 @@ const postUserPerson = async (req: Request, res: Response) => {
       const EmailUnique = await UserCompany.findOne({where: {email: email} });
       if(EmailUnique) return res.status(400).json({ message: "This email is already registered" });
     }
+
+    let roleUser = role
+    if(!roleUser) roleUser = "Person"
     
     const userPerson = await UserPerson.create({
       name,
@@ -48,7 +52,7 @@ const postUserPerson = async (req: Request, res: Response) => {
       country,
       city,
       state,
-      role: "Person",
+      role: roleUser,
     });
 
     if (userPerson) {

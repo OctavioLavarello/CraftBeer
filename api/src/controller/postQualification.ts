@@ -5,6 +5,8 @@ const postQualification = async (req: Request, res: Response) => {
   try {
     // se recibe por body
     const { rate, userPersonId, productId, comment = "" } = req.body;
+    console.log(req.body);
+    
     if (!rate || !userPersonId || !productId) {
       return res.status(400).send("Required information");
     }

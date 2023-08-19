@@ -33,6 +33,8 @@ import Succes from "./components/Succes/Succes";
 import { hasNavigatedTrue, verificationLogin } from "./redux/actions/actions";
 // STYLES
 import "./App.css";
+import AdminHistoryShop from "./views/Admin/AdminHistoryShop/adminHistoryShop";
+import Pending from "./components/Pending/Pending";
 
 // APP
 function App() {
@@ -107,6 +109,9 @@ function App() {
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Error />} />
+            <Route path="/admin" element={<Administrador />} />
+            <Route path="/admin/buyer/:id" element={<DetailBuyer />} />
+            <Route path="/admin/seller/:id" element={<DetailSeller />} />
           </Routes>
         ) : accessLogin.role === "Person" ? (
           <Routes>
@@ -120,6 +125,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/myShop" element={<MyShop />} />
             <Route path="/succes" element={<Succes />} />
+            <Route path="/pending" element={<Pending/>} />
             <Route path="*" element={<Error />} />
           </Routes>
         ) : (accessLogin.role === "Company" ? (
@@ -146,6 +152,7 @@ function App() {
             <Route path="/admin" element={<Administrador />} />
             <Route path="/admin/buyer/:id" element={<DetailBuyer />} />
             <Route path="/admin/seller/:id" element={<DetailSeller />} />
+            <Route path="/adminHistoryShop" element={<AdminHistoryShop />} />
             <Route path="*" element={<Error />} />
           </Routes>
         ) : null))}

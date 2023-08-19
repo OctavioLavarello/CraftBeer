@@ -5,6 +5,9 @@ import { NavLink } from "react-router-dom";
 import loginValidation from "./LoginValidation";
 import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
+// GOOGLE LOGIN
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
 // ACTION
 import { login } from "../../redux/actions/actions";
 // STYLES
@@ -137,6 +140,16 @@ const Login: React.FC = () => {
                         Sign Up
                     </Button>
                 </NavLink>
+                <GoogleOAuthProvider clientId="613986479282-t9j4clt86pdii5h3m22abarctpm7k3d7.apps.googleusercontent.com">
+                    <GoogleLogin
+                        onSuccess={(credentialResponse: any) => {
+                            console.log(credentialResponse);
+                        }}
+                        onError={() => {
+                            console.log('Login Failed');
+                        }}
+                    />
+                </GoogleOAuthProvider>
             </Form>
         </div>
     );
