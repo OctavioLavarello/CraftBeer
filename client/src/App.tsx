@@ -36,6 +36,7 @@ import { hasNavigatedTrue, verificationLogin } from "./redux/actions/actions";
 import "./App.css";
 import AdminHistoryShop from "./views/Admin/AdminHistoryShop/adminHistoryShop";
 import Pending from "./components/Pending/Pending";
+import AdminUserModify from "./views/Admin/AdminUserModify/AdminUserModify";
 
 // APP
 function App() {
@@ -114,6 +115,8 @@ function App() {
             <Route path="/admin/buyer/:id" element={<DetailBuyer />} />
             <Route path="/admin/seller/:id" element={<DetailSeller />} />
             <Route path="/admin/buyer/historyShop" element={<AdminHistoryShop/>} />
+            <Route path="/admin/buyer/adminUserModify" element={<AdminUserModify/>} />
+
             <Route path="*" element={<Error />} />
           </Routes>
         ) : accessLogin.role === "Person" ? (
@@ -157,6 +160,7 @@ function App() {
             <Route path="/admin/seller/:id" element={<DetailSeller />} />
             <Route path="/adminHistoryShop" element={<AdminHistoryShop />} />
             <Route path="/admin/seller/products" element={<ProductsBySeller/>} />
+            <Route path="/admin/buyer/adminUserModify" element={<ProductsBySeller/>} />
             <Route path="*" element={<Error />} />
           </Routes>
         ) : null))}
