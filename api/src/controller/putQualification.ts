@@ -3,14 +3,16 @@ import { Qualification } from "../../db";
 
 const putQualification = async (req: Request, res: Response) => {
   try {
-    //llega el objeto empresa por body
+    
     const qualification = req.body;
-    // busca la persona por id , compara todos los datos y los actualiza
+    
     const updateQualification = await Qualification.update(qualification, {
       where: { id: qualification.id },
     });
-    if (!updateQualification) {
-      return res.status(404).send("Qualification not found");
+    console.log(updateQualification);
+    
+    if (updateQualification [0] === 0) {
+      return res.status(404).send("Qualification not updated");
     } else {
       return res.status(200).send("Qualification was successfully updated");
     }
