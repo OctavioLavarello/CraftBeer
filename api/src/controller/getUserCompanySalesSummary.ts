@@ -9,7 +9,7 @@ const getUserCompanySalesSummary = async (req: Request, res: Response) => {
     //se busca los productos y la relacion de sus ventas
     const products = await Product.findAll({
       where: { userCompanyId: userCompanyId },
-      attributes: ["id", "name", "image", "price"],
+      attributes: ["id", "name", "image", "price", "description"],
       //Include Items
       include: {
         model: Item,
@@ -18,29 +18,33 @@ const getUserCompanySalesSummary = async (req: Request, res: Response) => {
     });
     //organizar items y enviar detalle de venta por producto
     const salesSummary = products.map(
-      (
-        arg: {
-          id: UUID;
-          name: String;
-          image: String;
-          price: String;
-          Items: [];
-          get: Function;
-        }
-      ) => {
-        let argplain = arg.get({ plain: true });// para enviar los datos planos
-        let amountTotal:number=0;
-        let priceTotal:number=0;
+      (arg: {
+        id: UUID;
+        name: String;
+        image: String;
+        price: String;
+        description: String;
+        Items: [];
+        get: Function;
+      }) => {
+        let argplain = arg.get({ plain: true }); // para enviar los datos planos
+        let amountTotal: number = 0;
+        let priceTotal: number = 0;
         argplain.Items.forEach(
-          (item: {
-            amount: number;
-            totalPrice: number;
-          }) => {
-            amountTotal = amountTotal + item.amount
-            priceTotal = priceTotal + item.totalPrice
+          (item: { amount: number; totalPrice: number }) => {
+            amountTotal = amountTotal + item.amount;
+            priceTotal = priceTotal + item.totalPrice;
           }
         );
-        return {id:argplain.id,name:argplain.name,image:argplain.image,price:argplain.price,amountTotal,priceTotal} ;
+        return {
+          id: argplain.id,
+          name: argplain.name,
+          image: argplain.image,
+          price: argplain.price,
+          description: argplain.description,
+          amountTotal,
+          priceTotal,
+        };
       }
     );
 
@@ -56,4 +60,4 @@ const getUserCompanySalesSummary = async (req: Request, res: Response) => {
   }
 };
 
-export default getUserCompanySalesSummary ;
+export default getUserCompanySalesSummary;
