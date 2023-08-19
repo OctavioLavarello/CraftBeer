@@ -14,11 +14,12 @@ interface BeerData {
     IBU: number;
     type: string;
     description: string;
-    degreeOfAlcohol: number;
+    ABV: number;
     presentation: string;
     price: number;
     stock: number;
     qualification?: number;
+    
 }
 interface responseBack {
     products: BeerData[],
@@ -34,6 +35,7 @@ const CardShop = () => {
     let [allBeersData, setAllBeersData] = useState<BeerData[]>([]);
 
 
+console.log("Estosssss",allBeersData);
 
     // traemos el estado de filtros 
     const filters: BeerFilters = useSelector((state: AppState) => state.beerFilters)
@@ -78,6 +80,7 @@ const CardShop = () => {
             <h5>Prueba con filtros distintos</h5>
         </div>)
 
+console.log("esto es la valoracionnnn",allBeersData);
 
 
     return (
@@ -94,11 +97,12 @@ const CardShop = () => {
                     type={product.type}
                     IBU={product.IBU}
                     name={product.name}
-                    degreeOfAlcohol={product.degreeOfAlcohol}
+                    ABV={product.ABV}
                     summary={product.description}
                     image={product.image}
                     price={product.price}
                     stock={product.stock}
+                    qualification={product.qualification}
                 />
             ))}
         </>

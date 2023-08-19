@@ -19,8 +19,10 @@ import postContactMe from "../controller/postContactMe";
 import favoriteHandler from "../controller/FavoriteHandler"
 import reciveWebHook from "../controller/payment/Webhook";
 import getAllFavoritesPerson from "../controller/getAllFavoritesPerson";
+import getUserCompanySalesDetail from "../controller/getUserCompanySalesDetail"
 import getCompanyById from "../controller/getCompanyById";
 import getUserCompanySalesSummary from "../controller/getUserCompanySalesSummary"
+import putQualification from "../controller/putQualification";
 
 const router = Router();
 
@@ -42,7 +44,8 @@ router.get("/login", logIn);
 router.get("/persons", getAllUserPersons);
 router.get("/shoppingHistories", getShoppingHistories);
 router.get("/persons/:idPerson", getPersonById);
-router.get("/favorite/:idperson", getAllFavoritesPerson);
+router.get("/favorite/:idperson", getAllFavoritesPerson)
+router.get("/usercompanysales/:userCompanyId",getUserCompanySalesDetail)
 router.get("/company/:idCompany", getCompanyById);
 
 router.get("/usercompanysalessummary/:userCompanyId", getUserCompanySalesSummary)
@@ -51,6 +54,8 @@ router.get("/usercompanysalessummary/:userCompanyId", getUserCompanySalesSummary
 router.put("/user", putUserPerson);
 router.put("/company", putUserCompany);
 router.put("/product/:productId", putProduct);
+router.put("/qualification", putQualification);
+
 
 // ------- payment routes ----//
 
