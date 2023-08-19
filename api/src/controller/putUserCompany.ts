@@ -12,7 +12,12 @@ const putUserCompany = async (req: Request, res: Response) => {
     if (updateUserCompany[0] === 0) {
       return res.status(400).send("Update failed");
     } else {
-      return res.status(200).json("was successfully updated");
+      const userCompanyUpdated = await UserCompany.findByPk(company.id);
+      if(!userCompanyUpdated){
+        return res.status(200).json("was successfully updated");
+      }else{
+        return res.status(200).json(userCompanyUpdated);
+      }
     }
   } catch (error) {
     if (error instanceof Error) {
