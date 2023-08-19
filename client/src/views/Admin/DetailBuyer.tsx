@@ -18,6 +18,8 @@ import { toast } from "react-hot-toast";
 const DetailBuyer: React.FC = () => {
   const navigate = useNavigate()
   const id = useSelector((state: AppState) => state.idBuyer);
+  console.log(id);
+  
   const [infoUser, setInfoUser] = useState<any>({});
 
   useEffect(() => {
@@ -49,7 +51,7 @@ const DetailBuyer: React.FC = () => {
 
   const historyShop =(eventKey:any)=>{
   if(eventKey === "1")  navigate(`/admin/buyer/historyShop`)
-    
+  if(eventKey === "2")  navigate(`/admin/buyer/adminUserModify`)
   }
 
   return (
@@ -76,7 +78,7 @@ const DetailBuyer: React.FC = () => {
           </NavbarBrand>
           <NavDropdown title="Otras opciones" menuVariant="dark" onSelect={historyShop}>
             <NavDropdown.Item  eventKey="1">Historial de compras</NavDropdown.Item>
-            <NavDropdown.Item>Modificar usuario</NavDropdown.Item>
+            <NavDropdown.Item eventKey="2">Modificar usuario</NavDropdown.Item>
           </NavDropdown>
         </div>
         <Row style={{ height: "100%", width: "100%", margin: "0.5%" }}>
