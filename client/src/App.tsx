@@ -25,6 +25,7 @@ import DetailSeller from "./views/Admin/DetailSeller";
 // import PayCart from './views/Pay/Pay';
 import MyShop from "./views/MyShop/MyShop";
 import Error from "./views/Error/Error";
+import ProductsBySeller from "./views/Admin/ProductsBySeller"
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar";
 import Footer from "./components/footer/Footer";
@@ -153,6 +154,7 @@ function App() {
             <Route path="/admin/buyer/:id" element={<DetailBuyer />} />
             <Route path="/admin/seller/:id" element={<DetailSeller />} />
             <Route path="/adminHistoryShop" element={<AdminHistoryShop />} />
+            <Route path="/admin/seller/products" element={<ProductsBySeller/>} />
             <Route path="*" element={<Error />} />
           </Routes>
         ) : null))}
