@@ -1,14 +1,17 @@
+@media (max-width: 768px) {
 
     .search {
         margin-top: 30px;
         width: 80%;
-        padding-left: 400px;
+        padding-left: 0px;
         margin-bottom: 20px;
         display: flex;
         flex-direction: row;
-    
-    }
 
+    }
+    .containerTitlePublicidad {
+        display: none;
+    }
     .input_Search {
         background-color: rgb(197, 193, 193);
         width: 80%;
@@ -19,13 +22,13 @@
         font-weight: 600;
         text-align: center;
         /* Centra el texto horizontalmente dentro del input */
-    
+
         box-shadow: 2px 2px 2px rgba(187, 182, 182, 0.3)
     }
-    
+
     .button_Page {
         border: none;
-        
+
         width: 40px;
         height: 40px;
         border-radius: 5px;
@@ -33,10 +36,10 @@
         margin: 3px;
         font-size: 20px;
     }
-    
+
     .button_Pagelateral {
         border: 0.1px solid #d09527;
-    
+
         border: none;
         width: 40px;
         height: 40px;
@@ -45,27 +48,33 @@
         background-color: rgb(171, 163, 147);
         margin: 3px;
     }
-    .containerpublicidad{
-     
-        width: 300px;
-        margin-top: 10px;
+
+    .containerpublicidad {
+        display: none;
+        width: 200px;
+        margin-top: 0px;
         height: 169px;
         margin-bottom: 20px;
         overflow: hidden;
     }
-    .containerLogo{
+
+    .containerLogo {
         border: 0.1px solid #d09527;
         box-shadow: 0 0 8px 4px rgba(208, 149, 39, 0.3);
-        width: 300px;
+        width: 200px;
         margin-top: -60px;
-        height: 300px;
+        height: 200px;
         margin-bottom: 20px;
         overflow: hidden;
         border-radius: 10%;
+        display: none;
+
+        margin-left: 20px;
     }
+
     .button_Pagechange {
         box-shadow: 0 0 8px 4px rgba(208, 149, 39, 0.3);
-    
+
         border: none;
         width: 40px;
         height: 40px;
@@ -73,11 +82,11 @@
         background-color: rgb(204, 146, 40);
         margin: 3px;
     }
-    
+
     .button_Pagechange:hover {
         scale: 1.1;
     }
-    
+
     .button_Pagechange:disabled {
         border: none;
         width: 30px;
@@ -87,7 +96,7 @@
         background-color: rgb(204, 146, 40);
         margin: 3px;
     }
-    
+
     .button {
         border: none;
         border-radius: 100px;
@@ -97,16 +106,16 @@
         background-color: black;
         box-shadow: 0 0 2px 2px rgba(187, 182, 182, 0.3);
     }
-    
+
     .button:hover {
         scale: 1.1;
         transition: .3s;
     }
-    
+
     .button:disabled {
         opacity: 0.3;
     }
-    
+
     .buttonAll {
         border: none;
         border-radius: 100px;
@@ -116,7 +125,200 @@
         background-color: black;
         box-shadow: 0 0 2px 2px rgba(187, 182, 182, 0.3);
     }
-    
+
+    .imageCart {
+        position: fixed;
+        top: 290px;
+        right: 40px;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        cursor: pointer;
+        background-color: rgb(246, 246, 246);
+        padding: 15px;
+        border-radius: 50px;
+        z-index: 9999;
+
+    }
+
+    .imageCart:hover {
+        scale: 1.1;
+        transition: .2s;
+    }
+
+    .imageCart img {
+        width: 30px;
+        height: 30px;
+        margin-right: 5px;
+    }
+
+    .imageCartdiv {
+        text-align: center;
+        position: absolute;
+        align-items: center;
+        display: flex;
+        /* Utilizamos flexbox para centrar vertical y horizontalmente */
+        justify-content: center;
+        /* Centramos horizontalmente */
+        align-content: center;
+        width: 45px;
+        height: 45px;
+        margin-left: 30px;
+        margin-top: 40px;
+        border-radius: 100%;
+        background-color: rgb(0, 169, 34);
+    }
+
+    .cardsContainer {
+        padding-left: 0;
+        /* Agrega espacio interno en el contenedor de tarjetas */
+    }
+
+    .buttonAll:hover {
+        scale: 1.1;
+        transition: .3s;
+    }
+
+    .buttonAll:disabled {
+        opacity: 0.3;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 768px) and (max-width: 1365px) {
+    .search {
+        margin-top: 30px;
+        width: 80%;
+        padding-left: 300px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: row;
+
+    }
+    .containerTitlePublicidad {
+        margin-left: 12%;
+    }
+    .input_Search {
+        background-color: rgb(197, 193, 193);
+        width: 80%;
+        height: 40px;
+        color: rgb(29, 30, 30);
+        border-radius: 80px;
+        border: none;
+        font-weight: 600;
+        text-align: center;
+        /* Centra el texto horizontalmente dentro del input */
+
+        box-shadow: 2px 2px 2px rgba(187, 182, 182, 0.3)
+    }
+
+    .button_Page {
+        border: none;
+
+        width: 40px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: rgb(171, 163, 147);
+        margin: 3px;
+        font-size: 20px;
+    }
+
+    .button_Pagelateral {
+        border: 0.1px solid #d09527;
+
+        border: none;
+        width: 40px;
+        height: 40px;
+        opacity: 0.4;
+        border-radius: 5px;
+        background-color: rgb(171, 163, 147);
+        margin: 3px;
+    }
+
+    .containerpublicidad {
+
+        width: 200px;
+        margin-top: 0px;
+        height: 169px;
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+
+    .containerLogo {
+        border: 0.1px solid #d09527;
+        box-shadow: 0 0 8px 4px rgba(208, 149, 39, 0.3);
+        width: 200px;
+        margin-top: -60px;
+        height: 200px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        border-radius: 10%;
+        margin-left: 20px;
+    }
+
+    .button_Pagechange {
+        box-shadow: 0 0 8px 4px rgba(208, 149, 39, 0.3);
+
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: rgb(204, 146, 40);
+        margin: 3px;
+    }
+
+    .button_Pagechange:hover {
+        scale: 1.1;
+    }
+
+    .button_Pagechange:disabled {
+        border: none;
+        width: 30px;
+        opacity: 0.1;
+        height: 30px;
+        border-radius: 5px;
+        background-color: rgb(204, 146, 40);
+        margin: 3px;
+    }
+
+    .button {
+        border: none;
+        border-radius: 100px;
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+        background-color: black;
+        box-shadow: 0 0 2px 2px rgba(187, 182, 182, 0.3);
+    }
+
+    .button:hover {
+        scale: 1.1;
+        transition: .3s;
+    }
+
+    .button:disabled {
+        opacity: 0.3;
+    }
+
+    .buttonAll {
+        border: none;
+        border-radius: 100px;
+        width: 80px;
+        height: 40px;
+        margin-left: 10px;
+        background-color: black;
+        box-shadow: 0 0 2px 2px rgba(187, 182, 182, 0.3);
+    }
+
     .imageCart {
         position: fixed;
         top: 70px;
@@ -129,25 +331,28 @@
         padding: 15px;
         border-radius: 50px;
         z-index: 9999;
-    
+
     }
-    .imageCart:hover{
+
+    .imageCart:hover {
         scale: 1.1;
         transition: .2s;
     }
-    
+
     .imageCart img {
         width: 30px;
         height: 30px;
         margin-right: 5px;
-      }
-    
-    .imageCartdiv{
+    }
+
+    .imageCartdiv {
         text-align: center;
         position: absolute;
         align-items: center;
-        display: flex; /* Utilizamos flexbox para centrar vertical y horizontalmente */
-        justify-content: center; /* Centramos horizontalmente */
+        display: flex;
+        /* Utilizamos flexbox para centrar vertical y horizontalmente */
+        justify-content: center;
+        /* Centramos horizontalmente */
         align-content: center;
         width: 45px;
         height: 45px;
@@ -156,15 +361,210 @@
         border-radius: 100%;
         background-color: rgb(0, 169, 34);
     }
+
     .cardsContainer {
-      padding-left: 4%; /* Agrega espacio interno en el contenedor de tarjetas */
-      }
-    
+        padding-left: 0;
+        /* Agrega espacio interno en el contenedor de tarjetas */
+    }
+
     .buttonAll:hover {
         scale: 1.1;
         transition: .3s;
     }
-    
+
     .buttonAll:disabled {
         opacity: 0.3;
     }
+}
+
+
+
+
+
+
+
+/* pantallas de escritorio ________________ */
+@media (min-width: 1366px) and (max-width: 2219px) {
+    .search {
+        margin-top: 30px;
+        width: 80%;
+        padding-left: 400px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .containerTitlePublicidad {
+        margin-left: 12%;
+    }
+
+    .input_Search {
+        background-color: rgb(197, 193, 193);
+        width: 80%;
+        height: 40px;
+        color: rgb(29, 30, 30);
+        border-radius: 80px;
+        border: none;
+        font-weight: 600;
+        text-align: center;
+        /* Centra el texto horizontalmente dentro del input */
+
+        box-shadow: 2px 2px 2px rgba(187, 182, 182, 0.3)
+    }
+
+    .button_Page {
+        border: none;
+
+        width: 40px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: rgb(171, 163, 147);
+        margin: 3px;
+        font-size: 20px;
+    }
+
+    .button_Pagelateral {
+        border: 0.1px solid #d09527;
+
+        border: none;
+        width: 40px;
+        height: 40px;
+        opacity: 0.4;
+        border-radius: 5px;
+        background-color: rgb(171, 163, 147);
+        margin: 3px;
+    }
+
+    .containerpublicidad {
+
+        width: 300px;
+        margin-top: 10px;
+        height: 169px;
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+
+    .containerLogo {
+        border: 0.1px solid #d09527;
+        box-shadow: 0 0 8px 4px rgba(208, 149, 39, 0.3);
+        width: 300px;
+        margin-top: -60px;
+        height: 300px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        border-radius: 10%;
+    }
+
+    .button_Pagechange {
+        box-shadow: 0 0 8px 4px rgba(208, 149, 39, 0.3);
+
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: rgb(204, 146, 40);
+        margin: 3px;
+    }
+
+    .button_Pagechange:hover {
+        scale: 1.1;
+    }
+
+    .button_Pagechange:disabled {
+        border: none;
+        width: 30px;
+        opacity: 0.1;
+        height: 30px;
+        border-radius: 5px;
+        background-color: rgb(204, 146, 40);
+        margin: 3px;
+    }
+
+    .button {
+        border: none;
+        border-radius: 100px;
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+        background-color: black;
+        box-shadow: 0 0 2px 2px rgba(187, 182, 182, 0.3);
+    }
+
+    .button:hover {
+        scale: 1.1;
+        transition: .3s;
+    }
+
+    .button:disabled {
+        opacity: 0.3;
+    }
+
+    .buttonAll {
+        border: none;
+        border-radius: 100px;
+        width: 80px;
+        height: 40px;
+        margin-left: 10px;
+        background-color: black;
+        box-shadow: 0 0 2px 2px rgba(187, 182, 182, 0.3);
+    }
+
+    .imageCart {
+        position: fixed;
+        top: 70px;
+        right: 40px;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        cursor: pointer;
+        background-color: rgb(246, 246, 246);
+        padding: 15px;
+        border-radius: 50px;
+        z-index: 9999;
+
+    }
+
+    .imageCart:hover {
+        scale: 1.1;
+        transition: .2s;
+    }
+
+    .imageCart img {
+        width: 30px;
+        height: 30px;
+        margin-right: 5px;
+    }
+
+    .imageCartdiv {
+        text-align: center;
+        position: absolute;
+        align-items: center;
+        display: flex;
+        /* Utilizamos flexbox para centrar vertical y horizontalmente */
+        justify-content: center;
+        /* Centramos horizontalmente */
+        align-content: center;
+        width: 45px;
+        height: 45px;
+        margin-left: 30px;
+        margin-top: 40px;
+        border-radius: 100%;
+        background-color: rgb(0, 169, 34);
+    }
+
+    .cardsContainer {
+        padding-left: 4%;
+        /* Agrega espacio interno en el contenedor de tarjetas */
+    }
+
+    .buttonAll:hover {
+        scale: 1.1;
+        transition: .3s;
+    }
+
+    .buttonAll:disabled {
+        opacity: 0.3;
+    }
+
+}
