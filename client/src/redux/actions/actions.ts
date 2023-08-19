@@ -17,7 +17,8 @@ import {
   HAS_NAVIGATED,
   DELETE_CARTSTORAGE,
   ID_BUYER,
-  ID_SELLER
+  ID_SELLER,
+  COMPANY_SALES_SUMMARY,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
 
@@ -328,5 +329,21 @@ export const idSeller = (id:string)=> {
     type: ID_SELLER,
     payload: id 
   }
+}
+
+// SALES SUMMARY
+export interface simpleAction {
+  type: string;
+  payload: string;
+}
+export const userCompanySalesSummary = (id: string) => {
+  const endpoint = "/usercompanysalessummary/";
+  return async function (dispatch: Dispatch<simpleAction>) {
+    const { data } = await axios.get(`${endpoint}${id}`);
+    return dispatch({
+      type: COMPANY_SALES_SUMMARY,
+      payload: data,
+    });
+  };
 }
 
