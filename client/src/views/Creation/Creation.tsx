@@ -273,19 +273,21 @@ const Creation = () => {
         </div>
       </Form>
       <div className="bodyMisArt">
-        <span className="spamMisArt">
-          <strong>MIS ARTÍCULOS PUBLICADOS</strong>
-        </span>
-        {currentBeers.map((card: any) => (
-          <CardUserProduct 
-          key={card.id} 
-          id={card.id}
-          name={card.name} 
-          image={card.image} 
-          price={card.price}
-          description={card.description}
-          />
-        ))}
+        <div>
+          <span className="spamMisArt">
+            <strong>MIS ARTÍCULOS PUBLICADOS</strong>
+          </span>
+          {currentBeers.map((card: any) => (
+            <CardUserProduct 
+            key={card.id} 
+            id={card.id}
+            name={card.name} 
+            image={card.image} 
+            price={card.price}
+            description={card.description}
+            />
+          ))}
+        </div>
         <div>
           <CreationPagination
           itemsPerPage={itemsPerPage}
