@@ -63,13 +63,28 @@ const BuyerSingUp: React.FC = () => {
   })
 
   const validation = (input: any, name: any) =>{
-    if(name==="name"){
-      if (input.name !== "") setErrors({ ...errors, name: "" });
-      else setErrors({ ...errors, name: "Información requerida" });
+    if (name === "name") {
+      if (input.name !== "") {
+        if (/^[a-zA-Z]+$/.test(input.name)) {  
+          setErrors({ ...errors, name: "" });
+        } else {
+          setErrors({ ...errors, name: "Solo se permiten letras" });
+        }
+      } else {
+        setErrors({ ...errors, name: "Información requerida" });
+      }
     }
+    
     if(name === "lastName"){
-      if (input.lastName !== "") setErrors({ ...errors, lastName: "" });
-      else setErrors({ ...errors, lastName: "Información requerida" });
+      if (input.lastName !== "") {
+        if (/^[a-zA-Z]+$/.test(input.lastName)) {  
+          setErrors({ ...errors, lastName: "" });
+        } else {
+          setErrors({ ...errors, lastName: "Solo se permiten letras" });
+        }
+      } else {
+        setErrors({ ...errors, lastName: "Información requerida" });
+      }
     }
     if(name === "document"){
       if (input.document !== "") setErrors({ ...errors, document: "" });
@@ -102,12 +117,26 @@ const BuyerSingUp: React.FC = () => {
       else setErrors({ ...errors, country: "Información requerida" });
     }
     if(name === "city"){
-      if (input.city !== "") setErrors({ ...errors, city: "" });
-      else setErrors({ ...errors, city: "Información requerida" });
+      if (input.city !== "") {
+        if (/^[a-zA-Z]+$/.test(input.city)) {  
+          setErrors({ ...errors, city: "" });
+        } else {
+          setErrors({ ...errors, city: "Solo se permiten letras" });
+        }
+      } else {
+        setErrors({ ...errors, city: "Información requerida" });
+      }
     }
     if(name === "state"){
-      if (input.state !== "") setErrors({ ...errors, state: "" });
-      else setErrors({ ...errors, state: "Información requerida" });
+      if (input.state !== "") {
+        if (/^[a-zA-Z]+$/.test(input.state)) {  
+          setErrors({ ...errors, state: "" });
+        } else {
+          setErrors({ ...errors, state: "Solo se permiten letras" });
+        }
+      } else {
+        setErrors({ ...errors, state: "Información requerida" });
+      }
     }
     if(name === "address"){
       if (input.address !== "") setErrors({ ...errors, address: "" });

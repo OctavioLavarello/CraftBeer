@@ -1,0 +1,147 @@
+.all {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.formMaster {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    border: 0.02vh solid rgba(163, 125, 52, 1);
+    border-top: none;
+    border-bottom: none;
+}
+.formMasterError {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    border: 0.02vh solid red;
+    border-top: none;
+    border-bottom: none;
+    box-shadow: 0 0 1vw red;
+}
+.formDiv {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.form, .formPut {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 1vw;
+    margin-top: 1vh;
+}
+.form input, .input {
+    background-color: rgb(63, 63, 63);
+    border-color: rgba(163, 125, 52, 1);
+    color: white;
+    margin-bottom: 2vh;
+    width: 22.5vw;
+}
+.form input:focus {
+    background-color: rgb(63, 63, 63);
+    border-color: rgba(163, 125, 52, 1);
+    color: white;
+    margin-bottom: 2vh;
+    box-shadow: none;
+}
+.input:focus {
+    background-color: rgb(63, 63, 63);
+    border-color: rgba(163, 125, 52, 1);
+    color: white;
+    box-shadow: 0 0 1vw rgba(163, 125, 52, 0.5);
+}
+.input::placeholder {
+    color: rgba(163, 125, 52, 0.5);
+}
+.inputError {
+    background-color: rgb(63, 63, 63);
+    border-color: red;
+    color: white;
+    margin-bottom: 2vh;
+    width: 22.5vw;
+}
+.inputError:focus {
+    background-color: rgb(63, 63, 63);
+    border-color: red;
+    color: white;
+    box-shadow: 0 0 1vw red;
+}
+.validationMessage {
+    color: red;
+    margin-left: 1vw;
+}
+.divInputP {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.edit {
+    height: 7vh;
+    width: 10vw;
+    margin-left: 1vw;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+    border: 0.02vh solid rgb(255, 167, 3);
+    border-radius: 1vh;
+    background-color: rgba(163, 125, 52, 1);
+}
+.edit:hover {
+    height: 7vh;
+    width: 10vw;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+    border: 0.02vh solid rgb(255, 167, 3);
+    border-radius: 1vh;
+    background-color: rgba(163, 125, 52, 1);
+    box-shadow: 0 0 1.5vh rgba(163, 125, 52, 1);
+}
+.formPut button {
+    height: 7vh;
+    width: 10vw;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+    border: 0.02vh solid rgb(255, 167, 3);
+    border-radius: 1vh;
+    background-color: rgba(163, 125, 52, 1);
+}
+.formPut button:hover {
+    height: 7vh;
+    width: 10vw;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+    border: 0.02vh solid rgb(255, 167, 3);
+    border-radius: 1vh;
+    background-color: rgba(163, 125, 52, 1);
+    box-shadow: 0 0 1.5vh rgba(163, 125, 52, 1);
+}
+.formPut button:disabled {
+    height: 7vh;
+    width: 10vw;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+    border: 0.02vh solid rgb(87, 87, 87);;
+    border-radius: 1vh;
+    background-color: rgb(87, 87, 87);
+}
+.formPut button:disabled:hover {
+    box-shadow: none;
+}
+.formPut button:active {
+    height: 7vh;
+    width: 10vw;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+    border: 0.02vh solid rgba(163, 125, 52, 1);
+    border-radius: 1vh;
+    background-color: rgb(96, 163, 52);
+}
+.sold {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+}

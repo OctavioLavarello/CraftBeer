@@ -25,7 +25,6 @@ import DetailSeller from "./views/Admin/DetailSeller";
 // import PayCart from './views/Pay/Pay';
 import MyShop from "./views/MyShop/MyShop";
 import Error from "./views/Error/Error";
-
 // COMPONENTS
 import NavBar from "./components/navbar/NavBar";
 import Footer from "./components/footer/Footer";
@@ -109,7 +108,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/post" element={<Creation />} />
+            <Route path="*" element={<Error />} />
             <Route path="/admin" element={<Administrador />} />
             <Route path="/admin/buyer/:id" element={<DetailBuyer />} />
             <Route path="/admin/seller/:id" element={<DetailSeller />} />
@@ -131,7 +130,7 @@ function App() {
             <Route path="/pending" element={<Pending/>} />
             <Route path="*" element={<Error />} />
           </Routes>
-        ) : (
+        ) : (accessLogin.role === "Company" ? (
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/home" element={<Home />} />
@@ -143,16 +142,22 @@ function App() {
             <Route path="/post" element={<Creation />} />
             <Route path="*" element={<Error />} />
           </Routes>
-        )}
-        {/* {accessLogin.role === "Admin" ? (
+        ) : (accessLogin.role === "Admin" ?
+        (
           <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/detail/:id" element={<Detail />} />
+            <Route path="/aboutUs" element={<AboutUs />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/admin" element={<Administrador />} />
             <Route path="/admin/buyer/:id" element={<DetailBuyer />} />
             <Route path="/admin/seller/:id" element={<DetailSeller />} />
+            <Route path="/adminHistoryShop" element={<AdminHistoryShop />} />
+            <Route path="*" element={<Error />} />
           </Routes>
-        ) : (
-          toast.error("No es posible acceder a esta ruta")
-        )} */}
+        ) : null))}
       </div>
       <div>
         <Footer />
