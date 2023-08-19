@@ -19,6 +19,7 @@ import postContactMe from "../controller/postContactMe";
 import favoriteHandler from "../controller/FavoriteHandler"
 import reciveWebHook from "../controller/payment/Webhook";
 import getAllFavoritesPerson from "../controller/getAllFavoritesPerson";
+import getUserCompanySalesDetail from "../controller/getUserCompanySalesDetail"
 import getCompanyById from "../controller/getCompanyById";
 import putQualification from "../controller/putQualification";
 
@@ -42,7 +43,8 @@ router.get("/login", logIn);
 router.get("/persons", getAllUserPersons);
 router.get("/shoppingHistories", getShoppingHistories);
 router.get("/persons/:idPerson", getPersonById);
-router.get("/favorite/:idperson", getAllFavoritesPerson);
+router.get("/favorite/:idperson", getAllFavoritesPerson)
+router.get("/usercompanysales/:userCompanyId",getUserCompanySalesDetail)
 router.get("/company/:idCompany", getCompanyById);
 
 // ------- update routes-------//
