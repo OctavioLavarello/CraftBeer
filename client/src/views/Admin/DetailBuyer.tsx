@@ -48,7 +48,7 @@ const DetailBuyer: React.FC = () => {
 
 
   const historyShop =(eventKey:any)=>{
-  if(eventKey === "1")  navigate("/adminShopBuyer")
+  if(eventKey === "1")  navigate(`/admin/buyer/historyShop`)
     
   }
 
@@ -117,11 +117,11 @@ const DetailBuyer: React.FC = () => {
             />
           </Col>
           <Col>
-            Contraseña
+            Tipo de usuario
             <input
               type="text"
               className="inputBuyer"
-              value={infoUser.password}
+              value={infoUser.role}
             />
           </Col>
         </Row>
@@ -160,13 +160,13 @@ const DetailBuyer: React.FC = () => {
             height: "50%",
             width: "90%",
             margin: "1%",
-            display: "flex",
-            flexDirection: "column",
+            alignContent:"center",
+            justifyContent:"center",
+            alignItems:"center"
           }}
         >
           <h4>Estatus de usuario</h4>
-          <h6>Activo</h6>
-          <h6>Inactivo</h6>
+          {infoUser.status === "true" ? <h6 className="inactiveUser">Inactivo 🚫</h6> : <h2 className="activoUser">Activo ✅</h2>}
         </Card>
       </div>
     </div>

@@ -31,7 +31,7 @@ const getAllProducts = async (req: Request, res: Response) => {
 
     // Si se proporciona un query param 'qualification', filtrar por qualification mayor o igual
     if (qualification) {
-      options.where = { ...options.where, qualification: { [Op.gte]: qualification } };
+      options.where = { ...options.where, qualification: { [Op.lte]: qualification } };
     }
 
       // Si se proporciona un query param 'name', filtrar por nombre que contiene el valor

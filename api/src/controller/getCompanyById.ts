@@ -1,15 +1,26 @@
 import { Request, Response } from "express"
-import { UserCompany, Product } from "../../db"
+import { UserCompany, Product, UserPerson } from "../../db"
 
 const getCompanyById = async (req: Request, res:Response) => {
     try {
         const {idCompany} = req.params
+        const {idAdmin} = req.body;
+
+        console.log('idPerson',idCompany)
+        console.log('idAdmin',idAdmin)
+
+        let whereCondition: any = {
+            id: idCompany,
+        };
+
+        let admin: any
+        if(idAdmin) admin = await UserPerson.findByPk(idAdmin);
+        if(!admin || admin.dataValues.role !== 'Administrator'){
+            whereCondition.status = true;
+        }
 
         const company = await UserCompany.findOne({
-            where:{
-                id: idCompany,
-                status: true
-            },
+            where: whereCondition,
             include: {
                 model: Product
             },
@@ -32,3 +43,31 @@ const getCompanyById = async (req: Request, res:Response) => {
 }
 
 export default getCompanyById;
+
+
+// const {idPerson} = req.params;
+// const {idAdmin} = req.body;
+
+// console.log('idPerson',idPerson)
+// console.log('idAdmin',idAdmin)
+
+// let whereCondition: any = {
+//     id: idPerson,
+// };
+
+// let admin: any
+// if(idAdmin) admin = await UserPerson.findByPk(idAdmin);
+// if(!admin || admin.dataValues.role !== 'Administrator'){
+//     whereCondition.status = true;
+// }
+
+// const person = await UserPerson.findOne({
+//     where: whereCondition,
+//     include: {
+//         model: ShoppingHistory,
+//         include: Item,
+//     },
+// }
+// )
+
+// if (!person) throw new Error("this name does not exist")

@@ -7,9 +7,12 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { AppState } from "../../redux/reducer"
 
-const MyShop = () => {
+const MyShop = ({ idPersonAdmin }: any) => {
+    let userId = "";
+    if (!idPersonAdmin) {
+        userId = useSelector((state: AppState) => state.accessLogin.id)
+    } else userId = idPersonAdmin
 
-    let userId = useSelector((state: AppState) => state.accessLogin)
     const [allHistoryData, setallHistoryData] = useState<any>([])
     const getShopingHistory = async () => {
         try {
@@ -17,7 +20,7 @@ const MyShop = () => {
             const endpoint = "/shoppingHistories";
             const response = await axios.get(endpoint, {
                 params: {
-                    userPersonId: userId.id
+                    userPersonId: userId
                 }
             });
             setallHistoryData(response.data)
@@ -37,7 +40,8 @@ const MyShop = () => {
 
         <Container>
             <div className={style.container}>
-                <h2>Mis compras</h2>
+                {!idPersonAdmin? (<h2>Mis compras</h2>):(<></>)}
+           
                 {allHistoryData.map((item: any) =>
                 (<CardMyShop
                     key={item.Items[0].id}
