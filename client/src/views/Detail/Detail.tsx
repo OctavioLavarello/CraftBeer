@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import styles from './Detail.module.css';
 
@@ -23,6 +24,7 @@ const Detail = () => {
   const { id } = useParams();
   const [beer, setBeer] = useState<Beer | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBeer = async () => {
@@ -89,9 +91,9 @@ const Detail = () => {
                 Estatus: {beer?.status ? 'Disponible' : 'No disponible'}
               </Card.Text>
             </Card.Body>
-            <Link className={styles.link} to="/shop" aria-disabled>
-                <Button className={styles.buttonback}>Volver</Button>
-             </Link>
+            <Button onClick={() => navigate(-1)} className={styles.buttonback}>
+        Volver
+      </Button>
           </Card>
         </Col>
         <Col md={6} className={styles.imageContainer}>
