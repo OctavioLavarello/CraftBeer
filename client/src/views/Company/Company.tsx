@@ -19,6 +19,7 @@ export interface company {
     city: string;
     address: string;
     company: string;
+    id: string;
 };
 const Company: React.FC = () => {
     // LOCAL STORAGE
@@ -29,13 +30,14 @@ const Company: React.FC = () => {
         name: user.name,
         lastName: user.lastName,
         email: user.email,
-        document: user.document,
-        phone: user.phone,
+        document: Number(user.document),
+        phone: Number(user.phone),
         country: user.country,
         state: user.state,
         city: user.city,
         company: user.company,
-        address: user.address
+        address: user.address,
+        id: user.id
     });
     const [errors, setErrors] = useState<company>({
         name: "",
@@ -47,7 +49,8 @@ const Company: React.FC = () => {
         city: "",
         state: "",
         company: "",
-        address: ""
+        address: "",
+        id: "",
     });
     const [isClicked, setIsClicked] = useState<boolean>(false);
     // HANDLERS
@@ -62,23 +65,38 @@ const Company: React.FC = () => {
         }));
         companyPutValidation(companyData, setErrors);
     };
+    const handlerLocalStorageRefresh = () => {
+        const userString: any = localStorage.getItem("user");
+        const user = JSON.parse(userString);
+        user.name = companyData.name;
+        user.lastName = companyData.lastName;
+        user.email = companyData.email;
+        user.document = companyData.document;
+        user.phone = companyData.phone;
+        user.country = companyData.country;
+        user.state = companyData.state;
+        user.city = companyData.city;
+        user.company = companyData.company;
+        user.address = companyData.address;
+        localStorage.setItem("user", JSON.stringify(user));
+    }
     const handlerOnSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
         try {
             await axios.put("/company", companyData)
+            await handlerLocalStorageRefresh();
             toast.success("company data upload successfully")
-          } catch (error: any) {
+            setIsClicked(!isClicked)
+        } catch (error: any) {
             if (error.response && error.response.data && error.response.data.message) {
               const errorMessage = error.response.data.message;
               toast.error(errorMessage);
             } else {
             toast.error("an error occurred while upload company data");
             }
-          }
-        setIsClicked(!isClicked)
+        }
     };
     console.log(companyData)
-    console.log(errors)
     return (
         <div className={styles.all}>
             <div className={`${
