@@ -1,26 +1,36 @@
 /// IMPORTS
 import { useState, useEffect } from "react";
 //import { Dispatch, AnyAction } from "redux";
+import "../Creation/Creation.css";
+import { useDispatch, useSelector } from "react-redux";
+import { AppState } from "../../redux/reducer";
+// COMPONENTS
+import CardUserProduct from "../../components/CardUsersProduct/CardUserProduct";
+import { DragAndDrop } from "../../components/Cloudinary/Cloudinary.tsx"
+import CreationPagination from "../../components/CreationPagination/CreationPagination.tsx";
+// ACTIONS
+import { createdProduct, ProductData, userCompanySalesSummary } from "../../redux/actions/actions";
+// STYLES
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
-import "../Creation/Creation.css";
-import CardUserProduct from "../../components/CardUsersProduct/CardUserProduct";
-import { useDispatch, useSelector } from "react-redux";
-import { createdProduct, ProductData } from "../../redux/actions/actions";
-import { AppState } from "../../redux/reducer";
-import {DragAndDrop} from "../../components/Cloudinary/Cloudinary.tsx"
-
-
-// STYLES
-//.....
 
 // CREATION
 const Creation = () => {
   const dispatch = useDispatch<any>();
-  const access = useSelector((state: AppState) => state.accessLogin);
-  const idCompany = access.id;
-  const urlImage = useSelector((state: AppState)=> state.urlImage)
-
+  // GLOBAL STATE
+  const { accessLogin, urlImage, companySalesSum } = useSelector((state: AppState) => state);
+  const idCompany = accessLogin.id;
+  // LOCAL STATE
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  // PAGINATION
+  const itemsPerPage = 3;
+  const indexOfLastBeer = currentPage * itemsPerPage;
+  const indexOfFirstBeer = indexOfLastBeer - itemsPerPage;
+  let currentBeers = companySalesSum.slice(indexOfFirstBeer, indexOfLastBeer);
+  // PAGINATION FUNCTION
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
   const [input, setInput] = useState<ProductData>({
     name: "",
     image: urlImage,
@@ -34,6 +44,9 @@ const Creation = () => {
     userCompanyId: idCompany,
   });
  
+  useEffect(() => {
+    dispatch(userCompanySalesSummary(idCompany));
+  }, []);
   useEffect(() => {
     setInput((prevInput) => ({ ...prevInput, image: urlImage }));
   }, [urlImage]);
@@ -260,10 +273,29 @@ const Creation = () => {
         </div>
       </Form>
       <div className="bodyMisArt">
-        <span className="spamMisArt">
-          <strong>MIS ARTÍCULOS PUBLICADOS</strong>
-        </span>
-        <CardUserProduct />
+        <div>
+          <span className="spamMisArt">
+            <strong>MIS ARTÍCULOS PUBLICADOS</strong>
+          </span>
+          {currentBeers.map((card: any) => (
+            <CardUserProduct 
+            key={card.id} 
+            id={card.id}
+            name={card.name} 
+            image={card.image} 
+            price={card.price}
+            description={card.description}
+            />
+          ))}
+        </div>
+        <div>
+          <CreationPagination
+          itemsPerPage={itemsPerPage}
+          totalItems={companySalesSum.length}
+          currentPage={currentPage}
+          paginate={paginate}
+          />
+        </div>
       </div>
     </div>
   );
