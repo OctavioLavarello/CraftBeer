@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import styles from './Detail.module.css';
 
-interface Beer {
+export interface Beer {
   id: string;
   name: string;
   image: string;
