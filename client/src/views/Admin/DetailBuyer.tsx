@@ -30,7 +30,7 @@ const DetailBuyer: React.FC = () => {
 
   const handlerActive = async ()=>{
     try {
-      const activar = await axios.put("/user", {id: infoUser.id, status: "true"})
+      await axios.put("/user", {id: infoUser.id, status: "true"})
       toast.success("El usuario a sido activado")
     } catch (error) {
       toast.error("No fue posible activar el usuario")
@@ -39,7 +39,7 @@ const DetailBuyer: React.FC = () => {
 
   const handlerInactive = async ()=>{
     try {
-      const inactivar = await axios.put("/user", {id: infoUser.id, status: "false"})
+      await axios.put("/user", {id: infoUser.id, status: "false"})
       toast.success("El usuario a sido desactivado")
     } catch (error) {
       toast.error("No fue posible inactivar el usuario")

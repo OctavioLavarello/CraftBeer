@@ -31,7 +31,7 @@ const DetailSeller = () => {
 
   const handlerActive = async () => {
     try {
-      const activar = await axios.put("/company", {
+      await axios.put("/company", {
         id: infoUser.id,
         status: "true",
       });
@@ -43,7 +43,7 @@ const DetailSeller = () => {
 
   const handlerInactive = async () => {
     try {
-      const inactivar = await axios.put("/company", {
+      await axios.put("/company", {
         id: infoUser.id,
         status: "false",
       });
