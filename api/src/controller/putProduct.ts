@@ -12,13 +12,22 @@ const putProduct = async (req: Request, res: Response) => {
       return res.status(404).send({ message: "Product not found" });
     }
     
-    if (companyId !== product.companyId) {
+    if (companyId !== product.userCompanyId) {
       return res.status(403).send({ message: "You do not have permission to modify this product" });
     }
 
-    await product.update(updatedData, { fields: Object.keys(updatedData) });
+    const updatedProduct = await product.update(updatedData, { fields: Object.keys(updatedData) });
 
-    return res.status(200).send({ message: "Product updated successfully" });
+    if (updatedProduct[0] === 0) {
+      return res.status(400).send("Update failed");
+    } else {
+      const productUpdated = await Product.findByPk(productId);
+      if(!productUpdated){
+        return res.status(200).send({ message: "Product updated successfully" });
+      }else{
+        return res.status(200).json(productUpdated);
+      }
+    }
   } catch (error) {
     console.error("Error updating the product:", error);
     return res.status(500).send({ message: "Internal server error" });
