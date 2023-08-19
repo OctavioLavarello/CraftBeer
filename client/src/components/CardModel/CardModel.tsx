@@ -201,7 +201,7 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU, ABV, qua
                             </div>
                         </Col>
                         <Col sm={4} className={style.colPrice} >
-                            <div style={{ display: "flex", flexDirection: "column" }}>
+                            <div className={style.containerInfo}>
                                 <h3 >{name.toUpperCase()}</h3>
                                 <div className={style.IBU}>
                                     <h5>Tipo: <br /> {type}</h5>
