@@ -9,7 +9,7 @@ const getUserCompanySalesDetail = async (req: Request, res: Response) => {
     //se busca los productos y la relacion de sus ventas
     const products = await Product.findAll({
       where: { userCompanyId: userCompanyId },
-      attributes: ["id", "name", "image", "price"],
+      attributes: ["id", "name", "image", "price","description"],
       //Include Items
       include: {
         model: Item,
@@ -25,11 +25,12 @@ const getUserCompanySalesDetail = async (req: Request, res: Response) => {
           name: String;
           image: String;
           price: String;
+          description: String;
           Items: [];
           get: Function;
         }
       ) => {
-        let argplain = arg.get({ plain: true });
+        let argplain = arg.get({ plain: true });//traer los datos planos
         argplain.Items.forEach(
           (item: {
             amount: Number;
@@ -41,6 +42,7 @@ const getUserCompanySalesDetail = async (req: Request, res: Response) => {
               name: arg.name,
               image: arg.image,
               price: arg.price,
+              description:arg.description
             });
           }
         );
