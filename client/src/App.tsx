@@ -111,13 +111,6 @@ function App() {
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Error />} />
-            <Route path="/admin" element={<Administrador />} />
-            <Route path="/admin/buyer/:id" element={<DetailBuyer />} />
-            <Route path="/admin/seller/:id" element={<DetailSeller />} />
-            <Route path="/admin/buyer/historyShop" element={<AdminHistoryShop/>} />
-            <Route path="/admin/buyer/adminUserModify" element={<AdminUserModify/>} />
-
-            <Route path="*" element={<Error />} />
           </Routes>
         ) : accessLogin.role === "Person" ? (
           <Routes>
@@ -160,7 +153,7 @@ function App() {
             <Route path="/admin/seller/:id" element={<DetailSeller />} />
             <Route path="/adminHistoryShop" element={<AdminHistoryShop />} />
             <Route path="/admin/seller/products" element={<ProductsBySeller/>} />
-            <Route path="/admin/buyer/adminUserModify" element={<ProductsBySeller/>} />
+            <Route path="/admin/buyer/adminUserModify" element={<AdminUserModify/>} />
             <Route path="*" element={<Error />} />
           </Routes>
         ) : null))}
