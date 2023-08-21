@@ -1,15 +1,11 @@
 import { Request, Response } from "express"
 import { ShoppingHistory, UserPerson, Item } from "../../db"
 
-const getPersonById = async (req: Request, res:Response) => {
+const getPersonAdmin = async (req: Request, res:Response) => {
     try {
-        const { idPerson } = req.params;
+        const {idPerson} = req.params;
               
-        const person = await UserPerson.findOne({
-            where: {
-                id:idPerson,
-                status:true
-            },
+        const person = await UserPerson.findByPk(idPerson,{
             include: {
                 model: ShoppingHistory,
                 include: Item,
@@ -32,4 +28,4 @@ const getPersonById = async (req: Request, res:Response) => {
     }
 }
 
-export default getPersonById;
+export default getPersonAdmin;
