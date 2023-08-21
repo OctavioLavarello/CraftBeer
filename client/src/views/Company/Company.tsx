@@ -3,6 +3,8 @@ import React, { useState } from "react"
 import companyPutValidation from "./CompanyPutValidation";
 import axios from "axios";
 import toast from 'react-hot-toast'
+// COMPONENTS
+import MySoldProducts from "../../components/MySoldProducts/MySoldProducts";
 // STYLES
 import styles from "./Company.module.css"
 import Form from 'react-bootstrap/Form';
@@ -382,7 +384,7 @@ const Company: React.FC = () => {
                 )}
             </div>
             <div className={styles.sold}>
-                <h2>HISTORIAL DE CERVEZAS VENDIDAS</h2>
+                <MySoldProducts/>
             </div>
         </div>
     );

@@ -1,0 +1,15 @@
+.card {
+    background: #a86a6a;
+    color: #fff;
+    padding: 2% 3%;
+    border-Radius: 1vh;
+    text-Align: center;
+    width: 95%;
+    margin-top: 3vh;
+    height: 30vh;
+}
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
