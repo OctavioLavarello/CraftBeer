@@ -1,15 +1,16 @@
 .card {
-    background: #a86a6a;
+    background: rgb(63, 63, 63);
     color: #fff;
     padding: 2% 3%;
-    border-Radius: 1vh;
+    border-Radius: 2vh;
     text-Align: center;
     width: 95%;
-    margin-top: 3vh;
-    height: 30vh;
+    margin-top: 2vh;
+    height: 45vh;
+    border: 0.02vh solid rgba(163, 125, 52, 1);
 }
 .content {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
