@@ -168,7 +168,10 @@ const DetailBuyer: React.FC = () => {
           }}
         >
           <h4>Estatus de usuario</h4>
-          {infoUser.status === "true" ? <h6 className="inactiveUser">Inactivo 🚫</h6> : <h2 className="activoUser">Activo ✅</h2>}
+          {infoUser.status === true ? (
+            <h2 className="activoUser">Activo ✅</h2>) : (
+            <h2 className="inactiveUser">Inactivo 🚫</h2>
+          )}
         </Card>
       </div>
     </div>
