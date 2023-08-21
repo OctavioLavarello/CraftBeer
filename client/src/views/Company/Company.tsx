@@ -98,7 +98,6 @@ const Company: React.FC = () => {
             }
         }
     };
-    console.log(companyData)
     return (
         <div className={styles.all}>
             <div className={`${

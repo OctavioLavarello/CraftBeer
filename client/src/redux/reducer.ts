@@ -16,6 +16,7 @@ import {
   buyerId,
   sellerId,
   userCompanySalesSummary,
+  userCompanySalesDetail,
 } from "./reducerFunctions";
 import {
   CREATED_PRODUCT,
@@ -34,6 +35,7 @@ import {
   ID_BUYER,
   ID_SELLER,
   COMPANY_SALES_SUMMARY,
+  COMPANY_SALES_DETAIL,
 } from "../redux/actions/actionsTypes";
 import { SaveDataLS } from "../components/LocalStorage/LocalStorage";
 
@@ -82,6 +84,7 @@ export interface AppState {
   idBuyer: string;
   idSeller: string;
   companySalesSum: salesSum[]
+  companySalesDetail: any;
 }
 export interface BeerFilters {
   IBU?: number,  // El signo de interrogación indica que la propiedad es opcional
@@ -115,6 +118,7 @@ export const initialState: AppState = {
   idBuyer:"",
   idSeller: "",
   companySalesSum: [],
+  companySalesDetail: [],
 };
 
 const rootReducer = (
@@ -169,6 +173,9 @@ const rootReducer = (
     }
     case COMPANY_SALES_SUMMARY: {
       return userCompanySalesSummary(state, action)
+    }
+    case COMPANY_SALES_DETAIL: {
+      return userCompanySalesDetail(state, action)
     }
     default:
       return state;
