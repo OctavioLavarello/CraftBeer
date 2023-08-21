@@ -19,22 +19,37 @@ interface SoldCardProps {
 const SoldCards: React.FC<SoldCardProps> = ({ name, date, image , amount, totalPrice, buyerEmail, buyerName }) => {
     return (
         <div className={styles.card}>
-            <div>
-                <p>{amount} units have been sold of:</p>
-                <div className={styles.content}>
-                    <img src={image} alt={name} className={styles.img}/>
-                    <h4>{name}</h4>
-                    <h5>Total Price: ${totalPrice} USD</h5>
+            {amount === 1 ? 
+            (
+                <h6>sold <strong>{amount}</strong> unit of:</h6>
+            ) : 
+            (
+                <h6><strong>{amount}</strong> units have been sold of:</h6>
+            )}
+            <div className={styles.content}>
+                <img src={image} alt={name} className={styles.img}/>
+                <div>
+                    <div className={styles.div}>
+                        <h5><strong>{name}</strong></h5>
+                        <h6>Total Price: $<strong>{totalPrice}</strong> USD</h6>
+                    </div>
+                    <div className={styles.div2}>
+                        <h6>Buyer's data:</h6>
+                        <div>
+                            <h6>Name: <strong>{buyerName}</strong></h6>
+                            <h6>Email:  
+                                <a 
+                                href={`mailto:${buyerEmail}?subject=Hola%20${buyerName}`} 
+                                target="_blank"
+                                >
+                                    <strong> {buyerEmail}</strong>
+                                </a>
+                            </h6>
+                            <h6>Date of sale: <strong>{date}</strong></h6>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div>
-                <p>Buyer's data:</p>
-                <div className={styles.content}>
-                    <h5>Name: {buyerName}</h5>
-                    <h5>Email: {buyerEmail}</h5>
-                </div>
-            </div>
-            <h5>Date of sale: {date}</h5>
         </div>
     );
 };

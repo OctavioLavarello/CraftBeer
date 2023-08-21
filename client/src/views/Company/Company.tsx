@@ -383,7 +383,7 @@ const Company: React.FC = () => {
                 )}
             </div>
             <div className={styles.sold}>
-                <h2>My Sold Beers</h2>
+                <h2 className={styles.mySold}>My Sold Beers</h2>
                 <MySoldProducts/>
             </div>
         </div>
