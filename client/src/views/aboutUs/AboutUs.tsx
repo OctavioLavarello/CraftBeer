@@ -4,6 +4,15 @@ import { NavLink } from "react-router-dom";
 // STYLES
 import styles from "./AboutUs.module.css"
 import img from "../../assets/img/AboutUs.png"
+// US
+import ely from "../../assets/us/ely.jpg"
+import german from "../../assets/us/ger.jpg"
+import agustin from "../../assets/us/agus.jpg"
+import octavio from "../../assets/us/octavio.png"
+import ale from "../../assets/us/ale.jpg"
+import jorge from "../../assets/us/jorge.jpg"
+import liced from "../../assets/us/liced.jpg"
+import jose from "../../assets/us/jose.jpg"
 
 const AboutUs: React.FC = () => {
   return (
@@ -53,7 +62,7 @@ const AboutUs: React.FC = () => {
             target="_blank">
               <img 
               className={styles.perfileImg}
-              src="https://media.licdn.com/dms/image/D4E35AQHNYFL1XcTC4w/profile-framedphoto-shrink_200_200/0/1690052993254?e=1691942400&v=beta&t=JJPaczWeJLbm5XSV1z6VEnisfkcD3sOc1K8jBkCW-GU" alt="ELY" />
+              src={ely} alt="ELY" />
               <h4>Ely Samuel Guaimacuto</h4>
             </NavLink>
             <NavLink 
@@ -62,7 +71,7 @@ const AboutUs: React.FC = () => {
             target="_blank">
               <img 
               className={styles.perfileImg}
-              src="https://media.licdn.com/dms/image/D4D35AQHb26ld13h-Lw/profile-framedphoto-shrink_200_200/0/1686610668319?e=1691942400&v=beta&t=9sf9hDcMwMnplllKHpRLE_7y77kuDIK0Eqb9FlTx3j0" alt="GERMAN" />
+              src={german} alt="GERMAN" />
               <h4>German Conil</h4>
             </NavLink>
             <NavLink 
@@ -71,7 +80,7 @@ const AboutUs: React.FC = () => {
             target="_blank">
               <img 
               className={styles.perfileImg}
-              src="https://media.licdn.com/dms/image/D5635AQGXW0U7XhrOLA/profile-framedphoto-shrink_200_200/0/1660002666757?e=1691942400&v=beta&t=cxjF53TQhjhmmtIIOyY1fzbFjNj7IDeZDJwPAY4kzHI" alt="AGUS" />
+              src={agustin} alt="AGUS" />
               <h4>Agustin Rosa</h4>
             </NavLink>
             <NavLink 
@@ -80,7 +89,7 @@ const AboutUs: React.FC = () => {
             target="_blank">
               <img 
               className={styles.perfileImg}
-              src="https://media.licdn.com/dms/image/D5635AQGXW0U7XhrOLA/profile-framedphoto-shrink_200_200/0/1660002666757?e=1691942400&v=beta&t=cxjF53TQhjhmmtIIOyY1fzbFjNj7IDeZDJwPAY4kzHI" alt="OCTA" />
+              src={octavio} alt="OCTA" />
               <h4>Octavio Eneas Lavarello</h4>
             </NavLink>
           </div>
@@ -91,7 +100,7 @@ const AboutUs: React.FC = () => {
             target="_blank">
               <img 
               className={styles.perfileImg}
-              src="https://media.licdn.com/dms/image/D4D35AQHZPXtzeqUulg/profile-framedphoto-shrink_200_200/0/1678726219256?e=1691942400&v=beta&t=5zGIJaIhJEBY4UCFUSuJAvOL5HnQ_lPLeRlWJVwTZII" alt="ALEX" />
+              src={ale} alt="ALEX" />
               <h4>Alexis David Weber</h4>
             </NavLink>
             <NavLink 
@@ -100,7 +109,7 @@ const AboutUs: React.FC = () => {
             target="_blank">
               <img 
               className={styles.perfileImg}
-              src="https://media.licdn.com/dms/image/D4E35AQGM6RDJlxEpJw/profile-framedphoto-shrink_200_200/0/1690572184866?e=1692025200&v=beta&t=f-0dinc2TE-2zN_1EAzoRbIxRf8uYrlJ9MbHk0Orc0Q" alt="JORGE" />
+              src={jorge} alt="JORGE" />
               <h4>Jorge Enrique Acosta de León</h4>
             </NavLink>
             <NavLink 
@@ -109,7 +118,7 @@ const AboutUs: React.FC = () => {
             target="_blank">
               <img 
               className={styles.perfileImg}
-              src="https://media.licdn.com/dms/image/D4E35AQHYtWQklkjZZQ/profile-framedphoto-shrink_200_200/0/1687964177576?e=1691942400&v=beta&t=tZwlxjdPbDeNylz7mDXU5THrTLIvz0Av1gA-VhU8Zzo" alt="LICED" />
+              src={liced} alt="LICED" />
               <h4>Liced Xiomara Castrillon Lopez</h4>
             </NavLink>
             <NavLink 
@@ -118,7 +127,7 @@ const AboutUs: React.FC = () => {
             target="_blank">
               <img 
               className={styles.perfileImg}
-              src="https://media.licdn.com/dms/image/D4E03AQGu9ju6UXUZwg/profile-displayphoto-shrink_200_200/0/1691464249848?e=1697068800&v=beta&t=Q9mk0hsIWGBwqMxOcyGT2BJFgKdGJsuu_ozzE-6g6U8" alt="GAL" />
+              src={jose} alt="GAL" />
               <h4>Jose Rodrigo Galvis Galvis</h4>
             </NavLink>
           </div>
