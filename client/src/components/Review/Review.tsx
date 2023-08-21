@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import style from "./Review.module.css"
 import { Rating } from 'react-simple-star-rating'
 import { useSelector } from "react-redux";
@@ -25,9 +25,9 @@ interface Review {
 const Review = ({ name, isReview, setisReview, id }: ReviewProps) => {
 
 
-    const [rating, setRating] = useState(0) // initial rating value
+    const [rating, setRating] = useState<number>(0) // initial rating value
     // Catch Rating value
-    const handleRating = (rate: any) => {
+    const handleRating = (rate: number) => {
         setRating(rate)
     }
 
@@ -84,10 +84,8 @@ const Review = ({ name, isReview, setisReview, id }: ReviewProps) => {
                         <div className={style.container}>
                             <Rating
                                 onClick={handleRating}
-                                rating={rating}
+                                initialValue={rating}
                                 size={30}
-                                label
-                                transition
                                 fillColor='orange'
                                 emptyColor='gray'
                                 className='foo'
