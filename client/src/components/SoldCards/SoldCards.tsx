@@ -4,25 +4,37 @@ import React from "react"
 import styles from "./SoldCards.module.css"
 
 // MY SOLD PRODUCTS
-const SoldCards: React.FC = () => {
+// INTERFACE:
+interface SoldCardProps {
+    amount: number;
+    buyerEmail: string;
+    buyerName: string;
+    date: string;
+    description: string;
+    image: string;
+    name: string;
+    price: number;
+    totalPrice: number;
+}
+const SoldCards: React.FC<SoldCardProps> = ({ name, date, image , amount, totalPrice, buyerEmail, buyerName }) => {
     return (
         <div className={styles.card}>
             <div>
-                <p>se ha vendido "" cantidad de:</p>
+                <p>{amount} units have been sold of:</p>
                 <div className={styles.content}>
-                    <img src="" alt="imagen de producto" />
-                    <h4>titulo</h4>
-                    <h5>"" USD</h5>
+                    <img src={image} alt={name} className={styles.img}/>
+                    <h4>{name}</h4>
+                    <h5>Total Price: ${totalPrice} USD</h5>
                 </div>
             </div>
             <div>
-                <p>datos de comprador:</p>
+                <p>Buyer's data:</p>
                 <div className={styles.content}>
-                    <h5>Nombre: ""</h5>
-                    <h5>Email: ""</h5>
+                    <h5>Name: {buyerName}</h5>
+                    <h5>Email: {buyerEmail}</h5>
                 </div>
             </div>
-            <h5>Date: ""/""/""</h5>
+            <h5>Date of sale: {date}</h5>
         </div>
     );
 };

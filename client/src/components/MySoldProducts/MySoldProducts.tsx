@@ -31,11 +31,23 @@ const MySoldProducts: React.FC = () => {
     useEffect(() => {
         dispatch(userCompanySalesDetail(idCompany))
     }, []);
+    console.log(companySalesDetail)
     return (
         <div className={styles.container}>
-            <SoldCards/>
-            <SoldCards/>
-            <SoldCards/>
+            {currentNotification.map((card: any) => (
+            <SoldCards 
+            key={card.ShoppingHistoryId} 
+            name={card.name} 
+            date={card.date}
+            image={card.image} 
+            price={card.price}
+            amount={card.amount}
+            totalPrice={card.totalPrice} 
+            description={card.description}
+            buyerEmail={card.buyerEmail}
+            buyerName={card.buyerName}
+            />
+            ))}
             <CreationPagination
             itemsPerPage={itemsPerPage}
             totalItems={companySalesDetail.length}

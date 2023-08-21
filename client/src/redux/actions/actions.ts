@@ -22,7 +22,7 @@ import {
   COMPANY_SALES_DETAIL,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
-import { salesSum } from "../reducer";
+import { salesDetail, salesSum } from "../reducer";
 
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
@@ -351,7 +351,7 @@ export const userCompanySalesSummary = (id: string) => {
 // SALES DETAIL
 export interface salesDetailAction {
   type: string;
-  payload: string;
+  payload: salesDetail[];
 }
 export const userCompanySalesDetail = (id: string) => {
   const endpoint = "/usercompanysales/";

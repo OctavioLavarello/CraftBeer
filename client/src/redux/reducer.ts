@@ -72,6 +72,18 @@ export interface salesSum {
   amountTotal: number;
   priceTotal: number;
 }
+export interface salesDetail {
+  ShoppingHistoryId: string;
+  amount: number;
+  buyerEmail: string;
+  buyerName: string;
+  date: string;
+  description: string;
+  image: string;
+  name: string;
+  price: number;
+  totalPrice: number;
+}
 export interface AppState {
   allBeer: beers[];
   beerFilters: BeerFilters;
@@ -84,7 +96,7 @@ export interface AppState {
   idBuyer: string;
   idSeller: string;
   companySalesSum: salesSum[]
-  companySalesDetail: any;
+  companySalesDetail: salesDetail[];
 }
 export interface BeerFilters {
   IBU?: number,  // El signo de interrogación indica que la propiedad es opcional
