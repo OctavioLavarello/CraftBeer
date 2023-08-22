@@ -37,6 +37,7 @@ import "./App.css";
 import AdminHistoryShop from "./views/Admin/AdminHistoryShop/adminHistoryShop";
 import Pending from "./components/Pending/Pending";
 import AdminUserModify from "./views/Admin/AdminUserModify/AdminUserModify";
+import AdminHistoryShopSeller from "./views/Admin/AdminHistoryShopSeller/AdminHistoryShopSeller";
 
 // APP
 function App() {
@@ -158,6 +159,7 @@ function App() {
             <Route path="/adminHistoryShop" element={<AdminHistoryShop />} />
             <Route path="/admin/seller/products" element={<ProductsBySeller/>} />
             <Route path="/admin/buyer/adminUserModify" element={<AdminUserModify/>} />
+            <Route path="/admin/seller/AdminHistoryShopSeller" element={<AdminHistoryShopSeller/>} />
             <Route path="*" element={<Error />} />
           </Routes>
         ) : null))}

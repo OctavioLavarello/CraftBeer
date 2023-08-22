@@ -18,6 +18,7 @@ export interface Beer {
   stock: number;
   presentation: string;
   status: boolean;
+  Qualifications?: string[]
 }
 
 const Detail = () => {
@@ -29,12 +30,14 @@ const Detail = () => {
   useEffect(() => {
     const fetchBeer = async () => {
       try {
-        const response = await axios.get( `http://localhost:3001/product/${id}` );
+        const response = await axios.get(`https://craftbeer.up.railway.app/product/${id}` || `https://localhost:3001product/${id}`);
         setBeer(response.data);
+        console.log(response.data);
+
       } catch (error) {
         console.log(error);
         console.error('Error fetching beer', error);
-      }finally {
+      } finally {
         // Se oculta la imagen de loading después de 3 segundos
         setTimeout(() => {
           setIsLoading(false);
@@ -62,11 +65,9 @@ const Detail = () => {
         <div>
           ¡Producto no encontrado!
         </div>
-        <Link to="/shop" aria-disabled>
-          <Button variant="danger" className={styles.buttonback}>
-            Volver
-          </Button>
-        </Link>
+        <Button variant="danger" onClick={() => navigate(-1)} className={styles.buttonback}>
+        Volver
+      </Button>
       </div>
     );
   }
@@ -77,11 +78,12 @@ const Detail = () => {
         <Col md={6}>
           <Card className={`${styles.card} h-100 d-flex`}>
             <Card.Body className="flex-column">
+
               <Card.Title className={styles.title}>{beer?.name}</Card.Title>
-              <Card.Text className="flex-grow-1">Description:{beer?.description}</Card.Text>
-              <Card.Text className="flex-grow-1">Tipo:{beer?.type}</Card.Text>
-              <Card.Text className="flex-grow-1">Presentacion:{beer?.presentation}</Card.Text>
-              <Card.Text className="flex-grow-1">ABV: {beer?.ABV}%</Card.Text>
+              <Card.Text className="flex-grow-1">Description: {beer?.description}</Card.Text>
+              <Card.Text className="flex-grow-1">Tipo: {beer?.type}</Card.Text>
+              <Card.Text className="flex-grow-1">Presentacion: {beer?.presentation}</Card.Text>
+              <Card.Text className="flex-grow-2">ABV: {beer?.ABV}%</Card.Text>
               <Card.Text className="flex-grow-1">Precio: ${beer?.price}</Card.Text>
               <Card.Text className="flex-grow-1">
                 Calificacion: {beer?.qualification ?? 'No calificado'}
@@ -92,13 +94,26 @@ const Detail = () => {
               </Card.Text>
             </Card.Body>
             <Button onClick={() => navigate(-1)} className={styles.buttonback}>
-        Volver
-      </Button>
+              Volver
+            </Button>
+
           </Card>
         </Col>
         <Col md={6} className={styles.imageContainer}>
           <img src={beer?.image} alt="" className={styles.image} />
         </Col>
+        {beer.Qualifications?.length ? (
+          <>
+            <div className={styles.review}>
+              <h4>Valoraciones </h4>
+              <hr></hr>
+       
+            </div>
+          </>
+        ) : (<></>)
+
+        }
+
       </Row>
     </Container>
   );
