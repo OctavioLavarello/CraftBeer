@@ -2,33 +2,30 @@
     display: flex;
     flex-direction: row;
 }
-
+.bodyFormP form {
+    width: 50%;
+    height: auto;
+}
 .botonCentro {
     text-align: center;
 }
-
 .bodyMisArt {
     max-width: 47%;
     border-left: inset #A37D34 2px ;
-
 }
-
 .spamMisArt {
     margin: 5%;
     text-align: left;   
 }
-
 .botonFormProd:hover {
     background-color: grey;
     color: black;
 }
-
 .mensajes {
     font-size: 10px;
     color: red;
     margin: 3px;
 }
-
 .selector {
     background-color: white;
     color: black;
@@ -36,10 +33,50 @@
     border-radius: 5px;
     height: 70%;
 }
-
 .tituloFormCreacion {
     text-align: left;
     margin-left: 5%;
     margin-top: 2%;
-        
+}
+@media (max-width: 768px) {
+    .bodyFormP {
+        display: flex;
+        flex-direction: column;
+    }
+    .bodyFormP form {
+        width: 99%;
+    }
+    .botonCentro {
+        text-align: center;
+    }
+    .bodyMisArt {
+        max-width: 96%;
+        border-top: inset #A37D34 2px;
+        border-right: inset #A37D34 2px;
+    }
+    .spamMisArt {
+        margin: 5%;
+        text-align: left;   
+    }
+    .botonFormProd:hover {
+        background-color: grey;
+        color: black;
+    }
+    .mensajes {
+        font-size: 10px;
+        color: red;
+        margin: 3px;
+    }
+    .selector {
+        background-color: white;
+        color: black;
+        width: 100%;
+        border-radius: 5px;
+        height: 70%;
+    }
+    .tituloFormCreacion {
+        text-align: left;
+        margin-left: 5%;
+        margin-top: 2%;
+    }
 }

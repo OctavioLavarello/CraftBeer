@@ -1,8 +1,9 @@
 /// IMPORTS
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import companyPutValidation from "./CompanyPutValidation";
 import axios from "axios";
 import toast from 'react-hot-toast'
+import { provincesByCountry, ProvinceData } from '../../components/provincesData/provincesData.ts';
 // COMPONENTS
 import MySoldProducts from "../../components/MySoldProducts/MySoldProducts";
 // STYLES
@@ -22,11 +23,18 @@ export interface company {
     address: string;
     company: string;
     id: string;
+    image: string;
 };
+interface CountryData {
+    name: {
+      common: string;
+    };
+  }
 const Company: React.FC = () => {
     // LOCAL STORAGE
     const hasNavigatedLocalStorage: any = localStorage.getItem("user")
     const { user } = JSON.parse(hasNavigatedLocalStorage)
+    const [countryNames, setCountryNames] = useState<string[]>([]);
     // LOCAL STATE
     const [companyData, setCompanyData] = useState<company>({
         name: user.name,
@@ -39,7 +47,8 @@ const Company: React.FC = () => {
         city: user.city,
         company: user.company,
         address: user.address,
-        id: user.id
+        id: user.id,
+        image: user.image
     });
     const [errors, setErrors] = useState<company>({
         name: "",
@@ -53,6 +62,7 @@ const Company: React.FC = () => {
         company: "",
         address: "",
         id: "",
+        image: "",
     });
     const [isClicked, setIsClicked] = useState<boolean>(false);
     // HANDLERS
@@ -80,6 +90,7 @@ const Company: React.FC = () => {
         user.city = companyData.city;
         user.company = companyData.company;
         user.address = companyData.address;
+        user.image = companyData.image;
         localStorage.setItem("user", JSON.stringify(user));
     }
     const handlerOnSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
@@ -98,6 +109,22 @@ const Company: React.FC = () => {
             }
         }
     };
+
+    const fetchCountries = async () => {
+        try {
+          const response = await fetch('https://restcountries.com/v3.1/region/South%20America');
+          const data: CountryData[] = await response.json();
+          const countryNames = data.map(country => country.name.common);
+          setCountryNames(countryNames);
+        } catch (error) {
+          console.error('Error fetching country names:', error);
+        }
+      };
+      
+      useEffect(() => {
+        fetchCountries();
+      }, []);
+
     return (
         <div className={styles.all}>
             <div className={`${
@@ -112,7 +139,7 @@ const Company: React.FC = () => {
                     className={styles.form}
                     >
                         <Form.Group>
-                            <Form.Label>Name</Form.Label>
+                            <Form.Label>Nombre</Form.Label>
                             <Form.Control 
                             readOnly
                             type="text"
@@ -120,7 +147,7 @@ const Company: React.FC = () => {
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Last Name</Form.Label>
+                            <Form.Label>Apellido</Form.Label>
                             <Form.Control 
                             readOnly
                             type="text"
@@ -136,7 +163,7 @@ const Company: React.FC = () => {
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Document</Form.Label>
+                            <Form.Label>Documento</Form.Label>
                             <Form.Control 
                             readOnly
                             type="number"
@@ -144,7 +171,7 @@ const Company: React.FC = () => {
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Phone Number</Form.Label>
+                            <Form.Label>Numero de telefono</Form.Label>
                             <Form.Control 
                             readOnly
                             type="number"
@@ -152,23 +179,43 @@ const Company: React.FC = () => {
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Country</Form.Label>
-                            <Form.Control 
-                            readOnly
-                            type="text"
-                            value={companyData.country}
-                            />
+                            <Form.Label>Pais</Form.Label>
+                            <Form.Control
+            as="select"
+            name="country"
+            value={companyData.country}
+            
+            onChange={handlerOnChange}
+          >
+            <option value="">Selecciona un país...</option>
+            {countryNames.map((countryName, index) => (
+              <option key={index} value={countryName}>
+                {countryName}
+              </option>
+            ))}
+          </Form.Control>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>State</Form.Label>
-                            <Form.Control 
-                            readOnly
-                            type="text"
+                            <Form.Label>Provincia</Form.Label>
+                            <Form.Control
+                            as="select"
+                            name="state"
                             value={companyData.state}
-                            />
+                            onChange={handlerOnChange}
+                            >
+                         <option value="">Selecciona una provincia...</option>
+                            {companyData.country &&
+                            provincesByCountry[companyData.country]?.map(
+                            (province: ProvinceData, index: number) => (
+                            <option key={index} value={province.name}>
+                                {province.name}
+                             </option>
+                         )
+                            )}
+                        </Form.Control>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>City</Form.Label>
+                            <Form.Label>Ciudad</Form.Label>
                             <Form.Control 
                             readOnly
                             type="text"
@@ -176,7 +223,7 @@ const Company: React.FC = () => {
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Company</Form.Label>
+                            <Form.Label>Compañía</Form.Label>
                             <Form.Control 
                             readOnly
                             type="text"
@@ -184,19 +231,26 @@ const Company: React.FC = () => {
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Address</Form.Label>
+                            <Form.Label>Dirección</Form.Label>
                             <Form.Control 
                             readOnly
                             type="text"
                             value={companyData.address}
                             />
                         </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Profile Image</Form.Label>
+                        </Form.Group>
+                        <img 
+                        src={companyData.image} 
+                        alt={companyData.image} 
+                        className={styles.inputImg}/>
                     </Form>
                     <button 
                     onClick={handlerIsClicked}
                     className={styles.edit}
                     >
-                        Edit Profile
+                        Editar
                     </button>
                 </div>
                 ) : 
@@ -206,7 +260,7 @@ const Company: React.FC = () => {
                 onSubmit={handlerOnSubmit}
                 >
                     <Form.Group>
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label>Nombre</Form.Label>
                         <div className={styles.divInputP}>
                             <Form.Control
                             className={`${errors.name ? styles.inputError : styles.input }`}                        
@@ -221,7 +275,7 @@ const Company: React.FC = () => {
                         </div>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Last Name</Form.Label>
+                        <Form.Label>Apellido</Form.Label>
                         <div className={styles.divInputP}>
                             <Form.Control
                             className={`${errors.lastName ? styles.inputError : styles.input }`} 
@@ -251,7 +305,7 @@ const Company: React.FC = () => {
                         </div>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Document</Form.Label>
+                        <Form.Label>Documento</Form.Label>
                         <div className={styles.divInputP}>
                             <Form.Control
                             className={styles.input}
@@ -265,7 +319,7 @@ const Company: React.FC = () => {
                         </div>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Phone Number</Form.Label>
+                        <Form.Label>Numero de telefono</Form.Label>
                         <div className={styles.divInputP}>
                             <Form.Control
                             className={styles.input}
@@ -279,37 +333,48 @@ const Company: React.FC = () => {
                         </div>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Country</Form.Label>
+                        <Form.Label>Pais</Form.Label>
                         <div className={styles.divInputP}>
-                            <Form.Control
-                            className={`${errors.country ? styles.inputError : styles.input }`} 
-                            required
-                            type="text"
-                            name="country"
-                            value={companyData.country}
-                            placeholder="change your country?"
-                            onChange={handlerOnChange}
-                            />
+                        <Form.Control
+                        as="select"
+                        name="country"
+                        value={companyData.country}
+                        onChange={handlerOnChange}
+                        >
+                        <option value="">Selecciona un país...</option>
+                        {countryNames.map((countryName, index) => (
+                        <option key={index} value={countryName}>
+                        {countryName}
+                        </option>
+                        ))}
+                        </Form.Control>
                             {errors.country && <p className={styles.validationMessage}>{errors.country}</p>}
                         </div>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>State</Form.Label>
+                        <Form.Label>Provincia</Form.Label>
                         <div className={styles.divInputP}>
-                            <Form.Control
-                            className={`${errors.state ? styles.inputError : styles.input }`}
-                            required
-                            type="text"
-                            name="state"
-                            value={companyData.state}
-                            placeholder="change your state?"
-                            onChange={handlerOnChange}
-                            />
+                        <Form.Control
+                        as="select"
+                        name="state"
+                        value={companyData.state}
+                        onChange={handlerOnChange}
+                        >
+                        <option value="">Selecciona una provincia...</option>
+                        {companyData.country &&
+                        provincesByCountry[companyData.country]?.map(
+                        (province: ProvinceData, index: number) => (
+                        <option key={index} value={province.name}>
+                            {province.name}
+                         </option>
+                     )
+                        )}
+                    </Form.Control>
                             {errors.state && <p className={styles.validationMessage}>{errors.state}</p>}
                         </div>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>City</Form.Label>
+                        <Form.Label>Ciudad</Form.Label>
                         <div className={styles.divInputP}>
                             <Form.Control
                             className={`${errors.city ? styles.inputError : styles.input }`}                        
@@ -324,7 +389,7 @@ const Company: React.FC = () => {
                         </div>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Company</Form.Label>
+                        <Form.Label>Compañía</Form.Label>
                         <div className={styles.divInputP}>
                             <Form.Control
                             className={`${errors.company ? styles.inputError : styles.input }`} 
@@ -339,7 +404,7 @@ const Company: React.FC = () => {
                         </div>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Address</Form.Label>
+                        <Form.Label>Dirección</Form.Label>
                         <div className={styles.divInputP}>
                             <Form.Control
                             className={`${errors.address ? styles.inputError : styles.input }`} 
@@ -353,6 +418,21 @@ const Company: React.FC = () => {
                             {errors.address && <p className={styles.validationMessage}>{errors.address}</p>}
                         </div>
                     </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Profile Image</Form.Label>
+                        <div className={styles.divInputP}>
+                            <Form.Control
+                            className={styles.input} 
+                            required
+                            type="text"
+                            name="image"
+                            value={companyData.image}
+                            placeholder="change your image?"
+                            onChange={handlerOnChange}
+                            />
+                        </div>
+                    </Form.Group>
+                    <img src={companyData.image} alt={companyData.image} className={styles.inputImg}/>
                     <button 
                     type="submit"
                     className={styles.submit}
@@ -377,7 +457,7 @@ const Company: React.FC = () => {
                         !!errors.address
                         }      
                     >
-                        Save changes
+                        Guardar Cambios
                     </button>
                 </Form>
                 )}

@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { DragAndDrop } from "../../components/Cloudinary/Cloudinary.tsx";
 import { AppState } from "../../redux/reducer";
 import styles from "./User.module.css";
+import { provincesByCountry, ProvinceData } from '../../components/provincesData/provincesData.ts';
 
 interface UserData {
   id: string;
@@ -50,308 +51,6 @@ interface CountryData {
     common: string;
   };
 }
-interface ProvinceData {
-  name: string;
-}
-
-const provincesByCountry: Record<string, ProvinceData[]> = {
-  'Guyana': [
-    { name: 'Barima-Waini' },
-    { name: 'Cuyuni-Mazaruni' },
-    { name: 'Demerara-Mahaica' },
-    { name: 'East Berbice-Corentyne' },
-    { name: 'Essequibo Islands-West Demerara' },
-    { name: 'Mahaica-Berbice' },
-    { name: 'Pomeroon-Supenaam' },
-    { name: 'Potaro-Siparuni' },
-    { name: 'Upper Demerara-Berbice' },
-    { name: 'Upper Takutu-Upper Essequibo' },
-  ],
-  'Falkland Islands': [
-    { name: 'Falkland Islands' },
-    // Agrega más provincias si es necesario
-  ],
-  'Brazil': [
-    { name: 'Acre' },
-    { name: 'Alagoas' },
-    { name: 'Amapá' },
-    { name: 'Amazonas' },
-    { name: 'Bahia' },
-    { name: 'Ceará' },
-    { name: 'Distrito Federal' },
-    { name: 'Espírito Santo' },
-    { name: 'Goiás' },
-    { name: 'Maranhão' },
-    { name: 'Mato Grosso' },
-    { name: 'Mato Grosso do Sul' },
-    { name: 'Minas Gerais' },
-    { name: 'Pará' },
-    { name: 'Paraíba' },
-    { name: 'Paraná' },
-    { name: 'Pernambuco' },
-    { name: 'Piauí' },
-    { name: 'Rio de Janeiro' },
-    { name: 'Rio Grande do Norte' },
-    { name: 'Rio Grande do Sul' },
-    { name: 'Rondônia' },
-    { name: 'Roraima' },
-    { name: 'Santa Catarina' },
-    { name: 'São Paulo' },
-    { name: 'Sergipe' },
-    { name: 'Tocantins' },
-  ],
-  'Argentina': [
-    { name: 'Buenos Aires' },
-    { name: 'Córdoba' },
-    { name: 'Santa Fe' },
-    { name: 'Entre Ríos' },
-    { name: 'Tucumán' },
-    { name: 'Mendoza' },
-    { name: 'San Juan' },
-    { name: 'La Rioja' },
-    { name: 'Catamarca' },
-    { name: 'Santiago del Estero' },
-    { name: 'Salta' },
-    { name: 'Jujuy' },
-    { name: 'Formosa' },
-    { name: 'Chaco' },
-    { name: 'Corrientes' },
-    { name: 'Misiones' },
-    { name: 'Neuquén' },
-    { name: 'Río Negro' },
-    { name: 'Chubut' },
-    { name: 'Santa Cruz' },
-    { name: 'Tierra del Fuego' },
-  ],
-  'Bolivia': [
-    { name: 'Pando' },
-    { name: 'Beni' },
-    { name: 'La Paz' },
-    { name: 'Cochabamba' },
-    { name: 'Santa Cruz' },
-    { name: 'Oruro' },
-    { name: 'Potosí' },
-    { name: 'Chuquisaca' },
-    { name: 'Tarija' },
-],
-
-'Paraguay': [
-  { name: 'Concepción' },
-  { name: 'San Pedro' },
-  { name: 'Cordillera' },
-  { name: 'Guairá' },
-  { name: 'Caaguazú' },
-  { name: 'Caazapá' },
-  { name: 'Itapúa' },
-  { name: 'Misiones' },
-  { name: 'Paraguarí' },
-  { name: 'Alto Paraná' },
-  { name: 'Ñeembucú' },
-  { name: 'Amambay' },
-  { name: 'Canindeyú' },
-  { name: 'Presidente Hayes' },
-  { name: 'Boquerón' },
-  { name: 'Alto Paraguay' },
-  { name: 'Distrito Capital' },
-],
-
-'Uruguay': [
-  { name: 'Artigas' },
-  { name: 'Canelones' },
-  { name: 'Cerro Largo' },
-  { name: 'Colonia' },
-  { name: 'Durazno' },
-  { name: 'Flores' },
-  { name: 'Florida' },
-  { name: 'Lavalleja' },
-  { name: 'Maldonado' },
-  { name: 'Montevideo' },
-  { name: 'Paysandú' },
-  { name: 'Río Negro' },
-  { name: 'Rivera' },
-  { name: 'Rocha' },
-  { name: 'Salto' },
-  { name: 'San José' },
-  { name: 'Soriano' },
-  { name: 'Tacuarembó' },
-  { name: 'Treinta y Tres' },
-],
-
-'French Guiana': [
-  { name: 'Cayenne' },
-  { name: 'Saint-Laurent-du-Maroni' },
-  { name: 'Kourou' },
-  { name: 'Matoury' },
-  { name: 'Remire-Montjoly' },
-  { name: 'Macouria' },
-  { name: 'Mana' },
-  { name: 'Apatou' },
-  { name: 'Grand-Santi' },
-  { name: 'Maripasoula' },
-  { name: 'Papaïchton' },
-  { name: 'Saint-Élie' },
-  { name: 'Saül' },
-  { name: 'Camopi' },
-  { name: 'Ouanary' },
-  { name: 'Roura' },
-  { name: 'Régina' },
-  { name: 'Rémire-Montjoly' },
-  { name: 'Tonnegrande' },
-  { name: 'Maripasoula' },
-  { name: 'Papaïchton' },
-  { name: 'Saint-Élie' },
-  { name: 'Saül' },
-  { name: 'Camopi' },
-  { name: 'Ouanary' },
-  { name: 'Roura' },
-  { name: 'Régina' },
-  { name: 'Rémire-Montjoly' },
-  { name: 'Tonnegrande' },
-],
-'Chile': [
-  { name: 'Santiago' },
-  { name: 'Valparaíso' },
-  { name: 'Maule' },
-  { name: 'Biobío' },
-  { name: 'Araucanía' },
-  { name: 'Los Ríos' },
-  { name: 'Los Lagos' },
-  { name: 'Aysén' },
-  { name: 'Magallanes' },
-  { name: 'Antofagasta' },
-  { name: 'Atacama' },
-  { name: 'Coquimbo' },
-  { name: 'Arica y Parinacota' },
-  { name: 'Tarapacá' },
-],
-
-'Peru': [
-  { name: 'Amazonas' },
-  { name: 'Lima' },
-  { name: 'Cusco' },
-  { name: 'Arequipa' },
-  { name: 'Piura' },
-  { name: 'Lambayeque' },
-  { name: 'La Libertad' },
-  { name: 'Junín' },
-  { name: 'Puno' },
-  { name: 'Ancash' },
-  { name: 'Callao' },
-  { name: 'Ica' },
-  { name: 'Loreto' },
-  { name: 'Cajamarca' },
-  { name: 'Ucayali' },
-  { name: 'Huanuco' },
-  { name: 'San Martín' },
-  { name: 'Ayacucho' },
-  { name: 'Tacna' },
-  { name: 'Moquegua' },
-  { name: 'Pasco' },
-  { name: 'Madre de Dios' },
-  { name: 'Tumbes' },
-  { name: 'Huancavelica' },
-],
-'Ecuador': [
-  { name: 'Azuay' },
-  { name: 'Bolívar' },
-  { name: 'Cañar' },
-  { name: 'Carchi' },
-  { name: 'Chimborazo' },
-  { name: 'Cotopaxi' },
-  { name: 'El Oro' },
-  { name: 'Esmeraldas' },
-  { name: 'Galápagos' },
-  { name: 'Guayas' },
-  { name: 'Imbabura' },
-  { name: 'Loja' },
-  { name: 'Los Ríos' },
-  { name: 'Manabí' },
-  { name: 'Morona Santiago' },
-  { name: 'Napo' },
-  { name: 'Orellana' },
-  { name: 'Pastaza' },
-  { name: 'Pichincha' },
-  { name: 'Santa Elena' },
-  { name: 'Santo Domingo de los Tsáchilas' },
-  { name: 'Sucumbíos' },
-  { name: 'Tungurahua' },
-  { name: 'Zamora-Chinchipe' },
-],
-'Surinam': [
-  { name: 'Brokopondo' },
-  { name: 'Commewijne' },
-  { name: 'Coronie' },
-  { name: 'Marowijne' },
-  { name: 'Nickerie' },
-  { name: 'Para' },
-  { name: 'Paramaribo' },
-  { name: 'Saramacca' },
-  { name: 'Sipaliwini' },
-  { name: 'Wanica' },
-],
-'Colombia': [
-  { name: 'Amazonas' },
-  { name: 'Antioquia' },
-  { name: 'Arauca' },
-  { name: 'Atlántico' },
-  { name: 'Bogotá' },
-  { name: 'Bolívar' },
-  { name: 'Boyacá' },
-  { name: 'Caldas' },
-  { name: 'Caquetá' },
-  { name: 'Casanare' },
-  { name: 'Cauca' },
-  { name: 'Cesar' },
-  { name: 'Chocó' },
-  { name: 'Córdoba' },
-  { name: 'Cundinamarca' },
-  { name: 'Guainía' },
-  { name: 'Guaviare' },
-  { name: 'Huila' },
-  { name: 'La Guajira' },
-  { name: 'Magdalena' },
-  { name: 'Meta' },
-  { name: 'Nariño' },
-  { name: 'Norte de Santander' },
-  { name: 'Putumayo' },
-  { name: 'Quindío' },
-  { name: 'Risaralda' },
-  { name: 'San Andrés y Providencia' },
-  { name: 'Santander' },
-  { name: 'Sucre' },
-  { name: 'Tolima' },
-  { name: 'Valle del Cauca' },
-  { name: 'Vaupés' },
-  { name: 'Vichada' },
-],
-'Venezuela': [
-  { name: 'Amazonas' },
-  { name: 'Anzoátegui' },
-  { name: 'Apure' },
-  { name: 'Aragua' },
-  { name: 'Barinas' },
-  { name: 'Bolívar' },
-  { name: 'Carabobo' },
-  { name: 'Cojedes' },
-  { name: 'Delta Amacuro' },
-  { name: 'Falcón' },
-  { name: 'Guárico' },
-  { name: 'Lara' },
-  { name: 'Mérida' },
-  { name: 'Miranda' },
-  { name: 'Monagas' },
-  { name: 'Nueva Esparta' },
-  { name: 'Portuguesa' },
-  { name: 'Sucre' },
-  { name: 'Táchira' },
-  { name: 'Trujillo' },
-  { name: 'Vargas' },
-  { name: 'Yaracuy' },
-  { name: 'Zulia' },
-  { name: 'Distrito Capital' },
-],
-};
-
 
 const User = () => {
   const { id } = useParams();
@@ -360,6 +59,7 @@ const User = () => {
   const [editedUserData, setEditedUserData] = useState<EditableUserData>({});
   const urlImage = useSelector((state: AppState) => state.urlImage);
   const [countryNames, setCountryNames] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   const [errors, setErrors] = useState({
@@ -391,6 +91,11 @@ const User = () => {
       } catch (error) {
         console.log(error);
         console.error('Error fetching user', error);
+      }finally {
+        // Se oculta la imagen de loading después de 3 segundos
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 3000);
       }
     }
     fetchUsers()
@@ -456,6 +161,30 @@ console.log(userData)
   useEffect(() => {
     fetchCountries();
   }, []);
+  if (isLoading) {
+    return (
+      <div className={styles.containLoading}>
+        <img
+          className={styles.beerLoading}
+          src="https://4.bp.blogspot.com/-646VVaYA-bg/WPHrAyqN7YI/AAAAAAAADjI/7lAJmMNHpm4vCT49MlX51SBPDzlrx0MFACLcB/s1600/aa2.gif"
+          alt=""
+        />
+      </div>
+    );
+  }
+
+  if (!userData) {
+    return (
+      <div className={styles.notFound}>
+        <div>
+          ¡Usuario no encontrado!
+        </div>
+        <Button variant="danger" onClick={() => navigate(-1)} className={styles.buttonback}>
+        Volver
+      </Button>
+      </div>
+    );
+  }
 
 
   return (
@@ -539,18 +268,21 @@ console.log(userData)
                 <Form.Group controlId="formState">
                   <Form.Label>Provincia</Form.Label>
                   <Form.Control
-  as="select"
-  name="state"
-  value={editedUserData.state}
-  onChange={handleInputChange}
->
-  <option value="">Selecciona una provincia...</option>
-  {editedUserData.country && provincesByCountry[editedUserData.country]?.map((province: ProvinceData, index: number) => (
-  <option key={index} value={province.name}>
-    {province.name}
-  </option>
-))}
-</Form.Control>
+                    as="select"
+                    name="state"
+                    value={editedUserData.state}
+                    onChange={handleInputChange}
+                     >
+                    <option value="">Selecciona una provincia...</option>
+                    {editedUserData.country &&
+                    provincesByCountry[editedUserData.country]?.map(
+                    (province: ProvinceData, index: number) => (
+                    <option key={index} value={province.name}>
+                     {province.name}
+                      </option>
+                        )
+                        )}
+                  </Form.Control>
                    <h6 className={styles.mensajes}>{errors.state}</h6>
                 </Form.Group>
                 <Form.Group controlId="formAddress">

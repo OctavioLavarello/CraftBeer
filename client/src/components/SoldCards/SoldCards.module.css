@@ -45,3 +45,53 @@
 .div2 div h6 a {
     text-decoration: none;
 }
+@media (max-width: 768px) {
+    .card {
+        background: rgb(63, 63, 63);
+        color: #fff;
+        padding: 2% 3%;
+        border-Radius: 2vh;
+        width: 95%;
+        margin-top: 2vh;
+        height: 53vh;
+        border: 0.02vh solid rgba(163, 125, 52, 1);
+        text-align: center;
+        font-family: 'Arial Black', sans-serif;
+        font-size: 1.7vh;
+        font-weight: bold;
+    }
+    .card strong {
+        color: rgba(163, 125, 52, 1)
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .content img {
+        height: 30vh;
+        border: 0.02vh solid rgba(163, 125, 52, 1);
+        padding: 1vh;
+        border-radius: 5%;
+    }
+    .div {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .div2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .div2 div {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+    .div2 div h6 a {
+        text-decoration: none;
+    }
+}

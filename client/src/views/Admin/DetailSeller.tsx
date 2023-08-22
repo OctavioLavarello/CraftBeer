@@ -12,14 +12,15 @@ import { useSelector } from "react-redux";
 import { AppState } from "../../redux/reducer";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 const DetailSeller = () => {
   const id = useSelector((state: AppState) => state.idSeller);
+  const navigate = useNavigate()
 
   const [infoUser, setInfoUser] = useState<any>({});
-  console.log(infoUser);
+  console.log("data Sellerrrrrrr",infoUser);
     
 
   useEffect(() => {
@@ -55,6 +56,12 @@ const DetailSeller = () => {
     }
   };
 
+
+  const historyShop =(eventKey:any)=>{
+    if(eventKey === "1")  navigate(`/admin/seller/AdminHistoryShopSeller`)
+    if(eventKey === "2")  navigate(`/admin/buyer/adminUserModify`)
+    }
+
   return (
     <div className="bodyBuyer">
       <Card
@@ -77,8 +84,8 @@ const DetailSeller = () => {
           <NavbarBrand>
             <h2>{infoUser.company}</h2>
           </NavbarBrand>
-          <NavDropdown title="Otras opciones" menuVariant="dark">
-            <NavDropdown.Item>Historial de ventas</NavDropdown.Item>
+          <NavDropdown title="Otras opciones" menuVariant="dark" onSelect={historyShop}>
+            <NavDropdown.Item eventKey="1">Historial de ventas</NavDropdown.Item>
             <NavDropdown.Item>
               <Link to="/admin/seller/products" style={{textDecoration:"none", color:"white"}}>Productos en venta</Link>
             </NavDropdown.Item>
