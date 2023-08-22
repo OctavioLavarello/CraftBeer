@@ -4,7 +4,7 @@ import { Op } from 'sequelize';
 
 const getAllProducts = async (req: Request, res: Response) => {
   try {
-    const { type, price, IBU, ABV, qualification, order, pag, name } = req.query;
+    const { type, price, IBU, ABV, qualification, order, pag, name, userCompanyId } = req.query;
 
     // Definir las opciones de consulta
     const options: any = {};
@@ -42,6 +42,10 @@ const getAllProducts = async (req: Request, res: Response) => {
             [Op.iLike]: `%${name}%`
           }
         };
+      }
+      // si se proporciona una query "usercompanyId", filtrar los productos de la empresa
+      if(userCompanyId){
+        options.where = { ...options.where, userCompanyId: { [Op.eq]: userCompanyId } }
       }
 
     // Ordenar según el valor de order (asc o desc)
