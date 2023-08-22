@@ -12,7 +12,6 @@ import { GoogleLogin } from '@react-oauth/google';
 import { login } from "../../redux/actions/actions";
 // STYLES
 import styles from "./Login.module.css";
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import avatar from "../../assets/icons/avatar.png"
 import email from "../../assets/icons/sobre.png"
@@ -134,11 +133,11 @@ const Login: React.FC = () => {
                 </button>
                 <NavLink 
                 to="/chooseSignUp">
-                    <Button 
+                    <button
                     className={styles.signUp}
                     >
                         Sign Up
-                    </Button>
+                    </button>
                 </NavLink>
                 <GoogleOAuthProvider clientId="613986479282-t9j4clt86pdii5h3m22abarctpm7k3d7.apps.googleusercontent.com">
                     <GoogleLogin

@@ -108,12 +108,28 @@ const NavBar: React.FC = () => {
           </div>
         ) : 
         (
-          <button 
-          onClick={handlerLogout}
-          className={styles.link}
+          <div>
+            <button
+            className={styles.link2main}
+            onClick={() => setShowDropdown(!showDropdown)}
           >
-            <h5>Logout</h5>
-          </button> 
+            <h5>Menu</h5>
+          </button>
+          {showDropdown && (
+            <div className={styles.dropdownContent}>
+              <h5 
+              className={styles.link2} 
+              onClick={handlerLogout}
+              >Logout</h5>
+              <NavLink to={`/admin`} className={styles.link3}>
+                <h5>Control Panel</h5>
+              </NavLink>
+              <button
+              onClick={() => setShowDropdown(!showDropdown)}
+              className={styles.link4}>▲</button>
+            </div>
+          )}
+          </div>
         )))
         }
       </div>

@@ -10,13 +10,13 @@ const HomeCarousel: React.FC = () => {
   // LOCAL STATES
   const images = [
     { src: "https://3cordilleras.com/wp-content/uploads/2021/12/1.-nuestras-cervezas-scaled.jpeg",
-    id: 1},
+    to: 1},
     { src:"https://lescuentoque.com.co/wp-content/uploads/2020/02/Cerveza-BBC-Cajic%C3%A1.jpg",
-    id: 1},
+    to: 1},
     { src:"https://onlinelicor.es/wp-content/uploads/2019/02/Carlsberg-Pilsner.jpg",
-    id: 1},
+    to: 1},
     { src:"https://www.italiaatavola.net/images/contenutiarticoli/quattro-luppoli-originale.jpg",
-    id: 1},
+    to: 1},
   ];
   return (
     <div className={styles.div}>

@@ -198,10 +198,17 @@
     margin-top: -4vh;
     border: 0.02vh solid black;
     border-radius: 1px;
+    height: 6vh;
     background-color: rgb(63, 63, 63);
 }
-.signUp:hover{
+.signUp:hover {
     background-color: rgb(63, 63, 63);
+    border-radius: 1px;
+    border: 0.02vh solid black;
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+}
+.signUp:active {
+    background-color: rgb(96, 163, 52);
     border-radius: 1px;
     border: 0.02vh solid black;
     box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
