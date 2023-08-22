@@ -1,4 +1,4 @@
-import { ActionWithPayload, loginAction, simpleAction } from "./actions/actions";
+import { ActionWithPayload, loginAction, salesSumAction, salesDetailAction } from "./actions/actions";
 import { AppState, initialState } from "./reducer";
 
 export const getAllBeer = (
@@ -186,9 +186,15 @@ export const sellerId = (state = initialState, action: ActionWithPayload<string,
   }
 } 
 
-export const userCompanySalesSummary = (state = initialState, action: simpleAction) => {
+export const userCompanySalesSummary = (state = initialState, action: salesSumAction) => {
   return{
     ...state,
     companySalesSum: action.payload
+  }
+}
+export const userCompanySalesDetail = (state = initialState, action: salesDetailAction) => {
+  return{
+    ...state,
+    companySalesDetail: action.payload
   }
 }

@@ -19,8 +19,10 @@ import {
   ID_BUYER,
   ID_SELLER,
   COMPANY_SALES_SUMMARY,
+  COMPANY_SALES_DETAIL,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
+import { salesDetail, salesSum } from "../reducer";
 
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
@@ -333,16 +335,31 @@ export const idSeller = (id:string)=> {
 }
 
 // SALES SUMMARY
-export interface simpleAction {
+export interface salesSumAction {
   type: string;
-  payload: string;
+  payload: salesSum[];
 }
 export const userCompanySalesSummary = (id: string) => {
   const endpoint = "/usercompanysalessummary/";
-  return async function (dispatch: Dispatch<simpleAction>) {
+  return async function (dispatch: Dispatch<salesSumAction>) {
     const { data } = await axios.get(`${endpoint}${id}`);
     return dispatch({
       type: COMPANY_SALES_SUMMARY,
+      payload: data,
+    });
+  };
+}
+// SALES DETAIL
+export interface salesDetailAction {
+  type: string;
+  payload: salesDetail[];
+}
+export const userCompanySalesDetail = (id: string) => {
+  const endpoint = "/usercompanysales/";
+  return async function (dispatch: Dispatch<salesDetailAction>) {
+    const { data } = await axios.get(`${endpoint}${id}`);
+    return dispatch({
+      type: COMPANY_SALES_DETAIL,
       payload: data,
     });
   };

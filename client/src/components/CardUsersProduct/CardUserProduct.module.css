@@ -1,0 +1,45 @@
+.card {
+    background: #242424;
+    color: #fff;
+    padding: 2% 3%;
+    border-Radius: 1vh;
+    text-Align: center;
+}
+.cardBody {
+    border: 1vh solid rgba(163, 125, 52, 1);
+}
+.img {
+  width: 100%;
+  height: 100%;
+  margin-Left: -10%;
+}
+.name {
+    text-align: center;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 3vh;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 1.7vh;
+    font-weight: bold;
+}
+.price h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 3vh;
+    font-weight: bold;
+}
