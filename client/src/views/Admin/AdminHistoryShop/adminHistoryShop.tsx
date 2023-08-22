@@ -4,11 +4,12 @@ import MyShop from "../../MyShop/MyShop";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
+import style from "./adminHistoryShop.module.css"
+import { useNavigate } from "react-router-dom";
 
 
 const AdminHistoryShop = () => {
-
+const navigate = useNavigate()
     const id = useSelector((state: AppState) => state.idBuyer);
     const [infoUser, setInfoUser] = useState<any>({});
 
@@ -24,8 +25,12 @@ const AdminHistoryShop = () => {
 
 
     return (
-        <div> 
-            <h3 style={{marginTop:"20px",marginLeft:"100px"}}>Historial de compras de {infoUser.name}</h3>
+        <div>
+            <div style={{display:"flex",flexDirection:"row"}}>
+
+                <button className={style.button} onClick={()=>navigate(`/admin/buyer/${id}`)}>Volver</button>
+                <h3 style={{ marginTop: "20px", marginLeft: "100px" }}>Historial de compras de {infoUser.name}</h3>
+            </div>
             <MyShop
                 idPersonAdmin={id}
             />
