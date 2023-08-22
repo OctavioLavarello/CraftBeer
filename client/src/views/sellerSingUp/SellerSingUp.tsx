@@ -8,15 +8,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { createdCompany } from "../../redux/actions/actions";
 import {DragAndDrop} from "../../components/Cloudinary/Cloudinary.tsx"
 import { AppState } from "../../redux/reducer";
+import { provincesByCountry, ProvinceData } from '../../components/provincesData/provincesData.ts';
 //import { toast } from "react-hot-toast";
 
 // STYLES
 //....
 
+interface CountryData {
+  name: {
+    common: string;
+  };
+}
 // SELLER SING UP
 const SellerSingUp: React.FC = () => {
   const dispatch = useDispatch<Dispatch<AnyAction> | any>();
   const urlImage = useSelector((state: AppState)=> state.urlImage)
+  const [countryNames, setCountryNames] = useState<string[]>([]);
 
   const [input, setInput] = useState({
     name: "",
@@ -152,6 +159,21 @@ const SellerSingUp: React.FC = () => {
     return disabled;
   };
 
+  const fetchCountries = async () => {
+    try {
+      const response = await fetch('https://restcountries.com/v3.1/region/South%20America');
+      const data: CountryData[] = await response.json();
+      const countryNames = data.map(country => country.name.common);
+      setCountryNames(countryNames);
+    } catch (error) {
+      console.error('Error fetching country names:', error);
+    }
+  };
+  
+  useEffect(() => {
+    fetchCountries();
+  }, []);
+
   return (
     <div className="bodyFormSeller">
       <Form
@@ -256,19 +278,39 @@ const SellerSingUp: React.FC = () => {
           }}
         >
           <Col>
-            <Form.Control
-              placeholder="Pais"
-              onChange={handlerChange}
-              name="country"
-            />
+          <Form.Control
+            as="select"
+            name="country"
+            value={input.country}
+            
+            onChange={handlerChange}
+          >
+            <option value="">Selecciona un país...</option>
+            {countryNames.map((countryName, index) => (
+              <option key={index} value={countryName}>
+                {countryName}
+              </option>
+            ))}
+          </Form.Control>
             <h6 className="errorCompany">{errors.country}</h6>
           </Col>
           <Col>
-            <Form.Control
-              placeholder="Región/Estado/Provincia"
-              onChange={handlerChange}
-              name="state"
-            />
+          <Form.Control
+            as="select"
+    name="state"
+    value={input.state}
+    onChange={handlerChange}
+  >
+    <option value="">Selecciona una provincia...</option>
+    {input.country &&
+      provincesByCountry[input.country]?.map(
+        (province: ProvinceData, index: number) => (
+          <option key={index} value={province.name}>
+            {province.name}
+          </option>
+        )
+      )}
+  </Form.Control>
             <h6 className="errorCompany">{errors.state}</h6>
           </Col>
         </Row>
