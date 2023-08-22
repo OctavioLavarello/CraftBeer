@@ -65,11 +65,9 @@ const Detail = () => {
         <div>
           ¡Producto no encontrado!
         </div>
-        <Link to="/shop" aria-disabled>
-          <Button variant="danger" className={styles.buttonback}>
-            Volver
-          </Button>
-        </Link>
+        <Button variant="danger" onClick={() => navigate(-1)} className={styles.buttonback}>
+        Volver
+      </Button>
       </div>
     );
   }
