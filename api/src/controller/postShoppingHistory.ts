@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { ShoppingHistory, UserPerson, Item, Product } from '../../db';
-import postPurchaseConfirmation from "./postPurchaseConfirmation";
+import purchaseConfirmation from "./notifications/purchaseConfirmation";
+import saleConfirmation from './notifications/saleConfirmation';
+
 
 const postShoppingHistory = async (req: Request, res: Response) => {
   try {
@@ -80,8 +82,10 @@ const postShoppingHistory = async (req: Request, res: Response) => {
     const newItems: any = createdItems.filter(item => item !== null);
 
     if (newShoppingHistory) {
-      await postPurchaseConfirmation(date, totalPrice, userPersonId, newItems);
+      await saleConfirmation(person,date,newItems,);
+      await purchaseConfirmation(date, totalPrice, userPersonId, newItems);
     }
+
 
     return res.status(201).send(newShoppingHistory);
   } catch (error) {

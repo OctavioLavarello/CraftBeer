@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 const { NODEMAILER_USER, NODEMAILER_PASS } = process.env;
 
-const postAccountConfirm = async (name:String, email:String) => {
+const accountConfirm = async (name:String, email:String) => {
   try {
   
     let transporter = nodemailer.createTransport({
@@ -49,4 +49,4 @@ const postAccountConfirm = async (name:String, email:String) => {
   }
 };
 
-export default postAccountConfirm;
+export default accountConfirm;

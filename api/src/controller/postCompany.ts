@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { UserCompany, UserPerson } from "../../db";
-import postAccountConfirm from "./postAccountConfirm";
+import accountConfirm from "./notifications/accountConfirm";
 import postCompanyValidation from "../validations/postCompanyValidation";
 
 
@@ -46,7 +46,7 @@ const postCompany = async (req: Request, res: Response) => {
       role: "Company",
     });
     if (userCompany) {
-      postAccountConfirm(company, email);
+      accountConfirm(company, email);
     }
     return res.status(200).json(userCompany);
   } catch (error) {
