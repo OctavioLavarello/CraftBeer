@@ -127,8 +127,11 @@ const Shop = () => {
             <button className={style.button_Pagelateral}>{numberPage < pages ? numberPage + 1 : <></>} </button>
             <button className={style.button_Pagechange} onClick={handlerPage} name=">" disabled={disableBoton.adv}>{">"} </button>
           </div>
+          <div className={style.filter}>
           <Filters />
-          <h5 style={{ marginLeft: "12%" }}>ESPACIO PUBLICITARIO</h5>
+
+          </div>
+          <h5 className={style.containerTitlePublicidad}>ESPACIO PUBLICITARIO</h5>
           <div className={style.containerpublicidad}>
             <img src="https://thumbs.gfycat.com/IlliteratePoliteLeech-size_restricted.gif" alt="" style={{ objectFit: "cover", width: "100%" }} />
           </div>

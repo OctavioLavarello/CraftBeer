@@ -3,12 +3,12 @@ import { UserCompany, Product } from "../../db"
 
 const getCompanyById = async (req: Request, res:Response) => {
     try {
-        const {idCompany} = req.params
-
-        const company = await UserCompany.findOne({
-            where:{
-                id: idCompany,
-                status: true
+        const { idCompany } = req.params
+ 
+       const company = await UserCompany.findOne({
+            where: {
+                id:idCompany,
+                status:true
             },
             include: {
                 model: Product
@@ -27,7 +27,6 @@ const getCompanyById = async (req: Request, res:Response) => {
         else {
             return res.status(500).send("Unexpected error")
         }
-
     }
 }
 

@@ -14,7 +14,9 @@ import {
   hasNavigatedTrue,
   deleteStorageCart,
   buyerId,
-  sellerId
+  sellerId,
+  userCompanySalesSummary,
+  userCompanySalesDetail,
 } from "./reducerFunctions";
 import {
   CREATED_PRODUCT,
@@ -31,7 +33,9 @@ import {
   HAS_NAVIGATED,
   DELETE_CARTSTORAGE,
   ID_BUYER,
-  ID_SELLER
+  ID_SELLER,
+  COMPANY_SALES_SUMMARY,
+  COMPANY_SALES_DETAIL,
 } from "../redux/actions/actionsTypes";
 import { SaveDataLS } from "../components/LocalStorage/LocalStorage";
 
@@ -60,17 +64,39 @@ export interface beers {
   updatedAt: string;
   userCompanyId: string;
 }
+export interface salesSum {
+  id: string;
+  name: string;
+  image: string;
+  price: number;
+  amountTotal: number;
+  priceTotal: number;
+}
+export interface salesDetail {
+  ShoppingHistoryId: string;
+  amount: number;
+  buyerEmail: string;
+  buyerName: string;
+  date: string;
+  description: string;
+  image: string;
+  name: string;
+  price: number;
+  totalPrice: number;
+}
 export interface AppState {
   allBeer: beers[];
   beerFilters: BeerFilters;
-  localStorageCart:SaveDataLS [];
-  totalPages:number
-  allCompany: object[]
+  localStorageCart: SaveDataLS [];
+  totalPages:number;
+  allCompany: object[];
   accessLogin: AccessLogin;
   urlImage: any;
   hasNavigated: boolean;
-  idBuyer: string
-  idSeller: string
+  idBuyer: string;
+  idSeller: string;
+  companySalesSum: salesSum[]
+  companySalesDetail: salesDetail[];
 }
 export interface BeerFilters {
   IBU?: number,  // El signo de interrogación indica que la propiedad es opcional
@@ -102,7 +128,9 @@ export const initialState: AppState = {
   urlImage: "",
   hasNavigated: false,
   idBuyer:"",
-  idSeller: ""
+  idSeller: "",
+  companySalesSum: [],
+  companySalesDetail: [],
 };
 
 const rootReducer = (
@@ -154,6 +182,12 @@ const rootReducer = (
     }
     case ID_SELLER: {
       return sellerId(state, action)
+    }
+    case COMPANY_SALES_SUMMARY: {
+      return userCompanySalesSummary(state, action)
+    }
+    case COMPANY_SALES_DETAIL: {
+      return userCompanySalesDetail(state, action)
     }
     default:
       return state;

@@ -1,11 +1,12 @@
 import { Card, Col, Container, Row, Form, Button } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { DragAndDrop } from "../../components/Cloudinary/Cloudinary.tsx";
 import { AppState } from "../../redux/reducer";
 import styles from "./User.module.css";
+import { provincesByCountry, ProvinceData } from '../../components/provincesData/provincesData.ts';
 
 interface UserData {
   id: string;
@@ -45,14 +46,20 @@ interface Errors {
   state: string;
   address: string;
 }
-
+interface CountryData {
+  name: {
+    common: string;
+  };
+}
 
 const User = () => {
   const { id } = useParams();
-  const [userData, setUserData] = useState<UserData | null>(null);
+  const [userData, setUserData] = useState<UserData>();
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedUserData, setEditedUserData] = useState<EditableUserData>({});
   const urlImage = useSelector((state: AppState) => state.urlImage);
+  const [countryNames, setCountryNames] = useState<string[]>([]);
+  const navigate = useNavigate();
 
   const [errors, setErrors] = useState({
     name: "Se requiere nombre",
@@ -78,7 +85,7 @@ const User = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/persons/${id}`)
+        const response = await axios.get(`https://craftbeer.up.railway.app/persons/${id}`)
         setUserData(response.data)
       } catch (error) {
         console.log(error);
@@ -119,6 +126,7 @@ console.log(userData)
     return Object.values(errors).some((error) => error !== "");
   };
   
+  
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -131,6 +139,24 @@ console.log(userData)
       console.error('Error updating user', error);
     }
   };
+
+
+  const fetchCountries = async () => {
+    try {
+      const response = await fetch('https://restcountries.com/v3.1/region/South%20America');
+      const data: CountryData[] = await response.json();
+      const countryNames = data.map(country => country.name.common);
+      setCountryNames(countryNames);
+    } catch (error) {
+      console.error('Error fetching country names:', error);
+    }
+  };
+  
+  useEffect(() => {
+    fetchCountries();
+  }, []);
+
+
   return (
     <Container>
     <Row className={styles.Columna}>
@@ -181,14 +207,22 @@ console.log(userData)
                    <h6 className={styles.mensajes}>{errors.document}</h6>
                   </Form.Group>
                 </Form.Group>
+                <Form.Label>Pais</Form.Label>
                 <Form.Group controlId="formCountry">
-                  <Form.Label>Pais</Form.Label>
-                   <Form.Control
-                    type="text"
-                    name="country"
-                    value={editedUserData.country}
-                   onChange={handleInputChange}
-                  />
+                  <Form.Control
+            as="select"
+            name="country"
+            value={editedUserData.country}
+            
+            onChange={handleInputChange}
+          >
+            <option value="">Selecciona un país...</option>
+            {countryNames.map((countryName, index) => (
+              <option key={index} value={countryName}>
+                {countryName}
+              </option>
+            ))}
+          </Form.Control>
                    <h6 className={styles.mensajes}>{errors.country}</h6>
                 </Form.Group>
                 <Form.Group controlId="formCity">
@@ -202,13 +236,23 @@ console.log(userData)
                    <h6 className={styles.mensajes}>{errors.city}</h6>
                 </Form.Group>
                 <Form.Group controlId="formState">
-                  <Form.Label>Estado</Form.Label>
-                   <Form.Control
-                    type="text"
+                  <Form.Label>Provincia</Form.Label>
+                  <Form.Control
+                    as="select"
                     name="state"
                     value={editedUserData.state}
-                   onChange={handleInputChange}
-                  />
+                    onChange={handleInputChange}
+                     >
+                    <option value="">Selecciona una provincia...</option>
+                    {editedUserData.country &&
+                    provincesByCountry[editedUserData.country]?.map(
+                    (province: ProvinceData, index: number) => (
+                    <option key={index} value={province.name}>
+                     {province.name}
+                      </option>
+                        )
+                        )}
+                  </Form.Control>
                    <h6 className={styles.mensajes}>{errors.state}</h6>
                 </Form.Group>
                 <Form.Group controlId="formAddress">
@@ -234,7 +278,10 @@ console.log(userData)
                 <Card.Text>Ciudad: {userData?.city}</Card.Text>
                 <Card.Text>Estado: {userData?.state}</Card.Text>
                 <Card.Text>Calle: {userData?.address}</Card.Text>
-                <Button  className={styles.buttonEdit} onClick={handleEditClick}>Editar</Button>
+                <div className={styles.buttonContainer}>
+                 <Button className={styles.buttonEdit} onClick={handleEditClick}>Editar</Button>
+                 <Button onClick={() => navigate(-1)} className={styles.buttonback}>Volver</Button>
+                </div>
               </>
             )}
           </Card.Body>

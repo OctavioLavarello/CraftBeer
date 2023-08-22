@@ -6,6 +6,7 @@ import craftBeerLogo from "../../assets/img/craftBeerLogo.jpg";
 import Styles from "./BuyerSingUp.module.css"
 import {DragAndDrop} from "../../components/Cloudinary/Cloudinary.tsx"
 import { AppState } from "../../redux/reducer";
+import { provincesByCountry, ProvinceData } from '../../components/provincesData/provincesData.ts';
 interface UserData {
   name: string;
   id?: string;
@@ -25,6 +26,7 @@ interface CountryData {
     common: string;
   };
 }
+
 const BuyerSingUp: React.FC = () => {
   const dispatch = useDispatch<any>();
   const urlImage = useSelector((state: AppState)=> state.urlImage)
@@ -44,6 +46,7 @@ const BuyerSingUp: React.FC = () => {
    
   });
 
+  
   useEffect(() => {
     setFormData((prevInput) => ({ ...prevInput, image: urlImage }));
   }, [urlImage]);
@@ -128,15 +131,8 @@ const BuyerSingUp: React.FC = () => {
       }
     }
     if(name === "state"){
-      if (input.state !== "") {
-        if (/^[a-zA-Z]+$/.test(input.state)) {  
-          setErrors({ ...errors, state: "" });
-        } else {
-          setErrors({ ...errors, state: "Solo se permiten letras" });
-        }
-      } else {
-        setErrors({ ...errors, state: "Información requerida" });
-      }
+      if (input.state !== "") setErrors({ ...errors, state: "" });
+      else setErrors({ ...errors, state: "Información requerida" });
     }
     if(name === "address"){
       if (input.address !== "") setErrors({ ...errors, address: "" });
@@ -302,18 +298,19 @@ useEffect(() => {
     <Col>
       País:
       <Form.Control
-        as="select"
-        name="country"
-        value={formData.country}
-        onChange={handleInputChange}
-        >
-        <option value="">Selecciona un país...</option>
-        {countryNames.map((countryName, index) => (
-        <option key={index} value={countryName}>
-        {countryName}
-        </option>
-          ))}
-      </Form.Control>
+            as="select"
+            name="country"
+            value={formData.country}
+            
+            onChange={handleInputChange}
+          >
+            <option value="">Selecciona un país...</option>
+            {countryNames.map((countryName, index) => (
+              <option key={index} value={countryName}>
+                {countryName}
+              </option>
+            ))}
+          </Form.Control>
       <h6 className={Styles.mensajes}>{errors.country}</h6>
     </Col>
     <Col>
@@ -330,27 +327,35 @@ useEffect(() => {
   </Row>
   <Row style={{ margin: '15px' }}>
     <Col>
-      Estado:
+      Provincia:
       <Form.Control
-        placeholder="Estado"
-        type="text"
+        as="select"
         name="state"
+        value={formData.state}
         onChange={handleInputChange}
-    
-      />
+        >
+        <option value="">Selecciona una provincia...</option>
+        {formData.country &&
+        provincesByCountry[formData.country]?.map(
+        (province: ProvinceData, index: number) => (
+          <option key={index} value={province.name}>
+            {province.name}
+          </option>
+        )
+          )}
+      </Form.Control>
       <h6 className={Styles.mensajes}>{errors.state}</h6>
     </Col>
     <Col>
 
     </Col>
   </Row>
+  <div style={{textAlign:"center"}}>
       <Button type="submit"
       disabled={disable(errors)}>
-        
         Crear Usuario
       </Button>
-   
- 
+  </div>
     </Form>
 
     </div>

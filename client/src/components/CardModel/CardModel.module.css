@@ -1,39 +1,26 @@
-@media (min-width: 1209px) and (max-width: 1600px) {}
 
-/* ------------------------------------------------------------------------------------------------------------------------------------------------------------ */
-
-
-
-
-/* Pantallas pequeñas (dispositivos móviles pequeños) */
-@media (max-width: 480px) {
-    /* Estilos para pantallas pequeñas */
-}
 
 /* Dispositivos móviles */
-@media (min-width: 481px) and (max-width: 767px) {
+@media (max-width: 768px) {
     /* Estilos para dispositivos móviles */
-}
 
-/* Tablets y pantallas medianas */
-@media (min-width: 768px) and (max-width: 1023px) {
-    /* Estilos para tablets y pantallas medianas */
-}
+ /* Estilos para pantallas grandes */
 
-
-/* Pantallas medianas (1024px - 1365px)  -----------------------------------------------*/
-@media (min-width: 768px) and (max-width: 1365px) {
+    /* Agrega tus reglas CSS aquí */
     .card {
-        background-color: rgb(13, 12, 12);
+        background-color: rgb(0, 0, 0);
         border-radius: 8px;
+        border: 0.1px solid #d09527;
         padding: 5px;
         color: #d09527;
-        border: none;
         display: flex;
-        flex-direction: column;
-        /* Cambio a columna */
-        margin: 10px;
-        box-shadow: 0 4px 8px rgba(79, 72, 72, 0.3);
+        overflow: hidden;
+        width: 340px;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 19px;
+        height: 550px;
+        box-shadow: 0 0 8px 4px rgba(208, 149, 39, 0.1);
     }
 
     .centeredContainer {
@@ -49,10 +36,8 @@
 
     .image {
         border-radius: 6px;
-        width: 90%;
-        /* Ajuste al 100% del ancho */
-        height: 32vh;
-        /* Ajuste automático de altura */
+        width: 100%;
+        height: 170px;
         background-color: rgb(21, 20, 20);
         text-align: center;
         align-items: center;
@@ -71,6 +56,7 @@
 
     .imgSize:hover {
         opacity: 0.1;
+
     }
 
     .image p {
@@ -86,17 +72,43 @@
         opacity: 1;
     }
 
-    .colPrice {
-        text-align: center;
+
+
+    .card:hover {
+        transition: 0.3s;
+        scale: 1.02;
+    }
+
+    .colPrice  {
+        /* muestra puntos suspensivos */
+        height: 170px;
         justify-content: center;
+        align-items: center;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        font-size: 15px;
+
     }
 
     .colPrice h5 {
         color: rgb(18, 20, 20);
         margin-right: 20px;
-        font-size: 12px;
+        font-size: 10px;
+        margin-top: 2px;
         font-weight: 900;
         color: #7c5e26;
+
+
+    }
+
+    .colPrice h3 {
+        color: #e89c04;
+        font-size: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-top: 20px;
     }
 
     .custom_button {
@@ -108,8 +120,9 @@
         margin: 3px;
         border-radius: 100%;
         border: none;
-        margin-top: 20px;
+        margin-top: 12px;
         background-color: #d09527;
+
     }
 
     .custom_button:hover {
@@ -123,81 +136,90 @@
     }
 
     .title {
-        font-size: 100%;
+        font-size: 15px;
         background-color: rgb(82, 82, 82);
-        border-radius: 10px;
+        border-radius: 60px;
         color: #d09527;
-    }
+        margin-bottom: 1px;
+        margin-top: 12px;
 
-    .title br {
-        height: 100px;
     }
 
     .inputContainer {
-        margin-top: 100px;
+        margin-top: 1px;
         justify-content: center;
         text-align: center;
-
     }
 
     .alertStock {
         color: #d09527;
-        margin-top: 0px;
-        font-size: 80%;
-
+        margin-bottom: 6px;
     }
-
 
     .IBU {
         display: flex;
         flex-direction: row;
         justify-content: center;
-        font-size: auto;
+
+    }
+
+    .IBU h5 {
+        font-size: 10px;
     }
 
     .textContainer {
         color: #bcb5b5;
-        height: 7vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+        height: 40px;
+        max-width: 280px;
+        font-size: 12px;
+        display: -webkit-box;
+        /* Muestra como un cuadro flexible */
+        -webkit-line-clamp: 2;
+        /* Limita a dos líneas */
+        -webkit-box-orient: vertical;
+        /* Orientación vertical */
         overflow: hidden;
-        font-size: 70%;
     }
 
-    .textContainer p {
-        text-overflow: ellipsis;
-    }
-
-    .navButton {
-        justify-content: center;
-        text-align: center;
-        display: flex;
-        font-size: 60%;
-        flex-direction: column;
-        margin-top: 20px;
-        width: 80%;
-    }
-
-    .navButton p {
+    .navButtonAdd {
         color: #dfe4db;
         font-weight: 700;
-        font-size: auto;
+        font-size: 14px;
+        /* Ajusta el tamaño de fuente según sea necesario */
         background-color: #398310;
         border-radius: 4px;
         margin-top: 10px;
-        margin-left: 22%;
+        display: none;
+
     }
 
+
+    .navButtonNull {
+        opacity: 0;
+        color: #dfe4db;
+        font-weight: 700;
+        font-size: 14px;
+        /* Ajusta el tamaño de fuente según sea necesario */
+
+        background-color: #398310;
+        border-radius: 4px;
+        margin-top: 10px;
+        display: none;
+
+    }
+
+
     .buttonBuy {
+
         color: #cdc7c7;
-        margin: 0px;
-        font-size: 120%;
-        width: 10vw;
-        margin-left: 22%;
+        margin: 4px;
+        font-size: auto;
+        width: 50%;
         opacity: 0.8;
-        height: 4vh;
+        height: 4%;
         border: none;
+        display: none;
+
         border-radius: 4px;
         background-color: rgb(87, 83, 83);
     }
@@ -209,12 +231,14 @@
 
     .buttonBuy:disabled {
         opacity: 0.2;
+        display: none;
+
     }
 
     .alertOutStock {
         color: #e50505;
-        font-weight: 800;
-        animation: fadeInOut 1s 1;
+        margin-bottom: 6px;
+        animation: fadeInOut .3s 1;
     }
 
     @keyframes fadeInOut {
@@ -225,7 +249,7 @@
         }
 
         50% {
-            scale: 1.2;
+            scale: 1.1;
         }
 
         100% {
@@ -234,20 +258,26 @@
     }
 
     .input {
-        width: 100px;
+        width: 90px;
+        margin-left: 30px;
         height: 25px;
+        padding-left: 10px;
         color: black;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
         border-radius: 4px;
         background-color: rgb(214, 210, 210);
+        text-align: center;
+        border: none;
+        appearance: none
     }
 }
 
 
+
+
+
+
 /* Pantallas grandes (escritorios y laptops grandes) ------------------------------------------------*/
-@media (min-width: 1366px) and (max-width: 2219px) {
+@media (min-width: 768px) and (max-width: 1365px) {
     /* Estilos para pantallas grandes */
 
     /* Agrega tus reglas CSS aquí */
@@ -258,6 +288,8 @@
         padding: 5px;
         color: #d09527;
         display: flex;
+        overflow: hidden;
+        width: 700px;
         flex-direction: row;
         justify-content: space-between;
         margin: 10px;
@@ -322,11 +354,10 @@
     }
 
     .colPrice {
-     /* muestra puntos suspensivos */
-
+        /* muestra puntos suspensivos */
+        height: 200px;
         justify-content: center;
         align-items: center;
-        display: flex;
         text-align: center;
 
     }
@@ -340,6 +371,7 @@
 
 
     }
+
     .colPrice h3 {
         color: #e89c04;
         font-size: auto;
@@ -357,7 +389,271 @@
         margin: 3px;
         border-radius: 100%;
         border: none;
-        margin-top: 20px;
+        margin-top: 12px;
+        background-color: #d09527;
+    }
+
+    .custom_button:hover {
+        scale: 1.15;
+        transition: 0.3s;
+        opacity: 1;
+    }
+
+    .custom_button:disabled {
+        opacity: 0.2;
+    }
+
+    .title {
+        font-size: 25px;
+        background-color: rgb(82, 82, 82);
+        border-radius: 60px;
+        color: #d09527;
+
+    }
+
+    .inputContainer {
+        margin-top: 10px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .alertStock {
+        color: #d09527;
+        margin-bottom: 35px;
+        font-size: 12px;
+    }
+
+    .IBU {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .IBU h5 {
+        font-size: 15px;
+    }
+
+    .textContainer {
+        color: #bcb5b5;
+        height: 40px;
+        max-width: 280px;
+        font-size: 12px;
+        display: -webkit-box;
+        /* Muestra como un cuadro flexible */
+        -webkit-line-clamp: 2;
+        /* Limita a dos líneas */
+        -webkit-box-orient: vertical;
+        /* Orientación vertical */
+        overflow: hidden;
+    }
+
+    .navButtonAdd {
+        color: #dfe4db;
+        font-weight: 700;
+        font-size: 14px;
+        /* Ajusta el tamaño de fuente según sea necesario */
+
+        background-color: #398310;
+        border-radius: 4px;
+        margin-top: 10px;
+    }
+
+
+    .navButtonNull {
+        opacity: 0;
+        color: #dfe4db;
+        font-weight: 700;
+        font-size: 14px;
+        /* Ajusta el tamaño de fuente según sea necesario */
+
+        background-color: #398310;
+        border-radius: 4px;
+        margin-top: 10px;
+    }
+
+
+    .buttonBuy {
+
+        color: #cdc7c7;
+        margin: 4px;
+        font-size: auto;
+        width: 50%;
+        opacity: 0.8;
+        height: 4%;
+        border: none;
+        border-radius: 4px;
+        background-color: rgb(87, 83, 83);
+    }
+
+    .buttonBuy:hover {
+        scale: 1.1;
+        opacity: 1;
+    }
+
+    .buttonBuy:disabled {
+        opacity: 0.2;
+    }
+
+    .alertOutStock {
+        font-size: 12px;
+        color: #e50505;
+        margin-bottom: 35px;
+        animation: fadeInOut .3s 1;
+    }
+
+    @keyframes fadeInOut {
+
+        0%,
+        100% {
+            scale: 1;
+        }
+
+        50% {
+            scale: 1.1;
+        }
+
+        100% {
+            scale: 1;
+        }
+    }
+
+    .input {
+        width: 90px;
+        margin-left: 30px;
+        height: 25px;
+        padding-left: 10px;
+        color: black;
+        border-radius: 4px;
+        background-color: rgb(214, 210, 210);
+        text-align: center;
+        border: none;
+        appearance: none
+    }
+
+}
+
+
+
+
+
+
+
+
+
+/* Pantallas grandes (escritorios y laptops grandes) ------------------------------------------------*/
+@media (min-width: 1366px) and (max-width: 2219px) {
+    /* Estilos para pantallas grandes */
+
+    /* Agrega tus reglas CSS aquí */
+    .card {
+        background-color: rgb(0, 0, 0);
+        border-radius: 8px;
+        border: 0.1px solid #d09527;
+        padding: 5px;
+        color: #d09527;
+        display: flex;
+        overflow: hidden;
+        width: 900px;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 10px;
+        height: 240px;
+        box-shadow: 0 0 8px 4px rgba(208, 149, 39, 0.1);
+    }
+
+    .centeredContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* Agregar otros estilos necesarios */
+    }
+
+    .link {
+        text-decoration: none;
+    }
+
+    .image {
+        border-radius: 6px;
+        width: 240px;
+        height: 200px;
+        background-color: rgb(21, 20, 20);
+        text-align: center;
+        align-items: center;
+        object-fit: cover;
+        overflow: hidden;
+    }
+
+    .imgSize {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .imgSize:hover {
+        opacity: 0.1;
+
+    }
+
+    .image p {
+        opacity: 0;
+        color: aliceblue;
+        margin-left: 9%;
+        margin-top: 8%;
+        position: absolute;
+        font-weight: bold;
+    }
+
+    .image:hover p {
+        opacity: 1;
+    }
+
+
+
+    .card:hover {
+        transition: 0.3s;
+        scale: 1.02;
+    }
+
+    .colPrice {
+        /* muestra puntos suspensivos */
+        height: 200px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+    }
+
+    .colPrice h5 {
+        color: rgb(18, 20, 20);
+        margin-right: 20px;
+        font-size: 17px;
+        font-weight: 900;
+        color: #7c5e26;
+
+
+    }
+
+    .colPrice h3 {
+        color: #e89c04;
+        font-size: auto;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+
+    .custom_button {
+        width: 30px;
+        opacity: 0.9;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        margin: 3px;
+        border-radius: 100%;
+        border: none;
+        margin-top: 12px;
         background-color: #d09527;
     }
 
@@ -396,28 +692,22 @@
         justify-content: center;
     }
 
+    .IBU h5 {
+        font-size: 15px;
+    }
+
     .textContainer {
         color: #bcb5b5;
-        height: 7vh;
-        /* Altura máxima del div */
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+        height: 40px;
+        max-width: 280px;
+        font-size: 12px;
+        display: -webkit-box;
+        /* Muestra como un cuadro flexible */
+        -webkit-line-clamp: 2;
+        /* Limita a dos líneas */
+        -webkit-box-orient: vertical;
+        /* Orientación vertical */
         overflow: hidden;
-        /* Mostrar puntos suspensivos (...) al final del texto cortado */
-    }
-
-    .textContainer p {
-        text-overflow: ellipsis;
-    }
-
-    .navButton {
-        justify-content: center;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        margin-top: 20px;
-
     }
 
     .navButtonAdd {
@@ -430,7 +720,7 @@
         border-radius: 4px;
         margin-top: 10px;
     }
-    
+
 
     .navButtonNull {
         opacity: 0;
@@ -450,9 +740,9 @@
         color: #cdc7c7;
         margin: 4px;
         font-size: auto;
-        width: 8vw;
+        width: 50%;
         opacity: 0.8;
-        height: 4vh;
+        height: 4%;
         border: none;
         border-radius: 4px;
         background-color: rgb(87, 83, 83);
@@ -499,7 +789,7 @@
         background-color: rgb(214, 210, 210);
         text-align: center;
         border: none;
-        appearance:none
+        appearance: none
     }
 
 }

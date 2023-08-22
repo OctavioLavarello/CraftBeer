@@ -5,28 +5,30 @@ const postQualification = async (req: Request, res: Response) => {
   try {
     // se recibe por body
     const { rate, userPersonId, productId, comment = "" } = req.body;
+    console.log(req.body);
+    
     if (!rate || !userPersonId || !productId) {
       return res.status(400).send("Required information");
     }
     const product = await Product.findByPk(productId);
     if (!product) {
-      return res.status(501).send("Product not found");
+      return res.status(404).send("Product not found");
     }
 
     const person = await UserPerson.findByPk(userPersonId);
-    if (!product) {
-      return res.status(501).send("id User person not found");
+    if (!person) {
+      return res.status(404).send("id User person not found");
     }
 
     // si estan todos los datos  Qualification se crea en la base de datos
-    const creatingRatings = await Qualification.create({
+    const creatingRating = await Qualification.create({
       rate,
       comment,
     });
 
     //relaciones
-    await product.addQualification(creatingRatings);
-    await person.addQualification(creatingRatings);
+    await product.addQualification(creatingRating);
+    await person.addQualification(creatingRating);
 
     //busco las calificaciones del producto
     let rating = await Qualification.findAll({

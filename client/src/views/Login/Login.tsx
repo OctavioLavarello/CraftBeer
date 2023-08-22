@@ -5,23 +5,22 @@ import { NavLink } from "react-router-dom";
 import loginValidation from "./LoginValidation";
 import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
+// COMPONENTS
+import LoginGoogle from "../../components/loginConfig/loginConfig";
 // ACTION
 import { login } from "../../redux/actions/actions";
 // STYLES
 import styles from "./Login.module.css";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import avatar from "../../assets/icons/avatar.png";
 import email from "../../assets/icons/sobre.png";
 import password from "../../assets/icons/candado.png";
 
-import LoginGoogle from "../../components/loginConfig/loginConfig";
-
+// LOGIN
 export interface login {
   email: string;
   password: string;
 }
-// LOGIN
 const Login: React.FC = () => {
   // ---------------------- GLOBAL STATE ------------------------//
 

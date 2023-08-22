@@ -1,54 +1,199 @@
-.container {
-    margin-top: 10px;
-    text-align: center;
-    margin-bottom: 30px;
+
+@media (max-width: 768px){
+    .container {
+        margin-top: 10px;
+        text-align: center;
+        margin-bottom: 30px;
+        margin-left: 20%;
+        position: absolute;
+        z-index: 999;
+        flex-direction: row;
+        display: flex;
+        display: none;
+    }
+    
+    .title_select {
+        margin-top: 30px;
+        font-weight: 500;
+        margin-bottom: 2px;
+    }
+    
+    .select {
+        background-color: rgb(63, 54, 54);
+        border: none;
+        border-radius: 6px;
+        color: rgb(152, 145, 145);
+        width: 170px;
+        font-size: 14px;
+        height: 30px;
+        box-shadow: 0 2px 2px rgba(181, 176, 176, 0.1)
+    }
+    
+    .select:hover {
+        transition: 0.3s;
+        scale: 1.1;
+    }
+    
+    .buttonFilters{
+        border: 1px solid  rgb(239, 180, 18);;
+        margin-top: 20px;
+        color:rgb(239, 180, 18) ;
+        padding: 4px;
+        padding-left: 30px;
+        padding-right: 30px;
+        border-radius: 30px;
+        background-color: rgb(63, 54, 54);
+    }
+    .buttonFilters:hover{
+        scale: 1.1;
+        transition: .3s;
+    }
+    .buttonFilters:disabled{
+        opacity: 0;
+    }
+    
+    
+    .filters {
+        background-color: #0f0f0e;
+        padding: 10px;
+        height: 600px;
+        width: 230px;
+        border-radius: 20px;
+    }
+
 }
 
-.title_select {
-    margin-top: 30px;
-    font-weight: 500;
-    margin-bottom: 2px;
-}
-
-.select {
-    background-color: rgb(63, 54, 54);
-    border: none;
-    border-radius: 6px;
-    color: rgb(152, 145, 145);
-    width: 170px;
-    font-size: 14px;
-    height: 30px;
-    box-shadow: 0 2px 2px rgba(181, 176, 176, 0.1)
-}
-
-.select:hover {
-    transition: 0.3s;
-    scale: 1.1;
-}
-
-.buttonFilters{
-    border: 1px solid  rgb(239, 180, 18);;
-    margin-top: 20px;
-    color:rgb(239, 180, 18) ;
-    padding: 4px;
-    padding-left: 30px;
-    padding-right: 30px;
-    border-radius: 30px;
-    background-color: rgb(63, 54, 54);
-}
-.buttonFilters:hover{
-    scale: 1.1;
-    transition: .3s;
-}
-.buttonFilters:disabled{
-    opacity: 0;
-}
 
 
-.filters {
-    background-color: #0f0f0e;
-    padding: 10px;
-    height: 600px;
-    width: 300px;
-    border-radius: 20px;
+
+
+
+
+
+
+
+
+@media (min-width: 768px) and (max-width: 1365px){
+    .container {
+        margin-top: 10px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .title_select {
+        margin-top: 30px;
+        font-weight: 500;
+        margin-bottom: 2px;
+    }
+    
+    .select {
+        background-color: rgb(63, 54, 54);
+        border: none;
+        border-radius: 6px;
+        color: rgb(152, 145, 145);
+        width: 170px;
+        font-size: 14px;
+        height: 30px;
+        box-shadow: 0 2px 2px rgba(181, 176, 176, 0.1)
+    }
+    
+    .select:hover {
+        transition: 0.3s;
+        scale: 1.1;
+    }
+    
+    .buttonFilters{
+        border: 1px solid  rgb(239, 180, 18);;
+        margin-top: 20px;
+        color:rgb(239, 180, 18) ;
+        padding: 4px;
+        padding-left: 30px;
+        padding-right: 30px;
+        border-radius: 30px;
+        background-color: rgb(63, 54, 54);
+    }
+    .buttonFilters:hover{
+        scale: 1.1;
+        transition: .3s;
+    }
+    .buttonFilters:disabled{
+        opacity: 0;
+    }
+    
+    
+    .filters {
+        background-color: #0f0f0e;
+        padding: 10px;
+        height: 600px;
+        width: 230px;
+        border-radius: 20px;
+    }
+
+
+
+
+}
+
+
+
+
+
+
+
+@media (min-width: 1366px) and (max-width: 2219px){
+
+    .container {
+        margin-top: 10px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .title_select {
+        margin-top: 30px;
+        font-weight: 500;
+        margin-bottom: 2px;
+    }
+    
+    .select {
+        background-color: rgb(63, 54, 54);
+        border: none;
+        border-radius: 6px;
+        color: rgb(152, 145, 145);
+        width: 170px;
+        font-size: 14px;
+        height: 30px;
+        box-shadow: 0 2px 2px rgba(181, 176, 176, 0.1)
+    }
+    
+    .select:hover {
+        transition: 0.3s;
+        scale: 1.1;
+    }
+    
+    .buttonFilters{
+        border: 1px solid  rgb(239, 180, 18);;
+        margin-top: 20px;
+        color:rgb(239, 180, 18) ;
+        padding: 4px;
+        padding-left: 30px;
+        padding-right: 30px;
+        border-radius: 30px;
+        background-color: rgb(63, 54, 54);
+    }
+    .buttonFilters:hover{
+        scale: 1.1;
+        transition: .3s;
+    }
+    .buttonFilters:disabled{
+        opacity: 0;
+    }
+    
+    
+    .filters {
+        background-color: #0f0f0e;
+        padding: 10px;
+        height: 600px;
+        width: 300px;
+        border-radius: 20px;
+    }
 }

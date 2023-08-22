@@ -5,7 +5,8 @@ const companyPutValidation = (companyData: company, setErrors: React.Dispatch<Re
     // REGEX
     const nameRegex = /^[a-zA-Z\s'-]+$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const addressRegex = /""/
+    const addressRegex = /^[0-9A-Za-z\s\.,\-']+$/u
+    const nameCompanyRegex = /^[A-Za-z0-9\s\-.,'()&]+$/u
     // NAME VALIDATION
     if (!name) {
         setErrors((prevErrors) => ({
@@ -119,7 +120,7 @@ const companyPutValidation = (companyData: company, setErrors: React.Dispatch<Re
         ...prevErrors,
         company: "Enter your company",
         }));
-    } else if (!nameRegex.test(company)){
+    } else if (!nameCompanyRegex.test(company)){
         setErrors((prevErrors) => ({
             ...prevErrors,
             company: "Must be a company"

@@ -12,16 +12,19 @@ import { useSelector } from "react-redux";
 import { AppState } from "../../redux/reducer";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 const DetailBuyer: React.FC = () => {
+  const navigate = useNavigate()
   const id = useSelector((state: AppState) => state.idBuyer);
+  console.log(id);
+  
   const [infoUser, setInfoUser] = useState<any>({});
 
   useEffect(() => {
     const solicitud = async () => {
-      const response = await axios.get(`/persons/${id}`);
+      const response = await axios.get(`/persons/admin/${id}`);
       setInfoUser(response.data);
     };
     solicitud();
@@ -29,7 +32,7 @@ const DetailBuyer: React.FC = () => {
 
   const handlerActive = async ()=>{
     try {
-      const activar = await axios.put("/user", {id: infoUser.id, status: "true"})
+      await axios.put("/user", {id: infoUser.id, status: "true"})
       toast.success("El usuario a sido activado")
     } catch (error) {
       toast.error("No fue posible activar el usuario")
@@ -38,11 +41,16 @@ const DetailBuyer: React.FC = () => {
 
   const handlerInactive = async ()=>{
     try {
-      const inactivar = await axios.put("/user", {id: infoUser.id, status: "false"})
+      await axios.put("/user", {id: infoUser.id, status: "false"})
       toast.success("El usuario a sido desactivado")
     } catch (error) {
       toast.error("No fue posible inactivar el usuario")
     }
+  }
+
+  const historyShop =(eventKey:any)=>{
+  if(eventKey === "1")  navigate(`/adminHistoryShop`)
+  if(eventKey === "2")  navigate(`/admin/buyer/adminUserModify`)
   }
 
   return (
@@ -67,9 +75,9 @@ const DetailBuyer: React.FC = () => {
           <NavbarBrand>
             <h2>{`${infoUser.name}, ${infoUser.lastName}`}</h2>
           </NavbarBrand>
-          <NavDropdown title="Otras opciones" menuVariant="dark">
-            <NavDropdown.Item>Historial de compras</NavDropdown.Item>
-            <NavDropdown.Item>Modificar usuario</NavDropdown.Item>
+          <NavDropdown title="Otras opciones" menuVariant="dark" onSelect={historyShop}>
+            <NavDropdown.Item  eventKey="1">Historial de compras</NavDropdown.Item>
+            <NavDropdown.Item eventKey="2">Modificar usuario</NavDropdown.Item>
           </NavDropdown>
         </div>
         <Row style={{ height: "100%", width: "100%", margin: "0.5%" }}>
@@ -110,11 +118,11 @@ const DetailBuyer: React.FC = () => {
             />
           </Col>
           <Col>
-            Contraseña
+            Tipo de usuario
             <input
               type="text"
               className="inputBuyer"
-              value={infoUser.password}
+              value={infoUser.role}
             />
           </Col>
         </Row>
@@ -153,13 +161,16 @@ const DetailBuyer: React.FC = () => {
             height: "50%",
             width: "90%",
             margin: "1%",
-            display: "flex",
-            flexDirection: "column",
+            alignContent:"center",
+            justifyContent:"center",
+            alignItems:"center"
           }}
         >
           <h4>Estatus de usuario</h4>
-          <h6>Activo</h6>
-          <h6>Inactivo</h6>
+          {infoUser.status === true ? (
+            <h2 className="activoUser">Activo ✅</h2>) : (
+            <h2 className="inactiveUser">Inactivo 🚫</h2>
+          )}
         </Card>
       </div>
     </div>

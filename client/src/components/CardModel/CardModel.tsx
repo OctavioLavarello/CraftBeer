@@ -16,12 +16,13 @@ interface CardModelProps {
     image: string;
     price: number;
     stock: number;
-    degreeOfAlcohol: number;
+    ABV: number;
     type: string;
     IBU: number;
+    qualification?: number
 }
 
-const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardModelProps) => {
+const CardModel = ({ name, summary, image, price, stock, id, type, IBU, ABV, qualification }: CardModelProps) => {
 
     const dispatch = useDispatch();
     //estado del carrrito 
@@ -74,17 +75,16 @@ const CardModel = ({ name, summary, image, price, stock, id, type, IBU }: CardMo
     //handler para input item 
     const hanldlerQuantity = (event: any) => {
         let inputValue = parseInt(event.target.value);
-console.log("1",inputValue);
 
         if (isNaN(inputValue)) {
             setItem(0);
-            inputValue=0 // Establecer en 0 si el valor no es un número
+            inputValue = 0 // Establecer en 0 si el valor no es un número
         } else if (inputValue <= 0) {
             setItem(0); // Establecer en 0 si el valor es negativo
         } else if (inputValue <= stock) {
             setItem(inputValue); // Establecer el valor si está dentro del rango de stock
         }
-        console.log("2",inputValue);
+        console.log("2", inputValue);
 
         const itemData: SaveDataLS = {
             id,
@@ -100,11 +100,11 @@ console.log("1",inputValue);
                 supStock: true
             }))
         }
-        
+
         if (inputValue >= 0) {
             saveDataCart(itemData);
             dispatch(localStorageCart(itemData));
-        }else {
+        } else {
             deleteDataCart(itemData.id)
         }
     }
@@ -173,6 +173,20 @@ console.log("1",inputValue);
     }, [item])
 
 
+    //renderizar la cantidad de estrellas 
+    let stars = "☆☆☆☆☆";
+    if (qualification) {
+        let replacementCount = Math.min(qualification, stars.length);
+        let replacementStars = "⭐".repeat(replacementCount);
+        stars = replacementStars + stars.substring(replacementCount);
+    }
+    let qualificationJSX = (
+        <>
+            {stars}
+        </>
+    );
+
+
     return (
         <Container>
             <Card className={style.card}>
@@ -187,12 +201,12 @@ console.log("1",inputValue);
                             </div>
                         </Col>
                         <Col sm={4} className={style.colPrice} >
-                            <div style={{ display: "flex", flexDirection: "column" }}>
-
+                            <div className={style.containerInfo}>
                                 <h3 >{name.toUpperCase()}</h3>
                                 <div className={style.IBU}>
-                                    <h5>Tipo: {type}</h5>
-                                    <h5>IBU: {IBU}</h5>
+                                    <h5>Tipo: <br /> {type}</h5>
+                                    <h5>IBU: <br /> {IBU}</h5>
+                                    <h5>AVB:  <br />{ABV} %</h5>
                                 </div>
                                 <div className={style.textContainer}>
                                     <p>{summary}</p>
@@ -208,7 +222,7 @@ console.log("1",inputValue);
                         <Col className={style.colPrice}>
                             <div className={style.containerInfo}>
                                 <h2 className={style.title}> {price.toFixed(2)} U$S</h2>
-                                <p>☆☆☆☆☆ </p>  <p className={item === stock || stock === 0 ? style.alertOutStock : style.alertStock}>Stock Disponible : {stock} un.</p>
+                                <p>{qualificationJSX}</p>  <p className={item === stock || stock === 0 ? style.alertOutStock : style.alertStock}>Stock Disponible : {stock} un.</p>
                                 <div className={style.centeredContainer}>
                                     <form>
                                         <input type="number" className={style.input} value={item == 0 ? "" : item} max={stock} min="0" onChange={hanldlerQuantity}

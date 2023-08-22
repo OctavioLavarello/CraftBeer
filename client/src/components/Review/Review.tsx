@@ -5,6 +5,7 @@ import { Rating } from 'react-simple-star-rating'
 import { useSelector } from "react-redux";
 import { AppState } from "../../redux/reducer";
 import axios from "axios";
+import { Toaster, toast } from "react-hot-toast";
 
 interface ReviewProps {
     name: string;
@@ -24,9 +25,9 @@ interface Review {
 const Review = ({ name, isReview, setisReview, id }: ReviewProps) => {
 
 
-    const [rating, setRating] = useState(0) // initial rating value
+    const [rating, setRating] = useState<number>(0) // initial rating value
     // Catch Rating value
-    const handleRating = (rate: any) => {
+    const handleRating = (rate: number) => {
         setRating(rate)
     }
 
@@ -53,18 +54,22 @@ const Review = ({ name, isReview, setisReview, id }: ReviewProps) => {
 
     const sendInfo = async () => {
         const endpoint = "/qualification"
-       
-        
         try {
-            await axios.post(endpoint, dataReview)
+            let response = await axios.post(endpoint, dataReview)
+            console.log( "response ",response.status);
+            if (response.status === 200 ) {
+                toast.success("Gracias por dejar tu valoración");
+            }
+           
         } catch (error) {
             console.error(error);
+            toast.error("Tu valoracion no se pudo realizar, intenta nuevamente.");
+
         }
         console.log(dataReview);
         setisReviewModal(false);
         setisReview(false)
     }
-
 
 
     return (
@@ -79,10 +84,8 @@ const Review = ({ name, isReview, setisReview, id }: ReviewProps) => {
                         <div className={style.container}>
                             <Rating
                                 onClick={handleRating}
-                                rating={rating}
+                                initialValue={rating}
                                 size={30}
-                                label
-                                transition
                                 fillColor='orange'
                                 emptyColor='gray'
                                 className='foo'
@@ -90,6 +93,9 @@ const Review = ({ name, isReview, setisReview, id }: ReviewProps) => {
                         </div>
                         <input type="text" className={style.inputModal} placeholder="Agrega un comentario....." onChange={handlerInput} value={comentInput} />
                         <button className={style.buttonModal} onClick={sendInfo} disabled={!rating}>Send</button>
+                    </div>
+                    <div>
+                        <Toaster toastOptions={{ className: style["customToast"], duration: 700 }} />
                     </div>
 
                 </>

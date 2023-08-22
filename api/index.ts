@@ -10,7 +10,7 @@ dotenv.config();
 sequelize
   .sync({ force: true })
   .then(() => {
-    dataBase();
+   dataBase();
     console.log("Database synchronized");
     server.listen(port, () => {
       console.log(`Server listening on port ${port}`);
