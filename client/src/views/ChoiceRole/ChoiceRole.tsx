@@ -2,7 +2,6 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/actions";
 import { AnyAction, Dispatch } from "redux";
-import { loginUserData } from "../../redux/actions/actions"
 
 const localhost = "http://localhost:3001";
 
@@ -66,7 +65,7 @@ const ChoiceRole: React.FC<ChoiceRoleProps> = (props) => {
 
   const setGlobalLogin = async (user: CreateInteface) => {
     //setear login con los datos
-    const userLogin:loginUserData = {
+    const userLogin:any = {
         email: user.email,
         email_verified: user.email_verified
     }
