@@ -194,21 +194,21 @@ const Company: React.FC = () => {
                         <Form.Group>
                             <Form.Label>Provincia</Form.Label>
                             <Form.Control
-        as="select"
-        name="state"
-        value={companyData.state}
-        onChange={handlerOnChange}
-        >
-        <option value="">Selecciona una provincia...</option>
-        {companyData.country &&
-        provincesByCountry[companyData.country]?.map(
-        (province: ProvinceData, index: number) => (
-          <option key={index} value={province.name}>
-            {province.name}
-          </option>
-        )
-          )}
-      </Form.Control>
+                            as="select"
+                            name="state"
+                            value={companyData.state}
+                            onChange={handlerOnChange}
+                            >
+                         <option value="">Selecciona una provincia...</option>
+                            {companyData.country &&
+                            provincesByCountry[companyData.country]?.map(
+                            (province: ProvinceData, index: number) => (
+                            <option key={index} value={province.name}>
+                                {province.name}
+                             </option>
+                         )
+                            )}
+                        </Form.Control>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Ciudad</Form.Label>
@@ -324,30 +324,41 @@ const Company: React.FC = () => {
                     <Form.Group>
                         <Form.Label>Pais</Form.Label>
                         <div className={styles.divInputP}>
-                            <Form.Control
-                            className={`${errors.country ? styles.inputError : styles.input }`} 
-                            required
-                            type="text"
-                            name="country"
-                            value={companyData.country}
-                            placeholder="change your country?"
-                            onChange={handlerOnChange}
-                            />
+                        <Form.Control
+                        as="select"
+                        name="country"
+                        value={companyData.country}
+                        onChange={handlerOnChange}
+                        >
+                        <option value="">Selecciona un país...</option>
+                        {countryNames.map((countryName, index) => (
+                        <option key={index} value={countryName}>
+                        {countryName}
+                        </option>
+                        ))}
+                        </Form.Control>
                             {errors.country && <p className={styles.validationMessage}>{errors.country}</p>}
                         </div>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Provincia</Form.Label>
                         <div className={styles.divInputP}>
-                            <Form.Control
-                            className={`${errors.state ? styles.inputError : styles.input }`}
-                            required
-                            type="text"
-                            name="state"
-                            value={companyData.state}
-                            placeholder="change your state?"
-                            onChange={handlerOnChange}
-                            />
+                        <Form.Control
+                        as="select"
+                        name="state"
+                        value={companyData.state}
+                        onChange={handlerOnChange}
+                        >
+                        <option value="">Selecciona una provincia...</option>
+                        {companyData.country &&
+                        provincesByCountry[companyData.country]?.map(
+                        (province: ProvinceData, index: number) => (
+                        <option key={index} value={province.name}>
+                            {province.name}
+                         </option>
+                     )
+                        )}
+                    </Form.Control>
                             {errors.state && <p className={styles.validationMessage}>{errors.state}</p>}
                         </div>
                     </Form.Group>
