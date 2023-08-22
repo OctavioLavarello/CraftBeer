@@ -56,7 +56,7 @@
     width: 1.5vw;
     background-color: rgba(178, 152, 57, 0.47);
 }
-.dropdownContent, .dropdownContent2{
+.dropdownContent, .dropdownContent2, .dropdownContent3{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -71,7 +71,7 @@
     position: relative;
     z-index: 50;
 }
-.dropdownContent {
+.dropdownContent, .dropdownContent3{
     width: 8vw;
     height: 30vh;
     margin-top: 9vh;
@@ -81,7 +81,7 @@
     height: 40vh;
     margin-top: 14vh;
 }
-.link2, .link3, .link4, .link2main {
+.link2, .link3, .link4, .link2main, .link2mainAd {
     width: 8vw;
     background-color: transparent;
     display: flex;
@@ -241,7 +241,7 @@
         width: 1.5vw;
         background-color: rgba(178, 152, 57, 0.47);
     }
-    .dropdownContent, .dropdownContent2{
+    .dropdownContent, .dropdownContent2, .dropdownContent3{
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -267,6 +267,11 @@
         height: 20vh;
         margin-top: 19.5vh;
         margin-left: -11vw;
+    }
+    .dropdownContent3 {
+        width: 25vw;
+        height: 20vh;
+        margin-top: 19.5vh
     }
     .link2, .link3, .link4 {
         width: 30vw;
@@ -294,6 +299,22 @@
         color: white;
         text-decoration: none;
         margin-left: -5.5vw;
+        margin-right: 1.5vw;
+        position: relative;
+        border: none;
+        text-align: center;
+        font-family: 'Arial Black', sans-serif;
+    }
+    .link2mainAd { 
+        width: 20vw;
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 7vh;
+        color: white;
+        text-decoration: none;
+        margin-left: 1.5vw;
         margin-right: 1.5vw;
         position: relative;
         border: none;
