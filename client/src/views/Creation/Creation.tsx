@@ -146,10 +146,6 @@ const Creation = () => {
   return (
     <div className="bodyFormP">
       <Form
-        style={{
-          width: "50%",
-          height: "auto",
-        }}
         onSubmit={handlerSubmit}
       >
         <div className="tituloFormCreacion">

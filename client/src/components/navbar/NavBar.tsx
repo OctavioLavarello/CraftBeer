@@ -110,13 +110,13 @@ const NavBar: React.FC = () => {
         (
           <div>
             <button
-            className={styles.link2main}
+            className={styles.link2mainAd}
             onClick={() => setShowDropdown(!showDropdown)}
           >
             <h5>Menu</h5>
           </button>
           {showDropdown && (
-            <div className={styles.dropdownContent}>
+            <div className={styles.dropdownContent3}>
               <h5 
               className={styles.link2} 
               onClick={handlerLogout}

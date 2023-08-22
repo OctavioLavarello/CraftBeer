@@ -73,6 +73,10 @@
     align-items: center;
     width: 100%;
 }
+.inputImg {
+    width: 22.5vw;
+    border-radius: 2%;
+}
 .edit {
     height: 7vh;
     width: 10vw;
@@ -146,4 +150,156 @@
     font-family: 'Arial Black', sans-serif;
     font-size: 4vh;
     font-weight: bold;
+}
+@media (max-width: 768px) {
+    .all {
+        display: flex;
+        flex-direction: column;
+    }
+    .formMaster {
+        display: flex;
+        width: 100%;
+    }
+    .formMasterError {
+        display: flex;
+        width: 100%;
+        box-shadow: 0 0 1vw red;
+    }
+    .formDiv {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-bottom: 0.02vh solid rgba(163, 125, 52, 1);
+    }
+    .form, .formPut {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-left: 1vw;
+        margin-top: 1vh;
+    }
+    .form input, .input {
+        background-color: rgb(63, 63, 63);
+        border-color: rgba(163, 125, 52, 1);
+        color: white;
+        margin-bottom: 2vh;
+        width: 40vw;
+    }
+    .form input:focus {
+        background-color: rgb(63, 63, 63);
+        border-color: rgba(163, 125, 52, 1);
+        color: white;
+        margin-bottom: 2vh;
+        box-shadow: none;
+    }
+    .input:focus {
+        background-color: rgb(63, 63, 63);
+        border-color: rgba(163, 125, 52, 1);
+        color: white;
+        box-shadow: 0 0 1vw rgba(163, 125, 52, 0.5);
+    }
+    .input::placeholder {
+        color: rgba(163, 125, 52, 0.5);
+    }
+    .inputError {
+        background-color: rgb(63, 63, 63);
+        border-color: red;
+        color: white;
+        margin-bottom: 2vh;
+        width: 40vw;
+    }
+    .inputError:focus {
+        background-color: rgb(63, 63, 63);
+        border-color: red;
+        color: white;
+        box-shadow: 0 0 1vw red;
+    }
+    .validationMessage {
+        color: red;
+        margin-left: 10vw;
+    }
+    .divInputP {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    .inputImg {
+        width: 40vw;
+        border-radius: 2%;
+    }
+    .edit {
+        height: 5vh;
+        width: 30vw;
+        margin-left: 1vw;
+        margin-top: 2vh;
+        margin-bottom: 3vh;
+        border: 0.02vh solid rgb(255, 167, 3);
+        border-radius: 1vh;
+        background-color: rgba(163, 125, 52, 1);
+    }
+    .edit:hover {
+        height: 5vh;
+        width: 30vw;
+        margin-top: 2vh;
+        margin-bottom: 3vh;
+        border: 0.02vh solid rgb(255, 167, 3);
+        border-radius: 1vh;
+        background-color: rgba(163, 125, 52, 1);
+        box-shadow: 0 0 1.5vh rgba(163, 125, 52, 1);
+    }
+    .formPut button {
+        height: 5vh;
+        width: 30vw;
+        margin-top: 2vh;
+        margin-bottom: 3vh;
+        border: 0.02vh solid rgb(255, 167, 3);
+        border-radius: 1vh;
+        background-color: rgba(163, 125, 52, 1);
+    }
+    .formPut button:hover {
+        height: 5vh;
+        width: 30vw;
+        margin-top: 2vh;
+        margin-bottom: 3vh;
+        border: 0.02vh solid rgb(255, 167, 3);
+        border-radius: 1vh;
+        background-color: rgba(163, 125, 52, 1);
+        box-shadow: 0 0 1.5vh rgba(163, 125, 52, 1);
+    }
+    .formPut button:disabled {
+        height: 5vh;
+        width: 30vw;
+        margin-top: 2vh;
+        margin-bottom: 3vh;
+        border: 0.02vh solid rgb(87, 87, 87);
+        border-radius: 1vh;
+        background-color: rgb(87, 87, 87);
+    }
+    .formPut button:disabled:hover {
+        box-shadow: none;
+    }
+    .formPut button:active {
+        height: 5vh;
+        width: 30vw;
+        margin-top: 2vh;
+        margin-bottom: 3vh;
+        border: 0.02vh solid rgba(163, 125, 52, 1);
+        border-radius: 1vh;
+        background-color: rgb(96, 163, 52);
+    }
+    .sold {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+    }
+    .mySold {
+        text-align: center;
+        font-family: 'Arial Black', sans-serif;
+        font-size: 4vh;
+        font-weight: bold;
+    }
 }

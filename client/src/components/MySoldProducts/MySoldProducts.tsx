@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../../redux/reducer";
+import { NavLink } from "react-router-dom";
 // COMPONENTS
 import SoldCards from "../SoldCards/SoldCards";
 import CreationPagination from "../CreationPagination/CreationPagination";
@@ -31,29 +32,44 @@ const MySoldProducts: React.FC = () => {
     useEffect(() => {
         dispatch(userCompanySalesDetail(idCompany))
     }, []);
-    console.log(companySalesDetail)
     return (
         <div className={styles.container}>
-            {currentNotification.map((card: any) => (
-            <SoldCards 
-            key={card.ShoppingHistoryId} 
-            name={card.name} 
-            date={card.date}
-            image={card.image} 
-            price={card.price}
-            amount={card.amount}
-            totalPrice={card.totalPrice} 
-            description={card.description}
-            buyerEmail={card.buyerEmail}
-            buyerName={card.buyerName}
-            />
-            ))}
-            <CreationPagination
-            itemsPerPage={itemsPerPage}
-            totalItems={companySalesDetail.length}
-            currentPage={currentPage}
-            paginate={paginate}
-            />
+            { companySalesDetail.length === 0 ? 
+            (
+                <div className={styles.container}>
+                    <h5>you haven't sold anything yet</h5>
+                    <NavLink to="/shop"
+                    className={styles.noSold}
+                    >
+                        <h5>Want to sell some beers? 🍻</h5>
+                    </NavLink>
+                </div>
+            ) : 
+            (
+            <div className={styles.container}>
+                {currentNotification.map((card: any) => (
+                <SoldCards 
+                key={card.ShoppingHistoryId} 
+                name={card.name} 
+                date={card.date}
+                image={card.image} 
+                price={card.price}
+                amount={card.amount}
+                totalPrice={card.totalPrice} 
+                description={card.description}
+                buyerEmail={card.buyerEmail}
+                buyerName={card.buyerName}
+                />
+                ))}
+                <CreationPagination
+                itemsPerPage={itemsPerPage}
+                totalItems={companySalesDetail.length}
+                currentPage={currentPage}
+                paginate={paginate}
+                />
+            </div>
+            )
+            }
         </div>
     );
 };
