@@ -69,6 +69,10 @@ function App() {
       navigate("/home");
       dispatch(hasNavigatedTrue());
     }
+    if (accessLogin.role === "Admin") {
+      navigate("/admin");
+      dispatch(hasNavigatedTrue());
+    }
   };
   // USE EFFECTS
   useEffect(() => {
