@@ -2,10 +2,10 @@ const nodemailer = require("nodemailer");
 import dotenv from "dotenv";
 dotenv.config();
 const { NODEMAILER_USER, NODEMAILER_PASS } = process.env;
-import { UserPerson, Product } from "../../db";
+import { UserPerson, Product } from "../../../db";
 import { UUID } from "crypto";
 
-const postPurchaseConfirmation = async (
+const purchaseConfirmation = async (
   date: Date,
   totalPrice: Number,
   userPersonId: UUID,
@@ -103,4 +103,4 @@ const postPurchaseConfirmation = async (
   }
 };
 
-export default postPurchaseConfirmation;
+export default purchaseConfirmation;

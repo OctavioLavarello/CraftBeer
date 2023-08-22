@@ -15,7 +15,7 @@ import {createOrder} from "../controller/payment/create-order"
 import postShoppingHistory from '../controller/postShoppingHistory';
 import getShoppingHistories from '../controller/getShoppingHistories';
 import getPersonById from '../controller/getPersonById';
-import postContactMe from "../controller/postContactMe";
+import postContactMe from "../controller/notifications/postContactMe";
 import favoriteHandler from "../controller/FavoriteHandler"
 import reciveWebHook from "../controller/payment/Webhook";
 import getAllFavoritesPerson from "../controller/getAllFavoritesPerson";
