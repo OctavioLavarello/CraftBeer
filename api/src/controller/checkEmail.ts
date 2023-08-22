@@ -4,9 +4,6 @@ import { Request, Response } from "express";
 const checkEmail = async ( req:Request,res:Response) => {
 try {
     const email = req.query.email
-    console.log(email);
-    
-    
     const findUser = await UserPerson.findOne({ where: { email } });
     const findCompany = await UserCompany.findOne({ where: { email } });
 
