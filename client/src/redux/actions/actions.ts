@@ -184,9 +184,9 @@ export const createdCompany = ({
       });
 
       toast.success("Se creo correctamente su compañía");
-      // setTimeout(()=>{
-      //   window.location.href = "/login"
-      // }, 2000)
+      setTimeout(()=>{
+        window.location.href = "/login"
+      }, 2000)
     } catch (error: any) {
       if (error.response.data.message === undefined)
         toast.error(
@@ -300,7 +300,7 @@ export const verificationLogin = (user: any) => {
     payload: user,
   };
 };
-
+//Action para cargar imagen en cloudinary
 export const uploadImage = (url: any) => {
   return {
     type: URL_IMAGE,
@@ -319,13 +319,14 @@ export const deleteCartStorage =()=>{
     type: DELETE_CARTSTORAGE
   }
 }
+//Action para guardar el id del comprador en el estado global
 export const idBuyer = (id:string)=> {
   return {
     type: ID_BUYER,
     payload: id 
   }
 }
-
+//Action para guardar el id de vendedor en estado global
 export const idSeller = (id:string)=> {
   return {
     type: ID_SELLER,

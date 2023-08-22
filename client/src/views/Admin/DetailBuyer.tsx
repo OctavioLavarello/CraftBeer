@@ -24,7 +24,7 @@ const DetailBuyer: React.FC = () => {
 
   useEffect(() => {
     const solicitud = async () => {
-      const response = await axios.get(`/persons/${id}`);
+      const response = await axios.get(`/persons/admin/${id}`);
       setInfoUser(response.data);
     };
     solicitud();
@@ -47,7 +47,6 @@ const DetailBuyer: React.FC = () => {
       toast.error("No fue posible inactivar el usuario")
     }
   }
-
 
   const historyShop =(eventKey:any)=>{
   if(eventKey === "1")  navigate(`/admin/buyer/historyShop`)
@@ -168,7 +167,10 @@ const DetailBuyer: React.FC = () => {
           }}
         >
           <h4>Estatus de usuario</h4>
-          {infoUser.status === "true" ? <h6 className="inactiveUser">Inactivo 🚫</h6> : <h2 className="activoUser">Activo ✅</h2>}
+          {infoUser.status === true ? (
+            <h2 className="activoUser">Activo ✅</h2>) : (
+            <h2 className="inactiveUser">Inactivo 🚫</h2>
+          )}
         </Card>
       </div>
     </div>

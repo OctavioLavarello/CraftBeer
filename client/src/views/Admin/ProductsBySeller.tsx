@@ -13,7 +13,8 @@ const ProductsBySeller = () => {
   const id = useSelector((state: AppState) => state.idSeller);
 
   const [infoUser, setInfoUser] = useState<any>({});
-
+  console.log(infoUser);
+  
   useEffect(() => {
     const solicitud = async () => {
       const response = await axios.get(`/company/${id}`);
@@ -26,10 +27,12 @@ const ProductsBySeller = () => {
   let products = infoUser.Products;
   console.log(products);
 
-  const handlerActive = async () => {
+  const handlerActive = async (event:any) => {
     try {
-      await axios.put(`/product/${infoUser.id}`, {
-        id: infoUser.id,
+      const idProduct = event?.target.name
+      console.log(idProduct);
+      await axios.put(`/product/${idProduct}`, {
+        companyId: infoUser.id,
         status: "true",
       });
       toast.success("El producto a sido activado");
@@ -38,9 +41,11 @@ const ProductsBySeller = () => {
     }
   };
 
-  const handlerInactive = async () => {
+  const handlerInactive = async (event: any) => {
     try {
-      await axios.put(`/product/${infoUser.id}`, {
+      const idProduct = event?.target.name
+      console.log(idProduct);
+      await axios.put(`/product/${idProduct}`, {
         id: infoUser.id,
         status: "false",
       });
@@ -86,10 +91,10 @@ const ProductsBySeller = () => {
                   <NavDropdown
                     title={beer.status === true ? "Activo" : "Inactivo"}
                   >
-                    <NavDropdown.Item onClick={handlerActive}>
+                    <NavDropdown.Item onClick={handlerActive} name={beer.id}>
                       Activar
                     </NavDropdown.Item>
-                    <NavDropdown.Item onClick={handlerInactive}>
+                    <NavDropdown.Item onClick={handlerInactive} name={beer.id}>
                       Inactivar
                     </NavDropdown.Item>
                   </NavDropdown>
