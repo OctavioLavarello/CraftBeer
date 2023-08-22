@@ -26,6 +26,7 @@ import putQualification from "../controller/putQualification";
 import getPersonAdmin from "../controller/getPersonAdmin";
 import getCompanyAdmin from "../controller/getCompanyAdmin";
 import getProductAdmin from "../controller/getProductAdmin";
+import getTopRated from "../controller/getTopRated"
 
 const router = Router();
 
@@ -54,6 +55,7 @@ router.get("/usercompanysalessummary/:userCompanyId", getUserCompanySalesSummary
 router.get("/persons/admin/:idPerson", getPersonAdmin);
 router.get("/company/admin/:idCompany", getCompanyAdmin);
 router.get("/product/admin/:idProduct", getProductAdmin);
+router.get("/toprated", getTopRated)
 
 // ------- update routes-------//
 router.put("/user", putUserPerson);
