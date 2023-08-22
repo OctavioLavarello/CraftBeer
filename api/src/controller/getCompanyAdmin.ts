@@ -1,21 +1,17 @@
 import { Request, Response } from "express"
 import { UserCompany, Product } from "../../db"
 
-const getCompanyById = async (req: Request, res:Response) => {
+const getCompanyAdmin = async (req: Request, res:Response) => {
     try {
-        const { idCompany } = req.params
- 
-       const company = await UserCompany.findOne({
-            where: {
-                id:idCompany,
-                status:true
-            },
+        const { idCompany } = req.params;
+              
+        const company = await UserCompany.findByPk(idCompany,{
             include: {
                 model: Product
             },
         })
 
-        if (!company) throw new Error("This company does not exist")
+        if (!company) throw new Error("this company does not exist")
     
         return res.status(200).send(company)            
 
@@ -25,9 +21,10 @@ const getCompanyById = async (req: Request, res:Response) => {
             return res.status(500).send(error.message)
         }
         else {
-            return res.status(500).send("Unexpected error")
+            return res.status(500).send("error inesperado")
         }
+
     }
 }
 
-export default getCompanyById;
+export default getCompanyAdmin;

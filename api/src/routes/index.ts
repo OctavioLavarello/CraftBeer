@@ -23,6 +23,9 @@ import getUserCompanySalesDetail from "../controller/getUserCompanySalesDetail"
 import getCompanyById from "../controller/getCompanyById";
 import getUserCompanySalesSummary from "../controller/getUserCompanySalesSummary"
 import putQualification from "../controller/putQualification";
+import getPersonAdmin from "../controller/getPersonAdmin";
+import getCompanyAdmin from "../controller/getCompanyAdmin";
+import getProductAdmin from "../controller/getProductAdmin";
 
 const router = Router();
 
@@ -44,11 +47,13 @@ router.get("/login", logIn);
 router.get("/persons", getAllUserPersons);
 router.get("/shoppingHistories", getShoppingHistories);
 router.get("/persons/:idPerson", getPersonById);
-router.get("/favorite/:idperson", getAllFavoritesPerson)
-router.get("/usercompanysales/:userCompanyId",getUserCompanySalesDetail)
+router.get("/favorite/:idperson", getAllFavoritesPerson);
+router.get("/usercompanysales/:userCompanyId",getUserCompanySalesDetail);
 router.get("/company/:idCompany", getCompanyById);
-
-router.get("/usercompanysalessummary/:userCompanyId", getUserCompanySalesSummary)
+router.get("/usercompanysalessummary/:userCompanyId", getUserCompanySalesSummary);
+router.get("/persons/admin/:idPerson", getPersonAdmin);
+router.get("/company/admin/:idCompany", getCompanyAdmin);
+router.get("/product/admin/:idProduct", getProductAdmin);
 
 // ------- update routes-------//
 router.put("/user", putUserPerson);

@@ -27,3 +27,13 @@
     color: rgb(202, 10, 10);
     font-size: px;
   }
+  .buttonback{
+    border: rgba(163, 125, 52, 1);
+    background-color:rgba(163, 125, 52, 1);
+  height: 10%;
+    width: 100%;
+  }
+  .buttonContainer {
+    display: flex;
+    gap: 10px; 
+  }

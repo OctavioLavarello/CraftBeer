@@ -7,11 +7,13 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { idBuyer, idSeller } from "../../redux/actions/actions";
 
+
 const Administrador = () => {
   const dispatch = useDispatch<any>()
   const [sellers, setSellers] = useState<any>([]);
   const [buyers, setBuyers] = useState<any>([]);
   const [type, setType] = useState("");
+
 
   interface User {
     address: string;
@@ -109,7 +111,7 @@ const Administrador = () => {
               <th className="anchoTable">Status</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style={{ textAlign: "center"}}>
             {buyers?.map((person: User) => {
               return (
                 <tr>
@@ -145,7 +147,7 @@ const Administrador = () => {
               <th className="anchoTable">Status</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style={{ textAlign: "center"}}>
             {sellers?.map((cia: Comapny) => {
               return (
                 <tr>

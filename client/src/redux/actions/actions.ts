@@ -19,8 +19,10 @@ import {
   ID_BUYER,
   ID_SELLER,
   COMPANY_SALES_SUMMARY,
+  COMPANY_SALES_DETAIL,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
+import { salesDetail, salesSum } from "../reducer";
 
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
@@ -182,9 +184,9 @@ export const createdCompany = ({
       });
 
       toast.success("Se creo correctamente su compañía");
-      // setTimeout(()=>{
-      //   window.location.href = "/login"
-      // }, 2000)
+      setTimeout(()=>{
+        window.location.href = "/login"
+      }, 2000)
     } catch (error: any) {
       if (error.response.data.message === undefined)
         toast.error(
@@ -298,7 +300,7 @@ export const verificationLogin = (user: any) => {
     payload: user,
   };
 };
-
+//Action para cargar imagen en cloudinary
 export const uploadImage = (url: any) => {
   return {
     type: URL_IMAGE,
@@ -317,13 +319,14 @@ export const deleteCartStorage =()=>{
     type: DELETE_CARTSTORAGE
   }
 }
+//Action para guardar el id del comprador en el estado global
 export const idBuyer = (id:string)=> {
   return {
     type: ID_BUYER,
     payload: id 
   }
 }
-
+//Action para guardar el id de vendedor en estado global
 export const idSeller = (id:string)=> {
   return {
     type: ID_SELLER,
@@ -332,16 +335,31 @@ export const idSeller = (id:string)=> {
 }
 
 // SALES SUMMARY
-export interface simpleAction {
+export interface salesSumAction {
   type: string;
-  payload: string;
+  payload: salesSum[];
 }
 export const userCompanySalesSummary = (id: string) => {
   const endpoint = "/usercompanysalessummary/";
-  return async function (dispatch: Dispatch<simpleAction>) {
+  return async function (dispatch: Dispatch<salesSumAction>) {
     const { data } = await axios.get(`${endpoint}${id}`);
     return dispatch({
       type: COMPANY_SALES_SUMMARY,
+      payload: data,
+    });
+  };
+}
+// SALES DETAIL
+export interface salesDetailAction {
+  type: string;
+  payload: salesDetail[];
+}
+export const userCompanySalesDetail = (id: string) => {
+  const endpoint = "/usercompanysales/";
+  return async function (dispatch: Dispatch<salesDetailAction>) {
+    const { data } = await axios.get(`${endpoint}${id}`);
+    return dispatch({
+      type: COMPANY_SALES_DETAIL,
       payload: data,
     });
   };

@@ -17,17 +17,19 @@ import { toast } from "react-hot-toast";
 
 const DetailSeller = () => {
   const id = useSelector((state: AppState) => state.idSeller);
+
   const [infoUser, setInfoUser] = useState<any>({});
+  console.log(infoUser);
+    
 
   useEffect(() => {
     const solicitud = async () => {
-      const response = await axios.get(`/company/${id}`);
+      const response = await axios.get(`/company/admin/${id}`)
       console.log(response.data);
-
       setInfoUser(response.data);
     };
     solicitud();
-  }, [id]);
+  }, [id, infoUser.status]);
 
   const handlerActive = async () => {
     try {
@@ -76,7 +78,7 @@ const DetailSeller = () => {
             <h2>{infoUser.company}</h2>
           </NavbarBrand>
           <NavDropdown title="Otras opciones" menuVariant="dark">
-            <NavDropdown.Item>Historial de compras</NavDropdown.Item>
+            <NavDropdown.Item>Historial de ventas</NavDropdown.Item>
             <NavDropdown.Item>
               <Link to="/admin/seller/products">Productos en venta</Link>
             </NavDropdown.Item>
@@ -211,10 +213,9 @@ const DetailSeller = () => {
           }}
         >
           <h4>Estatus de usuario</h4>
-          {infoUser.status === "true" ? (
-            <h6 className="inactiveUser">Inactivo 🚫</h6>
-          ) : (
-            <h2 className="activoUser">Activo ✅</h2>
+          {infoUser.status === true ? (
+            <h2 className="activoUser">Activo ✅</h2>          ) : (
+            <h2 className="inactiveUser">Inactivo 🚫</h2>
           )}
         </Card>
       </div>

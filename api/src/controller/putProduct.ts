@@ -3,8 +3,11 @@ import { Product } from '../../db';
 
 const putProduct = async (req: Request, res: Response) => {
   const productId = req.params.productId;
+  console.log(productId);
+  
   const { companyId, ...updatedData } = req.body;
-
+  console.log(req.body);
+  
   try {
     const product = await Product.findByPk(productId);
 

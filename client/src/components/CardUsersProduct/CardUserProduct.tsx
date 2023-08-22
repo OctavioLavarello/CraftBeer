@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 //import { useState } from "react";
 // STYLES
 import { Card, Col, Row } from "react-bootstrap";
+import styles from "./CardUserProduct.module.css"
 
 // CARD USER PRODUCT
 interface userProductCardProps {
@@ -16,38 +17,28 @@ interface userProductCardProps {
 
 const CardUserProduct: React.FC<userProductCardProps> = ({id, name, image, price, description}) => {
   return (
-    <Card
-      style={{
-        backgroundColor: "#4b0909",
-        color: "#fff",
-        padding: "2% 3%",
-        borderRadius: "8px",
-        textAlign: "center",
-      }}
-    >
-      <Card.Body style={{ border: "solid red" }}>
+    <Card className={styles.card}>
+      <Card.Body className={styles.cardBody}>
         <Row>
           <Col>
             <NavLink to={`/detail/${id}`}>
               <Card.Img
                 src={image}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  marginLeft: "-10%",
-                }}
+                className={styles.img}
               />
             </NavLink>
           </Col>
           <Col>
-            <Card.Title>{name}</Card.Title>
+            <Card.Title
+            className={styles.name}
+            >{name}</Card.Title>
           </Col>
           <Col sm={5}>
-            <Card.Text style={{ fontSize: "13px" }}>
+            <Card.Text className={styles.description}>
               {description}
             </Card.Text>
           </Col>
-          <Col>
+          <Col className={styles.price}>
             <h3>{price} USD </h3>
           </Col>
         </Row>
