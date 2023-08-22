@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import styles from './Detail.module.css';
@@ -30,7 +30,7 @@ const Detail = () => {
   useEffect(() => {
     const fetchBeer = async () => {
       try {
-        const response = await axios.get(`https://craftbeer.up.railway.app/product/${id}` || `https://localhost:3001product/${id}`);
+        const response = await axios.get(`https://craftbeer.up.railway.app/product/${id}` || `http://localhost:3001/product/${id}`);
         setBeer(response.data);
         console.log(response.data);
 
