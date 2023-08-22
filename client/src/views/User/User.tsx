@@ -1,5 +1,5 @@
 import { Card, Col, Container, Row, Form, Button } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -360,6 +360,7 @@ const User = () => {
   const [editedUserData, setEditedUserData] = useState<EditableUserData>({});
   const urlImage = useSelector((state: AppState) => state.urlImage);
   const [countryNames, setCountryNames] = useState<string[]>([]);
+  const navigate = useNavigate();
 
   const [errors, setErrors] = useState({
     name: "Se requiere nombre",
@@ -575,7 +576,10 @@ console.log(userData)
                 <Card.Text>Ciudad: {userData?.city}</Card.Text>
                 <Card.Text>Estado: {userData?.state}</Card.Text>
                 <Card.Text>Calle: {userData?.address}</Card.Text>
-                <Button  className={styles.buttonEdit} onClick={handleEditClick}>Editar</Button>
+                <div className={styles.buttonContainer}>
+                 <Button className={styles.buttonEdit} onClick={handleEditClick}>Editar</Button>
+                 <Button onClick={() => navigate(-1)} className={styles.buttonback}>Volver</Button>
+                </div>
               </>
             )}
           </Card.Body>
