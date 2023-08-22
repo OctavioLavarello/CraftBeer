@@ -1,4 +1,4 @@
-import { UserCompany, Product, UserPerson, Qualification } from "../db";
+import { UserCompany, Product, UserPerson, Qualification, ShoppingHistory, Item  } from "../db";
 
 const dataBase = async () => {
   let companies = [
@@ -366,16 +366,16 @@ const dataBase = async () => {
       address: "calle 44 N° 25 35",
     },
     {
-    name: "admin",
-    lastName: "Gamma",
-    document: 12345678,
-    email: "craftbeer514@gmail.com",
-    password: "12345678FG",
-    country: "Colombia",
-    city: "medellin",
-    state: "Antioquia",
-    address: "calle 44 N° 25 35",
-    role: "Admin"
+      name: "admin",
+      lastName: "Gamma",
+      document: 12345678,
+      email: "craftbeer514@gmail.com",
+      password: "12345678FG",
+      country: "Colombia",
+      city: "medellin",
+      state: "Antioquia",
+      address: "calle 44 N° 25 35",
+      role: "Admin"
     },
     {
       name: "admin",
@@ -467,6 +467,194 @@ const dataBase = async () => {
     }
   );
 });
+
+const shoppingHistories = [
+  {
+    date: new Date(),
+    totalPrice: 100.0,
+    userPersonId: personSaved[0].id,
+    items: [
+      {
+        ProductId: productSaved[0].id,
+        name: "Producto 1",
+        image: "imagen1.jpg",
+        amount: 2,
+        unitPrice: 50.0,
+        summary: "Descripción del producto 1",
+        totalPrice: 100.0,
+      },
+    ],
+  },
+  {
+    date: new Date(),
+    totalPrice: 60.0,
+    userPersonId: personSaved[1].id,
+    items: [
+      {
+        ProductId: productSaved[1].id,
+        name: "Producto 2",
+        image: "imagen2.jpg",
+        amount: 1,
+        unitPrice: 60.0,
+        summary: "Descripción del producto 2",
+        totalPrice: 60.0,
+      },
+      {
+        ProductId: productSaved[0].id,
+        name: "Producto 1",
+        image: "imagen1.jpg",
+        amount: 2,
+        unitPrice: 50.0,
+        summary: "Descripción del producto 1",
+        totalPrice: 100.0,
+      },
+    ],
+  },
+  {
+    date: new Date(),
+    totalPrice: 250.0,
+    userPersonId: personSaved[3].id,
+    items: [
+      {
+        ProductId: productSaved[3].id,
+        name: "Producto 1",
+        image: "imagen1.jpg",
+        amount: 5,
+        unitPrice: 50.0,
+        summary: "Descripción del producto 4",
+        totalPrice: 250.0,
+      },
+      // Agrega más items si es necesario
+    ],
+  },
+  {
+    date: new Date(),
+    totalPrice: 150.0,
+    userPersonId: personSaved[2].id,
+    items: [
+      {
+        ProductId: productSaved[4].id,
+        name: "Producto 1",
+        image: "imagen1.jpg",
+        amount: 3,
+        unitPrice: 50.0,
+        summary: "Descripción del producto 5",
+        totalPrice: 150.0,
+      },
+      // Agrega más items si es necesario
+    ],
+  },
+  {
+    date: new Date(),
+    totalPrice: 100.0,
+    userPersonId: personSaved[0].id,
+    items: [
+      {
+        ProductId: productSaved[0].id,
+        name: "Producto 1",
+        image: "imagen1.jpg",
+        amount: 2,
+        unitPrice: 50.0,
+        summary: "Descripción del producto 1",
+        totalPrice: 100.0,
+      },
+      // Agrega más items si es necesario
+    ],
+  },
+  {
+    date: new Date(),
+    totalPrice: 300.0,
+    userPersonId: personSaved[2].id,
+    items: [
+      {
+        ProductId: productSaved[0].id,
+        name: "Producto 1",
+        image: "imagen1.jpg",
+        amount: 6,
+        unitPrice: 50.0,
+        summary: "Descripción del producto 1",
+        totalPrice: 300.0,
+      },
+      // Agrega más items si es necesario
+    ],
+  },
+];
+
+const shoppingHistoriesSaved = await Promise.all(
+  shoppingHistories.map(async (shoppingHistory) => {
+    const { date, totalPrice, userPersonId, items } = shoppingHistory;
+
+    const person = await UserPerson.findByPk(userPersonId);
+
+    if (!person) {
+      console.warn(`UserPerson with ID ${userPersonId} not found.`);
+      return null;
+    }
+
+    const newShoppingHistory = await ShoppingHistory.create({
+      date,
+      totalPrice,
+      userPersonId,
+    });
+
+    person.addShoppingHistory(newShoppingHistory);
+
+    const createdItems = await Promise.all(
+      items.map(async (item) => {
+        const {
+          ProductId,
+          name,
+          image,
+          amount,
+          unitPrice,
+          summary,
+          totalPrice: itemTotalPrice,
+        } = item;
+
+        const product = await Product.findByPk(ProductId);
+
+        if (!product) {
+          console.warn(`Product with ID ${ProductId} not found.`);
+          return null;
+        }
+
+        if (product.stock < amount) {
+          console.warn(`Not enough stock for product with ID ${ProductId}.`);
+          return null;
+        }
+
+        const createdItem = await Item.create({
+          ProductId,
+          name,
+          image,
+          amount,
+          unitPrice,
+          summary,
+          totalPrice: itemTotalPrice,
+        });
+
+        await newShoppingHistory.addItems(createdItem);
+
+        const newStock = product.stock - amount;
+        await Product.update({ stock: newStock }, { where: { id: ProductId } });
+
+        return createdItem;
+      })
+    );
+
+    const newItems = createdItems.filter((item) => item !== null);
+
+    if (newShoppingHistory) {
+      // Realizar acciones adicionales si es necesario
+    }
+
+    return newShoppingHistory;
+  })
+);
+
+// console.log("ShoppingHistories saved:", shoppingHistoriesSaved);
+
+
 };
 
 
