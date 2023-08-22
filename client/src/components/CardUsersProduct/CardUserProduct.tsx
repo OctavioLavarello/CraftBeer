@@ -25,7 +25,7 @@ const CardUserProduct: React.FC<userProductCardProps> = ({id, name, image, price
         textAlign: "center",
       }}
     >
-      <Card.Body style={{ border: "solid red" }}>
+      <Card.Body style={{ border: "solid red", borderRadius:"15px" }}>
         <Row>
           <Col>
             <NavLink to={`/detail/${id}`}>
