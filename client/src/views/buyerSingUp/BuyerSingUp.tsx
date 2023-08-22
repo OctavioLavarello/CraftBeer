@@ -344,13 +344,12 @@ useEffect(() => {
 
     </Col>
   </Row>
+  <div style={{textAlign:"center"}}>
       <Button type="submit"
       disabled={disable(errors)}>
-        
         Crear Usuario
       </Button>
-   
- 
+  </div>
     </Form>
 
     </div>

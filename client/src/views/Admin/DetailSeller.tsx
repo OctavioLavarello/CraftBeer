@@ -24,7 +24,7 @@ const DetailSeller = () => {
 
   useEffect(() => {
     const solicitud = async () => {
-      const response = await axios.get(`/company/${id}`)
+      const response = await axios.get(`/company/admin/${id}`)
       console.log(response.data);
       setInfoUser(response.data);
     };
