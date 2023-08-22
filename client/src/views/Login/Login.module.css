@@ -363,7 +363,7 @@
         border: 0.03vh solid red;
         box-shadow: 0 0 1vw red;
     }
-    .input1{
+    .input1 {
         margin-top: 5vh;
     }
     .input, .input1 {
@@ -504,12 +504,20 @@
         color: gray;
     }
     .signUp {
+        margin-top: -4vh;
         border: 0.02vh solid black;
         border-radius: 1px;
+        height: 4vh;
         background-color: rgb(63, 63, 63);
     }
-    .signUp:hover{
+    .signUp:hover {
         background-color: rgb(63, 63, 63);
+        border-radius: 1px;
+        border: 0.02vh solid black;
+        box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+    }
+    .signUp:active {
+        background-color: rgb(96, 163, 52);
         border-radius: 1px;
         border: 0.02vh solid black;
         box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
@@ -522,6 +530,6 @@
     }
     .validationMessage {
         color: red;
-        transform: translateY(-80%)
+        transform: translateY(-90%);
     }
 }
