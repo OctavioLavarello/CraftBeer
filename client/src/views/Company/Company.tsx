@@ -22,6 +22,7 @@ export interface company {
     address: string;
     company: string;
     id: string;
+    image: string;
 };
 const Company: React.FC = () => {
     // LOCAL STORAGE
@@ -39,7 +40,8 @@ const Company: React.FC = () => {
         city: user.city,
         company: user.company,
         address: user.address,
-        id: user.id
+        id: user.id,
+        image: user.image
     });
     const [errors, setErrors] = useState<company>({
         name: "",
@@ -53,6 +55,7 @@ const Company: React.FC = () => {
         company: "",
         address: "",
         id: "",
+        image: "",
     });
     const [isClicked, setIsClicked] = useState<boolean>(false);
     // HANDLERS
@@ -80,6 +83,7 @@ const Company: React.FC = () => {
         user.city = companyData.city;
         user.company = companyData.company;
         user.address = companyData.address;
+        user.image = companyData.image;
         localStorage.setItem("user", JSON.stringify(user));
     }
     const handlerOnSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
@@ -191,6 +195,13 @@ const Company: React.FC = () => {
                             value={companyData.address}
                             />
                         </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Profile Image</Form.Label>
+                        </Form.Group>
+                        <img 
+                        src={companyData.image} 
+                        alt={companyData.image} 
+                        className={styles.inputImg}/>
                     </Form>
                     <button 
                     onClick={handlerIsClicked}
@@ -353,6 +364,21 @@ const Company: React.FC = () => {
                             {errors.address && <p className={styles.validationMessage}>{errors.address}</p>}
                         </div>
                     </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Profile Image</Form.Label>
+                        <div className={styles.divInputP}>
+                            <Form.Control
+                            className={styles.input} 
+                            required
+                            type="text"
+                            name="image"
+                            value={companyData.image}
+                            placeholder="change your image?"
+                            onChange={handlerOnChange}
+                            />
+                        </div>
+                    </Form.Group>
+                    <img src={companyData.image} alt={companyData.image} className={styles.inputImg}/>
                     <button 
                     type="submit"
                     className={styles.submit}

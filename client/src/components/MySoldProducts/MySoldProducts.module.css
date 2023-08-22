@@ -5,3 +5,11 @@
     width: 100%;
     height: 100%;
 }
+.noSold{
+    text-decoration: none;
+    color: rgba(163, 125, 52, 1)
+}
+.noSold:hover{
+    text-decoration: none;
+    color: orange
+}
