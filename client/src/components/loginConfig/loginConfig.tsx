@@ -25,13 +25,9 @@ const LoginGoogle: React.FC = () => {
 
     try {
       const decodedToken: any = jwtDecode(idToken);
-      console.log("Token Decodificado:", decodedToken);
-
       const email = decodedToken.email;
       const response = await axios.get(`${localhost}/check?email=${email}`);
       const exist = response.data;
-
-      console.log(exist);
 
       if (exist === true) {
         // setear login para acceder
@@ -55,7 +51,7 @@ const LoginGoogle: React.FC = () => {
       }
     } catch (error: any) {
       console.error("Error:", error);
-      // Manejar errores de manera general
+      
     }
   };
 
@@ -65,7 +61,6 @@ const LoginGoogle: React.FC = () => {
 
   return (
     <div>
-      {/* ... Tu formulario de inicio de sesión */}
       <GoogleOAuthProvider clientId={clientId}>
         <GoogleLogin
           onSuccess={handleGoogleSuccess}
