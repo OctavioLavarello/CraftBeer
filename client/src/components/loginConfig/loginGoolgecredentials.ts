@@ -1,0 +1,1 @@
+export const IdClient = "613986479282-t9j4clt86pdii5h3m22abarctpm7k3d7.apps.googleusercontent.com";
