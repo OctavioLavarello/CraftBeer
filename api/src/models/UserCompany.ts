@@ -21,7 +21,7 @@ const defineUserModel = (): ModelCtor<UserCompanyModel> => {
     },
     phone: {
       type: DataTypes.BIGINT,
-      allowNull:false
+      allowNull:true,
     },
     lastName: {
       type: DataTypes.STRING,
@@ -29,11 +29,11 @@ const defineUserModel = (): ModelCtor<UserCompanyModel> => {
     },
     company: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     country: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     state: {
       type: DataTypes.STRING,
@@ -41,11 +41,11 @@ const defineUserModel = (): ModelCtor<UserCompanyModel> => {
     },
     city: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     document: {
       type: DataTypes.BIGINT,
-      allowNull: false,
+      allowNull: true,
       unique: true,
     },
     email: {
@@ -55,7 +55,7 @@ const defineUserModel = (): ModelCtor<UserCompanyModel> => {
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     status: {
       type: DataTypes.BOOLEAN,

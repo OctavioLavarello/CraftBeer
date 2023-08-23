@@ -61,17 +61,16 @@ const Succes = () => {
         items: dataCartItems
     }
 
-console.log("esto es el ID en Succes",dataPay);
+    console.log("post Shooop",dataPay);
 
 
     useEffect(() => {
         // peticion  post al servidor 
         const postHistoryShop = async () => {
+
             const endpoint = "/shoppingHistory";
             try {
-                const response = await axios.post(endpoint, dataPay);
-                console.log(response);
-                
+                const response = await axios.post(endpoint, dataPay);   
             } catch (error) {
                 console.error(error);
             }

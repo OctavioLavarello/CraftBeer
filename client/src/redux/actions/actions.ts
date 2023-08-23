@@ -1,4 +1,4 @@
-//import { Dispatch, Action } from "redux";
+///import { Dispatch, Action } from "redux";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { AnyAction, Dispatch } from "redux";
@@ -142,7 +142,6 @@ export const createdProduct = ({
           `No ha sido posible cargar su compañía\n\n${error.response.data.message}`
         );
       }
-      console.log(error.response.data);
     }
   };
 };
@@ -197,7 +196,6 @@ export const createdCompany = ({
           `No ha sido posible cargar su compañía\n\n${error.response.data.message}`
         );
       }
-      console.log(error.response.data);
     }
   };
 };
@@ -242,6 +240,7 @@ export interface loginAction {
 export interface loginUserData {
   email: string;
   password: string;
+  email_verified?:boolean
 }
 export interface loginPayload {
   access: boolean;
@@ -274,8 +273,12 @@ export const login = (loginUserData: loginUserData) => {
   try {
     const endpoint = "/login";
     return async function (dispatch: Dispatch<loginAction>) {
-      const url = `${endpoint}?email=${loginUserData.email}&password=${loginUserData.password}`;
+      const url = `${endpoint}?email=${loginUserData.email}&password=${loginUserData.password}?&email_verified=${loginUserData.email_verified}`;
       const { data } = await axios.get(url);
+
+console.log(data);
+
+
       saveUserData(data);
       dispatch({
         type: LOGIN,
@@ -364,4 +367,3 @@ export const userCompanySalesDetail = (id: string) => {
     });
   };
 }
-

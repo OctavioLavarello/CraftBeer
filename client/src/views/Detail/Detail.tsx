@@ -18,7 +18,12 @@ export interface Beer {
   stock: number;
   presentation: string;
   status: boolean;
-  Qualifications?: string[]
+  Qualifications?: Qualifications[]
+}
+
+interface Qualifications{
+  rate:number,
+  comment:string
 }
 
 const Detail = () => {
@@ -66,11 +71,12 @@ const Detail = () => {
           ¡Producto no encontrado!
         </div>
         <Button variant="danger" onClick={() => navigate(-1)} className={styles.buttonback}>
-        Volver
-      </Button>
+          Volver
+        </Button>
       </div>
     );
   }
+  console.log(beer.Qualifications);
 
   return (
     <Container className={styles.container}>
@@ -102,17 +108,19 @@ const Detail = () => {
         <Col md={6} className={styles.imageContainer}>
           <img src={beer?.image} alt="" className={styles.image} />
         </Col>
-        {beer.Qualifications?.length ? (
-          <>
-            <div className={styles.review}>
-              <h4>Valoraciones </h4>
-              <hr></hr>
-       
-            </div>
-          </>
-        ) : (<></>)
 
-        }
+        <div className={styles.review}>
+          <h4>Valoraciones </h4>
+          <hr></hr>
+          {beer.Qualifications?.map(el =>
+            <>
+              <h5>{el.rate} ⭐ </h5>
+              <p>{el.comment}</p>
+              <hr></hr>
+            </>
+          )}
+        </div>
+
 
       </Row>
     </Container>
