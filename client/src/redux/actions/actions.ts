@@ -23,7 +23,7 @@ import {
   TOP_PRODUCT,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
-import { salesDetail, salesSum , topProducts} from "../reducer";
+import { salesDetail, salesSum } from "../reducer";
 
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
