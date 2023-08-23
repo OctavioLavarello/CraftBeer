@@ -1,0 +1,85 @@
+.bodyFormSeller {
+    align-items: center;
+    height: 110%;
+}
+
+.formBoxContainer{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    padding: 20px;
+    height: 110%;
+}
+
+.form{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border:  0.5PX solid  rgb(118, 90, 40);
+    height: 80%;
+    width: 70%;
+    background-color:   rgb(20, 20, 20);
+    border-radius: 5px;
+    box-shadow: 15px 15px 15px rgba(0, 0, 0);
+}
+
+.row1{
+    text-align: left;
+    width: 80%;
+    padding-top: 3%;
+
+}
+
+.input{
+background-color:   rgb(20, 20, 20);
+color: white;
+border:  0.5PX solid  rgb(118, 90, 40);
+transition: transform 0.1s;
+}
+
+.input::placeholder{
+color:rgba(153, 153, 106, 0.5);
+}
+
+.input:focus{
+background-color:   rgb(20, 20, 20);
+color: white;
+border:  0.5PX solid  rgb(118, 90, 40);
+box-shadow: 8px 8px 10px rgba(0, 0, 0);
+transform: scale(1.1);
+}
+
+.title{
+    padding-top: 3%;
+}
+
+.mensajes{
+    color: rgb(202, 10, 10);
+    font-size: px;
+  }
+
+
+
+/* 
+.alinearForm {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    
+}
+
+.errorCompany {
+    font-size: 10px;
+    color: red;
+    margin: 3px;
+}
+
+.centrado {
+    text-align: center; 
+    color: black;
+} */
