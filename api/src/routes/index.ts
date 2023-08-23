@@ -6,7 +6,7 @@ import postProduct from '../controller/postProduct';
 import getProductById from '../controller/getProductById';
 import getAllProducts from '../controller/getAllProducts';
 import putUserPerson from "../controller/putUserPerson"
-import logIn from '../controller/logIn';
+//import logIn from '../controller/logIn';
 import putProduct from '../controller/putProduct';
 import putUserCompany from '../controller/putUserCompany';
 import getAllUserPersons from '../controller/getAllUserPersons';
@@ -44,7 +44,7 @@ router.post("/favorite", favoriteHandler)
 router.get("/companies", getAllCompanies);
 router.get("/product/:idProduct", getProductById);
 router.get("/product", getAllProducts);
-router.get("/login", logIn);
+//router.get("/login", logIn);
 router.get("/persons", getAllUserPersons);
 router.get("/shoppingHistories", getShoppingHistories);
 router.get("/persons/:idPerson", getPersonById);
