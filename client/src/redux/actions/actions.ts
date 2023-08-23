@@ -274,7 +274,7 @@ export const login = (loginUserData: loginUserData) => {
   try {
     const endpoint = "/login";
     return async function (dispatch: Dispatch<loginAction>) {
-      const url = `${endpoint}?email=${loginUserData.email}&password=${loginUserData.password}?&email_verified=${loginUserData.email_verified}`;
+      const url = `${endpoint}?email=${loginUserData.email}&password=${loginUserData.password}&email_verified=${loginUserData.email_verified}`;
       const { data } = await axios.get(url);
 
       console.log(data);
