@@ -217,7 +217,8 @@ export interface UserData {
 export const createdUser = (userData: UserData) => {
   return async (dispatch: Dispatch<any>) => {
     try {
-      let createdUserResponse = await axios.post("/user", userData);
+      const endpoint= "/user"
+      let createdUserResponse = await axios.post(endpoint, userData);
       dispatch({
         type: CREATED_USER,
         payload: createdUserResponse.data,
