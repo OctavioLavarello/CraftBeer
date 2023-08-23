@@ -104,9 +104,9 @@ const Cart = () => {
             />
           ))}
 
-          <div style={{ marginLeft: "775px" }}>
+          <div style={{justifyContent:"flex-end", display:"flex"}}>
             <Link to={"/Shop"}>
-              <button className={style.buttonBuy}>Agregar Art.</button>
+              <button className={style.buttonShop}>Agregar Art.</button>
             </Link>
 
           </div>
