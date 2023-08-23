@@ -198,3 +198,9 @@ export const userCompanySalesDetail = (state = initialState, action: salesDetail
     companySalesDetail: action.payload
   }
 }
+export const getTopRated = (state = initialState, action:ActionWithPayload<string, any> )=>{
+  return {
+    ...state ,
+    topProducts:action.payload
+  }
+}

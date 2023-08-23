@@ -17,6 +17,8 @@ import {
   sellerId,
   userCompanySalesSummary,
   userCompanySalesDetail,
+  getTopRated
+
 } from "./reducerFunctions";
 import {
   CREATED_PRODUCT,
@@ -36,6 +38,7 @@ import {
   ID_SELLER,
   COMPANY_SALES_SUMMARY,
   COMPANY_SALES_DETAIL,
+  TOP_PRODUCT
 } from "../redux/actions/actionsTypes";
 import { SaveDataLS } from "../components/LocalStorage/LocalStorage";
 
@@ -97,6 +100,8 @@ export interface AppState {
   idSeller: any;
   companySalesSum: salesSum[]
   companySalesDetail: salesDetail[];
+  topProducts:topProducts[]
+  
 }
 export interface BeerFilters {
   IBU?: number,  // El signo de interrogación indica que la propiedad es opcional
@@ -107,6 +112,12 @@ export interface BeerFilters {
   qualification?:String,
   type?:String,
   order?:String,
+}
+
+export interface topProducts {
+  name:String;
+  image: string;
+  qualification:Number;
 }
 
 //hidratar el estado localStorageCart desde la storage 
@@ -125,6 +136,7 @@ export const initialState: AppState = {
     role: "",
     cart: {...localStorage}
   },
+  topProducts:[],
   urlImage: "",
   hasNavigated: false,
   idBuyer:"",
@@ -188,6 +200,9 @@ const rootReducer = (
     }
     case COMPANY_SALES_DETAIL: {
       return userCompanySalesDetail(state, action)
+    }
+    case TOP_PRODUCT: {
+      return getTopRated(state , action)
     }
     default:
       return state;

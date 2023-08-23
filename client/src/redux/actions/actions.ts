@@ -20,9 +20,11 @@ import {
   ID_SELLER,
   COMPANY_SALES_SUMMARY,
   COMPANY_SALES_DETAIL,
+  TOP_PRODUCT
+  
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
-import { salesDetail, salesSum } from "../reducer";
+import { salesDetail, salesSum , topProducts} from "../reducer";
 
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
@@ -364,4 +366,17 @@ export const userCompanySalesDetail = (id: string) => {
     });
   };
 }
+// Action para guardar los 8 productos mejor calificados
+
+export const getTopRated = ()=>{
+  console.log("entre")
+  return async function (dispatch: Dispatch<any>) {
+    const response = await axios.get("/toprated");
+    console.log(response)
+    return dispatch({
+      type: TOP_PRODUCT,
+      payload: response.data,
+    });
+  };
+};
 
