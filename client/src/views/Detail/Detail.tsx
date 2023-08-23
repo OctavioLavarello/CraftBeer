@@ -37,13 +37,10 @@ const Detail = () => {
       try {
         const response = await axios.get(`https://craftbeer.up.railway.app/product/${id}` || `http://localhost:3001/product/${id}`);
         setBeer(response.data);
-        console.log(response.data);
-
       } catch (error) {
         console.log(error);
         console.error('Error fetching beer', error);
       } finally {
-        // Se oculta la imagen de loading después de 3 segundos
         setTimeout(() => {
           setIsLoading(false);
         }, 3000);
@@ -76,7 +73,6 @@ const Detail = () => {
       </div>
     );
   }
-  console.log(beer.Qualifications);
 
   return (
     <Container className={styles.container}>

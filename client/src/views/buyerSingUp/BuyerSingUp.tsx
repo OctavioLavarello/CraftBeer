@@ -62,7 +62,6 @@ const BuyerSingUp: React.FC = () => {
     city:"Se requiere ciudad",
     state:"Se requiere estado",
     address: "Se requiere direccion",
-    // image: "Se requiere una imagen",
   })
 
   const validation = (input: any, name: any) =>{
@@ -138,11 +137,7 @@ const BuyerSingUp: React.FC = () => {
       if (input.address !== "") setErrors({ ...errors, address: "" });
       else setErrors({ ...errors, address: "Información requerida" });
     }
-    // if(name === "image"){
-    //   if (input.image !== "") setErrors({ ...errors, image: "" });
-    //   else setErrors({ ...errors, image: "Información requerida" });
-    // }
-
+  
     }
   
   
@@ -166,28 +161,14 @@ const BuyerSingUp: React.FC = () => {
       }
       return disabled;
     };
-    // console.log(formData);
 
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      console.log(formData);
       dispatch(createdUser(formData));
-      // setFormData({
-      //   name: "",
-      //   lastName: "",
-      //   document: 0,
-      //   email: "",
-      //   password: "",
-      //   country: "",
-      //   city: "",
-      //   state: "",
-      //   address: "",
-      //   image: "",
-      // });
     };
 
-// console.log(formData);
+
 const fetchCountries = async () => {
   try {
     const response = await fetch('https://restcountries.com/v3.1/region/South%20America');
@@ -270,15 +251,6 @@ useEffect(() => {
     </Col>
     <Col>
     <DragAndDrop/>
-      {/* Imagen:
-      <Form.Control
-        placeholder="URL"
-        type="url"
-        name="image"
-        onChange={handleInputChange}
-       
-      />
-      <h6 className={Styles.mensajes}>{errors.image}</h6> */}
     </Col>
   </Row>
   <Row style={{ margin: '15px' }}>

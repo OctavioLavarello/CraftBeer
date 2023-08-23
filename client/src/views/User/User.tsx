@@ -63,7 +63,6 @@ const User = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
   
-    // Verificar si el campo es "name", "lastName" o "city" antes de aplicar el regex
     if ((name === "name" || name === "lastName" || name === "city") &&
         /^[A-Za-z]+$/.test(value)) {
       setEditedUserData((prevData) => ({
@@ -72,7 +71,6 @@ const User = () => {
       }));
       setIsEditMode(true);
     } else if (name !== "name" && name !== "lastName" && name !== "city") {
-      // Si no es ninguno de los campos anteriores, actualizar directamente
       setEditedUserData((prevData) => ({
         ...prevData,
         [name]: value,
@@ -90,10 +88,9 @@ const User = () => {
     e.preventDefault();
     try {
       const response = await axios.put(`http://localhost:3001/user`, editedUserData);
-      console.log(response.data); // Log the response
-      // Update userData to show the updated data
+      console.log(response.data); 
       setUserData(editedUserData as UserData);
-      setIsEditMode(false); // Exit edit mode
+      setIsEditMode(false); 
     } catch (error) {
       console.error('Error updating user', error);
     }
@@ -132,7 +129,7 @@ const User = () => {
         console.log(error);
         console.error('Error fetching user', error);
       } finally {
-        // Se oculta la imagen de loading después de 3 segundos
+
         setTimeout(() => {
           setIsLoading(false);
         }, 3000);
