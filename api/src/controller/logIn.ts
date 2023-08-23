@@ -8,7 +8,7 @@ const logIn = async (req: Request, res: Response) => {
 
     if (!email) return res.status(400).json({ message: "email is required" });
 
-    if (email_verified) {
+    if (verified === "true") {
       null;
     } else if (!password)
       return res.status(400).json({ message: "Password is required" });
@@ -21,7 +21,7 @@ const logIn = async (req: Request, res: Response) => {
     }
 
     if (findUser) {
-      if (verified)
+      if (verified === "true")
         return res.status(200).json({ access: true, user: findUser });
       else {
         if (findUser.password === password) {
