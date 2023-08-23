@@ -17,33 +17,38 @@ interface userProductCardProps {
 
 const CardUserProduct: React.FC<userProductCardProps> = ({id, name, image, price, description}) => {
   return (
-    <Card className={styles.card}>
-      <Card.Body className={styles.cardBody}>
-        <Row>
-          <Col>
-            <NavLink to={`/detail/${id}`}>
-              <Card.Img
-                src={image}
-                className={styles.img}
-              />
-            </NavLink>
-          </Col>
-          <Col>
-            <Card.Title
-            className={styles.name}
-            >{name}</Card.Title>
-          </Col>
-          <Col sm={5}>
-            <Card.Text className={styles.description}>
-              {description}
-            </Card.Text>
-          </Col>
-          <Col className={styles.price}>
-            <h3>{price} USD </h3>
-          </Col>
-        </Row>
-      </Card.Body>
-    </Card>
+    <div className={styles.cardiv}>
+      <Card className={styles.card}>
+        <Card.Body className={styles.cardBody}>
+          <Row>
+            <Col>
+              <NavLink to={`/detail/${id}`}>
+                <Card.Img
+                  src={image}
+                  className={styles.img}
+                />
+              </NavLink>
+            </Col>
+            <Col>
+              <Card.Title
+              className={styles.name}
+              >{name}</Card.Title>
+            </Col>
+            <Col sm={5}>
+              <Card.Text className={styles.description}>
+                {description}
+              </Card.Text>
+            </Col>
+            <Col className={styles.price}>
+              <h3>{price} USD </h3>
+            </Col>
+          </Row>
+        </Card.Body>
+      </Card>
+      <button>
+        x
+      </button>
+    </div>
   );
 };
 

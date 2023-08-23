@@ -50,6 +50,7 @@ const Company: React.FC = () => {
         id: user.id,
         image: user.image
     });
+    console.log(companyData)
     const [errors, setErrors] = useState<company>({
         name: "",
         lastName: "",
@@ -181,37 +182,21 @@ const Company: React.FC = () => {
                         <Form.Group>
                             <Form.Label>Pais</Form.Label>
                             <Form.Control
-            as="select"
-            name="country"
-            value={companyData.country}
-            
-            onChange={handlerOnChange}
-          >
-            <option value="">Selecciona un país...</option>
-            {countryNames.map((countryName, index) => (
-              <option key={index} value={countryName}>
-                {countryName}
-              </option>
-            ))}
-          </Form.Control>
+                            readOnly
+                            type="text"
+                            value={companyData.country}
+                            onChange={handlerOnChange}
+                        >
+                        </Form.Control>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Provincia</Form.Label>
                             <Form.Control
-                            as="select"
-                            name="state"
+                            readOnly
+                            type="text"
                             value={companyData.state}
                             onChange={handlerOnChange}
                             >
-                         <option value="">Selecciona una provincia...</option>
-                            {companyData.country &&
-                            provincesByCountry[companyData.country]?.map(
-                            (province: ProvinceData, index: number) => (
-                            <option key={index} value={province.name}>
-                                {province.name}
-                             </option>
-                         )
-                            )}
                         </Form.Control>
                         </Form.Group>
                         <Form.Group>
@@ -336,6 +321,7 @@ const Company: React.FC = () => {
                         <Form.Label>Pais</Form.Label>
                         <div className={styles.divInputP}>
                         <Form.Control
+                        className={styles.input}
                         as="select"
                         name="country"
                         value={companyData.country}
@@ -355,6 +341,7 @@ const Company: React.FC = () => {
                         <Form.Label>Provincia</Form.Label>
                         <div className={styles.divInputP}>
                         <Form.Control
+                        className={styles.input}
                         as="select"
                         name="state"
                         value={companyData.state}
@@ -450,14 +437,12 @@ const Company: React.FC = () => {
                         !!errors.name ||
                         !!errors.lastName ||
                         !!errors.email ||
-                        !!errors.country ||
                         !!errors.city ||
-                        !!errors.state ||
                         !!errors.company ||
                         !!errors.address
                         }      
                     >
-                        Guardar Cambios
+                        Save 
                     </button>
                 </Form>
                 )}

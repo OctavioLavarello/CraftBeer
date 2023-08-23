@@ -26,6 +26,7 @@ import getPersonAdmin from "../controller/getPersonAdmin";
 import getCompanyAdmin from "../controller/getCompanyAdmin";
 import getProductAdmin from "../controller/getProductAdmin";
 import getTopRated from "../controller/getTopRated"
+import checkEmail from "../controller/checkEmail";
 
 const router = Router();
 
@@ -55,6 +56,8 @@ router.get("/persons/admin/:idPerson", getPersonAdmin);
 router.get("/company/admin/:idCompany", getCompanyAdmin);
 router.get("/product/admin/:idProduct", getProductAdmin);
 router.get("/toprated", getTopRated)
+router.get("/check", checkEmail)
+
 
 // ------- update routes-------//
 router.put("/user", putUserPerson);

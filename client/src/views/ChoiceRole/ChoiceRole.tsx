@@ -2,9 +2,6 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/actions";
 import { AnyAction, Dispatch } from "redux";
-import { loginUserData } from "../../redux/actions/actions"
-
-const localhost = "http://localhost:3001";
 
 interface ChoiceRoleProps {
   userData: {
@@ -39,11 +36,13 @@ const ChoiceRole: React.FC<ChoiceRoleProps> = (props) => {
         email_verified: userData.email_verified,
       };
 
-      await axios.post(`${localhost}/user`, createUser);
+      await axios.post(`user`, createUser);
 
       setGlobalLogin(createUser);
-    } catch (error) {
-      // Manejar el error
+    } catch (error:any) {
+      console.error("Error:", error);
+      
+      alert(`Ha ocurrido un error: ${error.message}`);
     }
   };
 
@@ -56,23 +55,30 @@ const ChoiceRole: React.FC<ChoiceRoleProps> = (props) => {
         email_verified: userData.email_verified,
       };
 
-      await axios.post(`${localhost}/company`, createCompany);
+      await axios.post(`/company`, createCompany);
 
       setGlobalLogin(createCompany);
-    } catch (error) {
-      // Manejar el error
+    } catch (error:any) {
+      console.error("Error:", error);
+      
+      alert(`Ha ocurrido un error: ${error.message}`);
     }
+    
   };
 
   const setGlobalLogin = async (user: CreateInteface) => {
     //setear login con los datos
-    const userLogin:loginUserData = {
+    const userLogin:any = {
         email: user.email,
         email_verified: user.email_verified
     }
     try {
       await dispatch(login(userLogin));
-    } catch (error) {}
+    } catch (error:any) {
+      console.error("Error:", error);
+      alert(`Ha ocurrido un error: ${error.message}`);
+    }
+    
   };
 
   return (

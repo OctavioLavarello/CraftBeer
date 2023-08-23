@@ -1,7 +1,6 @@
 import {
   GoogleLogin,
   GoogleOAuthProvider,
-  PromptMomentNotification,
 } from "@react-oauth/google";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
@@ -11,10 +10,9 @@ import ChoiceRole from "../../views/ChoiceRole/ChoiceRole";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/actions";
 import { AnyAction, Dispatch } from "redux";
-import { loginUserData } from "../../redux/actions/actions";
 
 const clientId = IdClient;
-const localhost = "http://localhost:3001";
+
 
 const LoginGoogle: React.FC = () => {
   const [userData, setUserData] = useState<any>(null);
@@ -26,12 +24,12 @@ const LoginGoogle: React.FC = () => {
     try {
       const decodedToken: any = jwtDecode(idToken);
       const email = decodedToken.email;
-      const response = await axios.get(`${localhost}/check?email=${email}`);
+      const response = await axios.get(`/check?email=${email}`);
       const exist = response.data;
 
       if (exist === true) {
         // setear login para acceder
-        const user: loginUserData = {
+        const user: any = {
           email: decodedToken.email,
           email_verified: decodedToken.email_verified,
         };
@@ -54,17 +52,11 @@ const LoginGoogle: React.FC = () => {
       
     }
   };
-
-  const handlePromptMoment = (notification: PromptMomentNotification) => {
-    // Manejar notificaciones de prompt si es necesario
-  };
-
   return (
     <div>
       <GoogleOAuthProvider clientId={clientId}>
         <GoogleLogin
           onSuccess={handleGoogleSuccess}
-          promptMomentNotification={handlePromptMoment}
           useOneTap={false}
         />
       </GoogleOAuthProvider>

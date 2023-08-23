@@ -1,3 +1,8 @@
+.cardiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .card {
     background: #242424;
     color: #fff;
