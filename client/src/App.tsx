@@ -22,6 +22,7 @@ import Creation from "./views/Creation/Creation";
 import Administrador from "./views/Admin/DashAdmin";
 import DetailBuyer from "./views/Admin/DetailBuyer";
 import DetailSeller from "./views/Admin/DetailSeller";
+import PutProduct from "./views/PutProduct/PutProduct";
 import AdminCompanyModify from "./views/Admin/AdminCompanyModify/AdminCompanyModify"
 // import PayCart from './views/Pay/Pay';
 import MyShop from "./views/MyShop/MyShop";
@@ -144,6 +145,7 @@ function App() {
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/post" element={<Creation />} />
+            <Route path="/putProduct/:id" element={<PutProduct />} />
             <Route path="*" element={<Error />} />
           </Routes>
         ) : (accessLogin.role === "Admin" ?

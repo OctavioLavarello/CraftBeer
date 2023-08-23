@@ -17,7 +17,7 @@ interface userProductCardProps {
 
 const CardUserProduct: React.FC<userProductCardProps> = ({id, name, image, price, description}) => {
   return (
-    <div className={styles.cardiv}>
+    <NavLink to ={`/putProduct/${id}`}className={styles.cardiv}>
       <Card className={styles.card}>
         <Card.Body className={styles.cardBody}>
           <Row>
@@ -45,10 +45,7 @@ const CardUserProduct: React.FC<userProductCardProps> = ({id, name, image, price
           </Row>
         </Card.Body>
       </Card>
-      <button>
-        x
-      </button>
-    </div>
+    </NavLink>
   );
 };
 
