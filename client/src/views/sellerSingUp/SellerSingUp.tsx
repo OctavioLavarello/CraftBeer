@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { AnyAction, Dispatch } from "redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form, Row, Col, Button } from "react-bootstrap";
-import "../sellerSingUp/selllerSingUp.css";
+// import "../sellerSingUp/selllerSingUp.css";
 import { useDispatch, useSelector } from "react-redux";
 import { createdCompany } from "../../redux/actions/actions";
 import {DragAndDrop} from "../../components/Cloudinary/Cloudinary.tsx"
@@ -12,6 +12,9 @@ import { provincesByCountry, ProvinceData } from '../../components/provincesData
 //import { toast } from "react-hot-toast";
 
 // STYLES
+import Styles from"./sellerSingUp.module.css";
+
+// import Styles from './sellerSingUp.module.css';
 //....
 
 interface CountryData {
@@ -176,222 +179,183 @@ const SellerSingUp: React.FC = () => {
 
   return (
     <div className="bodyFormSeller">
-      <Form
-        style={{
-          height: "auto",
-          width: "60%",
-          backgroundColor: "#A1941D",
-          borderRadius: "50px",
-          marginTop: "3%",
-          marginLeft: "20%",
-          marginBottom: "3%",
-        }}
+      <div className={Styles.formBoxContainer}>
+        <Form className={Styles.form}
         onSubmit={handlerSubmit}
-      >
-        <Row
-          style={{
-            margin: "15px",
-          }}
         >
-          <h5 style={{ marginTop: "5%" }}>
-            Crea tu usuario de vendedor. Propociona la siguiente información:
-          </h5>
-          <div className="centrado">
-            <strong>USUARIO</strong>
-          </div>
-          <Col
-            style={{
-              marginTop: "30px",
-            }}
-          >
-            <Form.Control
+            <h5 className={Styles.title}>
+              Crea tu usuario de vendedor. Propociona la siguiente información:
+            </h5>
+            <div className={Styles.title}>
+              <strong>USUARIO</strong>
+            </div>
+          <Row className={Styles.row1}>
+            <Col>
+              <Form.Control
+              className={Styles.input}
               placeholder="Correo electrónico"
               onChange={handlerChange}
               name="email"
-            />
-            <h6 className="errorCompany">{errors.email}</h6>
-          </Col>
-          <Col
-            style={{
-              marginTop: "30px",
-            }}
-          >
-            <Form.Control
+              />
+              <h6 className={Styles.mensajes}>{errors.email}</h6>
+            </Col>
+            <Col>
+              <Form.Control
+              className={Styles.input}
               placeholder="Contraseña"
               onChange={handlerChange}
               name="password"
               type="password"
-            />
-            <h6 className="errorCompany">{errors.password}</h6>
-          </Col>
-        </Row>
-        <div className="centrado">
-          <strong>DATOS PERSONALES</strong>
-        </div>
-        <Row
-          style={{
-            margin: "15px",
-          }}
-        >
-          <Col>
-            <Form.Control
+              />
+              <h6 className={Styles.mensajes}>{errors.password}</h6>
+            </Col>
+          </Row>
+          <div className={Styles.title}>
+            <strong>DATOS PERSONALES</strong>
+          </div>
+          <Row className={Styles.row1}>
+            <Col>
+              <Form.Control
+              className={Styles.input}
               placeholder="Nombres"
               onChange={handlerChange}
               name="name"
-            />
-            <h6 className="errorCompany">{errors.name}</h6>
-          </Col>
-          <Col>
-            <Form.Control
+              />
+              <h6 className={Styles.mensajes}>{errors.name}</h6>
+            </Col>
+            <Col>
+              <Form.Control
+              className={Styles.input}
               placeholder="Apellidos"
               onChange={handlerChange}
               name="lastName"
-            />
-            <h6 className="errorCompany">{errors.lastName}</h6>
-          </Col>
-        </Row>
-        <Row
-          style={{
-            margin: "15px",
-          }}
-        >
-          <Col>
-            <Form.Control
+              />
+              <h6 className={Styles.mensajes}>{errors.lastName}</h6>
+            </Col>
+          </Row>
+          <Row className={Styles.row1}>
+            <Col>
+              <Form.Control
+              className={Styles.input}
               placeholder="Documento de identidad"
               onChange={handlerChange}
               name="document"
-            />
-            <h6 className="errorCompany">{errors.document}</h6>
-          </Col>
-          <Col>
-            <Form.Control
+              />
+              <h6 className={Styles.mensajes}>{errors.document}</h6>
+            </Col>
+            <Col>
+              <Form.Control
+              className={Styles.input}
               placeholder="Teléfono móvil"
               onChange={handlerChange}
               name="phone"
-            />
-            <h6 className="errorCompany">{errors.phone}</h6>
-          </Col>
-        </Row>
-        <Row
-          style={{
-            margin: "15px",
-          }}
-        >
-          <Col>
-          <Form.Control
-            as="select"
-            name="country"
-            value={input.country}
-            
-            onChange={handlerChange}
-          >
-            <option value="">Selecciona un país...</option>
-            {countryNames.map((countryName, index) => (
-              <option key={index} value={countryName}>
-                {countryName}
-              </option>
-            ))}
-          </Form.Control>
-            <h6 className="errorCompany">{errors.country}</h6>
-          </Col>
-          <Col>
-          <Form.Control
-            as="select"
-    name="state"
-    value={input.state}
-    onChange={handlerChange}
-  >
-    <option value="">Selecciona una provincia...</option>
-    {input.country &&
-      provincesByCountry[input.country]?.map(
-        (province: ProvinceData, index: number) => (
-          <option key={index} value={province.name}>
-            {province.name}
-          </option>
-        )
-      )}
-  </Form.Control>
-            <h6 className="errorCompany">{errors.state}</h6>
-          </Col>
-        </Row>
-        <Row
-          style={{
-            margin: "15px",
-          }}
-        >
-          <Col>
-            <Form.Control
-              placeholder="Ciudad"
-              onChange={handlerChange}
-              name="city"
-            />
-            <h6 className="errorCompany">{errors.city}</h6>
-          </Col>
-          <Col></Col>
-        </Row>
-        <div className="centrado">
-          <strong>DATOS DE MI COMPAÑÍA</strong>
-        </div>
-        <Row
-          style={{
-            margin: "15px",
-          }}
-        >
-          <Col>
-            <Form.Control
-              placeholder="Nombre Empresa"
+              />
+              <h6 className={Styles.mensajes}>{errors.phone}</h6>
+            </Col>
+          </Row>
+          <div className={Styles.title}>
+            <strong>DATOS DE MI COMPAÑÍA</strong>
+          </div>
+          <Row className={Styles.row1}>
+            <Col>
+              <Form.Control
+              className={Styles.input}
+              placeholder="Nombre de la Empresa"
               onChange={handlerChange}
               name="company"
-            />
-            <h6 className="errorCompany">{errors.company}</h6>
-          </Col>
-        </Row>
-        <Row
-          style={{
-            margin: "15px",
-          }}
-        >
-          <Col>
-            <Form.Control
+              />
+              <h6 className={Styles.mensajes}>{errors.company}</h6>
+            </Col>
+            <Col>
+              <Form.Control
+              className={Styles.input}
               placeholder="Dirección de la empresa"
               onChange={handlerChange}
               name="address"
-            />
-            <h6 className="errorCompany">{errors.address}</h6>
-          </Col>
-        </Row>
-        <Row
-          style={{
-            margin: "15px",
-          }}
-        >
-          <Col>
-          <DragAndDrop/>
-            {/* <Form.Control
-              placeholder="URL Logo o imagen"
+              />
+              <h6 className={Styles.mensajes}>{errors.address}</h6>
+            </Col>
+          </Row>
+          <Row className={Styles.row1}>
+            <Col>
+              <Form.Control
+              className={Styles.input}
+              as="select"
+              name="country"
+              value={input.country}
               onChange={handlerChange}
-              name="image"
-            />
-            <h6 className="errorCompany">{errors.image}</h6> */}
-          </Col>
-        </Row>
-        <div className="centrado">
-          <Button
-            style={{
-              margin: "20px",
-              width: "auto",
-              justifyContent: "center",
-              backgroundColor: "#A37D34",
-              border: "none",
-              boxShadow: "5px 5px 10px black",
-            }}
-            type="submit"
-            disabled={disable(errors)}
-          >
-            Crear Usuario
-          </Button>
-        </div>
-      </Form>
+              >
+                <option value="">Selecciona un país...</option>
+                {countryNames.map((countryName, index) => (
+                  <option key={index} value={countryName}>
+                    {countryName}
+                  </option>
+                ))}
+              </Form.Control>
+              <h6 className={Styles.mensajes}>{errors.country}</h6>
+            </Col>
+            <Col>
+              <Form.Control
+              className={Styles.input}
+              as="select"
+              name="state"
+              value={input.state}
+              onChange={handlerChange}
+              >
+                <option value="">Selecciona una provincia...</option>
+                {input.country &&
+                  provincesByCountry[input.country]?.map(
+                    (province: ProvinceData, index: number) => (
+                      <option key={index} value={province.name}>
+                        {province.name}
+                      </option>
+                    )
+                  )}
+              </Form.Control>
+              <h6 className={Styles.mensajes}>{errors.state}</h6>
+            </Col>
+          </Row>
+          <Row className={Styles.row1}>
+            <Col>
+              <Form.Control
+              className={Styles.input}
+              placeholder="Ciudad"
+              onChange={handlerChange}
+              name="city"
+              />
+              <h6 className={Styles.mensajes}>{errors.city}</h6>
+            </Col>
+
+          {/* </Row>
+          <Row className={Styles.row1}> */}
+            <Col>
+            <DragAndDrop/>
+              {/* <Form.Control
+                placeholder="URL Logo o imagen"
+                onChange={handlerChange}
+                name="image"
+              />
+              <h6 className="errorCompany">{errors.image}</h6> */}
+            </Col>
+          </Row>
+          <div className="centrado">
+            <Button
+              style={{
+                margin: "20px",
+                width: "auto",
+                justifyContent: "center",
+                backgroundColor: "#A37D34",
+                border: "none",
+                boxShadow: "5px 5px 10px black",
+              }}
+              type="submit"
+              disabled={disable(errors)}
+            >
+              Crear Usuario
+            </Button>
+          </div>
+        </Form>
+      </div>
     </div>
   );
 };
