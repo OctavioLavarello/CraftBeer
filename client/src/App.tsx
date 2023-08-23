@@ -22,6 +22,7 @@ import Creation from "./views/Creation/Creation";
 import Administrador from "./views/Admin/DashAdmin";
 import DetailBuyer from "./views/Admin/DetailBuyer";
 import DetailSeller from "./views/Admin/DetailSeller";
+import AdminCompanyModify from "./views/Admin/AdminCompanyModify/AdminCompanyModify"
 // import PayCart from './views/Pay/Pay';
 import MyShop from "./views/MyShop/MyShop";
 import Error from "./views/Error/Error";
@@ -161,6 +162,7 @@ function App() {
             <Route path="/admin/seller/products" element={<ProductsBySeller/>} />
             <Route path="/admin/buyer/adminUserModify" element={<AdminUserModify/>} />
             <Route path="/admin/seller/AdminHistoryShopSeller" element={<AdminHistoryShopSeller/>} />
+            <Route path="/admin/seller/admincompanymodify" element={<AdminCompanyModify/>} />
             <Route path="/admin/buyer/adminHistoryShopBuyer" element={<AdminHistoryShopBuyer/>} />{/*  */}
             <Route path="*" element={<Error />} />
           </Routes>
