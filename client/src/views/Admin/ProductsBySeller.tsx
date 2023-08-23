@@ -31,11 +31,12 @@ const ProductsBySeller = () => {
   const handlerActive = async (event:any) => {
     try {
       const idProduct = event?.target.name
-      console.log(idProduct);
-      await axios.put(`/product/${idProduct}`, {
+      const activar = {
         companyId: infoUser.id,
-        status: "true",
-      });
+        status: "true"
+      }
+      console.log(idProduct);
+      await axios.put(`/product/${idProduct}`, activar);
       toast.success("El producto a sido activado");
     } catch (error) {
       toast.error("No fue posible activar el producto");
@@ -45,11 +46,12 @@ const ProductsBySeller = () => {
   const handlerInactive = async (event: any) => {
     try {
       const idProduct = event?.target.name
+      const inactivar = {
+        companyId: infoUser.id,
+        status: "false"
+      }
       console.log(idProduct);
-      await axios.put(`/product/${idProduct}`, {
-        id: infoUser.id,
-        status: "false",
-      });
+      await axios.put(`/product/${idProduct}`, inactivar);
       toast.success("El producto a sido desactivado");
     } catch (error) {
       toast.error("No fue posible inactivar el producto");
