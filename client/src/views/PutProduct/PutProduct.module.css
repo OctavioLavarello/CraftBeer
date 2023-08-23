@@ -1,0 +1,98 @@
+.container {
+    padding: 1%;
+    height: 100%;
+}
+.card {
+    font-size: 25px;
+    border: none;
+    width: 120%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #0f0f0e;
+    color: rgb(144, 146, 147);
+}
+.title{
+    font-size: 40px;
+    border-bottom: 2px solid black;
+}
+.input {
+    resize: none;
+    height: 8vh;
+    width: 30%;
+    color: white;
+    background-color: rgb(63, 63, 63);
+    border-color: rgba(163, 125, 52, 1);
+    border-radius: 1vh;
+    margin-bottom: 2vh;
+}
+.message {
+    resize: none;
+    height: 20vh;
+    width: 100%;
+    color: white;
+    background-color: rgb(63, 63, 63);
+    border-color: rgba(163, 125, 52, 1);
+    border-radius: 1vh;
+    margin-bottom: 2vh;
+}
+.imageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.image {
+    max-width: 80%;
+    background-color: #0f0f0e;
+}
+.review{
+    background-color: #0f0f0e;
+    margin-top: 30px;
+    width: 100%;
+    padding: 16px;
+    height: 24vh;
+    border-radius: 5px;
+}
+.link{
+    border: rgba(163, 125, 52, 1);
+    background-color: rgba(163, 125, 52, 1);
+}
+.buttonSub {
+    border: rgba(163, 125, 52, 1);
+    background-color:rgba(163, 125, 52, 1);
+    height: 10%;
+    width: 100%;
+}
+.buttonback {
+    border: rgba(163, 125, 52, 1);
+    background-color:rgba(163, 125, 52, 1);
+    height: 7vh;
+    width: 30vw;
+    margin-left: 6vw;
+    margin-top: 2vh
+}
+.addButton{
+    border: rgba(163, 125, 52, 1);
+    background-color:rgba(163, 125, 52, 1);
+}
+.containLoading{
+    justify-content: center;
+    display:flex;
+    align-items: center;
+}
+.beerLoading{
+    width: 50%;
+    height: 50%;
+}
+.notFound {
+    font-size: 50px;
+    color: brown;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
