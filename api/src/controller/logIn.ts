@@ -21,23 +21,31 @@ const logIn = async (req: Request, res: Response) => {
     }
 
     if (findUser) {
-      if (verified === "true")
-        return res.status(200).json({ access: true, user: findUser });
-      else {
-        if (findUser.password === password) {
+      if (findUser.dataValues.status === false) {
+        return res.status(404).json({ message: "Disabled user" });
+      } else {
+        if (verified === "true")
           return res.status(200).json({ access: true, user: findUser });
-        } else {
-          return res.status(400).json({ message: "invalid password" });
+        else {
+          if (findUser.password === password) {
+            return res.status(200).json({ access: true, user: findUser });
+          } else {
+            return res.status(400).json({ message: "invalid password" });
+          }
         }
       }
     } else if (findCompany) {
-      if (verified === "true")
-        return res.status(200).json({ access: true, user: findCompany });
-      else {
-        if (findCompany.password === password) {
+      if (findCompany.dataValues.status === false) {
+        return res.status(404).json({ message: "Disabled user" });
+      } else {
+        if (verified === "true")
           return res.status(200).json({ access: true, user: findCompany });
-        } else {
-          return res.status(400).json({ message: "invalid password" });
+        else {
+          if (findCompany.password === password) {
+            return res.status(200).json({ access: true, user: findCompany });
+          } else {
+            return res.status(400).json({ message: "invalid password" });
+          }
         }
       }
     }
