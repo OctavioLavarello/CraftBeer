@@ -12,7 +12,7 @@ import { login } from "../../redux/actions/actions";
 import { AnyAction, Dispatch } from "redux";
 
 const clientId = IdClient;
-const localhost = "http://localhost:3001";
+
 
 const LoginGoogle: React.FC = () => {
   const [userData, setUserData] = useState<any>(null);
@@ -24,7 +24,7 @@ const LoginGoogle: React.FC = () => {
     try {
       const decodedToken: any = jwtDecode(idToken);
       const email = decodedToken.email;
-      const response = await axios.get(`${localhost}/check?email=${email}`);
+      const response = await axios.get(`/check?email=${email}`);
       const exist = response.data;
 
       if (exist === true) {

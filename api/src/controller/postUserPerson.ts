@@ -15,7 +15,8 @@ const postUserPerson = async (req: Request, res: Response) => {
       country,
       city,
       state,
-      role
+      role,
+      email_verified
     } = req.body;
     const errors = postUserValidation(
       name,
@@ -27,7 +28,8 @@ const postUserPerson = async (req: Request, res: Response) => {
       image,
       country,
       city,
-      state
+      state,
+      email_verified
     );
 
     if (errors) return res.status(400).json({ message: errors });
