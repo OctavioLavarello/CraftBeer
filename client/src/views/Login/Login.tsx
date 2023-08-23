@@ -6,7 +6,6 @@ import loginValidation from "./LoginValidation";
 import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 // COMPONENTS
-import LoginGoogle from "../../components/loginConfig/loginConfig";
 // ACTION
 import { login } from "../../redux/actions/actions";
 // STYLES
@@ -15,6 +14,7 @@ import Form from "react-bootstrap/Form";
 import avatar from "../../assets/icons/avatar.png";
 import email from "../../assets/icons/sobre.png";
 import password from "../../assets/icons/candado.png";
+import { Button } from "react-bootstrap";
 
 // LOGIN
 export interface login {
