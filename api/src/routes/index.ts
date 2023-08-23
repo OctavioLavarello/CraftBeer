@@ -59,7 +59,6 @@ router.get("/toprated", getTopRated)
 router.get("/check", checkEmail)
 router.get("/login", logIn)
 
-
 // ------- update routes-------//
 router.put("/user", putUserPerson);
 router.put("/company", putUserCompany);
