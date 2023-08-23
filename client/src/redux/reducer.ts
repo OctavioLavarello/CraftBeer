@@ -93,8 +93,8 @@ export interface AppState {
   accessLogin: AccessLogin;
   urlImage: any;
   hasNavigated: boolean;
-  idBuyer: string;
-  idSeller: string;
+  idBuyer: any;
+  idSeller: any;
   companySalesSum: salesSum[]
   companySalesDetail: salesDetail[];
 }
