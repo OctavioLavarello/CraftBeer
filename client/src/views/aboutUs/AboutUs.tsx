@@ -21,27 +21,27 @@ const AboutUs: React.FC = () => {
         <div className={styles.containerP}>
           <h2>About Us...</h2>
           <p>
-            En este emocionante proyecto, ocho compañeros apasionados por la cerveza y la creatividad
-            se unieron para crear un punto de encuentro entre marcas de cervezas artesanales 
-            y amantes de esta exquisita bebida. Nuestra misión es ofrecer a nuestros clientes 
-            una experiencia única al acceder a una amplia selección de cervezas artesanales 
-            de diferentes marcas, elaboradas con dedicación y cariño.!
+            In this exciting project, eight colleagues who are passionate about beer and creativity
+            joined forces to create a meeting point for craft beer brands and lovers of this exquisite beverage. 
+            and lovers of this exquisite beverage. Our mission is to offer our customers 
+            a unique experience by accessing a wide selection of craft beers from different brands, brewed with dedication 
+            of different brands, brewed with dedication and love!
           </p>
           <p>
-            Somos un espacio virtual en el que pequeñas y reconocidas marcas de cervezas artesanales 
-            se reúnen para mostrar sus productos y compartir su historia. 
-            Creemos en el poder de la comunidad cervecera y estamos comprometidos 
-            a apoyar a los cerveceros independientes y su pasión por la calidad.
+            We are a virtual space where small and renowned craft beer brands come together to showcase their products and share their history. 
+            come together to showcase their products and share their story. 
+            We believe in the power of the brewing community and are committed to supporting independent brewers and their passion for quality. 
+            to supporting independent brewers and their passion for quality.
           </p>
           <p>
-            Nuestra tienda en línea es un rincón donde puedes explorar y descubrir nuevos
-              sabores, conocer las últimas novedades del mundo cervecero y, sobre todo, disfrutar
-              de la experiencia de comprar cervezas únicas y especiales.
+            Our online store is a corner where you can explore and discover new flavors, learn about the latest
+            discover new flavors, learn about the latest news in the world of beer and, above all, enjoy the experience of
+            the experience of buying unique and special beers.
           </p>
           <p>
-            Así que, si eres un amante de la cerveza artesanal, estás en el lugar indicado.
-            Explora nuestra selección, sumérgete en el fascinante mundo de las cervezas
-            únicas y únete a nosotros en este emocionante viaje cervecero.
+            So, if you're a craft beer lover, you're in the right place.
+            Explore our selection, immerse yourself in the fascinating world of unique beers and join us on this
+            and join us on this exciting beer journey.
           </p>
           <NavLink to="/home"
           className={styles.letsGo}>
