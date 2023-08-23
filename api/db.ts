@@ -38,7 +38,7 @@ Object.entries(sequelize.models).forEach(([name, model]) => {
 
 
 // relacionamos
-const { UserPerson,UserCompany,ShoppingHistory,Qualification,Product,Item} = upperCaseModels; 
+const { UserPerson,UserCompany,ShoppingHistory,Qualification,Product,Item,CodePassword} = upperCaseModels; 
 
 UserPerson.hasMany(ShoppingHistory)
 UserPerson.hasMany(Qualification)
@@ -55,4 +55,4 @@ ShoppingHistory.hasMany(Item)
 
 
 
-export { UserPerson,UserCompany,ShoppingHistory,Qualification,Product,Item,sequelize}
+export { UserPerson,UserCompany,ShoppingHistory,Qualification,Product,CodePassword,Item,sequelize}
