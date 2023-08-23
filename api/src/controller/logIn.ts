@@ -32,7 +32,7 @@ const logIn = async (req: Request, res: Response) => {
       }
     } else if (findCompany) {
       if (verified === "true")
-        return res.status(200).json({ access: true, findCompany });
+        return res.status(200).json({ access: true, user: findCompany });
       else {
         if (findCompany.password === password) {
           return res.status(200).json({ access: true, user: findCompany });

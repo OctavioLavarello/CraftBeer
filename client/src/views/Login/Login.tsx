@@ -16,6 +16,7 @@ import avatar from "../../assets/icons/avatar.png";
 import email from "../../assets/icons/sobre.png";
 import password from "../../assets/icons/candado.png";
 
+
 // LOGIN
 export interface login {
   email: string;
@@ -156,7 +157,8 @@ const Login: React.FC = () => {
           <button className={styles.signUp}>Sign Up</button>
         </NavLink>
       </Form>
-      <LoginGoogle />
+      <hr />
+        <LoginGoogle/>
     </div>
   );
 };
