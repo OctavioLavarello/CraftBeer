@@ -5,7 +5,8 @@ const PayCart = (dataPay: Cart) => {
 
   const handlePay = async () => {
     try {
-      const response = await axios.post("http://localhost:3001/create-order", {
+      const endpoint = "/create-order"
+      const response = await axios.post(endpoint, {
         products: dataPay.product,
         user: dataPay.user
       });
