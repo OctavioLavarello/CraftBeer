@@ -31,7 +31,18 @@
   background-color: grey;
   color: black;
 }
-
+.buttonShop{
+  background-color: rgb(185, 142, 34);
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  font-family: Helvetica;
+  font-size: auto;
+  height: 6vh;
+  margin: 4px;
+  opacity: 0.9;
+  width: 12vw;
+}
 .buttonBuy {
   background-color: rgb(185, 142, 34);
   border: none;
@@ -138,11 +149,34 @@
   flex-direction: row;
   justify-content: space-between;
   overflow: hidden;
+  white-space: nowrap;
+
+}
+
+.listelement li{
+  /* .title {
+    color: #d09527;
+    margin: 10px;
+    padding: 10px;
+    width: 18vw;
+    height: 80%;
+    overflow: hidden;
+  }
+   */
+ 
+    color: rgb(198, 201, 202);
+    white-space: nowrap;
+    /* Evitar saltos de línea */
+    overflow: hidden;
+    /* Ocultar texto que exceda el tamaño del div */
+    text-overflow: ellipsis;
+
 }
 
 .listelement h5 {
   color: rgb(185, 142, 34);
   margin-top: 29px;
+  font-size: 18px;
 }
 
 .listelement p {

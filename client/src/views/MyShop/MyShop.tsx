@@ -17,10 +17,8 @@ const MyShop = ({ idPersonAdmin, idCompanyAdmin }: any) => {
         userId = useSelector((state: AppState) => state.accessLogin.id)
     } else { userId = idPersonAdmin }
 
-
     // si ID es compañia solicitud a la ruta usercompany si no con id de usuario 
     if (idCompanyAdmin) {
-        console.log("dsdsdsdsd");
         
         const getShopingHistory = async () => {
             try {
@@ -46,8 +44,7 @@ const MyShop = ({ idPersonAdmin, idCompanyAdmin }: any) => {
                         userPersonId: userId
                     }
                 });
-                console.log(userId);
-                console.log("DATA get shoping", response.data);
+                console.log("dataaa",response.data);
 
                 setAllHistoryData(response.data)
 
@@ -60,28 +57,30 @@ const MyShop = ({ idPersonAdmin, idCompanyAdmin }: any) => {
         }, [])
     }
 
-    console.log("estado local",allHistoryData);
+    console.log("estado local",allHistoryDataSeller);
 
     return (
 
-        <Container>
+        <div style={{display:"flex",justifyContent:"center"}}>
             <div className={style.container}>
                 {!idPersonAdmin && !idCompanyAdmin ? (<h2>Mis compras</h2>) : (<></>)}
                 {allHistoryDataSeller.length ? (
-                    allHistoryDataSeller.map((item: any) =>
-                    (<CardMyShop
-                        key={item.id}
-                        name={item.name}
-                        summary={item.summary}
-                        date={item.date}
-                        quantity={item.amount}
-                        unitPrice={item.unitPrice}
-                        totalPrice={item.totalPrice}
-                        image={item.image}
-                        id={item.ProductId}
-                    />
-                    ))
-                ) : (
+                        allHistoryDataSeller.map((historyItem: any) =>
+                            historyItem.Items.map((item: any) => (
+                                <CardMyShop
+                                    key={item.id}
+                                    name={item.name}
+                                    summary={item.summary}
+                                    date={item.updatedAt}
+                                    quantity={item.amount}
+                                    unitPrice={item.unitPrice}
+                                    totalPrice={item.totalPrice}
+                                    image={item.image}
+                                    id={item.ProductId}
+                                />
+                            ))
+                        )
+                    ) : (
                     allHistoryData.length ? (
                         allHistoryData.map((historyItem: any) =>
                             historyItem.Items.map((item: any) => (
@@ -109,7 +108,7 @@ const MyShop = ({ idPersonAdmin, idCompanyAdmin }: any) => {
 
 
             </div>
-        </Container>
+        </div>
 
     )
 }
