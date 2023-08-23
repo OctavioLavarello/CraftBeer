@@ -1,11 +1,11 @@
 import { Card, Col, Container, Row, Form, Button } from 'react-bootstrap';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { DragAndDrop } from "../../components/Cloudinary/Cloudinary.tsx";
-import { AppState } from "../../redux/reducer";
-import styles from "./User.module.css";
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { DragAndDrop } from '../../components/Cloudinary/Cloudinary.tsx';
+import { AppState } from '../../redux/reducer';
+import styles from './User.module.css';
 import { provincesByCountry, ProvinceData } from '../../components/provincesData/provincesData.ts';
 
 interface UserData {
@@ -23,29 +23,22 @@ interface UserData {
   role: string;
   createdAt: string;
   updatedAt: string;
-  ShoppingHistories: any[]; 
+  ShoppingHistories: any[];
 }
+
 interface EditableUserData {
   name?: string;
   lastName?: string;
   document?: string;
   email?: string;
   password?: string;
-  address?: string; 
+  address?: string;
   image?: string;
   country?: string;
   city?: string;
   state?: string;
 }
-interface Errors {
-  name: string;
-  lastName: string;
-  document: string;
-  country: string;
-  city: string;
-  state: string;
-  address: string;
-}
+
 interface CountryData {
   name: {
     common: string;
@@ -62,77 +55,37 @@ const User = () => {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
-  const [errors, setErrors] = useState({
-    name: "Se requiere nombre",
-    lastName: "Se requiere apellido",
-    document: "Se requiere documento",
-    country:"Se requiere pais",
-    city:"Se requiere ciudad",
-    state:"Se requiere estado",
-    address: "Se requiere direccion",
-    // image: "Se requiere una imagen",
-  })
-
-  const validation = (input: any, name: keyof Errors) => {
-    const requiredFields: (keyof Errors)[] = ["name", "lastName", "document", "country", "city", "state", "address"];
-    if (requiredFields.includes(name)) {
-      if (input[name] !== "") {
-        setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
-      } else {
-        setErrors((prevErrors) => ({ ...prevErrors, [name]: "Información requerida" }));
-      }
-    }
-  };
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await axios.get(`https://craftbeer.up.railway.app/persons/${id}`)
-        setUserData(response.data)
-      } catch (error) {
-        console.log(error);
-        console.error('Error fetching user', error);
-      }finally {
-        // Se oculta la imagen de loading después de 3 segundos
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 3000);
-      }
-    }
-    fetchUsers()
-  }, [id]);
-
-   useEffect(() => {
-    if (urlImage) {
-      setEditedUserData((prevData) => ({
-        ...prevData,
-        image: urlImage,
-      }));
-    }
-  }, [urlImage]);
-
   const handleEditClick = () => {
-    setEditedUserData({ ...userData }); 
+    setEditedUserData({ ...userData });
     setIsEditMode(true);
-console.log(userData)
   };
-  
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setEditedUserData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-    validation({ [name]: value }, name as keyof Errors);
-    setIsEditMode(true);
+  
+    // Verificar si el campo es "name", "lastName" o "city" antes de aplicar el regex
+    if ((name === "name" || name === "lastName" || name === "city") &&
+        /^[A-Za-z]+$/.test(value)) {
+      setEditedUserData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+      setIsEditMode(true);
+    } else if (name !== "name" && name !== "lastName" && name !== "city") {
+      // Si no es ninguno de los campos anteriores, actualizar directamente
+      setEditedUserData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+      setIsEditMode(true);
+    }
   };
-
 
   const disable = (): boolean => {
-    return Object.values(errors).some((error) => error !== "");
+    return !editedUserData.name || !editedUserData.lastName || !editedUserData.document || 
+           !editedUserData.country || !editedUserData.city || !editedUserData.state || !editedUserData.address;
   };
-  
-  
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -146,21 +99,48 @@ console.log(userData)
     }
   };
 
-
   const fetchCountries = async () => {
     try {
       const response = await fetch('https://restcountries.com/v3.1/region/South%20America');
       const data: CountryData[] = await response.json();
-      const countryNames = data.map(country => country.name.common);
+      const countryNames = data.map((country) => country.name.common);
       setCountryNames(countryNames);
     } catch (error) {
       console.error('Error fetching country names:', error);
     }
   };
-  
+
   useEffect(() => {
     fetchCountries();
   }, []);
+
+  useEffect(() => {
+    if (urlImage) {
+      setEditedUserData((prevData) => ({
+        ...prevData,
+        image: urlImage,
+      }));
+    }
+  }, [urlImage]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get(`https://craftbeer.up.railway.app/persons/${id}`);
+        setUserData(response.data);
+      } catch (error) {
+        console.log(error);
+        console.error('Error fetching user', error);
+      } finally {
+        // Se oculta la imagen de loading después de 3 segundos
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 3000);
+      }
+    };
+    fetchUsers();
+  }, [id]);
+
   if (isLoading) {
     return (
       <div className={styles.containLoading}>
@@ -176,12 +156,10 @@ console.log(userData)
   if (!userData) {
     return (
       <div className={styles.notFound}>
-        <div>
-          ¡Usuario no encontrado!
-        </div>
+        <div>¡Usuario no encontrado!</div>
         <Button variant="danger" onClick={() => navigate(-1)} className={styles.buttonback}>
-        Volver
-      </Button>
+          Volver
+        </Button>
       </div>
     );
   }
@@ -205,7 +183,7 @@ console.log(userData)
                     value={editedUserData.name}
                     onChange={handleInputChange}
                   />
-                   <h6 className={styles.mensajes}>{errors.name}</h6>
+
                 </Form.Group>
                    <Form.Group controlId="formImage">
                     <Form.Label>Imagen</Form.Label>
@@ -224,7 +202,7 @@ console.log(userData)
                     value={editedUserData.lastName}
                    onChange={handleInputChange}
                   />
-                   <h6 className={styles.mensajes}>{errors.lastName}</h6>
+                   
                   </Form.Group>
                   <Form.Group controlId="formDocument">
                   <Form.Label>Documento</Form.Label>
@@ -234,7 +212,7 @@ console.log(userData)
                     value={editedUserData.document}
                    onChange={handleInputChange}
                   />
-                   <h6 className={styles.mensajes}>{errors.document}</h6>
+                   
                   </Form.Group>
                 </Form.Group>
                 <Form.Label>Pais</Form.Label>
@@ -253,7 +231,7 @@ console.log(userData)
               </option>
             ))}
           </Form.Control>
-                   <h6 className={styles.mensajes}>{errors.country}</h6>
+                  
                 </Form.Group>
                 <Form.Group controlId="formCity">
                   <Form.Label>Ciudad</Form.Label>
@@ -263,7 +241,7 @@ console.log(userData)
                     value={editedUserData.city}
                    onChange={handleInputChange}
                   />
-                   <h6 className={styles.mensajes}>{errors.city}</h6>
+                 
                 </Form.Group>
                 <Form.Group controlId="formState">
                   <Form.Label>Provincia</Form.Label>
@@ -283,7 +261,7 @@ console.log(userData)
                         )
                         )}
                   </Form.Control>
-                   <h6 className={styles.mensajes}>{errors.state}</h6>
+                
                 </Form.Group>
                 <Form.Group controlId="formAddress">
                   <Form.Label>Calle</Form.Label>
@@ -293,7 +271,7 @@ console.log(userData)
                     value={editedUserData.address}
                    onChange={handleInputChange}
                   />
-                  <h6 className={styles.mensajes}>{errors.address}</h6>
+              
                 </Form.Group>
                 <Button className={styles.buttonEdit} type="submit" disabled={disable()} >Guardar cambios</Button>
               </Form>

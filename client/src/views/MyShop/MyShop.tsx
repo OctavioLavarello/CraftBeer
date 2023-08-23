@@ -37,9 +37,7 @@ const MyShop = ({ idPersonAdmin, idCompanyAdmin }: any) => {
         }, [])
     } else {
         const getShopingHistory = async () => {
-            try {
-                console.log("id user",userId);
-                
+            try {                
                 // peticion  post al servidor 
                 const endpoint = "/shoppingHistories";
                 const response = await axios.get(endpoint, {
@@ -47,7 +45,7 @@ const MyShop = ({ idPersonAdmin, idCompanyAdmin }: any) => {
                         userPersonId: userId
                     }
                 });
-                console.log("my shooooop", response.data);
+                                console.log("DATA get shoping",response.data);
 
                 setAllHistoryData(response.data)
 
@@ -59,7 +57,6 @@ const MyShop = ({ idPersonAdmin, idCompanyAdmin }: any) => {
             getShopingHistory()
         }, [])
     }
-console.log(allHistoryData);
 
 
     return (

@@ -47,8 +47,8 @@ export const createOrder = async (req: Request, res: Response) => {
         email: user.email,
       } as PreferencePayer,
       back_urls: {
-        success: `${localhost}/succes`,
-        pending: `${localhost}/pending`,
+        success: `${frontDeploy}/succes`,
+        pending: `${frontDeploy}/pending`,
         failure: `${frontDeploy}/failure`,
       } as PreferenceBackUrl,
       notification_url: "https://craftbeer.up.railway.app/webhook",
