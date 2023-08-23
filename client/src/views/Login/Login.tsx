@@ -153,12 +153,12 @@ const Login: React.FC = () => {
           }>
           Submit
         </button>
-        <NavLink to="/chooseSignUp">
+        <NavLink to="/chooseSignUp" className={styles.navSignUp}>
           <button className={styles.signUp}>Sign Up</button>
         </NavLink>
+        <LoginGoogle/>
       </Form>
       <hr />
-        <LoginGoogle/>
     </div>
   );
 };

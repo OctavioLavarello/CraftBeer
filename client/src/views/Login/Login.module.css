@@ -194,12 +194,16 @@
 .checks div label {
     color: gray;
 }
+.navSignUp{
+    width: 100%;
+    text-align: center;
+}
 .signUp {
-    margin-top: -4vh;
-    border: 0.02vh solid black;
-    border-radius: 1px;
     height: 6vh;
-    background-color: rgb(63, 63, 63);
+    border-radius: 1vh;
+    background-color: rgba(163, 125, 52, 1);
+    width: 50%;
+    border: 0.02vh solid black;
 }
 .signUp:hover {
     background-color: rgb(63, 63, 63);
