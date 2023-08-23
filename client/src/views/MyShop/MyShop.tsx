@@ -15,12 +15,13 @@ const MyShop = ({ idPersonAdmin, idCompanyAdmin }: any) => {
     //validar el id que ingresa si es de persona o compañia 
     if (!idPersonAdmin) {
         userId = useSelector((state: AppState) => state.accessLogin.id)
-    } else {userId = idPersonAdmin }
-    
+    } else { userId = idPersonAdmin }
+
 
     // si ID es compañia solicitud a la ruta usercompany si no con id de usuario 
     if (idCompanyAdmin) {
-
+        console.log("dsdsdsdsd");
+        
         const getShopingHistory = async () => {
             try {
                 // peticion  post al servidor 
@@ -37,7 +38,7 @@ const MyShop = ({ idPersonAdmin, idCompanyAdmin }: any) => {
         }, [])
     } else {
         const getShopingHistory = async () => {
-            try {                
+            try {
                 // peticion  post al servidor 
                 const endpoint = "/shoppingHistories";
                 const response = await axios.get(endpoint, {
@@ -45,7 +46,8 @@ const MyShop = ({ idPersonAdmin, idCompanyAdmin }: any) => {
                         userPersonId: userId
                     }
                 });
-                                console.log("DATA get shoping",response.data);
+                console.log(userId);
+                console.log("DATA get shoping", response.data);
 
                 setAllHistoryData(response.data)
 
@@ -58,6 +60,7 @@ const MyShop = ({ idPersonAdmin, idCompanyAdmin }: any) => {
         }, [])
     }
 
+    console.log("estado local",allHistoryData);
 
     return (
 
@@ -80,19 +83,21 @@ const MyShop = ({ idPersonAdmin, idCompanyAdmin }: any) => {
                     ))
                 ) : (
                     allHistoryData.length ? (
-                        allHistoryData.map((item: any) =>
-                        (<CardMyShop
-                            key={item.Items[0]?.id}
-                            name={item.Items[0]?.name}
-                            summary={item.Items[0]?.summary}
-                            date={item.Items[0]?.updatedAt}
-                            quantity={item.Items[0]?.amount}
-                            unitPrice={item.Items[0]?.unitPrice}
-                            totalPrice={item.Items[0]?.totalPrice}
-                            image={item.Items[0]?.image}
-                            id={item.Items[0]?.ProductId}
-                        />
-                        ))
+                        allHistoryData.map((historyItem: any) =>
+                            historyItem.Items.map((item: any) => (
+                                <CardMyShop
+                                    key={item.id}
+                                    name={item.name}
+                                    summary={item.summary}
+                                    date={item.updatedAt}
+                                    quantity={item.amount}
+                                    unitPrice={item.unitPrice}
+                                    totalPrice={item.totalPrice}
+                                    image={item.image}
+                                    id={item.ProductId}
+                                />
+                            ))
+                        )
                     ) : (
                         <div>
                             <h1>Aún no ha realizado ninguna compra </h1>
