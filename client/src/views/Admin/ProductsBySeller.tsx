@@ -26,6 +26,7 @@ const ProductsBySeller = () => {
 
   let products = infoUser.Products;
   console.log(products);
+  
 
   const handlerActive = async (event:any) => {
     try {
@@ -74,7 +75,7 @@ const ProductsBySeller = () => {
             return (
               <tr>
                 <td>
-                  <Link to={`/detail/${infoUser.id}`}>
+                  <Link to={`/detail/${beer.id}`}>
                     <Button name={beer.id}>Detalle Producto</Button>
                   </Link>
                 </td>

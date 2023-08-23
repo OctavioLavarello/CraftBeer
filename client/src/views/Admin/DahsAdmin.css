@@ -24,6 +24,14 @@
     border: solid #A1941D;
     width: 100%;
     height: 70%;
+    text-size-adjust: auto;
+}
+
+.inputSeller {
+    border-radius: 10px;
+    border: solid #A1941D;
+    width: 100%;
+    height: 55%;
 }
 
 .bodyImage {

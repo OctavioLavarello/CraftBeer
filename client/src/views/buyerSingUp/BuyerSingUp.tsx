@@ -197,7 +197,7 @@ const fetchCountries = async () => {
   } catch (error) {
     console.error('Error fetching country names:', error);
   }
-};
+}; 
 
 useEffect(() => {
   fetchCountries();

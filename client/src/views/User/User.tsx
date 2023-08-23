@@ -59,6 +59,7 @@ const User = () => {
   const [editedUserData, setEditedUserData] = useState<EditableUserData>({});
   const urlImage = useSelector((state: AppState) => state.urlImage);
   const [countryNames, setCountryNames] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   const [errors, setErrors] = useState({
@@ -90,6 +91,11 @@ const User = () => {
       } catch (error) {
         console.log(error);
         console.error('Error fetching user', error);
+      }finally {
+        // Se oculta la imagen de loading después de 3 segundos
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 3000);
       }
     }
     fetchUsers()
@@ -155,6 +161,30 @@ console.log(userData)
   useEffect(() => {
     fetchCountries();
   }, []);
+  if (isLoading) {
+    return (
+      <div className={styles.containLoading}>
+        <img
+          className={styles.beerLoading}
+          src="https://4.bp.blogspot.com/-646VVaYA-bg/WPHrAyqN7YI/AAAAAAAADjI/7lAJmMNHpm4vCT49MlX51SBPDzlrx0MFACLcB/s1600/aa2.gif"
+          alt=""
+        />
+      </div>
+    );
+  }
+
+  if (!userData) {
+    return (
+      <div className={styles.notFound}>
+        <div>
+          ¡Usuario no encontrado!
+        </div>
+        <Button variant="danger" onClick={() => navigate(-1)} className={styles.buttonback}>
+        Volver
+      </Button>
+      </div>
+    );
+  }
 
 
   return (

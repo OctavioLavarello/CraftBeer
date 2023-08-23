@@ -1,7 +1,7 @@
 import { UserCompany, UserPerson } from "../../db";
 import { Request, Response } from "express";
 import postUserValidation from "../validations/postUserValidations";
-import postAccountConfirm from "../controller/postAccountConfirm";
+import accountConfirm from "./notifications/accountConfirm";
 const postUserPerson = async (req: Request, res: Response) => {
   try {
     const {
@@ -56,7 +56,7 @@ const postUserPerson = async (req: Request, res: Response) => {
     });
 
     if (userPerson) {
-       postAccountConfirm(name, email);
+       accountConfirm(name, email);
     }
     console.log("creacion exitosa")
     return res.status(200).send("usuario creado exitosamente");

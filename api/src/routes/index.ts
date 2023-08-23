@@ -15,7 +15,7 @@ import {createOrder} from "../controller/payment/create-order"
 import postShoppingHistory from '../controller/postShoppingHistory';
 import getShoppingHistories from '../controller/getShoppingHistories';
 import getPersonById from '../controller/getPersonById';
-import postContactMe from "../controller/postContactMe";
+import postContactMe from "../controller/notifications/postContactMe";
 import favoriteHandler from "../controller/FavoriteHandler"
 import reciveWebHook from "../controller/payment/Webhook";
 import getAllFavoritesPerson from "../controller/getAllFavoritesPerson";
@@ -26,6 +26,7 @@ import putQualification from "../controller/putQualification";
 import getPersonAdmin from "../controller/getPersonAdmin";
 import getCompanyAdmin from "../controller/getCompanyAdmin";
 import getProductAdmin from "../controller/getProductAdmin";
+import getTopRated from "../controller/getTopRated"
 
 const router = Router();
 
@@ -54,6 +55,7 @@ router.get("/usercompanysalessummary/:userCompanyId", getUserCompanySalesSummary
 router.get("/persons/admin/:idPerson", getPersonAdmin);
 router.get("/company/admin/:idCompany", getCompanyAdmin);
 router.get("/product/admin/:idProduct", getProductAdmin);
+router.get("/toprated", getTopRated)
 
 // ------- update routes-------//
 router.put("/user", putUserPerson);
