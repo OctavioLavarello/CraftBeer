@@ -41,9 +41,11 @@ const ChoiceRole: React.FC<ChoiceRoleProps> = (props) => {
       await axios.post(`${localhost}/user`, createUser);
 
       setGlobalLogin(createUser);
-    } catch (error) {
-      // Manejar el error
+    } catch (error:any) {
+      console.error("Error:", error);
+      alert(`Ha ocurrido un error: ${error.message}`);
     }
+    
   };
 
   const HandleOnSaleClick = async () => {
@@ -58,9 +60,11 @@ const ChoiceRole: React.FC<ChoiceRoleProps> = (props) => {
       await axios.post(`${localhost}/company`, createCompany);
 
       setGlobalLogin(createCompany);
-    } catch (error) {
-      // Manejar el error
+    } catch (error:any) {
+      console.error("Error:", error);
+      alert(`Ha ocurrido un error: ${error.message}`);
     }
+    
   };
 
   const setGlobalLogin = async (user: CreateInteface) => {

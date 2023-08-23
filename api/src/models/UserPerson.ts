@@ -26,7 +26,7 @@ const defineUserModel = (): ModelCtor<UserModel> => {
     },
     document: {
       type: DataTypes.BIGINT,
-      allowNull: false,
+      allowNull: true,
       unique:true,
     },
     email: {
@@ -36,7 +36,7 @@ const defineUserModel = (): ModelCtor<UserModel> => {
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     status: {
       type: DataTypes.BOOLEAN,
@@ -45,7 +45,7 @@ const defineUserModel = (): ModelCtor<UserModel> => {
     },
     country: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     state: {
       type: DataTypes.STRING,
@@ -53,7 +53,7 @@ const defineUserModel = (): ModelCtor<UserModel> => {
     },
     city: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     address: {
       type: DataTypes.STRING,

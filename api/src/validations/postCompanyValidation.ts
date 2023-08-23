@@ -20,11 +20,20 @@ const postCompanyValidation = (
     if (!nameRegex.test(name)) {
         return "Invalid name format. Only letters, spaces, and apostrophes are allowed.";
     }
+    if (!email) return "Email is required." 
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!emailRegex.test(email)) {
+        return "Invalid email format."; 
+    }
+
     if (!lastName) return  "lastName is required." 
     const lastNameRegex = /^[A-Za-z0-9\s-]+$/;
     if (!lastNameRegex.test(lastName)) {
         return "It must contain letters (uppercase and lowercase), numbers, spaces, hyphens and a special character."
     }
+
+
+
     if (!company) return "Company name is required."
     const companyRegex = /^[A-Za-z0-9]{1,30}$/;
     if (!companyRegex.test(company)) {
@@ -58,11 +67,7 @@ const postCompanyValidation = (
     if (isNaN(phone)) {
         return "Invalid phone number. Should be a valid number." 
     }
-    if (!email) return "Email is required." 
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    if (!emailRegex.test(email)) {
-        return "Invalid email format."; 
-    }
+    
     if (!password) return "Password is required." 
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-_=+{}[\]:;"'<>,.?\\/]).{8,}$/;
     if (!passwordRegex.test(password)) {

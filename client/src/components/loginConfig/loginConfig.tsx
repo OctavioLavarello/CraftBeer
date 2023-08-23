@@ -26,7 +26,7 @@ const LoginGoogle: React.FC = () => {
       const email = decodedToken.email;
       const response = await axios.get(`${localhost}/check?email=${email}`);
       const exist = response.data;
-
+      
       if (exist === true) {
         // setear login para acceder
         const user: any = {
