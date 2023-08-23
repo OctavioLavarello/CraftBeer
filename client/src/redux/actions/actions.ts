@@ -277,8 +277,6 @@ export const login = (loginUserData: loginUserData) => {
       const url = `${endpoint}?email=${loginUserData.email}&password=${loginUserData.password}&email_verified=${loginUserData.email_verified}`;
       const { data } = await axios.get(url);
 
-      console.log(data);
-
       saveUserData(data);
       dispatch({
         type: LOGIN,
