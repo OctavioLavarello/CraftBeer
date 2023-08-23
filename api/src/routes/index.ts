@@ -6,7 +6,6 @@ import postProduct from '../controller/postProduct';
 import getProductById from '../controller/getProductById';
 import getAllProducts from '../controller/getAllProducts';
 import putUserPerson from "../controller/putUserPerson"
-import logIn from '../controller/logIn';
 import putProduct from '../controller/putProduct';
 import putUserCompany from '../controller/putUserCompany';
 import getAllUserPersons from '../controller/getAllUserPersons';
@@ -27,6 +26,8 @@ import getPersonAdmin from "../controller/getPersonAdmin";
 import getCompanyAdmin from "../controller/getCompanyAdmin";
 import getProductAdmin from "../controller/getProductAdmin";
 import getTopRated from "../controller/getTopRated"
+import checkEmail from "../controller/checkEmail";
+import logIn from "../controller/logIn";
 
 const router = Router();
 
@@ -44,7 +45,6 @@ router.post("/favorite", favoriteHandler)
 router.get("/companies", getAllCompanies);
 router.get("/product/:idProduct", getProductById);
 router.get("/product", getAllProducts);
-router.get("/login", logIn);
 router.get("/persons", getAllUserPersons);
 router.get("/shoppingHistories", getShoppingHistories);
 router.get("/persons/:idPerson", getPersonById);
@@ -56,6 +56,9 @@ router.get("/persons/admin/:idPerson", getPersonAdmin);
 router.get("/company/admin/:idCompany", getCompanyAdmin);
 router.get("/product/admin/:idProduct", getProductAdmin);
 router.get("/toprated", getTopRated)
+router.get("/check", checkEmail)
+router.get("/login", logIn)
+
 
 // ------- update routes-------//
 router.put("/user", putUserPerson);

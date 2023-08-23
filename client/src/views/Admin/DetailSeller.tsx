@@ -59,7 +59,7 @@ const DetailSeller = () => {
 
   const historyShop =(eventKey:any)=>{
     if(eventKey === "1")  navigate(`/admin/seller/AdminHistoryShopSeller`)
-    if(eventKey === "2")  navigate(`/admin/buyer/adminUserModify`)
+    if(eventKey === "2")  navigate(`/admin/seller/admincompanymodify`)
     }
 
   return (
@@ -89,7 +89,7 @@ const DetailSeller = () => {
             <NavDropdown.Item>
               <Link to="/admin/seller/products" style={{textDecoration:"none", color:"white"}}>Productos en venta</Link>
             </NavDropdown.Item>
-            <NavDropdown.Item>Modificar usuario</NavDropdown.Item>
+            <NavDropdown.Item eventKey="2">Modificar usuario</NavDropdown.Item>
           </NavDropdown>
         </div>
         <Row style={{ height: "100%", width: "100%", margin: "0.5%" }}>
@@ -159,7 +159,7 @@ const DetailSeller = () => {
           <Col></Col>
         </Row>
         <div className="botonesBuyer">
-          <Link to="/admin" style={{ width: "30%", height:"70%" }}>
+          <Link to="/admin" style={{ width: "30%", height:"100%" }}>
             <Button
               style={{
                 width: "100%",
@@ -173,7 +173,7 @@ const DetailSeller = () => {
           </Link>
           <Button
             onClick={handlerActive}
-            style={{ width: "20%", backgroundColor: "black", border: "none", height:"70%" }}
+            style={{ width: "20%", backgroundColor: "black", border: "none", height:"100%" }}
           >
             Activar Usuario
           </Button>
@@ -181,7 +181,7 @@ const DetailSeller = () => {
             onClick={handlerInactive}
             style={{
               width: "20%",
-              height: "70%",
+              height: "100%",
               backgroundColor: "black",
               border: "none",
             }}

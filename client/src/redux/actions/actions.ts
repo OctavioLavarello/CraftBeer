@@ -1,4 +1,4 @@
-//import { Dispatch, Action } from "redux";
+///import { Dispatch, Action } from "redux";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { AnyAction, Dispatch } from "redux";
@@ -20,9 +20,10 @@ import {
   ID_SELLER,
   COMPANY_SALES_SUMMARY,
   COMPANY_SALES_DETAIL,
+  TOP_PRODUCT,
 } from "../actions/actionsTypes";
 import { saveUserData } from "../../components/LocalStorage/LocalStorage";
-import { salesDetail, salesSum } from "../reducer";
+import { salesDetail, salesSum , topProducts} from "../reducer";
 
 //interface para las Actions
 export interface ActionWithPayload<T, P> {
@@ -142,7 +143,6 @@ export const createdProduct = ({
           `No ha sido posible cargar su compañía\n\n${error.response.data.message}`
         );
       }
-      console.log(error.response.data);
     }
   };
 };
@@ -184,9 +184,9 @@ export const createdCompany = ({
       });
 
       toast.success("Se creo correctamente su compañía");
-      setTimeout(()=>{
-        window.location.href = "/login"
-      }, 2000)
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 2000);
     } catch (error: any) {
       if (error.response.data.message === undefined)
         toast.error(
@@ -197,7 +197,6 @@ export const createdCompany = ({
           `No ha sido posible cargar su compañía\n\n${error.response.data.message}`
         );
       }
-      console.log(error.response.data);
     }
   };
 };
@@ -223,10 +222,10 @@ export const createdUser = (userData: UserData) => {
         type: CREATED_USER,
         payload: createdUserResponse.data,
       });
-      toast.success("Usuario creado exitosamente")
-      setTimeout(()=>{
-        window.location.href = "/login"
-      }, 2000)
+      toast.success("Usuario creado exitosamente");
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 2000);
     } catch (error) {
       toast.error("Error al crear usuario");
     }
@@ -242,6 +241,7 @@ export interface loginAction {
 export interface loginUserData {
   email: string;
   password: string;
+  email_verified?: boolean;
 }
 export interface loginPayload {
   access: boolean;
@@ -274,8 +274,11 @@ export const login = (loginUserData: loginUserData) => {
   try {
     const endpoint = "/login";
     return async function (dispatch: Dispatch<loginAction>) {
-      const url = `${endpoint}?email=${loginUserData.email}&password=${loginUserData.password}`;
+      const url = `${endpoint}?email=${loginUserData.email}&password=${loginUserData.password}?&email_verified=${loginUserData.email_verified}`;
       const { data } = await axios.get(url);
+
+      console.log(data);
+
       saveUserData(data);
       dispatch({
         type: LOGIN,
@@ -304,35 +307,35 @@ export const verificationLogin = (user: any) => {
 export const uploadImage = (url: any) => {
   return {
     type: URL_IMAGE,
-    payload: url
-  }
-}
+    payload: url,
+  };
+};
 
 export const hasNavigatedTrue = () => {
   return {
-    type: HAS_NAVIGATED
-  }
-}
-//Delete cart 
-export const deleteCartStorage =()=>{
+    type: HAS_NAVIGATED,
+  };
+};
+//Delete cart
+export const deleteCartStorage = () => {
   return {
-    type: DELETE_CARTSTORAGE
-  }
-}
+    type: DELETE_CARTSTORAGE,
+  };
+};
 //Action para guardar el id del comprador en el estado global
-export const idBuyer = (id:string)=> {
+export const idBuyer = (id: string) => {
   return {
     type: ID_BUYER,
-    payload: id 
-  }
-}
+    payload: id,
+  };
+};
 //Action para guardar el id de vendedor en estado global
-export const idSeller = (id:string)=> {
+export const idSeller = (id: string) => {
   return {
     type: ID_SELLER,
-    payload: id 
-  }
-}
+    payload: id,
+  };
+};
 
 // SALES SUMMARY
 export interface salesSumAction {
@@ -348,7 +351,7 @@ export const userCompanySalesSummary = (id: string) => {
       payload: data,
     });
   };
-}
+};
 // SALES DETAIL
 export interface salesDetailAction {
   type: string;
@@ -363,5 +366,15 @@ export const userCompanySalesDetail = (id: string) => {
       payload: data,
     });
   };
-}
+};
+// Action para guardar los 8 productos mejor calificados
 
+export const getTopRated = () => {
+  return async function (dispatch: Dispatch<any>) {
+    const response = await axios.get("/toprated");
+    return dispatch({
+      type: TOP_PRODUCT,
+      payload: response.data,
+    });
+  };
+};

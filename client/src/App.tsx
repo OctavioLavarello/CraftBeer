@@ -23,6 +23,7 @@ import Administrador from "./views/Admin/DashAdmin";
 import DetailBuyer from "./views/Admin/DetailBuyer";
 import DetailSeller from "./views/Admin/DetailSeller";
 import PutProduct from "./views/PutProduct/PutProduct";
+import AdminCompanyModify from "./views/Admin/AdminCompanyModify/AdminCompanyModify"
 // import PayCart from './views/Pay/Pay';
 import MyShop from "./views/MyShop/MyShop";
 import Error from "./views/Error/Error";
@@ -39,6 +40,7 @@ import AdminHistoryShop from "./views/Admin/AdminHistoryShop/adminHistoryShop";
 import Pending from "./components/Pending/Pending";
 import AdminUserModify from "./views/Admin/AdminUserModify/AdminUserModify";
 import AdminHistoryShopSeller from "./views/Admin/AdminHistoryShopSeller/AdminHistoryShopSeller";
+import AdminHistoryShopBuyer from "./views/Admin/AdminHistoryShopBuyer/AdminHistoryShopBuyer";
 
 // APP
 function App() {
@@ -162,6 +164,8 @@ function App() {
             <Route path="/admin/seller/products" element={<ProductsBySeller/>} />
             <Route path="/admin/buyer/adminUserModify" element={<AdminUserModify/>} />
             <Route path="/admin/seller/AdminHistoryShopSeller" element={<AdminHistoryShopSeller/>} />
+            <Route path="/admin/seller/admincompanymodify" element={<AdminCompanyModify/>} />
+            <Route path="/admin/buyer/adminHistoryShopBuyer" element={<AdminHistoryShopBuyer/>} />{/*  */}
             <Route path="*" element={<Error />} />
           </Routes>
         ) : null))}
