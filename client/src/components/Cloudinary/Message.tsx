@@ -7,6 +7,8 @@ export const Message = ({ urlImage }: Props) => {
     <>
       {urlImage && (
         <span className="url-cloudinary-sumbit">
+          <img src={urlImage} alt="" width={300}
+      />
           Su imagen se a cargado correctamente! ✅
           <a target="_blank" href={urlImage}>
             {" "}
