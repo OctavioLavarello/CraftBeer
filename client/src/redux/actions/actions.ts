@@ -367,12 +367,9 @@ export const userCompanySalesDetail = (id: string) => {
   };
 }
 // Action para guardar los 8 productos mejor calificados
-
 export const getTopRated = ()=>{
-  console.log("entre")
   return async function (dispatch: Dispatch<any>) {
     const response = await axios.get("/toprated");
-    console.log(response)
     return dispatch({
       type: TOP_PRODUCT,
       payload: response.data,

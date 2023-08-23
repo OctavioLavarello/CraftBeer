@@ -40,17 +40,8 @@ const logIn = async (req: Request, res: Response) => {
           }
         }
       }
-      if (findCompany.dataValues.status === false) {
-        return res.status(404).json({ message: "Disabled user" });
-      } else {
-        if (findCompany.password === password) {
-          return res.status(200).json({ access: true, user: findCompany });
-        } else {
-          return res.status(400).json({ message: "invalid password" });
-        }
-      }
     }
-  } catch (error) {
+  }catch (error) {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
