@@ -38,6 +38,7 @@ import AdminHistoryShop from "./views/Admin/AdminHistoryShop/adminHistoryShop";
 import Pending from "./components/Pending/Pending";
 import AdminUserModify from "./views/Admin/AdminUserModify/AdminUserModify";
 import AdminHistoryShopSeller from "./views/Admin/AdminHistoryShopSeller/AdminHistoryShopSeller";
+import AdminHistoryShopBuyer from "./views/Admin/AdminHistoryShopBuyer/AdminHistoryShopBuyer";
 
 // APP
 function App() {
@@ -160,6 +161,7 @@ function App() {
             <Route path="/admin/seller/products" element={<ProductsBySeller/>} />
             <Route path="/admin/buyer/adminUserModify" element={<AdminUserModify/>} />
             <Route path="/admin/seller/AdminHistoryShopSeller" element={<AdminHistoryShopSeller/>} />
+            <Route path="/admin/buyer/adminHistoryShopBuyer" element={<AdminHistoryShopBuyer/>} />{/*  */}
             <Route path="*" element={<Error />} />
           </Routes>
         ) : null))}
