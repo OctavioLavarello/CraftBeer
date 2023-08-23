@@ -156,7 +156,7 @@ const Login: React.FC = () => {
           <button className={styles.signUp}>Sign Up</button>
         </NavLink>
       </Form>
-        <LoginGoogle/>
+      <LoginGoogle />
     </div>
   );
 };
