@@ -172,7 +172,6 @@ const User = () => {
         <Card className={styles.box}>
           <Card.Body>
             <Card.Title className={styles.Title}>MIS DATOS PERSONALES!!!</Card.Title>
-            <Card.Text>Nombre: {userData?.name}</Card.Text>
             {isEditMode ? (
               <Form onSubmit={handleFormSubmit}>
                 <Form.Group controlId="formName">
@@ -278,6 +277,7 @@ const User = () => {
               
             ) : (
               <>
+                <Card.Text>Nombre: {userData?.name}</Card.Text>
                 <Card.Img className={styles.image} src={userData?.image} />
                 <Card.Text>Apellido: {userData?.lastName}</Card.Text>
                 <Card.Text>Email: {userData?.email}</Card.Text>
