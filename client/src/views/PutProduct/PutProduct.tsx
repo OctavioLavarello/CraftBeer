@@ -76,7 +76,7 @@ const PutProduct = () => {
             }));
         }
     };
-    const handlerOnSubmit: any = async (event: any) => {
+    const handlerOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
           await axios.put(`/product/${id}`, putBeer)
@@ -138,7 +138,7 @@ const PutProduct = () => {
         <Container className={styles.container}>
             <Row>
                 <Col md={5}>
-                    <form>
+                    <form onSubmit={handlerOnSubmit}>
                         <Card className={`${styles.card} h-100 d-flex`}>
                         <Card.Body className="flex-column">
                             <Card.Text className="flex-grow-1">Name</Card.Text>
@@ -179,7 +179,7 @@ const PutProduct = () => {
                             <Card.Text className="flex-grow-2">ABV</Card.Text>
                             <input 
                             required
-                            type="number" 
+                            type="text" 
                             name="ABV"
                             value={putBeer.ABV}
                             className={styles.input}
@@ -189,7 +189,7 @@ const PutProduct = () => {
                             <Card.Text className="flex-grow-2">IBU</Card.Text>
                             <input 
                             required
-                            type="number" 
+                            type="text" 
                             name="IBU"
                             value={putBeer.IBU}
                             className={styles.input}
@@ -199,7 +199,7 @@ const PutProduct = () => {
                             $
                             <input 
                             required
-                            type="number" 
+                            type="text" 
                             name="price"
                             value={putBeer.price}
                             className={styles.input}
@@ -208,7 +208,7 @@ const PutProduct = () => {
                             <Card.Text className="flex-grow-1">Stock</Card.Text>
                             <input 
                             required
-                            type="number" 
+                            type="text" 
                             name="stock"
                             value={putBeer.stock}
                             className={styles.input}
@@ -226,12 +226,11 @@ const PutProduct = () => {
                             />
                             Available/Unavailable
                         </Card.Body>
-                        <Button
-                        onSubmit={handlerOnSubmit}
+                        <button
                         className={styles.buttonSub}
                         >
                             Save Changes
-                        </Button>
+                        </button>
                         </Card>
                     </form>
                     <Button
