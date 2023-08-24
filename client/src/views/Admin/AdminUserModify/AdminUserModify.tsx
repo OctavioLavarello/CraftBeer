@@ -10,6 +10,7 @@ import {
   provincesByCountry,
   ProvinceData,
 } from "../../../components/provincesData/provincesData.ts";
+import { toast } from "react-hot-toast";
 
 interface UserData {
   id: string;
@@ -127,9 +128,10 @@ const AdminUserModify = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:3001/user`,
+        `https://craftbeer.up.railway.app/user`,
         editedUserData
       );
+      toast.success("User update");
       console.log(response.data); // Log the response
       // Update userData to show the updated data
       setUserData(editedUserData as UserData);
@@ -166,37 +168,39 @@ const AdminUserModify = () => {
   }, [urlImage]);
 
   return (
-    <Container>
+    <Container style={{ width: "50%", marginTop: "2%", marginBottom: "2%" }}>
       <Row className={styles.Columna}>
         <Col>
           <Card className={styles.box}>
             <Card.Body>
               <Card.Title className={styles.Title}>
-                Modificar datos personales de {userData?.name}
+                Modify personal data of {userData?.name}
               </Card.Title>
-              <Card.Text>Nombre: {userData?.name}</Card.Text>
+              <Card.Text>Name: {userData?.name}</Card.Text>
               {isEditMode ? (
                 <Form onSubmit={handleFormSubmit}>
-                  <Form.Group controlId="formName">
-                    <Form.Label>Nombre</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="name"
-                      value={editedUserData.name}
-                      onChange={handleInputChange}
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="formImage">
-                    <Form.Label>Imagen</Form.Label>
-                    <DragAndDrop />
-                    <Form.Control
-                      type="text"
-                      name="image"
-                      value={editedUserData.image}
-                      onChange={handleInputChange}
-                    />
+                  <Row>
+                    <Col>
+                      <Form.Group controlId="formName">
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="name"
+                          value={editedUserData.name}
+                          onChange={handleInputChange}
+                        />
+                      </Form.Group>
+                    </Col>
+                    <Col>
+                      <Form.Group controlId="formImage">
+                        <Form.Label>Image</Form.Label>
+                        <DragAndDrop />
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Form.Group>
                     <Form.Group controlId="formLastName">
-                      <Form.Label>Apellido</Form.Label>
+                      <Form.Label>Last Name</Form.Label>
                       <Form.Control
                         type="text"
                         name="lastName"
@@ -205,7 +209,7 @@ const AdminUserModify = () => {
                       />
                     </Form.Group>
                     <Form.Group controlId="formDocument">
-                      <Form.Label>Documento</Form.Label>
+                      <Form.Label>Document ID</Form.Label>
                       <Form.Control
                         type="number"
                         name="document"
@@ -214,7 +218,7 @@ const AdminUserModify = () => {
                       />
                     </Form.Group>
                   </Form.Group>
-                  <Form.Label>Pais</Form.Label>
+                  <Form.Label>Country</Form.Label>
                   <Form.Group controlId="formCountry">
                     <Form.Control
                       as="select"
@@ -222,7 +226,7 @@ const AdminUserModify = () => {
                       value={editedUserData.country}
                       onChange={handleInputChange}
                     >
-                      <option value="">Selecciona un país...</option>
+                      <option value="">Select your country...</option>
                       {countryNames.map((countryName, index) => (
                         <option key={index} value={countryName}>
                           {countryName}
@@ -231,7 +235,7 @@ const AdminUserModify = () => {
                     </Form.Control>
                   </Form.Group>
                   <Form.Group controlId="formCity">
-                    <Form.Label>Ciudad</Form.Label>
+                    <Form.Label>City</Form.Label>
                     <Form.Control
                       type="text"
                       name="city"
@@ -240,14 +244,14 @@ const AdminUserModify = () => {
                     />
                   </Form.Group>
                   <Form.Group controlId="formState">
-                    <Form.Label>Estado</Form.Label>
+                    <Form.Label>State</Form.Label>
                     <Form.Control
                       as="select"
                       name="state"
                       value={editedUserData.state}
                       onChange={handleInputChange}
                     >
-                      <option value="">Selecciona una provincia...</option>
+                      <option value="">Select your province...</option>
                       {editedUserData.country &&
                         provincesByCountry[editedUserData.country]?.map(
                           (province: ProvinceData, index: number) => (
@@ -259,7 +263,7 @@ const AdminUserModify = () => {
                     </Form.Control>
                   </Form.Group>
                   <Form.Group controlId="formAddress">
-                    <Form.Label>Calle</Form.Label>
+                    <Form.Label>Street</Form.Label>
                     <Form.Control
                       type="text"
                       name="address"
@@ -267,36 +271,50 @@ const AdminUserModify = () => {
                       onChange={handleInputChange}
                     />
                   </Form.Group>
-                  <Button
-                    className={styles.buttonEdit}
-                    type="submit"
-                    disabled={disable()}
-                  >
-                    Guardar cambios
-                  </Button>
+                  <div style={{ textAlign: "center", marginTop: "2%" }}>
+                    <Button
+                      className={styles.buttonEdit}
+                      type="submit"
+                      disabled={disable()}
+                    >
+                      Save change
+                    </Button>
+                  </div>
+                  <div style={{ textAlign: "center", marginTop: "1%" }}>
+                    <Button
+                      onClick={() => navigate(-1)}
+                      className={styles.buttonEdit}
+                    >
+                      Back
+                    </Button>
+                  </div>
                 </Form>
               ) : (
                 <>
                   <Card.Img className={styles.image} src={userData?.image} />
-                  <Card.Text>Apellido: {userData?.lastName}</Card.Text>
+                  <Card.Text>Last Name: {userData?.lastName}</Card.Text>
                   <Card.Text>Email: {userData?.email}</Card.Text>
-                  <Card.Text>Documento: {userData?.document}</Card.Text>
-                  <Card.Text>País: {userData?.country}</Card.Text>
-                  <Card.Text>Ciudad: {userData?.city}</Card.Text>
-                  <Card.Text>Estado: {userData?.state}</Card.Text>
-                  <Card.Text>Calle: {userData?.address}</Card.Text>
-                  <Button
-                    className={styles.buttonEdit}
-                    onClick={handleEditClick}
-                  >
-                    Editar
-                  </Button>
-                  <Button
-                    onClick={() => navigate(-1)}
-                    className={styles.buttonback}
-                  >
-                    Volver
-                  </Button>
+                  <Card.Text>Document ID: {userData?.document}</Card.Text>
+                  <Card.Text>Country: {userData?.country}</Card.Text>
+                  <Card.Text>City: {userData?.city}</Card.Text>
+                  <Card.Text>State: {userData?.state}</Card.Text>
+                  <Card.Text>Street: {userData?.address}</Card.Text>
+                  <div style={{ textAlign: "center" }}>
+                    <Button
+                      className={styles.buttonEdit}
+                      onClick={handleEditClick}
+                    >
+                      Edit
+                    </Button>
+                  </div>
+                  <div style={{ textAlign: "center", marginTop: "1%" }}>
+                    <Button
+                      onClick={() => navigate(-1)}
+                      className={styles.buttonEdit}
+                    >
+                      Back
+                    </Button>
+                  </div>
                 </>
               )}
             </Card.Body>

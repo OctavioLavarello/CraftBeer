@@ -96,7 +96,7 @@ const MyShop = ({ idPersonAdmin, idCompanyAdmin }: any) => {
           )
         ) : (
           <div>
-            <h1>En este momento no hay nada para mostrar... </h1>
+            <h1>At this moment there is nothing to show...</h1>
           </div>
         )}
       </div>

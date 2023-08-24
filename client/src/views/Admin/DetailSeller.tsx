@@ -20,12 +20,10 @@ const DetailSeller = () => {
   const navigate = useNavigate();
 
   const [infoUser, setInfoUser] = useState<any>({});
-  console.log("data Sellerrrrrrr", infoUser);
-
+  
   useEffect(() => {
     const solicitud = async () => {
       const response = await axios.get(`/company/admin/${id}`);
-      console.log(response.data);
       setInfoUser(response.data);
     };
     solicitud();
