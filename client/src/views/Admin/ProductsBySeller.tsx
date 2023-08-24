@@ -22,7 +22,7 @@ const ProductsBySeller = () => {
       setInfoUser(response.data);
     };
     solicitud();
-  }, [id]);
+  }, [id, infoUser]);
 
   let products = infoUser.Products;
   console.log(products);
