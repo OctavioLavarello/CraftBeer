@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
     >
         <div className={styles.p_container}>
             <p>
-                The sale of alcoholic beverages is prohibited for minors under 18 years of age. under 18 years of age.
+                The sale of alcoholic beverages is prohibited for minors under 18 years of age.
             </p>
             <p>
             If you do not meet these specifications, we recommend that you do not continue the purchase process on this platform.
