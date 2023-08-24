@@ -49,3 +49,23 @@
     font-size: 3vh;
     font-weight: bold;
 }
+.edit {
+    height: 6vh;
+    border-radius: 1vh;
+    background-color: rgba(163, 125, 52, 1);
+    width: 5vw;
+    border: 0.02vh solid black;
+}
+.edit:hover {
+    background-color: rgb(63, 63, 63);
+    border-radius: 1px;
+    border: 0.02vh solid black;
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+}
+.edit:active {
+    text-decoration: none;
+    background-color: rgb(96, 163, 52);
+    border-radius: 1px;
+    border: 0.02vh solid black;
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+}

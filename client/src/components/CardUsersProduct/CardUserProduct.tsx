@@ -22,12 +22,10 @@ const CardUserProduct: React.FC<userProductCardProps> = ({id, name, image, price
         <Card.Body className={styles.cardBody}>
           <Row>
             <Col>
-              <NavLink to={`/detail/${id}`}>
-                <Card.Img
-                  src={image}
-                  className={styles.img}
-                />
-              </NavLink>
+              <Card.Img
+                src={image}
+                className={styles.img}
+              />
             </Col>
             <Col>
               <Card.Title
@@ -45,6 +43,9 @@ const CardUserProduct: React.FC<userProductCardProps> = ({id, name, image, price
           </Row>
         </Card.Body>
       </Card>
+      <button className={styles.edit}>
+        Edit
+      </button>
     </NavLink>
   );
 };
