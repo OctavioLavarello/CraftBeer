@@ -5,28 +5,27 @@ import { NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Carousel, CarouselItem } from "react-bootstrap";
 import styles from "./HomeCarousel.module.css";
-import image1 from "../../assets/img/image1.jpg"
-import image2 from "../../assets/img/image2.jpg"
-import image4 from "../../assets/img/image4.jpg"
-import image3 from "../../assets/img/image3.png"
+
 
 const HomeCarousel: React.FC = () => {
   // LOCAL STATES
   const images = [
     {
-      src: image4,
+      src: "https://i.postimg.cc/sf9Q4zVf/fotor-2023-8-23-22-2-44-fotor-202308232234.jpg",
+
       to: 1
     },
     {
-      src: image1,
+      src: "https://i.postimg.cc/sDjBnLXY/fotor-2023-8-23-22-7-49-fotor-2023082322844.jpg",
       to: 1
     },
     {
-      src: image2,
+      src: "https://i.postimg.cc/q7SnSxYk/fotor-2023-8-23-22-5-36-fotor-202308232265.jpg",
+
       to: 1
     },
     {
-      src: image3,
+      src: "https://i.postimg.cc/bNmZ4RDK/fotor-2023-8-23-22-10-49-fotor-2023082322140.png",
       to: 1
     },
   ];
