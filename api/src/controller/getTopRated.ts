@@ -3,7 +3,7 @@ import { Product } from "../../db";
 
 const getTopRated = async (req: Request, res: Response) => {
   try {
-    const topRated = await Product.findAll({
+    const topRated = await Product.findAll({where:{status:true},
       order: [["qualification", "DESC"]],
       limit: 8,
     });
