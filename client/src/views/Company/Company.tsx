@@ -3,9 +3,12 @@ import React, { useState, useEffect } from "react"
 import companyPutValidation from "./CompanyPutValidation";
 import axios from "axios";
 import toast from 'react-hot-toast'
-import { provincesByCountry, ProvinceData } from '../../components/provincesData/provincesData.ts';
+import { useSelector } from "react-redux";
+import { AppState } from "../../redux/reducer.ts";
 // COMPONENTS
+import { provincesByCountry, ProvinceData } from '../../components/provincesData/provincesData.ts';
 import MySoldProducts from "../../components/MySoldProducts/MySoldProducts";
+import { DragAndDrop } from "../../components/Cloudinary/Cloudinary.tsx";
 // STYLES
 import styles from "./Company.module.css"
 import Form from 'react-bootstrap/Form';
@@ -31,6 +34,8 @@ interface CountryData {
     };
   }
 const Company: React.FC = () => {
+    // GLOBAL STATE 
+    const { urlImage } = useSelector((state: AppState) => state);
     // LOCAL STORAGE
     const hasNavigatedLocalStorage: any = localStorage.getItem("user")
     const { user } = JSON.parse(hasNavigatedLocalStorage)
@@ -50,7 +55,6 @@ const Company: React.FC = () => {
         id: user.id,
         image: user.image
     });
-    console.log(companyData)
     const [errors, setErrors] = useState<company>({
         name: "",
         lastName: "",
@@ -110,7 +114,6 @@ const Company: React.FC = () => {
             }
         }
     };
-
     const fetchCountries = async () => {
         try {
           const response = await fetch('https://restcountries.com/v3.1/region/South%20America');
@@ -120,12 +123,19 @@ const Company: React.FC = () => {
         } catch (error) {
           console.error('Error fetching country names:', error);
         }
-      };
-      
-      useEffect(() => {
+    };
+    // USE EFFECT
+    useEffect(() => {
         fetchCountries();
-      }, []);
-
+    }, []);
+    useEffect(() => {
+        if (urlImage) {
+            setCompanyData((prevCompanyData) => ({
+                ...prevCompanyData,
+                image: urlImage
+            }));
+        }
+    }, [urlImage]);
     return (
         <div className={styles.all}>
             <div className={`${
@@ -408,15 +418,7 @@ const Company: React.FC = () => {
                     <Form.Group>
                         <Form.Label>Profile Image</Form.Label>
                         <div className={styles.divInputP}>
-                            <Form.Control
-                            className={styles.input} 
-                            required
-                            type="text"
-                            name="image"
-                            value={companyData.image}
-                            placeholder="change your image?"
-                            onChange={handlerOnChange}
-                            />
+                            <DragAndDrop/>
                         </div>
                     </Form.Group>
                     <img src={companyData.image} alt={companyData.image} className={styles.inputImg}/>
