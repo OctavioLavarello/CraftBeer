@@ -4,7 +4,7 @@ import { Product } from "../../db";
 const getTopRated = async (req: Request, res: Response) => {
   try {
     const topRated = await Product.findAll({
-      order: [["qualification", "ASC"]],
+      order: [["qualification", "DESC"]],
       limit: 8,
     });
     return res.status(200).json(topRated)
