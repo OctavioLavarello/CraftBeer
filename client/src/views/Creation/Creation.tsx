@@ -43,10 +43,14 @@ const Creation = () => {
     IBU: 0,
     userCompanyId: idCompany,
   });
- 
+  // USE EFFECTS
   useEffect(() => {
-    dispatch(userCompanySalesSummary(idCompany));
-  }, []);
+    const timer = setTimeout(() => {
+      dispatch(userCompanySalesSummary(idCompany));
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [idCompany, dispatch, companySalesSum]); 
+
   useEffect(() => {
     setInput((prevInput) => ({ ...prevInput, image: urlImage }));
   }, [urlImage]);
@@ -273,7 +277,7 @@ const Creation = () => {
       <div className="bodyMisArt">
         <div>
           <span className="spamMisArt">
-            <strong>MIS ARTÍCULOS PUBLICADOS</strong>
+            <strong>MY PUBLISHED ARTICLES</strong>
           </span>
           {currentBeers.map((card: any) => (
             <CardUserProduct 
