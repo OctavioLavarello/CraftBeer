@@ -10,24 +10,14 @@ import styles from "./HomeCarousel.module.css";
 const HomeCarousel: React.FC = () => {
   // LOCAL STATES
   const images = [
-    {
-      src: "https://i.postimg.cc/sf9Q4zVf/fotor-2023-8-23-22-2-44-fotor-202308232234.jpg",
-
-      to: 1
-    },
-    {
-      src: "https://i.postimg.cc/sDjBnLXY/fotor-2023-8-23-22-7-49-fotor-2023082322844.jpg",
-      to: 1
-    },
-    {
-      src: "https://i.postimg.cc/q7SnSxYk/fotor-2023-8-23-22-5-36-fotor-202308232265.jpg",
-
-      to: 1
-    },
-    {
-      src: "https://i.postimg.cc/bNmZ4RDK/fotor-2023-8-23-22-10-49-fotor-2023082322140.png",
-      to: 1
-    },
+    { src: "https://3cordilleras.com/wp-content/uploads/2021/12/1.-nuestras-cervezas-scaled.jpeg",
+    id: 1},
+    { src:"https://lescuentoque.com.co/wp-content/uploads/2020/02/Cerveza-BBC-Cajic%C3%A1.jpg",
+    id: 1},
+    { src:"https://onlinelicor.es/wp-content/uploads/2019/02/Carlsberg-Pilsner.jpg",
+    id: 1},
+    { src:"https://www.italiaatavola.net/images/contenutiarticoli/quattro-luppoli-originale.jpg",
+    id: 1},
   ];
   return (
     <div style={{ textAlign: "center" }}>

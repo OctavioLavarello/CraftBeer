@@ -3,10 +3,10 @@ import { company } from "./Company"
 const companyPutValidation = (companyData: company, setErrors: React.Dispatch<React.SetStateAction<company>>) => {
     const { name, lastName, email, city, company, address } = companyData
     // REGEX
-    const nameRegex = /^[a-zA-Z\s'-]+$/;
+    const nameRegex = /^[a-zA-ZÁÉÍÓÚáéíóú\s'-]+$/u;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const addressRegex = /^[0-9A-Za-z\s\.,\-']+$/u
-    const nameCompanyRegex = /^[A-Za-z0-9\s\-.,'()&]+$/u
+    const nameCompanyRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\s\-.,'()&]+$/u;
+    const cityRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s.'-]{2,50}$/;
     // NAME VALIDATION
     if (!name) {
         setErrors((prevErrors) => ({
@@ -69,7 +69,7 @@ const companyPutValidation = (companyData: company, setErrors: React.Dispatch<Re
         ...prevErrors,
         city: "Enter your city",
         }));
-    } else if (!nameRegex.test(city)){
+    } else if (!cityRegex.test(city)){
         setErrors((prevErrors) => ({
             ...prevErrors,
             city: "Must be a city"
@@ -103,11 +103,6 @@ const companyPutValidation = (companyData: company, setErrors: React.Dispatch<Re
         ...prevErrors,
         address: "Enter your address",
         }));
-    } else if (!addressRegex.test(address)){
-        setErrors((prevErrors) => ({
-            ...prevErrors,
-            address: "Must be a address"
-        }))
     } else {
         setErrors((prevErrors) => ({
         ...prevErrors,

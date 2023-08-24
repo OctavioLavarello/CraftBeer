@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Form, Button, Alert } from 'react-bootstrap';
+import styles from './changesPassword.module.css';
 
 const ResetPasswordPage = () => {
   const navigate = useNavigate();
@@ -83,8 +84,8 @@ const ResetPasswordPage = () => {
       };
   
       return (
-        <div className="reset-password-container">
-          <h2>Cambio de Contraseña</h2>
+        <div className={styles.container}>
+          <h2 className={styles.titulo}>Cambio de Contraseña</h2>
           <Form onSubmit={handleEmailSubmit}>
             <Form.Group controlId="email">
               <Form.Label>Correo Electrónico</Form.Label>
@@ -99,7 +100,7 @@ const ResetPasswordPage = () => {
               />
               {errors.email && <Alert variant="danger">{errors.email}</Alert>}
             </Form.Group>
-            <Button type="submit">Enviar Código de Verificación</Button>
+            <Button className={styles.button} type="submit">Enviar Código de Verificación</Button>
           </Form>
           <Form onSubmit={handleFormSubmit}>
             {successMessage && <Alert variant="success">{successMessage}</Alert>}
@@ -134,7 +135,10 @@ const ResetPasswordPage = () => {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </Form.Group>
-            <Button type="submit">Cambiar Contraseña</Button>
+            <Button className={styles.button} type="submit">Cambiar Contraseña</Button>
+            <Button onClick={() => navigate(-1)} className={styles.button}>
+              Volver
+            </Button>
           </Form>
         </div>
       );
