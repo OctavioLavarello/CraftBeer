@@ -138,7 +138,7 @@ const Login: React.FC = () => {
             label="Check me out"
             onChange={handlerCheck}
           />
-          <NavLink to="/home" className={styles.forgot}>
+          <NavLink to="/forgotPassword" className={styles.forgot}>
             Forgot Password?
           </NavLink>
         </Form.Group>
