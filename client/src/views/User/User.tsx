@@ -89,9 +89,10 @@ const User = () => {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:3001/user`, editedUserData);
-      console.log(response.data); // Log the response
+      const response = await axios.put(`/user`, editedUserData);
+      // Log the response
       // Update userData to show the updated data
+      
       setUserData(editedUserData as UserData);
       setIsEditMode(false); // Exit edit mode
     } catch (error) {
@@ -126,10 +127,9 @@ const User = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`https://craftbeer.up.railway.app/persons/${id}`);
+        const response = await axios.get(`persons/${id}`);
         setUserData(response.data);
       } catch (error) {
-        console.log(error);
         console.error('Error fetching user', error);
       } finally {
         // Se oculta la imagen de loading después de 3 segundos
