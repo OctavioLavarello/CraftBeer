@@ -206,166 +206,164 @@ useEffect(() => {
 
   return (
     <div className={Styles.container}>
-    
-      <div className={Styles.formBox}>
-      <Form  onSubmit={handleSubmit} style={{ width: "700px", height: "auto", padding: "10px" }}>
-  <Row style={{ margin: '15px' }}>
-    <Col >
-      Nombre:
-      <Form.Control
-        placeholder="Nombre"
-        type="text"
-        name="name"
-        onChange={handleInputChange}
-       
-      />
-       <h6 className={Styles.mensajes}>{errors.name}</h6>
-    </Col>
-    <Col>
-      Apellido:
-      <Form.Control
-        placeholder="Apellido"
-        type="text"
-        name="lastName"
-        onChange={handleInputChange}
-       
-      />
-      <h6 className={Styles.mensajes}>{errors.lastName}</h6>
-    </Col>
-  </Row>
-  <Row style={{ margin: '15px' }}>
-    <Col>
-      Documento:
-      <Form.Control
-        placeholder="Documento"
-        type="number"
-        name="document"
-        onChange={handleInputChange}
-       
-      />
-      <h6 className={Styles.mensajes}>{errors.document}</h6>
-    </Col>
-    <Col>
-      Contraseña:
-      <Form.Control
-        placeholder="Contraseña"
-        type="password"
-        name="password"
-        onChange={handleInputChange}
-       
-      />
-      <h6 className={Styles.mensajes}>{errors.password}</h6>
-    </Col>
-  </Row>
-  <Row style={{ margin: '15px' }}>
-    <Col>
-      Dirección:
-      <Form.Control
-        placeholder="Dirección"
-        name="address"
-        onChange={handleInputChange}
-        
-      />
-      <h6 className={Styles.mensajes}>{errors.address}</h6>
-    </Col>
-    <Col>
-    <DragAndDrop/>
-      {/* Imagen:
-      <Form.Control
-        placeholder="URL"
-        type="url"
-        name="image"
-        onChange={handleInputChange}
-       
-      />
-      <h6 className={Styles.mensajes}>{errors.image}</h6> */}
-    </Col>
-  </Row>
-  <Row style={{ margin: '15px' }}>
-    <Col>
-      Email:
-      <Form.Control
-        placeholder="Email"
-        type="email"
-        name="email"
-        onChange={handleInputChange}
-       
-      />
-      <h6 className={Styles.mensajes}>{errors.email}</h6>
-    </Col>
-  </Row>
-  <Row style={{ margin: '15px' }}>
-    <Col>
-      País:
-      <Form.Control
-            as="select"
-            name="country"
-            value={formData.country}
-            
-            onChange={handleInputChange}
-          >
-            <option value="">Selecciona un país...</option>
-            {countryNames.map((countryName, index) => (
-              <option key={index} value={countryName}>
-                {countryName}
-              </option>
-            ))}
-          </Form.Control>
-      <h6 className={Styles.mensajes}>{errors.country}</h6>
-    </Col>
-    <Col>
-      Ciudad:
-      <Form.Control
-        placeholder="Ciudad"
-        type="text"
-        name="city"
-        onChange={handleInputChange}
- 
-      />
-      <h6 className={Styles.mensajes}>{errors.city}</h6>
-    </Col>
-  </Row>
-  <Row style={{ margin: '15px' }}>
-    <Col>
-      Provincia:
-      <Form.Control
-        as="select"
-        name="state"
-        value={formData.state}
-        onChange={handleInputChange}
-        >
-        <option value="">Selecciona una provincia...</option>
-        {formData.country &&
-        provincesByCountry[formData.country]?.map(
-        (province: ProvinceData, index: number) => (
-          <option key={index} value={province.name}>
-            {province.name}
-          </option>
-        )
-          )}
-      </Form.Control>
-      <h6 className={Styles.mensajes}>{errors.state}</h6>
-    </Col>
-    <Col>
-
-    </Col>
-  </Row>
-  <div style={{textAlign:"center"}}>
-      <Button type="submit"
-      disabled={disable(errors)}>
-        Crear Usuario
-      </Button>
-  </div>
-    </Form>
-
-    </div>
-    <Row className={Styles.imageContainer}>
-        <Col  className={Styles.imageCol}>
-          <img className={Styles.image} src={craftBeerLogo} alt="" />
-        </Col>
-    </Row>
-      
-
+      <div className={Styles.formBoxContainer}>
+        <div className={Styles.formBox}>
+          <Form  onSubmit={handleSubmit} style={{ width: "700px", height: "auto", padding: "10px" }}>
+            <Row style={{ margin: '15px' }}>
+              <Col >
+                Nombre:
+                <Form.Control
+                className={Styles.input}
+                placeholder="Nombre"
+                type="text"
+                name="name"
+                onChange={handleInputChange}
+                />
+                <h6 className={Styles.mensajes}>{errors.name}</h6>
+              </Col>
+              <Col>
+                Apellido:
+                <Form.Control
+                className={Styles.input}
+                placeholder="Apellido"
+                type="text"
+                name="lastName"
+                onChange={handleInputChange}
+                />
+                <h6 className={Styles.mensajes}>{errors.lastName}</h6>
+              </Col>
+            </Row>
+            <Row style={{ margin: '15px' }}>
+              <Col>
+                Documento:
+                <Form.Control
+                className={Styles.input}
+                placeholder="Documento"
+                type="number"
+                name="document"
+                onChange={handleInputChange}
+                />
+                <h6 className={Styles.mensajes}>{errors.document}</h6>
+              </Col>
+              <Col>
+                Contraseña:
+                <Form.Control
+                className={Styles.input}
+                placeholder="Contraseña"
+                type="password"
+                name="password"
+                onChange={handleInputChange}
+                />
+                <h6 className={Styles.mensajes}>{errors.password}</h6>
+              </Col>
+            </Row>
+            <Row style={{ margin: '15px' }}>
+              <Col>
+                Dirección:
+                <Form.Control
+                className={Styles.input}
+                placeholder="Dirección"
+                name="address"
+                onChange={handleInputChange}
+                />
+                <h6 className={Styles.mensajes}>{errors.address}</h6>
+              </Col>
+              <Col>
+                <DragAndDrop/>
+                  {/* Imagen:
+                  <Form.Control
+                    placeholder="URL"
+                    type="url"
+                    name="image"
+                    onChange={handleInputChange}
+                  
+                  />
+                  <h6 className={Styles.mensajes}>{errors.image}</h6> */}
+              </Col>
+            </Row>
+            <Row style={{ margin: '15px' }}>
+              <Col>
+                Email:
+                <Form.Control
+                className={Styles.input}
+                placeholder="Email"
+                type="email"
+                name="email"
+                onChange={handleInputChange}
+                />
+                <h6 className={Styles.mensajes}>{errors.email}</h6>
+              </Col>
+            </Row>
+            <Row style={{ margin: '15px' }}>
+              <Col>
+                País:
+                <Form.Control
+                className={Styles.input}
+                as="select"
+                name="country"
+                value={formData.country}
+                onChange={handleInputChange}
+                >
+                  <option value="">Selecciona un país...</option>
+                  {countryNames.map((countryName, index) => (
+                    <option key={index} value={countryName}>
+                      {countryName}
+                    </option>
+                  ))}
+                </Form.Control>
+                <h6 className={Styles.mensajes}>{errors.country}</h6>
+              </Col>
+              <Col>
+                Ciudad:
+                <Form.Control
+                className={Styles.input}
+                placeholder="Ciudad"
+                type="text"
+                name="city"
+                onChange={handleInputChange}
+                />
+                <h6 className={Styles.mensajes}>{errors.city}</h6>
+              </Col>
+            </Row>
+            <Row style={{ margin: '15px' }}>
+              <Col>
+                Provincia:
+                <Form.Control
+                className={Styles.input}
+                as="select"
+                name="state"
+                value={formData.state}
+                onChange={handleInputChange}
+                >
+                <option value="">Selecciona una provincia...</option>
+                {formData.country &&
+                provincesByCountry[formData.country]?.map(
+                (province: ProvinceData, index: number) => (
+                  <option key={index} value={province.name}>
+                    {province.name}
+                  </option>
+                )
+                  )}
+                </Form.Control>
+                <h6 className={Styles.mensajes}>{errors.state}</h6>
+              </Col>
+              <Col>
+              </Col>
+            </Row>
+            <div style={{textAlign:"center"}}>
+                <Button type="submit"
+                disabled={disable(errors)}>
+                  Crear Usuario
+                </Button>
+            </div>
+          </Form>
+        </div>
+      </div>
+        <Row className={Styles.imageContainer}>
+            <Col  className={Styles.imageCol}>
+              <img className={Styles.image} src={craftBeerLogo} alt="" />
+            </Col>
+        </Row>
     </div>
   );
 };

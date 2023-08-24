@@ -28,6 +28,8 @@ import getProductAdmin from "../controller/getProductAdmin";
 import getTopRated from "../controller/getTopRated"
 import checkEmail from "../controller/checkEmail";
 import logIn from "../controller/logIn";
+import postForgetPassword from "../controller/notifications/postForgetPassword"
+import putNewPassword from "../controller/notifications/putNewPassword";
 
 const router = Router();
 
@@ -39,6 +41,7 @@ router.post("/qualification", postQualification);
 router.post("/shoppingHistory", postShoppingHistory);
 router.post("/contactme", postContactMe)
 router.post("/favorite", favoriteHandler)
+router.post("/forgetpassword", postForgetPassword)
 
 
 // ------- get routes ------- //
@@ -64,6 +67,7 @@ router.put("/user", putUserPerson);
 router.put("/company", putUserCompany);
 router.put("/product/:productId", putProduct);
 router.put("/qualification", putQualification);
+router.put("/newpassword", putNewPassword)
 
 
 // ------- payment routes ----//

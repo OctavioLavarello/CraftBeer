@@ -22,15 +22,16 @@ const Succes = () => {
 
     // Redirigir automáticamente después de 4 segundos
     useEffect(() => {
+        const endpoint = "/myShop"
         const redirectTimeout = setTimeout(() => {
-            navigate("/myShop");
+            navigate(endpoint);
         }, 2200);
         // Limpieza del timeout en la desaparición del componente
         return () => {
             clearTimeout(redirectTimeout);
         };
     }, []);
-
+ 
 
     // carga de datos para el enviar al historial de compras 
     const currentDate = new Date();
@@ -82,14 +83,14 @@ const Succes = () => {
 
     return (
         <>
-            <Container>
+            <div style={{display:"flex",justifyContent:"center"}}>
                 <div className={style.container}>
                     <div className={style.messageBuy}>
                         <h1>Tu Pago fue aprobado con exito !! </h1>
                         <p>Recibiras un correo con los detalles de tu compra.</p>
                     </div>
                 </div>
-            </Container>
+            </div>
         </>
     )
 }

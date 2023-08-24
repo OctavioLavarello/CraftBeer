@@ -13,12 +13,12 @@ const AdminHistoryShopBuyer = () => {
 
     const id = useSelector((state: AppState) => state.idBuyer);
     const [infoUser, setInfoUser] = useState<any>({});
-    console.log("esot es seller ", id);
+    console.log("esot es buyer id ", id);
 
 
     useEffect(() => {
         const solicitud = async () => {
-            const response = await axios.get(`/company/admin/${id}`)
+            const response = await axios.get(`/persons/${id}`)
             setInfoUser(response.data);
         };
         solicitud();
@@ -34,7 +34,7 @@ const AdminHistoryShopBuyer = () => {
                 <h3 style={{ marginTop: "20px", marginLeft: "100px" }}>Historial de ventas de {infoUser.name}</h3>
             </div>
             <MyShop
-                idCompanyAdmin={id}
+                idPersonAdmin={id}
             />
         </div>
     )

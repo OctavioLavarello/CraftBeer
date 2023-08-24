@@ -2,11 +2,11 @@
   margin: 20px;
   width: 95%;
   height: 90px;
-  background-color: #262424;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid rgb(69, 68, 68);
 }
 
 .image {
@@ -90,7 +90,7 @@
 .buttonClose {
   position: absolute;
   border: none;
-  margin-left: 68%;
+  margin-left: 65%;
   width: 20px;
   height: 20px;
   padding: 15px;

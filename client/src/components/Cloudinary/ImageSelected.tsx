@@ -1,5 +1,6 @@
 //import React from 'react';
 import { Button } from "react-bootstrap";
+import Styles from './ImageSelected.module.css'
 
 interface Props {
   loading: boolean;
@@ -19,10 +20,10 @@ export const ImageSelected = ({
   return (
     <div>
       <img
-        className="image-selected"
+        className={Styles.image}
         src={img}
         alt="image-selected"
-        width={300}
+        
       />
       <div>
         {loading ? (
