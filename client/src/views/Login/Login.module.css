@@ -212,16 +212,45 @@
     box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
 }
 .signUp:active {
+    text-decoration: none;
     background-color: rgb(96, 163, 52);
     border-radius: 1px;
     border: 0.02vh solid black;
     box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
 }
+.googleContainer{
+    width: 40%;
+    left:80%;
+    /* background-color: black; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+/* #google-signin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+} */
 .forgot {
-    color: rgb(22, 22, 22);
+    text-decoration: none;
+    color:rgba(163, 125, 52, 1);
 }
 .forgot:hover {
-    color: black
+    background-color: rgb(63, 63, 63);
+    border-radius: 1px;
+    border: 0.02vh solid black;
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.forgot:active{
+    text-decoration: none;
+    background-color: rgb(96, 163, 52);
+    border-radius: 1px;
+    border: 0.02vh solid black;
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.5);
+    color: black;
 }
 .validationMessage {
     color: red;

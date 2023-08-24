@@ -30,7 +30,7 @@ const AdminHistoryShopBuyer = () => {
     return (
         <div>
             <div style={{ display: "flex", flexDirection: "row" }}>
-                <button className={style.button} onClick={() => navigate(`/admin/seller/${id}`)}>Volver</button>
+                <button className={style.button} onClick={() => navigate(`/admin/buyer/${id}`)}>Volver</button>
                 <h3 style={{ marginTop: "20px", marginLeft: "100px" }}>Historial de ventas de {infoUser.name}</h3>
             </div>
             <MyShop
