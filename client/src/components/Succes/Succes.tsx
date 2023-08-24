@@ -1,5 +1,3 @@
-
-import { Container } from "react-bootstrap"
 import style from "./Succes.module.css"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
