@@ -74,7 +74,6 @@
 
     .button_Pagechange {
         box-shadow: 0 0 8px 4px rgba(208, 149, 39, 0.3);
-
         border: none;
         width: 40px;
         height: 40px;
@@ -137,7 +136,7 @@
         background-color: rgb(246, 246, 246);
         padding: 15px;
         border-radius: 50px;
-        z-index: 9999;
+        z-index: 2;
 
     }
 
@@ -321,7 +320,7 @@
 
     .imageCart {
         position: fixed;
-        top: 70px;
+        top: 90px;
         right: 40px;
         display: flex;
         align-items: center;
@@ -330,7 +329,7 @@
         background-color: rgb(246, 246, 246);
         padding: 15px;
         border-radius: 50px;
-        z-index: 9999;
+        z-index: 20;
 
     }
 
@@ -512,7 +511,7 @@
 
     .imageCart {
         position: fixed;
-        top: 70px;
+        top: 90px;
         right: 40px;
         display: flex;
         align-items: center;
@@ -521,7 +520,7 @@
         background-color: rgb(246, 246, 246);
         padding: 15px;
         border-radius: 50px;
-        z-index: 9999;
+        z-index: 20;
 
     }
 

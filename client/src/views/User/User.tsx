@@ -59,13 +59,12 @@ const User = () => {
     setEditedUserData({ ...userData });
     setIsEditMode(true);
   };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
   
     // Verificar si el campo es "name", "lastName" o "city" antes de aplicar el regex
     if ((name === "name" || name === "lastName" || name === "city") &&
-        /^[A-Za-z]+$/.test(value)) {
+        (/^[A-Za-z]*$/.test(value) || value === "")) { // Permitir cadena vacía
       setEditedUserData((prevData) => ({
         ...prevData,
         [name]: value,
@@ -89,7 +88,7 @@ const User = () => {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:3001/user`, editedUserData);
+      const response = await axios.put(`/user`, editedUserData);
       console.log(response.data); // Log the response
       // Update userData to show the updated data
       setUserData(editedUserData as UserData);
@@ -126,7 +125,7 @@ const User = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`https://craftbeer.up.railway.app/persons/${id}`);
+        const response = await axios.get(`/persons/${id}`);
         setUserData(response.data);
       } catch (error) {
         console.log(error);

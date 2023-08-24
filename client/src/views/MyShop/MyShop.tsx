@@ -1,9 +1,11 @@
+
 import style from "./MyShop.module.css";
 import CardMyShop from "../../components/CardMyShop/CardMyShop";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { AppState } from "../../redux/reducer";
+
 
 const MyShop = ({ idPersonAdmin, idCompanyAdmin }: any) => {
   let userId = "";

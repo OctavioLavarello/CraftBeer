@@ -156,7 +156,12 @@ const Login: React.FC = () => {
         <NavLink to="/chooseSignUp" className={styles.navSignUp}>
           <button className={styles.signUp}>Sign Up</button>
         </NavLink>
-        <LoginGoogle/>
+        <div className={styles.googleContainer}>
+          <LoginGoogle/>
+        </div>
+        {/* <div id="google-signin-container"> */}
+        {/* <div id="google-signin-button"></div>
+        </div> */}
       </Form>
       <hr />
     </div>
