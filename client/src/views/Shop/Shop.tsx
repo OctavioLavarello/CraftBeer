@@ -101,7 +101,7 @@ const Shop = () => {
         />
         <button className={style.button} disabled={disableBoton.search} onClick={handlerClick}>🔍</button>
         <button className={style.buttonAll} onClick={handlerClick}>All</button>
-
+        
         {rol.accessLogin.role !== "Company" && (
           <Link to={"/cart"}>
             <div className={style.imageCart}>
