@@ -59,13 +59,12 @@ const User = () => {
     setEditedUserData({ ...userData });
     setIsEditMode(true);
   };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
   
     // Verificar si el campo es "name", "lastName" o "city" antes de aplicar el regex
     if ((name === "name" || name === "lastName" || name === "city") &&
-        /^[A-Za-z]+$/.test(value)) {
+        (/^[A-Za-z]*$/.test(value) || value === "")) { // Permitir cadena vacía
       setEditedUserData((prevData) => ({
         ...prevData,
         [name]: value,
