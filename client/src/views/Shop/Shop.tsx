@@ -95,7 +95,7 @@ const Shop = () => {
       <div className={style.search}>
         <input type="text"
           className={style.input_Search}
-          placeholder="Buscar....."
+          placeholder="Search....."
           onChange={handlerChange}
           value={input}
         />
@@ -119,7 +119,7 @@ const Shop = () => {
           <div className={style.containerLogo}>
             <img src={craftBeerLogo} alt="" style={{ objectFit: "cover", width: "100%" }} />
           </div>
-          <h5 style={{ marginLeft: "38%" }}>PAGINAS</h5>
+          <h5 style={{ marginLeft: "38%" }}>PAGES</h5>
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <button className={style.button_Pagechange} onClick={handlerPage} name="<" disabled={disableBoton.back}>{"<"} </button>
             <button className={style.button_Pagelateral}>{numberPage === 1 ? <></> : numberPage - 1} </button>
@@ -131,7 +131,7 @@ const Shop = () => {
           <Filters />
 
           </div>
-          <h5 className={style.containerTitlePublicidad}>ESPACIO PUBLICITARIO</h5>
+          <h5 className={style.containerTitlePublicidad}>ADVERTISING SPACE</h5>
           <div className={style.containerpublicidad}>
             <img src="https://thumbs.gfycat.com/IlliteratePoliteLeech-size_restricted.gif" alt="" style={{ objectFit: "cover", width: "100%" }} />
           </div>
