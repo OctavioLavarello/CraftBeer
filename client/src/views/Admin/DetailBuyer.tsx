@@ -28,7 +28,7 @@ const DetailBuyer: React.FC = () => {
       setInfoUser(response.data);
     };
     solicitud();
-  }, [id]);
+  }, [id, infoUser]);
 
   const handlerActive = async ()=>{
     try {
