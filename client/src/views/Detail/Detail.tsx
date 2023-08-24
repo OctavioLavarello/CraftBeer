@@ -21,9 +21,10 @@ export interface Beer {
   Qualifications?: Qualifications[]
 }
 
-interface Qualifications{
-  rate:number,
-  comment:string
+interface Qualifications {
+  rate: number,
+  comment: string,
+  person: string
 }
 
 const Detail = () => {
@@ -31,6 +32,22 @@ const Detail = () => {
   const [beer, setBeer] = useState<Beer | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+
+  /*  //renderizar la cantidad de estrellas 
+   let stars = "";
+   if (qualification) {
+       let replacementCount = Math.min(qualification, stars.length);
+       let replacementStars = "⭐".repeat(replacementCount);
+       stars = replacementStars + stars.substring(replacementCount);
+   }
+   let qualificationJSX = (
+       <>
+           {stars}
+       </>
+   );
+*/
+
+
 
   useEffect(() => {
     const fetchBeer = async () => {
@@ -111,7 +128,15 @@ const Detail = () => {
           <hr></hr>
           {beer.Qualifications?.map(el =>
             <>
-              <h5>{el.rate} ⭐ </h5>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+
+                <h6>{el.person}</h6>
+                <div style={{ flexDirection: 'row', marginLeft: 5 }}>
+                  {[...Array(el.rate)].map((_,) => (
+                    "⭐"
+                  ))}
+                </div>
+              </div>
               <p>{el.comment}</p>
               <hr></hr>
             </>

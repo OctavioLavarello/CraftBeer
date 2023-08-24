@@ -53,6 +53,10 @@ color: rgb(144, 146, 147);
   max-height: auto;
   border-radius: 5px;
 }
+.review h6 {
+  color:  rgba(163, 125, 52, 1); 
+  margin-right: 17px;
+}
 .link{
   border: rgba(163, 125, 52, 1);
   background-color: rgba(163, 125, 52, 1);
