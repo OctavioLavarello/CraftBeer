@@ -35,7 +35,7 @@ const Detail = () => {
   useEffect(() => {
     const fetchBeer = async () => {
       try {
-        const response = await axios.get(`https://craftbeer.up.railway.app/product/${id}`);
+        const response = await axios.get(`/product/${id}`);
         setBeer(response.data);
         console.log(response.data);
 

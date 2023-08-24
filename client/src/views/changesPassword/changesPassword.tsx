@@ -21,7 +21,7 @@ const ResetPasswordPage = () => {
 
     if (!errors.email) {
         try {
-      const response = await axios.post('http://localhost:3001/forgetpassword', { email });
+      const response = await axios.post('/forgetpassword', { email });
       if (response.status === 200) {
         setSuccessMessage('Se ha enviado un código de verificación a tu correo electrónico');
         setErrorMessage('');
@@ -43,7 +43,7 @@ const ResetPasswordPage = () => {
 
     if (!errors.email && !errors.password) {
         try {
-          const response = await axios.put('http://localhost:3001/newpassword', { email, code, newPassword });
+          const response = await axios.put('/newpassword', { email, code, newPassword });
           if (response.status === 200) {
             setSuccessMessage('Contraseña cambiada exitosamente');
             setErrorMessage('');
