@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors")
 import bodyParser from "body-parser";
 import { Request, Response, NextFunction } from "express";
 import morgan from "morgan";
@@ -8,7 +9,7 @@ const server = express();
 const routes = require("./routes/index.ts");
 
 server.use(express.json());
-
+server.use(cors())
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json());
 server.use(cookieParser());
