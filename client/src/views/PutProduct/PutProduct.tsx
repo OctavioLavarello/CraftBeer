@@ -3,6 +3,10 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { AppState } from "../../redux/reducer";
+// COMPONENTS
+import { DragAndDrop } from "../../components/Cloudinary/Cloudinary.tsx";
 // STYLES
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import styles from "./PutProduct.module.css";
@@ -14,6 +18,7 @@ interface putBeer {
     name: string;
     description: string;
     presentation: string;
+    qualification: string;
     type: string;
     price: number;
     ABV: number;
@@ -23,25 +28,39 @@ interface putBeer {
     image: string;
 }
 const PutProduct = () => {
+    // GLOBAL STATE
+    const { urlImage, accessLogin } = useSelector((state: AppState) => state);
     // LOCAL STATE
     const [putBeer, setPutBeer] = useState<putBeer>({
         id: "",
         name: "",
         description: "",
         presentation: "",
+        qualification: "",
         type: "",
         price: 0,
         ABV: 0,
         IBU: 0,
         stock: 0,
         status: false,
-        image: ""
+        image: "",
     });
+    const dataToSend = {
+        companyId: accessLogin.id,
+        updatedData: putBeer
+      };
     const [isLoading, setIsLoading] = useState(true);
     // HANDLERS
     const { id } = useParams();
     const navigate = useNavigate();
     const handlerOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+        setPutBeer((prevPutBeer) => ({
+            ...prevPutBeer,
+            [name]: value
+        }));
+    };
+    const handlerOnChangeSelect = (event: any) => {
         const { name, value } = event.target;
         setPutBeer((prevPutBeer) => ({
             ...prevPutBeer,
@@ -64,7 +83,7 @@ const PutProduct = () => {
     };
     const handlerOnChangeBool = (event: any) => {
         const { name, value } = event.target;
-        if (value === "Available"){
+        if (value === "true"){
             setPutBeer((prevPutBeer) => ({
                 ...prevPutBeer,
                 [name]: true
@@ -79,7 +98,7 @@ const PutProduct = () => {
     const handlerOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
-          await axios.put(`/product/${id}`, putBeer)
+          await axios.put(`/product/${id}`, dataToSend)
           toast.success("Save beer change successfully")
         } catch (error: any) {
           if (error.response && error.response.data && error.response.data.message) {
@@ -92,10 +111,18 @@ const PutProduct = () => {
     };
     // USE EFFECT
     useEffect(() => {
+        if (urlImage) {
+            setPutBeer((prevPutBeer) => ({
+                ...prevPutBeer,
+                image: urlImage
+            }));
+        }
+    }, [urlImage]);
+    useEffect(() => {
         const fetchBeer = async () => {
         try {
             const { data } = await axios.get(`/product/${id}`);
-            console.log(data);
+            console.log("DATA",data);
             setPutBeer(data);
         } catch (error) {
             console.log(error);
@@ -159,14 +186,28 @@ const PutProduct = () => {
                             onChange={handlerTextareaOnChange}
                             />
                             <Card.Text className="flex-grow-1">Type</Card.Text>
-                            <input 
-                            required
-                            type="text" 
+                            <select 
                             name="type"
-                            value={putBeer.type}
                             className={styles.input}
-                            onChange={handlerOnChange}
-                            />
+                            onChange={handlerOnChangeSelect} 
+                            >
+                                <option value="" >{putBeer.type}</option>
+                                <option value="Lager">Lager</option>
+                                <option value="Ale">Ale</option>
+                                <option value="IPA">IPA</option>
+                                <option value="Stout">Stout</option>
+                                <option value="Porter">Porter</option>
+                                <option value="Wheat Beer">Wheat Beer</option>
+                                <option value="Sour Beer">Sour Beer</option>
+                                <option value="Belgian Strong Ale">Belgian Strong Ale</option>
+                                <option value="Pilsner">Pilsner</option>
+                                <option value="Amber Ale">Amber Ale</option>
+                                <option value="Barleywine">Barleywine</option>
+                                <option value="Saison">Saison</option>
+                                <option value="Rauchbier">Rauchbier</option>
+                                <option value="Bock">Bock</option>
+                                <option value="Scotch Ale">Scotch Ale</option>
+                            </select>
                             <Card.Text className="flex-grow-1">Presentation</Card.Text>
                             <input 
                             required
@@ -199,7 +240,8 @@ const PutProduct = () => {
                             $
                             <input 
                             required
-                            type="text" 
+                            type="number" 
+                            step="0.01"
                             name="price"
                             value={putBeer.price}
                             className={styles.input}
@@ -216,15 +258,15 @@ const PutProduct = () => {
                             />
                              Units
                             <Card.Text className="flex-grow-1">Status</Card.Text>
-                            <input 
-                            required
-                            type="text" 
-                            name="status"
-                            value={putBeer.status ? ("Available") : ("Unavailable")}
+                            <select 
+                            name="status" 
                             className={styles.input}
-                            onChange={handlerOnChangeBool}
-                            />
-                            Available/Unavailable
+                            onChange={handlerOnChangeBool}>
+                                <option value="true">Available</option>
+                                <option value="false">Unavailable</option>
+                            </select>
+                            <Card.Text className="flex-grow-1">Image</Card.Text>
+                            <DragAndDrop/>
                         </Card.Body>
                         <button
                         className={styles.buttonSub}
