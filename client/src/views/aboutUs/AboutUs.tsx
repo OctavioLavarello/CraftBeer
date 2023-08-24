@@ -43,10 +43,6 @@ const AboutUs: React.FC = () => {
             Explore our selection, immerse yourself in the fascinating world of unique beers and join us on this
             and join us on this exciting beer journey.
           </p>
-          <NavLink to="/home"
-          className={styles.letsGo}>
-            <button className={styles.link}>Lets Go...</button>
-          </NavLink>
         </div>
         <div className={styles.container2}>
           <img src={img} alt="CraftBeer" className={styles.img}/>

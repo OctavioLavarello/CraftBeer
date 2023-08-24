@@ -21,7 +21,7 @@ const HomeCarousel: React.FC = () => {
   ];
   return (
     <div style={{ textAlign: "center" }}>
-      <h2 className={styles.title}>Nuestras empresas</h2>
+      <h2 className={styles.title}>Our Companies</h2>
       <div className={styles.div}>
         <Carousel
           fade={true}

@@ -28,8 +28,8 @@ const navigate = useNavigate()
         <div>
             <div style={{display:"flex",flexDirection:"row"}}>
 
-                <button className={style.button} onClick={()=>navigate(`/admin/buyer/${id}`)}>Volver</button>
-                <h3 style={{ marginTop: "20px", marginLeft: "100px" }}>Historial de compras de {infoUser.name}</h3>
+                <button className={style.button} onClick={()=>navigate(`/admin/buyer/${id}`)}>Back</button>
+                <h3 style={{ marginTop: "20px", marginLeft: "100px" }}>Purchase history of: {infoUser.name}</h3>
             </div>
             <MyShop
                 idPersonAdmin={id}

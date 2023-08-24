@@ -14,6 +14,7 @@ import { toast } from "react-hot-toast";
 
 // PUT BEER
 interface putBeer {
+    companyId: string;
     id: string;
     name: string;
     description: string;
@@ -32,6 +33,7 @@ const PutProduct = () => {
     const { urlImage, accessLogin } = useSelector((state: AppState) => state);
     // LOCAL STATE
     const [putBeer, setPutBeer] = useState<putBeer>({
+        companyId: accessLogin.id,
         id: "",
         name: "",
         description: "",
@@ -45,10 +47,7 @@ const PutProduct = () => {
         status: false,
         image: "",
     });
-    const dataToSend = {
-        companyId: accessLogin.id,
-        updatedData: putBeer
-      };
+    console.log(putBeer)
     const [isLoading, setIsLoading] = useState(true);
     // HANDLERS
     const { id } = useParams();
@@ -98,7 +97,7 @@ const PutProduct = () => {
     const handlerOnSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
-          await axios.put(`/product/${id}`, dataToSend)
+          await axios.put(`/product/${id}`, putBeer)
           toast.success("Save beer change successfully")
         } catch (error: any) {
           if (error.response && error.response.data && error.response.data.message) {
@@ -123,7 +122,8 @@ const PutProduct = () => {
         try {
             const { data } = await axios.get(`/product/${id}`);
             console.log("DATA",data);
-            setPutBeer(data);
+            const updatedPutBeer = { ...putBeer, ...data };
+            setPutBeer(updatedPutBeer);
         } catch (error) {
             console.log(error);
             console.error("Error fetching beer", error);

@@ -172,7 +172,7 @@ const AdminCompanyModify: React.FC = () => {
               <Row>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Nombre</Form.Label>
+                    <Form.Label>Name</Form.Label>
                     <Form.Control
                       readOnly
                       type="text"
@@ -182,7 +182,7 @@ const AdminCompanyModify: React.FC = () => {
                 </Col>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Apellido</Form.Label>
+                    <Form.Label>Last Name</Form.Label>
                     <Form.Control
                       readOnly
                       type="text"
@@ -204,7 +204,7 @@ const AdminCompanyModify: React.FC = () => {
                 </Col>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Documento</Form.Label>
+                    <Form.Label>Identity Card</Form.Label>
                     <Form.Control
                       readOnly
                       type="number"
@@ -216,7 +216,7 @@ const AdminCompanyModify: React.FC = () => {
               <Row>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Numero de telefono</Form.Label>
+                    <Form.Label>Phone Number</Form.Label>
                     <Form.Control
                       readOnly
                       type="number"
@@ -226,7 +226,7 @@ const AdminCompanyModify: React.FC = () => {
                 </Col>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Pais</Form.Label>
+                    <Form.Label>Country</Form.Label>
                     <Form.Control
                       readOnly
                       type="text"
@@ -239,7 +239,7 @@ const AdminCompanyModify: React.FC = () => {
               <Row>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Provincia</Form.Label>
+                    <Form.Label>State</Form.Label>
                     <Form.Control
                       readOnly
                       type="text"
@@ -250,7 +250,7 @@ const AdminCompanyModify: React.FC = () => {
                 </Col>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Ciudad</Form.Label>
+                    <Form.Label>City</Form.Label>
                     <Form.Control
                       readOnly
                       type="text"
@@ -262,7 +262,7 @@ const AdminCompanyModify: React.FC = () => {
               <Row>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Compañía</Form.Label>
+                    <Form.Label>Company</Form.Label>
                     <Form.Control
                       readOnly
                       type="text"
@@ -272,7 +272,7 @@ const AdminCompanyModify: React.FC = () => {
                 </Col>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Dirección</Form.Label>
+                    <Form.Label>Address</Form.Label>
                     <Form.Control
                       readOnly
                       type="text"
@@ -292,7 +292,7 @@ const AdminCompanyModify: React.FC = () => {
             </Form>
             <div style={{ textAlign: "center"}}>
             <button onClick={handlerIsClicked} className={styles.edit}>
-              Editar
+              Edit
             </button>
             </div>
           </div>
@@ -301,7 +301,7 @@ const AdminCompanyModify: React.FC = () => {
             <Row>
                 <Col>
             <Form.Group>
-              <Form.Label>Nombre</Form.Label>
+              <Form.Label>Name</Form.Label>
               <div className={styles.divInputP}>
                 <Form.Control
                   className={`${
@@ -322,7 +322,7 @@ const AdminCompanyModify: React.FC = () => {
                 </Col>
                 <Col>
             <Form.Group>
-              <Form.Label>Apellido</Form.Label>
+              <Form.Label>Last Name</Form.Label>
               <div className={styles.divInputP}>
                 <Form.Control
                   className={`${
@@ -366,7 +366,7 @@ const AdminCompanyModify: React.FC = () => {
                 </Col>
                 <Col>
             <Form.Group>
-              <Form.Label>Documento</Form.Label>
+              <Form.Label>Identity Card</Form.Label>
               <div className={styles.divInputP}>
                 <Form.Control
                   className={styles.input}
@@ -384,7 +384,7 @@ const AdminCompanyModify: React.FC = () => {
             <Row>
                 <Col>
             <Form.Group>
-              <Form.Label>Numero de telefono</Form.Label>
+              <Form.Label>Phone number</Form.Label>
               <div className={styles.divInputP}>
                 <Form.Control
                   className={styles.input}
@@ -400,7 +400,7 @@ const AdminCompanyModify: React.FC = () => {
                 </Col>
                 <Col>
             <Form.Group>
-              <Form.Label>Pais</Form.Label>
+              <Form.Label>Country</Form.Label>
               <div className={styles.divInputP}>
                 <Form.Control
                   className={styles.input}
@@ -409,7 +409,7 @@ const AdminCompanyModify: React.FC = () => {
                   value={companyData.country}
                   onChange={handlerOnChange}
                 >
-                  <option value="">Selecciona un país...</option>
+                  <option value="">Select Country...</option>
                   {countryNames.map((countryName, index) => (
                     <option key={index} value={countryName}>
                       {countryName}
@@ -426,7 +426,7 @@ const AdminCompanyModify: React.FC = () => {
             <Row>
                 <Col>
             <Form.Group>
-              <Form.Label>Provincia</Form.Label>
+              <Form.Label>State</Form.Label>
               <div className={styles.divInputP}>
                 <Form.Control
                   className={styles.input}
@@ -435,7 +435,7 @@ const AdminCompanyModify: React.FC = () => {
                   value={companyData.state}
                   onChange={handlerOnChange}
                 >
-                  <option value="">Selecciona una provincia...</option>
+                  <option value="">Select State...</option>
                   {companyData.country &&
                     provincesByCountry[companyData.country]?.map(
                       (province: ProvinceData, index: number) => (
@@ -453,7 +453,7 @@ const AdminCompanyModify: React.FC = () => {
                 </Col>
                 <Col>
             <Form.Group>
-              <Form.Label>Ciudad</Form.Label>
+              <Form.Label>City</Form.Label>
               <div className={styles.divInputP}>
                 <Form.Control
                   className={`${
@@ -476,7 +476,7 @@ const AdminCompanyModify: React.FC = () => {
             <Row>
                 <Col>
             <Form.Group>
-              <Form.Label>Compañía</Form.Label>
+              <Form.Label>Company</Form.Label>
               <div className={styles.divInputP}>
                 <Form.Control
                   className={`${
@@ -497,7 +497,7 @@ const AdminCompanyModify: React.FC = () => {
                 </Col>
                 <Col>
             <Form.Group>
-              <Form.Label>Dirección</Form.Label>
+              <Form.Label>Address</Form.Label>
               <div className={styles.divInputP}>
                 <Form.Control
                   className={`${

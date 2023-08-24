@@ -55,9 +55,9 @@ const Administrador = () => {
       setType("seller");
       console.log(sellers);
         console.log(type);
-      toast.success("Cargada la información de los vendedores");
+      toast.success("Seller information has been uploaded");
     } catch (error) {
-      toast.error("No ha sido posible cargar la data");
+      toast.error("Unable to load data");
     }
   };
 
@@ -68,9 +68,9 @@ const Administrador = () => {
       setType("buyer");
       console.log(buyers);
       console.log(type);
-      toast.success("Cargada información de los compradores");
+      toast.success("Buyer information has been uploaded");
     } catch (error) {
-      toast.error("No ha sido posible cargar la data");
+      toast.error("Unable to load data");
     }
   };
 
@@ -89,12 +89,12 @@ const Administrador = () => {
       <Row>
         <Col>
           <Button className="botonNav" onClick={handlerBuyer} name="buyer">
-            Compradores Registrados
+            Registered Buyers
           </Button>
         </Col>
         <Col>
           <Button className="botonNav" onClick={handlerSeller}>
-            Vendedores Registrados
+            Registered Sellers
           </Button>
         </Col>
       </Row>
@@ -102,12 +102,12 @@ const Administrador = () => {
         <Table striped bordered hover variant="" responsive>
           <thead className="bordeTabla">
             <tr className="bordeTabla">
-              <th className="anchoTable">Detalle</th>
-              <th className="anchoTable">Correo electrónico</th>
-              <th className="anchoTable">Nombre</th>
-              <th className="anchoTable">Apellidos</th>
-              <th className="anchoTable">Doc Identidad</th>
-              <th className="anchoTable">País</th>
+              <th className="anchoTable">Detail</th>
+              <th className="anchoTable">Email</th>
+              <th className="anchoTable">Name</th>
+              <th className="anchoTable">Last Name</th>
+              <th className="anchoTable">Identity card</th>
+              <th className="anchoTable">Country</th>
               <th className="anchoTable">Status</th>
             </tr>
           </thead>
@@ -118,7 +118,7 @@ const Administrador = () => {
                   <td>
                     <Link to={`/admin/buyer/${person.id}`}>
                       <Button name={person.id} onClick={handlerLink}>
-                        Detalle User
+                        User Detail
                       </Button>
                     </Link>
                   </td>
@@ -127,7 +127,7 @@ const Administrador = () => {
                   <td>{person.lastName}</td>
                   <td>{person.document}</td>
                   <td>{person.country}</td>
-                  <td>{person.status === true ? "Activo" : "Inactivo"}</td>
+                  <td>{person.status === true ? "Active" : "Inactive"}</td>
                 </tr>
               );
             })}
@@ -138,12 +138,12 @@ const Administrador = () => {
           <thead className="bordeTabla">
             <tr className="bordeTabla">
               <th className="anchoTable">ID</th>
-              <th className="anchoTable">Nombre compañía</th>
-              <th className="anchoTable">Correo electrónico</th>
-              <th className="anchoTable">Nombre</th>
-              <th className="anchoTable">Apellidos</th>
-              <th className="anchoTable">Doc Identidad</th>
-              <th className="anchoTable">País</th>
+              <th className="anchoTable">Company Name</th>
+              <th className="anchoTable">Email</th>
+              <th className="anchoTable">Name</th>
+              <th className="anchoTable">Last Name</th>
+              <th className="anchoTable">Identity card</th>
+              <th className="anchoTable">Country</th>
               <th className="anchoTable">Status</th>
             </tr>
           </thead>
@@ -154,7 +154,7 @@ const Administrador = () => {
                   <td>
                     <Link to={`/admin/seller/${cia.id}`}>
                       <Button name={cia.id} onClick={handlerLink}>
-                        Detalle User
+                        User Detail
                       </Button>
                     </Link>
                   </td>
@@ -166,7 +166,7 @@ const Administrador = () => {
                   <td>{cia.lastName}</td>
                   <td>{cia.document}</td>
                   <td>{cia.country}</td>
-                  <td>{cia.status === true ? "Activo" : "Inactivo"}</td>
+                  <td>{cia.status === true ? "Active" : "Inactive"}</td>
                 </tr>
               );
             })}

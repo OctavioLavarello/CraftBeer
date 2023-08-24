@@ -55,13 +55,13 @@ const AdminUserModify = () => {
     const urlImage = useSelector((state: AppState) => state.urlImage);
 
     const [errors, setErrors] = useState({
-        name: "Se requiere nombre",
-        lastName: "Se requiere apellido",
-        document: "Se requiere documento",
-        country: "Se requiere pais",
-        city: "Se requiere ciudad",
-        state: "Se requiere estado",
-        address: "Se requiere direccion",
+        name: "Name required",
+        lastName: "Last Name required",
+        document: "Identity card required",
+        country: "Country required",
+        city: "City required",
+        state: "State required",
+        address: "Address required",
         // image: "Se requiere una imagen",
     })
 
@@ -125,7 +125,7 @@ const AdminUserModify = () => {
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.put(`http://localhost:3001/user`, editedUserData);
+            const response = await axios.put(`/user`, editedUserData);
             console.log(response.data); // Log the response
             // Update userData to show the updated data
             setUserData(editedUserData as UserData);
@@ -141,12 +141,12 @@ const AdminUserModify = () => {
 
                     <Card className={styles.box}>
                         <Card.Body>
-                            <Card.Title className={styles.Title}>Modificar datos personales de {userData?.name}</Card.Title>
-                            <Card.Text>Nombre: {userData?.name}</Card.Text>
+                            <Card.Title className={styles.Title}>Modify personal data of: {userData?.name}</Card.Title>
+                            <Card.Text>Name: {userData?.name}</Card.Text>
                             {isEditMode ? (
                                 <Form onSubmit={handleFormSubmit}>
                                     <Form.Group controlId="formName">
-                                        <Form.Label>Nombre</Form.Label>
+                                        <Form.Label>Name</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="name"
@@ -156,7 +156,7 @@ const AdminUserModify = () => {
                                         <h6 className={styles.mensajes}>{errors.name}</h6>
                                     </Form.Group>
                                     <Form.Group controlId="formImage">
-                                        <Form.Label>Imagen</Form.Label>
+                                        <Form.Label>Image</Form.Label>
                                         {/*                     <DragAndDrop />
  */}                    <Form.Control
                                             type="text"
@@ -165,7 +165,7 @@ const AdminUserModify = () => {
                                             onChange={handleInputChange}
                                         />
                                         <Form.Group controlId="formLastName">
-                                            <Form.Label>Apellido</Form.Label>
+                                            <Form.Label>Last Name</Form.Label>
                                             <Form.Control
                                                 type="text"
                                                 name="lastName"
@@ -175,7 +175,7 @@ const AdminUserModify = () => {
                                             <h6 className={styles.mensajes}>{errors.lastName}</h6>
                                         </Form.Group>
                                         <Form.Group controlId="formDocument">
-                                            <Form.Label>Documento</Form.Label>
+                                            <Form.Label>Identity card</Form.Label>
                                             <Form.Control
                                                 type="number"
                                                 name="document"
@@ -186,7 +186,7 @@ const AdminUserModify = () => {
                                         </Form.Group>
                                     </Form.Group>
                                     <Form.Group controlId="formCountry">
-                                        <Form.Label>Pais</Form.Label>
+                                        <Form.Label>Country</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="country"
@@ -196,7 +196,7 @@ const AdminUserModify = () => {
                                         <h6 className={styles.mensajes}>{errors.country}</h6>
                                     </Form.Group>
                                     <Form.Group controlId="formCity">
-                                        <Form.Label>Ciudad</Form.Label>
+                                        <Form.Label>City</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="city"
@@ -206,7 +206,7 @@ const AdminUserModify = () => {
                                         <h6 className={styles.mensajes}>{errors.city}</h6>
                                     </Form.Group>
                                     <Form.Group controlId="formState">
-                                        <Form.Label>Estado</Form.Label>
+                                        <Form.Label>State</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="state"
@@ -216,7 +216,7 @@ const AdminUserModify = () => {
                                         <h6 className={styles.mensajes}>{errors.state}</h6>
                                     </Form.Group>
                                     <Form.Group controlId="formAddress">
-                                        <Form.Label>Calle</Form.Label>
+                                        <Form.Label>Address</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="address"
@@ -225,21 +225,21 @@ const AdminUserModify = () => {
                                         />
                                         <h6 className={styles.mensajes}>{errors.address}</h6>
                                     </Form.Group>
-                                    <Button className={styles.buttonEdit} type="submit" disabled={disable()} >Guardar cambios</Button>
+                                    <Button className={styles.buttonEdit} type="submit" disabled={disable()} >Save changes</Button>
                                 </Form>
 
                             ) : (
                                 <>
 
                                     <Card.Img className={styles.image} src={userData?.image} />
-                                    <Card.Text>Apellido: {userData?.lastName}</Card.Text>
+                                    <Card.Text>Last Name: {userData?.lastName}</Card.Text>
                                     <Card.Text>Email: {userData?.email}</Card.Text>
-                                    <Card.Text>Documento: {userData?.document}</Card.Text>
-                                    <Card.Text>País: {userData?.country}</Card.Text>
-                                    <Card.Text>Ciudad: {userData?.city}</Card.Text>
-                                    <Card.Text>Estado: {userData?.state}</Card.Text>
-                                    <Card.Text>Calle: {userData?.address}</Card.Text>
-                                    <Button className={styles.buttonEdit} onClick={handleEditClick}>Editar</Button>
+                                    <Card.Text>Identity card: {userData?.document}</Card.Text>
+                                    <Card.Text>Country: {userData?.country}</Card.Text>
+                                    <Card.Text>City: {userData?.city}</Card.Text>
+                                    <Card.Text>State: {userData?.state}</Card.Text>
+                                    <Card.Text>Address: {userData?.address}</Card.Text>
+                                    <Button className={styles.buttonEdit} onClick={handleEditClick}>Edit</Button>
                                 </>
                             )}
                         </Card.Body>
