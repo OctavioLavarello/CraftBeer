@@ -35,7 +35,7 @@ const Detail = () => {
   useEffect(() => {
     const fetchBeer = async () => {
       try {
-        const response = await axios.get(`https://craftbeer.up.railway.app/product/${id}` || `http://localhost:3001/product/${id}`);
+        const response = await axios.get(`/product/${id}`);
         setBeer(response.data);
         console.log(response.data);
 
@@ -92,7 +92,7 @@ const Detail = () => {
               <Card.Text className="flex-grow-2">ABV: {beer?.ABV}%</Card.Text>
               <Card.Text className="flex-grow-1">Precio: ${beer?.price}</Card.Text>
               <Card.Text className="flex-grow-1">
-                Calificacion: {beer?.qualification ?? 'No calificado'}
+                Calificacion: {beer?.qualification ?? 'No calificado'} Estrellas
               </Card.Text>
               <Card.Text className="flex-grow-1">Stock:{beer?.stock} unidades</Card.Text>
               <Card.Text className="flex-grow-1">
