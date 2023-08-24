@@ -165,6 +165,7 @@ const Creation = () => {
             <InputGroup className="mb-2">
               <Form.Control
                 onChange={handlerChange}
+                min={0}
                 placeholder="Precio"
                 name="price"
                 type="number"
@@ -191,6 +192,7 @@ const Creation = () => {
               placeholder="Stock"
               name="stock"
               onChange={handlerChange}
+              min={0}
               type="number"
             />
             <h6 className="mensajes">{errors.stock}</h6>
@@ -223,6 +225,8 @@ const Creation = () => {
               placeholder="Graduación alcohólica"
               name="ABV"
               onChange={handlerChange}
+              max={100}
+              min={0}
               type="number"
             />
             <h6 className="mensajes">{errors.ABV}</h6>
