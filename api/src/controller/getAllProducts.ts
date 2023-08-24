@@ -60,7 +60,8 @@ const getAllProducts = async (req: Request, res: Response) => {
     // Calcular el offset para la página actual
     const currentPage = parseInt(pag as string) || 1;
     const offset = (currentPage - 1) * itemsPerPage;
-
+//mostrar solo productos en true
+    options.where = { ...options.where, status:true }
     // Obtener productos paginados
     const products = await Product.findAll({
       ...options,
