@@ -28,6 +28,7 @@ const Contact: React.FC = () => {
     phone: "",
     message: "",
   });
+
   // HANDLERS
   const handlerOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -58,7 +59,14 @@ const Contact: React.FC = () => {
       toast.error("an error occurred while sending message");
       }
     }
+    setUserMessage({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    })
   };
+ 
   return (
     <div className={styles.all}>
       <Form 
@@ -74,6 +82,7 @@ const Contact: React.FC = () => {
                 required 
                 type="text" 
                 name="name"
+                value={userMessage.name}
                 onChange={handlerOnChange}
                 />
                 {errors.name && <p className={styles.validationMessage}>{errors.name}</p>}
@@ -86,6 +95,7 @@ const Contact: React.FC = () => {
                 required
                 type="email" 
                 name="email"
+                value={userMessage.email}
                 onChange={handlerOnChange}
                 />
                 {errors.email && <p className={styles.validationMessage}>{errors.email}</p>}
@@ -98,6 +108,7 @@ const Contact: React.FC = () => {
                 required
                 type="text" 
                 name="phone"
+                value={userMessage.phone}
                 onChange={handlerOnChange}
                 />
                 {errors.phone && <p className={styles.validationMessage}>{errors.phone}</p>}
@@ -118,6 +129,7 @@ const Contact: React.FC = () => {
             <textarea
             required
             name="message"
+            value={userMessage.message}
             placeholder="Message..."
             onChange={handlerTextareaOnChange}
             />
@@ -142,6 +154,7 @@ const Contact: React.FC = () => {
       </Form>
     </div>
   );
+ 
 };
 
 export default Contact;
