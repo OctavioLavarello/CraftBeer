@@ -24,6 +24,7 @@ import DetailBuyer from "./views/Admin/DetailBuyer";
 import DetailSeller from "./views/Admin/DetailSeller";
 import PutProduct from "./views/PutProduct/PutProduct";
 import AdminCompanyModify from "./views/Admin/AdminCompanyModify/AdminCompanyModify"
+import ChangesPassword from  "./views/changesPassword/changesPassword"
 // import PayCart from './views/Pay/Pay';
 import MyShop from "./views/MyShop/MyShop";
 import Error from "./views/Error/Error";
@@ -118,6 +119,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/forgotPassword" element={<ChangesPassword/>} />
             <Route path="*" element={<Error />} />
           </Routes>
         ) : accessLogin.role === "Person" ? (
