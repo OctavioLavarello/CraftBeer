@@ -17,20 +17,19 @@ import { toast } from "react-hot-toast";
 
 const DetailSeller = () => {
   const id = useSelector((state: AppState) => state.idSeller);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [infoUser, setInfoUser] = useState<any>({});
-  console.log("data Sellerrrrrrr",infoUser);
-    
+  console.log("data Sellerrrrrrr", infoUser);
 
   useEffect(() => {
     const solicitud = async () => {
-      const response = await axios.get(`/company/admin/${id}`)
+      const response = await axios.get(`/company/admin/${id}`);
       console.log(response.data);
       setInfoUser(response.data);
     };
     solicitud();
-  }, [id, infoUser.status]);
+  }, [id, infoUser]);
 
   const handlerActive = async () => {
     try {
@@ -56,11 +55,10 @@ const DetailSeller = () => {
     }
   };
 
-
-  const historyShop =(eventKey:any)=>{
-    if(eventKey === "1")  navigate(`/admin/seller/AdminHistoryShopSeller`)
-    if(eventKey === "2")  navigate(`/admin/seller/admincompanymodify`)
-    }
+  const historyShop = (eventKey: any) => {
+    if (eventKey === "1") navigate(`/admin/seller/AdminHistoryShopSeller`);
+    if (eventKey === "2") navigate(`/admin/seller/admincompanymodify`);
+  };
 
   return (
     <div className="bodyBuyer">
@@ -84,10 +82,21 @@ const DetailSeller = () => {
           <NavbarBrand>
             <h2>{infoUser.company}</h2>
           </NavbarBrand>
-          <NavDropdown title="Otras opciones" menuVariant="dark" onSelect={historyShop}>
-            <NavDropdown.Item eventKey="1">Historial de ventas</NavDropdown.Item>
+          <NavDropdown
+            title="Otras opciones"
+            menuVariant="dark"
+            onSelect={historyShop}
+          >
+            <NavDropdown.Item eventKey="1">
+              Historial de ventas
+            </NavDropdown.Item>
             <NavDropdown.Item>
-              <Link to="/admin/seller/products" style={{textDecoration:"none", color:"white"}}>Productos en venta</Link>
+              <Link
+                to="/admin/seller/products"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                Productos en venta
+              </Link>
             </NavDropdown.Item>
             <NavDropdown.Item eventKey="2">Modificar usuario</NavDropdown.Item>
           </NavDropdown>
@@ -159,13 +168,13 @@ const DetailSeller = () => {
           <Col></Col>
         </Row>
         <div className="botonesBuyer">
-          <Link to="/admin" style={{ width: "30%", height:"100%" }}>
+          <Link to="/admin" style={{ width: "30%", height: "100%" }}>
             <Button
               style={{
                 width: "100%",
                 backgroundColor: "#A37D34",
                 border: "none",
-                height:"100%"
+                height: "100%",
               }}
             >
               Volver al Panel
@@ -173,7 +182,12 @@ const DetailSeller = () => {
           </Link>
           <Button
             onClick={handlerActive}
-            style={{ width: "20%", backgroundColor: "black", border: "none", height:"100%" }}
+            style={{
+              width: "20%",
+              backgroundColor: "black",
+              border: "none",
+              height: "100%",
+            }}
           >
             Activar Usuario
           </Button>
@@ -222,7 +236,8 @@ const DetailSeller = () => {
         >
           <h4>Estatus de usuario</h4>
           {infoUser.status === true ? (
-            <h2 className="activoUser">Activo ✅</h2>          ) : (
+            <h2 className="activoUser">Activo ✅</h2>
+          ) : (
             <h2 className="inactiveUser">Inactivo 🚫</h2>
           )}
         </Card>

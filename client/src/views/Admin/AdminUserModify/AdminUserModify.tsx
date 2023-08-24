@@ -9,33 +9,33 @@ import { AppState } from '../../../redux/reducer';
 import { provincesByCountry, ProvinceData } from '../../../components/provincesData/provincesData.ts';
 
 interface UserData {
-    id: string;
-    name: string;
-    lastName: string;
-    document: string;
-    email: string;
-    password: string;
-    address: string;
-    image: string;
-    country: string;
-    city: string;
-    state: string;
-    role: string;
-    createdAt: string;
-    updatedAt: string;
-    ShoppingHistories: any[];
+  id: string;
+  name: string;
+  lastName: string;
+  document: string;
+  email: string;
+  password: string;
+  address: string;
+  image: string;
+  country: string;
+  city: string;
+  state: string;
+  role: string;
+  createdAt: string;
+  updatedAt: string;
+  ShoppingHistories: any[];
 }
 interface EditableUserData {
-    name?: string;
-    lastName?: string;
-    document?: string;
-    email?: string;
-    password?: string;
-    address?: string;
-    image?: string;
-    country?: string;
-    city?: string;
-    state?: string;
+  name?: string;
+  lastName?: string;
+  document?: string;
+  email?: string;
+  password?: string;
+  address?: string;
+  image?: string;
+  country?: string;
+  city?: string;
+  state?: string;
 }
 
 interface CountryData {
@@ -43,7 +43,6 @@ interface CountryData {
       common: string;
     };
   }
-
 
 const AdminUserModify = () => {
     const id = useSelector((state: AppState) => state.idBuyer);
@@ -71,20 +70,21 @@ const AdminUserModify = () => {
         fetchUsers()
     }, [id]);
 
-    useEffect(() => {
-        if (urlImage) {
-            setEditedUserData((prevData) => ({
-                ...prevData,
-                image: urlImage,
-            }));
-        }
-    }, [urlImage]);
+  const [userData, setUserData] = useState<UserData | null>(null);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [editedUserData, setEditedUserData] = useState<EditableUserData>({});
+  const urlImage = useSelector((state: AppState) => state.urlImage);
 
-    const handleEditClick = () => {
-        setEditedUserData({ ...userData });
-        setIsEditMode(true);
-        console.log(userData)
-    };
+  const [errors, setErrors] = useState({
+    name: "Se requiere nombre",
+    lastName: "Se requiere apellido",
+    document: "Se requiere documento",
+    country: "Se requiere pais",
+    city: "Se requiere ciudad",
+    state: "Se requiere estado",
+    address: "Se requiere direccion",
+    // image: "Se requiere una imagen",
+  });
 
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -245,8 +245,6 @@ const AdminUserModify = () => {
                                             )
                                             )}
                                     </Form.Control>
-                                        
-                                       
                                     </Form.Group>
                                     <Form.Group controlId="formAddress">
                                         <Form.Label>Calle</Form.Label>
@@ -260,9 +258,6 @@ const AdminUserModify = () => {
                                     </Form.Group>
                                     <Button className={styles.buttonEdit} type="submit" disabled={disable()} >Guardar cambios</Button>
                                 </Form>
-
-                            ) : (
-                                <>
 
                                     <Card.Img className={styles.image} src={userData?.image} />
                                     <Card.Text>Apellido: {userData?.lastName}</Card.Text>

@@ -51,6 +51,9 @@ const Contact: React.FC = () => {
     try {
       await axios.post("/contactme", userMessage)
       toast.success("message sent successfully")
+      setTimeout(() => {
+        window.location.href = "/home";
+      }, 2000);
     } catch (error: any) {
       if (error.response && error.response.data && error.response.data.message) {
         const errorMessage = error.response.data.message;
