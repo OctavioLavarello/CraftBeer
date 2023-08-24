@@ -95,9 +95,6 @@ const Detail = () => {
                 Calificacion: {beer?.qualification ?? 'No calificado'} Estrellas
               </Card.Text>
               <Card.Text className="flex-grow-1">Stock:{beer?.stock} unidades</Card.Text>
-              <Card.Text className="flex-grow-1">
-                Estatus: {beer?.status ? 'Disponible' : 'No disponible'}
-              </Card.Text>
             </Card.Body>
             <Button onClick={() => navigate(-1)} className={styles.buttonback}>
               Volver
