@@ -87,6 +87,7 @@
     border-radius: 10px 0 0 10px;
 }
 .title {
+    margin-top: 2vh;
     font-family: 'Arial Black', sans-serif;
     font-size: 6vh;
     font-weight: bold;
