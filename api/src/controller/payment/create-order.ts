@@ -51,7 +51,7 @@ export const createOrder = async (req: Request, res: Response) => {
         pending: `${frontDeploy}/pending`,
         failure: `${frontDeploy}/failure`,
       } as PreferenceBackUrl,
-      notification_url: `${frontDeploy}/webhook`,
+      notification_url: `https://craftbeer.up.railway.app/webhook`,
       auto_return: "all"
     });
 
