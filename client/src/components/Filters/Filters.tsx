@@ -52,36 +52,36 @@ const Filters = () => {
     return (
         <div className={style.container}>
             <div className={style.filters}>
-                <button className={style.buttonFilters} disabled={buttonDisable} onClick={handlerButtonClick}>Limpiar filtros</button>
-                <p className={style.title_select}>Ordenar por precio</p>
+                <button className={style.buttonFilters} disabled={buttonDisable} onClick={handlerButtonClick}>Clean filters</button>
+                <p className={style.title_select}>Order by price</p>
                 <select onChange={handlerOptions} className={style.select} name="order">
-                    <option value="">TODOS LOS PRECIOS</option>
-                    <option value="OrderAscPrice">MENOR A MAYOR</option>
-                    <option value="OrderDesPrice">MAYOR A MENOR</option>
+                    <option value="">All prices</option>
+                    <option value="OrderAscPrice">Minor to Major</option>
+                    <option value="OrderDesPrice">Major to Minor</option>
                 </select>
-                <p className={style.title_select}>Filtrar por precio</p>
+                <p className={style.title_select}>Filter by price</p>
                 <select onChange={handlerOptions} className={style.select} name="price">
-                    <option value="" >TODOS LOS PRECIOS</option>
-                    <option value="1">MENOR A 1</option>
-                    <option value="2">MENOR A 2</option>
-                    <option value="4">MENOR A 4</option>
-                    <option value="8">MENOR A 8</option>
-                    <option value="10">MENOR A 10</option>
-                    <option value="15">MENOR A 15</option>
-                    <option value="20">MENOR A 20</option>
+                    <option value="" >All prices</option>
+                    <option value="1">Less than 1</option>
+                    <option value="2">Less than 2</option>
+                    <option value="4">Less than 4</option>
+                    <option value="8">Less than 8</option>
+                    <option value="10">Less than 10</option>
+                    <option value="15">Less than 15</option>
+                    <option value="20">Less than 20</option>
                 </select>
-                <p className={style.title_select}>Filtrar por IBU</p>
+                <p className={style.title_select}>Filter by IBU</p>
                 <select onChange={handlerOptions} className={style.select} name="IBU">
-                    <option value="">TODOS LOS IBUS</option>
-                    <option value="5">MENOR A 5</option>
-                    <option value="10">MENOR A 10</option>
-                    <option value="15">MENOR A 15</option>
-                    <option value="20">MENOR A 20</option>
-                    <option value="25">MENOR A 25</option>
-                    <option value="30">MENOR A 30</option>
-                    <option value="40">MENOR A 40</option>
+                    <option value="">All IBU</option>
+                    <option value="5">Less than 5</option>
+                    <option value="10">Less than 10</option>
+                    <option value="15">Less than 15</option>
+                    <option value="20">Less than 20</option>
+                    <option value="25">Less than 25</option>
+                    <option value="30">Less than 30</option>
+                    <option value="40">Less than 40</option>
                 </select>
-                <p className={style.title_select}>Filtrar por puntuación</p>
+                <p className={style.title_select}>Filter by rating</p>
                 <select onChange={handlerOptions} className={style.select} name="qualification">
                     <option value="" >☆☆☆☆☆</option>
                     <option value="1">☆</option>
@@ -90,9 +90,9 @@ const Filters = () => {
                     <option value="4">☆☆☆☆</option>
                     <option value="5">☆☆☆☆☆</option>
                 </select>
-                <p className={style.title_select}>Filtrar por tipo</p>
+                <p className={style.title_select}>Filter by type</p>
                 <select className={style.select} onChange={handlerOptions} name="type">
-                    <option value="" >TODOS LOS TIPOS</option>
+                    <option value="" >All types</option>
                     <option value="Lager">Lager</option>
                     <option value="Ale">Ale</option>
                     <option value="IPA">IPA</option>
@@ -108,16 +108,15 @@ const Filters = () => {
                     <option value="Rauchbier">Rauchbier</option>
                     <option value="Bock">Bock</option>
                     <option value="Scotch Ale">Scotch Ale</option>
-
                 </select>
-                <p className={style.title_select}>Filtrar por % Alcohol</p>
+                <p className={style.title_select}>Filter by % of Alcohol</p>
                 <select onChange={handlerOptions} className={style.select} name="ABV">
-                    <option value="" > TODOS LOS AVB</option>
-                    <option value="1">ABV menor a 1 %</option>
-                    <option value="3">ABV menor a 3 %</option>
-                    <option value="4">ABV menor a 4 %</option>
-                    <option value="8">ABV menor a 8 %</option>
-                    <option value="10">ABV menor a 10 %</option>
+                    <option value="" > All ABV</option>
+                    <option value="1">ABV less than 1 %.</option>
+                    <option value="3">ABV less than 3 %.</option>
+                    <option value="4">ABV less than 4 %.</option>
+                    <option value="8">ABV less than 8 %.</option>
+                    <option value="10">ABV less than 10 %.</option>
                 </select>
             </div>
 

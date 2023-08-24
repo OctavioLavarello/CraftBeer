@@ -89,7 +89,7 @@ const Cart = () => {
         <div className={style.containerCard}>
           {productsCartItems.length === 0 &&
             <div className={style.messageEmpty}>
-              <h3>Aun no hay productos en el carrito !!!</h3>
+              <h3>There are no beers in the cart yet!!!</h3>
             </div>}
 
           {productsCartItems.map((product) => (
@@ -106,14 +106,14 @@ const Cart = () => {
 
           <div style={{justifyContent:"flex-end", display:"flex"}}>
             <Link to={"/Shop"}>
-              <button className={style.buttonShop}>Agregar Art.</button>
+              <button className={style.buttonShop}>Add beer</button>
             </Link>
 
           </div>
         </div>
         <div className={style.panelCart}>
-          <h2>Tu compra </h2>
-          <h5>Productos</h5>
+          <h2>Your purchase</h2>
+          <h5>Beers</h5>
           <hr />
           {productsCartItems?.map((product) => (
          
@@ -135,7 +135,7 @@ const Cart = () => {
             onClick={handlerBuy}
             disabled={productsCartItems.length <= 0}
           >
-            Iniciar Compra
+            Start Purchase
           </button>
         </div>
       </div>
