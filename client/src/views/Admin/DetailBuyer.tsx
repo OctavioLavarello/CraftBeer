@@ -33,18 +33,18 @@ const DetailBuyer: React.FC = () => {
   const handlerActive = async ()=>{
     try {
       await axios.put("/user", {id: infoUser.id, status: "true"})
-      toast.success("El usuario a sido activado")
+      toast.success("User has been activated")
     } catch (error) {
-      toast.error("No fue posible activar el usuario")
+      toast.error("It was not possible to activate the user")
     }
   }
 
   const handlerInactive = async ()=>{
     try {
       await axios.put("/user", {id: infoUser.id, status: "false"})
-      toast.success("El usuario a sido desactivado")
+      toast.success("User has been inactivated")
     } catch (error) {
-      toast.error("No fue posible inactivar el usuario")
+      toast.error("It was not possible to inactivate the user")
     }
   }
 
@@ -76,17 +76,17 @@ const DetailBuyer: React.FC = () => {
             <h2>{`${infoUser.name}, ${infoUser.lastName}`}</h2>
           </NavbarBrand>
           <NavDropdown title="Otras opciones" menuVariant="dark" onSelect={historyShop}>
-            <NavDropdown.Item  eventKey="1">Historial de compras</NavDropdown.Item>
-            <NavDropdown.Item eventKey="2">Modificar usuario</NavDropdown.Item>
+            <NavDropdown.Item  eventKey="1">Purchase history</NavDropdown.Item>
+            <NavDropdown.Item eventKey="2">Edit user</NavDropdown.Item>
           </NavDropdown>
         </div>
         <Row style={{ height: "100%", width: "100%", margin: "0.5%" }}>
           <Col style={{ width: "50%", height: "auto" }}>
-            Nombre
+            Name
             <input type="text" className="inputBuyer" value={infoUser.name} />
           </Col>
           <Col>
-            Apellido
+            Last Name
             <input
               type="text"
               className="inputBuyer"
@@ -96,11 +96,11 @@ const DetailBuyer: React.FC = () => {
         </Row>
         <Row style={{ height: "100%", width: "100%", margin: "0.5%" }}>
           <Col style={{ width: "50%", height: "auto" }}>
-            Estado/Región/Provincia
+            State
             <input type="text" className="inputBuyer" value={infoUser.state} />
           </Col>
           <Col>
-            País
+            Country
             <input
               type="text"
               className="inputBuyer"
@@ -110,7 +110,7 @@ const DetailBuyer: React.FC = () => {
         </Row>
         <Row style={{ height: "100%", width: "100%", margin: "0.5%" }}>
           <Col style={{ width: "50%", height: "auto" }}>
-            Documento de identidad
+            Identity card
             <input
               type="text"
               className="inputBuyer"
@@ -118,7 +118,7 @@ const DetailBuyer: React.FC = () => {
             />
           </Col>
           <Col>
-            Tipo de usuario
+            User type
             <input
               type="text"
               className="inputBuyer"
@@ -128,20 +128,20 @@ const DetailBuyer: React.FC = () => {
         </Row>
         <Row style={{ height: "100%", width: "100%", margin: "0.5%" }}>
           <Col style={{ width: "50%", height: "100%" }}>
-            Ciudad
+            City
             <input type="text" className="inputBuyer" value={infoUser.city} />
           </Col>
           <Col>
-            Direccion de correo
+            Email
             <input type="text" className="inputBuyer" value={infoUser.email} />
           </Col>
         </Row>
         <div className="botonesBuyer">
             <Link to="/admin" style={{width:"30%"}}>
-              <Button style={{width:"100%", backgroundColor:"#A37D34", border:"none"}}>Volver al Panel</Button>
+              <Button style={{width:"100%", backgroundColor:"#A37D34", border:"none"}}>Back to panel</Button>
             </Link>
-          <Button onClick={handlerActive} style={{width:"15%", backgroundColor:"black", border:"none"}}>Activar Usuario</Button>
-          <Button onClick={handlerInactive} style={{width:"15%", backgroundColor:"black", border:"none"}}>Inactivar Usuario</Button>
+          <Button onClick={handlerActive} style={{width:"15%", backgroundColor:"black", border:"none"}}>Activate User</Button>
+          <Button onClick={handlerInactive} style={{width:"15%", backgroundColor:"black", border:"none"}}>Inactivate User</Button>
         </div>
       </Card>
       <div className="bodyImage">
@@ -153,7 +153,7 @@ const DetailBuyer: React.FC = () => {
             border: "solid black 3px",
           }}
         >
-          {infoUser.image === null ? "Imagen no disponible" : (<img src={infoUser.image} alt={infoUser.name} style={{height:"100%", width:"100%"}}/>)}
+          {infoUser.image === null ? "Image not available" : (<img src={infoUser.image} alt={infoUser.name} style={{height:"100%", width:"100%"}}/>)}
         </Card>
         <Card
           style={{
@@ -166,10 +166,10 @@ const DetailBuyer: React.FC = () => {
             alignItems:"center"
           }}
         >
-          <h4>Estatus de usuario</h4>
+          <h4>User Status</h4>
           {infoUser.status === true ? (
-            <h2 className="activoUser">Activo ✅</h2>) : (
-            <h2 className="inactiveUser">Inactivo 🚫</h2>
+            <h2 className="activoUser">Active ✅</h2>) : (
+            <h2 className="inactiveUser">Inactive 🚫</h2>
           )}
         </Card>
       </div>

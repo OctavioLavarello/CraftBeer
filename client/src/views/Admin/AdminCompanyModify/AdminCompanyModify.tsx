@@ -180,7 +180,7 @@ const AdminCompanyModify: React.FC = () => {
               <Row>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Nombre</Form.Label>
+                    <Form.Label>Name</Form.Label>
                     <Form.Control
                       readOnly
                       type="text"
@@ -190,7 +190,7 @@ const AdminCompanyModify: React.FC = () => {
                 </Col>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Apellido</Form.Label>
+                    <Form.Label>Last Name</Form.Label>
                     <Form.Control
                       readOnly
                       type="text"
@@ -212,7 +212,7 @@ const AdminCompanyModify: React.FC = () => {
                 </Col>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Documento</Form.Label>
+                    <Form.Label>Identity Card</Form.Label>
                     <Form.Control
                       readOnly
                       type="number"
@@ -224,7 +224,7 @@ const AdminCompanyModify: React.FC = () => {
               <Row>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Numero de telefono</Form.Label>
+                    <Form.Label>Phone Number</Form.Label>
                     <Form.Control
                       readOnly
                       type="number"
@@ -234,7 +234,7 @@ const AdminCompanyModify: React.FC = () => {
                 </Col>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Pais</Form.Label>
+                    <Form.Label>Country</Form.Label>
                     <Form.Control
                       readOnly
                       type="text"
@@ -247,7 +247,7 @@ const AdminCompanyModify: React.FC = () => {
               <Row>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Provincia</Form.Label>
+                    <Form.Label>State</Form.Label>
                     <Form.Control
                       readOnly
                       type="text"
@@ -258,7 +258,7 @@ const AdminCompanyModify: React.FC = () => {
                 </Col>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Ciudad</Form.Label>
+                    <Form.Label>City</Form.Label>
                     <Form.Control
                       readOnly
                       type="text"
@@ -270,7 +270,7 @@ const AdminCompanyModify: React.FC = () => {
               <Row>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Compañía</Form.Label>
+                    <Form.Label>Company</Form.Label>
                     <Form.Control
                       readOnly
                       type="text"
@@ -280,7 +280,7 @@ const AdminCompanyModify: React.FC = () => {
                 </Col>
                 <Col>
                   <Form.Group>
-                    <Form.Label>Dirección</Form.Label>
+                    <Form.Label>Address</Form.Label>
                     <Form.Control
                       readOnly
                       type="text"

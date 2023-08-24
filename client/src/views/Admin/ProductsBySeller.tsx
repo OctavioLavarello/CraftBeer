@@ -37,9 +37,9 @@ const ProductsBySeller = () => {
       }
       console.log(idProduct);
       await axios.put(`/product/${idProduct}`, activar);
-      toast.success("El producto a sido activado");
+      toast.success("Product has been activated");
     } catch (error) {
-      toast.error("No fue posible activar el producto");
+      toast.error("Product could not be activated");
     }
   };
 
@@ -52,9 +52,9 @@ const ProductsBySeller = () => {
       }
       console.log(idProduct);
       await axios.put(`/product/${idProduct}`, inactivar);
-      toast.success("El producto a sido desactivado");
+      toast.success("Product has been inactivated");
     } catch (error) {
-      toast.error("No fue posible inactivar el producto");
+      toast.error("Product could not be inactivated");
     }
   };
 
@@ -63,13 +63,13 @@ const ProductsBySeller = () => {
       <Table striped bordered hover variant="" responsive>
         <thead className="bordeTabla">
           <tr className="bordeTabla">
-            <th className="anchoTable">Detalle</th>
-            <th className="anchoTable">Nombre del producto</th>
-            <th className="anchoTable">Precio</th>
-            <th className="anchoTable">Tipo de cerveza</th>
-            <th className="anchoTable">Presentación</th>
-            <th className="anchoTable">Calificación</th>
-            <th className="anchoTable">Estatus</th>
+            <th className="anchoTable">Detail</th>
+            <th className="anchoTable">Beer name</th>
+            <th className="anchoTable">Price</th>
+            <th className="anchoTable">Beer type</th>
+            <th className="anchoTable">Presentation</th>
+            <th className="anchoTable">Rating</th>
+            <th className="anchoTable">Status</th>
           </tr>
         </thead>
         <tbody style={{ textAlign: "center" }}>
@@ -78,7 +78,7 @@ const ProductsBySeller = () => {
               <tr>
                 <td>
                   <Link to={`/detail/${beer.id}`}>
-                    <Button name={beer.id}>Detalle Producto</Button>
+                    <Button name={beer.id}>Beer detail</Button>
                   </Link>
                 </td>
                 <td>{beer.name}</td>
@@ -92,13 +92,13 @@ const ProductsBySeller = () => {
                 </td>
                 <td>
                   <NavDropdown
-                    title={beer.status === true ? "Activo" : "Inactivo"}
+                    title={beer.status === true ? "Active" : "Inactive"}
                   >
                     <NavDropdown.Item onClick={handlerActive} name={beer.id}>
-                      Activar
+                      Activate
                     </NavDropdown.Item>
                     <NavDropdown.Item onClick={handlerInactive} name={beer.id}>
-                      Inactivar
+                      Inactivate
                     </NavDropdown.Item>
                   </NavDropdown>
                 </td>
@@ -109,7 +109,7 @@ const ProductsBySeller = () => {
       </Table>
       <div style={{textAlign:"center"}}>
         <Link to="/admin">
-          <Button className="botonNav" style={{width:"50%", borderRadius:"20px"}}>Volver al Panel</Button>
+          <Button className="botonNav" style={{width:"50%", borderRadius:"20px"}}>Back to Panel</Button>
         </Link>
       </div>
     </div>

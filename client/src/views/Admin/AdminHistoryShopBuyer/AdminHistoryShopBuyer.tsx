@@ -8,7 +8,6 @@ import style from "./AdminHistoryShopBuyer.module.css";
 import { useNavigate } from "react-router-dom";
 
 const AdminHistoryShopBuyer = () => {
-
   const navigate = useNavigate();
 
   const id = useSelector((state: AppState) => state.idBuyer);

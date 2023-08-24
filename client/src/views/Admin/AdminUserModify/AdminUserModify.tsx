@@ -54,8 +54,6 @@ const AdminUserModify = () => {
     const [countryNames, setCountryNames] = useState<string[]>([]);
     const urlImage = useSelector((state: AppState) => state.urlImage);
     const navigate = useNavigate();
-
-
     useEffect(() => {
         const fetchUsers = async () => {
             try {
@@ -116,7 +114,7 @@ const AdminUserModify = () => {
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.put(`http://localhost:3001/user`, editedUserData);
+            const response = await axios.put(`/user`, editedUserData);
             console.log(response.data); // Log the response
             // Update userData to show the updated data
             setUserData(editedUserData as UserData);
@@ -157,12 +155,12 @@ const AdminUserModify = () => {
 
                     <Card className={styles.box}>
                         <Card.Body>
-                            <Card.Title className={styles.Title}>Modificar datos personales de {userData?.name}</Card.Title>
-                            <Card.Text>Nombre: {userData?.name}</Card.Text>
+                            <Card.Title className={styles.Title}>Modify personal data of: {userData?.name}</Card.Title>
+                            <Card.Text>Name: {userData?.name}</Card.Text>
                             {isEditMode ? (
                                 <Form onSubmit={handleFormSubmit}>
                                     <Form.Group controlId="formName">
-                                        <Form.Label>Nombre</Form.Label>
+                                        <Form.Label>Name</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="name"
@@ -172,6 +170,7 @@ const AdminUserModify = () => {
                                        
                                     </Form.Group>
                                     <Form.Group controlId="formImage">
+
                                         <Form.Label>Imagen</Form.Label>
                                         <DragAndDrop />
                                         <Form.Control 
@@ -181,7 +180,7 @@ const AdminUserModify = () => {
                                         onChange={handleInputChange}
                                         />
                                         <Form.Group controlId="formLastName">
-                                            <Form.Label>Apellido</Form.Label>
+                                            <Form.Label>Last Name</Form.Label>
                                             <Form.Control
                                                 type="text"
                                                 name="lastName"
@@ -191,7 +190,7 @@ const AdminUserModify = () => {
                                             
                                         </Form.Group>
                                         <Form.Group controlId="formDocument">
-                                            <Form.Label>Documento</Form.Label>
+                                            <Form.Label>Identity card</Form.Label>
                                             <Form.Control
                                                 type="number"
                                                 name="document"
@@ -218,7 +217,7 @@ const AdminUserModify = () => {
                                     </Form.Control>
                                     </Form.Group>
                                     <Form.Group controlId="formCity">
-                                        <Form.Label>Ciudad</Form.Label>
+                                        <Form.Label>City</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="city"
@@ -228,7 +227,7 @@ const AdminUserModify = () => {
                                        
                                     </Form.Group>
                                     <Form.Group controlId="formState">
-                                        <Form.Label>Estado</Form.Label>
+                                        <Form.Label>State</Form.Label>
                                         <Form.Control
                                         as="select"
                                         name="state"
@@ -247,7 +246,7 @@ const AdminUserModify = () => {
                                     </Form.Control>
                                     </Form.Group>
                                     <Form.Group controlId="formAddress">
-                                        <Form.Label>Calle</Form.Label>
+                                        <Form.Label>Address</Form.Label>
                                         <Form.Control
                                             type="text"
                                             name="address"
@@ -256,11 +255,11 @@ const AdminUserModify = () => {
                                         />
                                        
                                     </Form.Group>
-                                    <Button className={styles.buttonEdit} type="submit" disabled={disable()} >Guardar cambios</Button>
+                                    <Button className={styles.buttonEdit} type="submit" disabled={disable()} >Save changes</Button>
                                 </Form>
 
                                     <Card.Img className={styles.image} src={userData?.image} />
-                                    <Card.Text>Apellido: {userData?.lastName}</Card.Text>
+                                    <Card.Text>Last Name: {userData?.lastName}</Card.Text>
                                     <Card.Text>Email: {userData?.email}</Card.Text>
                                     <Card.Text>Documento: {userData?.document}</Card.Text>
                                     <Card.Text>País: {userData?.country}</Card.Text>

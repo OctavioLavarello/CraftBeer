@@ -37,9 +37,9 @@ const DetailSeller = () => {
         id: infoUser.id,
         status: "true",
       });
-      toast.success("El usuario a sido activado");
+      toast.success("User has been activated");
     } catch (error) {
-      toast.error("No fue posible activar el usuario");
+      toast.error("It was not possible to activate the user");
     }
   };
 
@@ -49,9 +49,9 @@ const DetailSeller = () => {
         id: infoUser.id,
         status: "false",
       });
-      toast.success("El usuario a sido desactivado");
+      toast.success("User has been inactivated");
     } catch (error) {
-      toast.error("No fue posible inactivar el usuario");
+      toast.error("It was not possible to inactivate the user");
     }
   };
 
@@ -98,16 +98,16 @@ const DetailSeller = () => {
                 Productos en venta
               </Link>
             </NavDropdown.Item>
-            <NavDropdown.Item eventKey="2">Modificar usuario</NavDropdown.Item>
+            <NavDropdown.Item eventKey="2">Edit user</NavDropdown.Item>
           </NavDropdown>
         </div>
         <Row style={{ height: "100%", width: "100%", margin: "0.5%" }}>
           <Col style={{ width: "50%", height: "auto" }}>
-            Nombre
+            Name
             <input type="text" className="inputSeller" value={infoUser.name} />
           </Col>
           <Col>
-            Apellido
+            Last Name
             <input
               type="text"
               className="inputSeller"
@@ -115,7 +115,7 @@ const DetailSeller = () => {
             />
           </Col>
           <Col>
-            Dirección de la compañía
+            Company Address
             <input
               type="text"
               className="inputSeller"
@@ -125,11 +125,11 @@ const DetailSeller = () => {
         </Row>
         <Row style={{ height: "100%", width: "100%", margin: "0.5%" }}>
           <Col style={{ width: "50%", height: "auto" }}>
-            Estado/Región/Provincia
+            State
             <input type="text" className="inputSeller" value={infoUser.state} />
           </Col>
           <Col>
-            País
+            Country
             <input
               type="text"
               className="inputSeller"
@@ -137,13 +137,13 @@ const DetailSeller = () => {
             />
           </Col>
           <Col>
-            Teléfono móvil
+            Phone Number
             <input type="text" className="inputSeller" value={infoUser.phone} />
           </Col>
         </Row>
         <Row style={{ height: "100%", width: "100%", margin: "0.5%" }}>
           <Col style={{ width: "50%", height: "auto" }}>
-            Documento de identidad
+            Identity card
             <input
               type="text"
               className="inputSeller"
@@ -151,18 +151,18 @@ const DetailSeller = () => {
             />
           </Col>
           <Col>
-            Tipo de usuario
+            User Type
             <input type="text" className="inputSeller" value={infoUser.role} />
           </Col>
           <Col></Col>
         </Row>
         <Row style={{ height: "100%", width: "100%", margin: "0.5%" }}>
           <Col style={{ width: "50%", height: "100%" }}>
-            Ciudad
+            City
             <input type="text" className="inputSeller" value={infoUser.city} />
           </Col>
           <Col>
-            Direccion de correo
+            Email
             <input type="text" className="inputSeller" value={infoUser.email} />
           </Col>
           <Col></Col>
@@ -177,7 +177,7 @@ const DetailSeller = () => {
                 height: "100%",
               }}
             >
-              Volver al Panel
+              Back to Panel
             </Button>
           </Link>
           <Button
@@ -189,7 +189,7 @@ const DetailSeller = () => {
               height: "100%",
             }}
           >
-            Activar Usuario
+            Activate User
           </Button>
           <Button
             onClick={handlerInactive}
@@ -200,7 +200,7 @@ const DetailSeller = () => {
               border: "none",
             }}
           >
-            Inactivar Usuario
+            Inactivate User
           </Button>
         </div>
       </Card>
@@ -214,7 +214,7 @@ const DetailSeller = () => {
           }}
         >
           {infoUser.image === null ? (
-            "Imagen no disponible"
+            "Image not available"
           ) : (
             <img
               src={infoUser.image}

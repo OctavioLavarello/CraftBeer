@@ -14,12 +14,10 @@ const Footer: React.FC = () => {
     >
         <div className={styles.p_container}>
             <p>
-                El expendio de bebidas alcoholicas se encuentra prohibido para menores
-                de 18 años. 
+                The sale of alcoholic beverages is prohibited for minors under 18 years of age.
             </p>
             <p>
-                Si no cumples con estas especificaciones te recomendamos no
-                continuar el proceso de compra en esta plataforma.
+            If you do not meet these specifications, we recommend that you do not continue the purchase process on this platform.
             </p>
         </div>
         <div className={styles.links}>
@@ -49,7 +47,7 @@ const Footer: React.FC = () => {
                     <img src={facebookIcon} alt="facebook" width="40" height="40" />
                 </a>
             </div>
-            <h2>Nuestras redes</h2>
+            <h2>Our Networks</h2>
         </div>
     </div>
   );
