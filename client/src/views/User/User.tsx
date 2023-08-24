@@ -89,7 +89,7 @@ const User = () => {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:3001/user`, editedUserData);
+      const response = await axios.put(`https://craftbeer.up.railway.app/user`, editedUserData);
       console.log(response.data); // Log the response
       // Update userData to show the updated data
       setUserData(editedUserData as UserData);
