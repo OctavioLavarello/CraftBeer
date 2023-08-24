@@ -42,6 +42,7 @@ import Pending from "./components/Pending/Pending";
 import AdminUserModify from "./views/Admin/AdminUserModify/AdminUserModify";
 import AdminHistoryShopSeller from "./views/Admin/AdminHistoryShopSeller/AdminHistoryShopSeller";
 import AdminHistoryShopBuyer from "./views/Admin/AdminHistoryShopBuyer/AdminHistoryShopBuyer";
+import Failure from "./components/Failure/failure";
 
 // APP
 function App() {
@@ -134,6 +135,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/myShop" element={<MyShop />} />
             <Route path="/succes" element={<Succes />} />
+            <Route path="/failure" element={<Failure />} />
             <Route path="/pending" element={<Pending/>} />
             <Route path="*" element={<Error />} />
           </Routes>

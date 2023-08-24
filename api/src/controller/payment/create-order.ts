@@ -49,7 +49,7 @@ export const createOrder = async (req: Request, res: Response) => {
       back_urls: {
         success: `${localhost}/succes`,
         pending: `${localhost}/pending`,
-        failure: `${frontDeploy}/failure`,
+        failure: `${localhost}/failure`,
       } as PreferenceBackUrl,
       notification_url: `${localhost}/webhook`,
       auto_return: "all"
