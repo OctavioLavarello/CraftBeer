@@ -82,7 +82,7 @@ const PutProduct = () => {
     };
     const handlerOnChangeBool = (event: any) => {
         const { name, value } = event.target;
-        if (value === "true"){
+        if (value === "true" || value === "..."){
             setPutBeer((prevPutBeer) => ({
                 ...prevPutBeer,
                 [name]: true
@@ -120,7 +120,7 @@ const PutProduct = () => {
     useEffect(() => {
         const fetchBeer = async () => {
         try {
-            const { data } = await axios.get(`/product/${id}`);
+            const { data } = await axios.get(`/product/admin/${id}`);
             console.log("DATA",data);
             const updatedPutBeer = { ...putBeer, ...data };
             setPutBeer(updatedPutBeer);
@@ -262,6 +262,7 @@ const PutProduct = () => {
                             name="status" 
                             className={styles.input}
                             onChange={handlerOnChangeBool}>
+                                <option value="...">...</option>
                                 <option value="true">Available</option>
                                 <option value="false">Unavailable</option>
                             </select>

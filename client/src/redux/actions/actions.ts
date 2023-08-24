@@ -130,9 +130,6 @@ export const createdProduct = ({
       });
       console.log(createdBeer);
       toast.success("Se creo correctamente su producto");
-      setTimeout(() => {
-        window.location.href = "/home";
-      }, 2000);
     } catch (error: any) {
       if (error.response.data.message === undefined)
         toast.error(

@@ -43,10 +43,14 @@ const Creation = () => {
     IBU: 0,
     userCompanyId: idCompany,
   });
- 
+  // USE EFFECTS
   useEffect(() => {
-    dispatch(userCompanySalesSummary(idCompany));
-  }, []);
+    const timer = setTimeout(() => {
+      dispatch(userCompanySalesSummary(idCompany));
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [idCompany, dispatch, companySalesSum]); 
+
   useEffect(() => {
     setInput((prevInput) => ({ ...prevInput, image: urlImage }));
   }, [urlImage]);
@@ -165,7 +169,9 @@ const Creation = () => {
             <InputGroup className="mb-2">
               <Form.Control
                 onChange={handlerChange}
+
                 placeholder="Price"
+                min={0}
                 name="price"
                 type="number"
               />
@@ -191,6 +197,7 @@ const Creation = () => {
               placeholder="Stock"
               name="stock"
               onChange={handlerChange}
+              min={0}
               type="number"
             />
             <h6 className="mensajes">{errors.stock}</h6>
@@ -223,6 +230,8 @@ const Creation = () => {
               placeholder="Alcohol content"
               name="ABV"
               onChange={handlerChange}
+              max={100}
+              min={0}
               type="number"
             />
             <h6 className="mensajes">{errors.ABV}</h6>
@@ -273,7 +282,7 @@ const Creation = () => {
       <div className="bodyMisArt">
         <div>
           <span className="spamMisArt">
-            <strong>MY ARTICLES </strong>
+            <strong>MY PUBLISHED ARTICLES</strong>
           </span>
           {currentBeers.map((card: any) => (
             <CardUserProduct 
