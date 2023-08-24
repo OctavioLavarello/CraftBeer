@@ -2,6 +2,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/actions";
 import { AnyAction, Dispatch } from "redux";
+import styles from './ChoiceRole.module.css';
 
 interface ChoiceRoleProps {
   userData: {
@@ -83,9 +84,9 @@ const ChoiceRole: React.FC<ChoiceRoleProps> = (props) => {
 
   return (
     <div>
-      <h2>what do you want?</h2>
-      <button onClick={handleOnBuyClick}>Buy</button>
-      <button onClick={HandleOnSaleClick}>Sale</button>
+      <h5 className={styles.what}>what do you want?</h5>
+      <button onClick={handleOnBuyClick} className={styles.button}>Buy</button>
+      <button onClick={HandleOnSaleClick}className={styles.button}>Sale</button>
     </div>
   );
 };
