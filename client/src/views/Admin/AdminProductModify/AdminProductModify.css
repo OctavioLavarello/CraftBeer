@@ -1,0 +1,64 @@
+.bodyFormAPM {
+    border: solid rgb(181, 152, 8) 5px;
+    border-radius: 10px;
+    margin: 5%;
+    display: flex;
+    flex-direction: row;
+}
+
+.formularioAPM {
+    width: 100%;
+    height: 100%;
+}
+
+.bodyimputsAPM {
+    margin: 2%;
+    
+}
+
+.bodyColumAPM {
+    margin-bottom: 1%;
+}
+
+.bodyImageAPM {
+    margin: 2%;
+    width: 20%;
+    height: 10%;
+
+    border-right: solid 3px rgb(181, 152, 8);
+}
+
+.imagAPM {
+    width: 100%;
+    height: 100%;
+}
+
+.botonAPM {
+    margin: 2%;
+    background-color:rgb(181, 152, 8);
+    border: none;
+    width: 30%;
+    height: 40px;
+    box-shadow: 5px 5px 10px black;
+}
+
+.botonAPM:hover {
+    background-color: white;
+    color: black;
+}
+
+.botoneditAPM {
+    margin: 2%;
+    background-color:rgb(186, 185, 185);
+    color: black;
+    border: solid rgb(181, 152, 8) 3px;
+    width: 30%;
+    height: 40px;
+    box-shadow: 5px 5px 10px black;
+}
+
+.botoneditAPM:hover {
+    background-color: rgb(181, 152, 8);
+    color: white;
+    border: solid white;
+}

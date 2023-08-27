@@ -76,9 +76,12 @@ const ProductsBySeller = () => {
           {products?.map((beer: Beer) => {
             return (
               <tr>
-                <td>
-                  <Link to={`/detail/${beer.id}`}>
-                    <Button name={beer.id}>Beer detail</Button>
+                <td >
+                  <Link to={`/detail/${beer.id}`} style={{margin:"5%"}}>
+                    <Button style={{marginTop:"2%"}} name={beer.id}>Beer detail</Button>
+                  </Link>
+                  <Link to={`/admin/adminproductmodify/${beer.id}`}>
+                    <Button style={{backgroundColor:"black", border:"none", marginTop:"2%"}} name={beer.id}>Edit beer</Button>
                   </Link>
                 </td>
                 <td>{beer.name}</td>
