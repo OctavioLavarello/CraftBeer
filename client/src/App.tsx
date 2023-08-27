@@ -43,6 +43,7 @@ import AdminUserModify from "./views/Admin/AdminUserModify/AdminUserModify";
 import AdminHistoryShopSeller from "./views/Admin/AdminHistoryShopSeller/AdminHistoryShopSeller";
 import AdminHistoryShopBuyer from "./views/Admin/AdminHistoryShopBuyer/AdminHistoryShopBuyer";
 import Failure from "./components/Failure/failure";
+import AdminProductModify from "./views/Admin/AdminProductModify/AdminProductModify";
 
 // APP
 function App() {
@@ -170,6 +171,7 @@ function App() {
             <Route path="/admin/seller/AdminHistoryShopSeller" element={<AdminHistoryShopSeller/>} />
             <Route path="/admin/seller/admincompanymodify" element={<AdminCompanyModify/>} />
             <Route path="/admin/buyer/adminHistoryShopBuyer" element={<AdminHistoryShopBuyer/>} />{/*  */}
+            <Route path="/admin/adminproductmodify/:idProduct" element={<AdminProductModify/>} />
             <Route path="*" element={<Error />} />
           </Routes>
         ) : null))}

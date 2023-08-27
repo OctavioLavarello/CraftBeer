@@ -6,7 +6,9 @@ const putProduct = async (req: Request, res: Response) => {
   console.log(productId);
   
   const { companyId, ...updatedData } = req.body;
-  console.log(req.body);
+  console.log("Body request", req.body);
+  console.log("ID company", companyId);
+  
   
   try {
     const product = await Product.findByPk(productId);

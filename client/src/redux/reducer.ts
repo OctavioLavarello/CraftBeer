@@ -65,6 +65,7 @@ export interface beers {
   type: string;
   updatedAt: string;
   userCompanyId: string;
+  
 }
 export interface salesSum {
   id: string;

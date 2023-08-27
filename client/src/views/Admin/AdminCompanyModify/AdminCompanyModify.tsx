@@ -94,6 +94,7 @@ const AdminCompanyModify: React.FC = () => {
   const handlerIsClicked = () => {
     setIsClicked(!isClicked);
   };
+  
   const handlerOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setCompanyData((prevCompanyData) => ({
