@@ -30,7 +30,7 @@ const ProductsBySeller = () => {
 
   const handlerActive = async (event:any): Promise<any> => {
     try {
-      const idProduct = event?.target.name
+      const idProduct = event?.target.id
       const activar = {
         companyId: infoUser.id,
         status: "true"
@@ -45,7 +45,7 @@ const ProductsBySeller = () => {
 
   const handlerInactive = async (event: any): Promise<any> => {
     try {
-      const idProduct = event?.target.name
+      const idProduct = event?.target.id
       const inactivar = {
         companyId: infoUser.id,
         status: "false"
@@ -97,10 +97,10 @@ const ProductsBySeller = () => {
                   <NavDropdown
                     title={beer.status === true ? "Active" : "Inactive"}
                   >
-                    <NavDropdown.Item onClick={handlerActive} name={beer.id}>
+                    <NavDropdown.Item onClick={handlerActive} id={beer.id}>
                       Activate
                     </NavDropdown.Item>
-                    <NavDropdown.Item onClick={handlerInactive} name={beer.id}>
+                    <NavDropdown.Item onClick={handlerInactive} id={beer.id}>
                       Inactivate
                     </NavDropdown.Item>
                   </NavDropdown>
