@@ -28,7 +28,7 @@ const ProductsBySeller = () => {
   console.log(products);
   
 
-  const handlerActive = async (event:any) => {
+  const handlerActive = async (event:any): Promise<any> => {
     try {
       const idProduct = event?.target.name
       const activar = {
@@ -43,7 +43,7 @@ const ProductsBySeller = () => {
     }
   };
 
-  const handlerInactive = async (event: any) => {
+  const handlerInactive = async (event: any): Promise<any> => {
     try {
       const idProduct = event?.target.name
       const inactivar = {
